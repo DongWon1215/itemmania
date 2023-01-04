@@ -18,27 +18,30 @@ import javax.persistence.Table;
 public class UserEntity {
     @Id
     @Column
-    private int userIndex;
+    private int u_num;
 
     @Column
-    private String userName;
+    private String u_name;
 
     @Column
-    private String password;
+    private String u_realName;
 
     @Column
-    private String phoneNumber;
+    private String u_password;
 
     @Column
-    private String eMail;
+    private String u_phoneNumber;
 
     @Column
-    private long mileage;
+    private String u_eMail;
 
     @Column
-    private int creditScore;
+    private long u_mileage;
 
     @Column
-    private boolean isManager;
+    private int u_creditScore;
+
+    @Column
+    private boolean u_isManager;
 
 }
