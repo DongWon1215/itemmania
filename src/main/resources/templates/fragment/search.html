@@ -1,0 +1,35 @@
+<div class="g_logo_area">
+    <!--▼▼▼ 공통 로고 배너 ▼▼▼ -->
+    <div class="logo"><a href="#"><img id="logo_img"
+                                                                src="https://t1.daumcdn.net/news/202105/22/bemypet/20210522155921138finc.gif"
+                                                                width="221" height="140"></a></div>
+
+    </style>
+    <div class="g_search_top">
+        <form id="g_searchbar_form" method="post" action="" onsubmit="return searchbarSubmit();">
+
+            <div class="g_search_wrapper">
+                <div class="search_area">
+                    <div class="g_trade_type">
+                        <label class="radiocontainer f_blue1">
+                            팝니다
+                            <input type="radio" name="search_type" value="sell" checked="">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radiocontainer f_green1">
+                            삽니다
+                            <input type="radio" name="search_type" value="buy">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <input type="text" class="g_text search_gs_name" name="searchGameServer" id="searchGameServer"
+                           title="게임검색" style="ime-mode:active" placeholder="게임명 또는 서버명을 입력해주세요." autocomplete="off"
+                           data-gameserver="true">
+                    <a href="javascript:;" class="delete_btn"></a></div>
+                <button type="submit" class="g_search_list" id="g_search_list" title="검색">
+                    <span class="icon_search"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
