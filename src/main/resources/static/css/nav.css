@@ -164,7 +164,7 @@ a {
 
 .g_header .nav_wrap {
     position: relative;
-    height: 80px;
+    height: 45px;
     background-color: #159EFD;
     color: #FFF;
 }
@@ -209,33 +209,6 @@ a {
     line-height: 42px;
 }
 
-.nav_wrap .nav li a .icon_new {
-    display: inline-block;
-    width: 34px;
-    height: 13px;
-    margin: -3px 0 0 5px;
-    background: url(//img1.itemmania.com/new_images/icon/icon_char_new.png) no-repeat;
-    vertical-align: middle;
-}
-
-.nav_wrap .nav li a .icon_ssada {
-    display: inline-block;
-    width: 14px;
-    height: 17px;
-    margin: -5px 3px 0 0;
-    background: url(//img1.itemmania.com/new_images/icon/icon_ssada.png) no-repeat;
-    vertical-align: middle;
-}
-
-.nav_wrap .nav li a .icon_event {
-    display: inline-block;
-    width: 45px;
-    height: 22px;
-    margin: -44px 0 0 -36px;
-    background: url(//img1.itemmania.com/new_images/icon/img_event_ssada.png) no-repeat;
-    vertical-align: middle;
-}
-
 .nav_wrap .nav .highlight {
     padding: 0 23px;
     background-color: #057DD1;
@@ -258,12 +231,6 @@ a {
     content: "" !important;
 }
 
-.g_header .right_icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 45px;
-}
 
 .g_header .nav_wrap .user_noti {
     position: relative;
