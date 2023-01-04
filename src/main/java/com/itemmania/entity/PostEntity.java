@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table(name = "")
-public class PostDTO {
+public class PostEntity {
     @Id
     private int postIndex;
 }
