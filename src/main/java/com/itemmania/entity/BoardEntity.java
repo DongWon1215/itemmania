@@ -17,10 +17,9 @@ public class BoardEntity {
     @Column
     private int b_num;
 
-    @Column
-    @JoinColumn(name = UserEntity)
+    @JoinColumn(name = "u_num")
     @ManyToOne
-    private int u_num;
+    private UserEntity u_num;
 
     @Column
     private String b_title;
