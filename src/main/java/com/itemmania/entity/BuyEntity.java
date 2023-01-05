@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -16,39 +17,27 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table(name = "")
-public class UserEntity {
+public class BuyEntity {
     @Id
     @Column
     @NotNull
-    private int userNum;
+    private int buyNum;
 
     @Column
     @NotNull
-    private String userName;
+    private String userNum;
 
     @Column
     @NotNull
-    private String userRealName;
+    private int itemNum;
+
+    @Column
+    private int itemUnit;
+
+    @Column
+    private int price;
 
     @Column
     @NotNull
-    private String userPassword;
-
-    @Column
-    @NotNull
-    private String userPhoneNumber;
-
-    @Column
-    @NotNull
-    private String userEMail;
-
-    @Column
-    private int userMileage;
-
-    @Column
-    private int userCreditScore;
-
-    @Column
-    private boolean userIsManager;
-
+    private LocalDate time;
 }

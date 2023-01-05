@@ -16,45 +16,45 @@ import java.time.LocalDate;
 public class BoardEntity {
     @Id
     @Column
-    private int b_num;
+    private int boardNum;
 
-    @JoinColumn(name = "u_num")
+    @JoinColumn(name = "userNum")
     @ManyToOne
-    private UserEntity u_num;
+    private UserEntity userNum;
 
     @Column
-    private String b_title;
+    private int gameNum;
 
     @Column
-    private String g_name;
+    private String gameServer;
 
     @Column
-    private String g_server;
+    private LocalDate boardTime;
 
     @Column
-    private LocalDate g_time;
+    private String boardTitle;
 
     @Column
-    private boolean s_type;
+    private int saleUnit;
 
     @Column
-    private int s_unit;
+    private int salePrice;
 
     @Column
-    private long s_price;
+    private String saleNickName;
 
     @Column
-    private String s_nickName;
+    private String saleAria;
 
     @Column
-    private String s_aria;
+    private String salePhoto;
 
     @Column
-    private String s_photo;
+    private boolean saleType;
 
     @Column
-    private boolean trade_status;
+    private boolean boardTradeStatus;
 
     @Column
-    private boolean s_premium;
+    private boolean salePremium;
 }
