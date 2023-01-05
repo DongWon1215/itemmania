@@ -1,0 +1,198 @@
+
+body {
+    min-width: 1100px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.content_center {
+    position: relative;
+    width: 1080px;
+    margin: 0 auto;
+}
+
+
+li {
+    list-style: none
+}
+
+a {
+    text-decoration: none
+}
+
+.g_header {
+    position: relative;
+}
+
+.g_header .top_bg {
+    clear: both;
+    height: 30px;
+    background-color: #E3E3E3;
+    text-align: center;
+    line-height: 30px;
+}
+
+.g_header .g_snav {
+    width: 1080px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #767676;
+}
+
+.g_header .g_snav .snav_left {
+    float: left;
+}
+
+.g_header .g_snav .snav_left > li {
+    padding: 0 10px;
+}
+
+.g_header .g_snav .snav_left > li > a {
+    display: block;
+}
+
+.g_header .g_snav .snav_left > li#direct_icon:hover .direct_layer {
+    display: block;
+}
+
+.g_header .g_snav .snav_left .shortcut {
+    display: inline-block;
+    margin: -2px 0 0 3px;
+    padding: 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.g_header .g_snav .snav_left .sp_icon {
+    display: block;
+    width: 48px;
+    height: 16px;
+}
+
+.g_header .g_snav .snav_left .shortcut_on {
+    background-position: -364px -10px;
+}
+
+.g_header .g_snav .snav_left .shortcut_off {
+    background-position: -419px -10px;
+}
+
+.g_header .g_snav .g_left_com .selected {
+    height: 30px;
+    border-right: 1px solid #2A2F3A;
+    border-left: 1px solid #2A2F3A;
+    background-color: #FFF;
+    color: #495164;
+}
+
+
+.g_header .nav_wrap {
+    position: relative;
+    height: 45px;
+    background-color: #159EFD;
+    color: #FFF;
+}
+
+.nav_wrap .content_center {
+    text-align: center;
+}
+
+.g_header .nav_wrap .nav_ct {
+    display: inline-block;
+    margin-left: 107px;
+}
+
+.g_header .nav_wrap_p .nav_ct {
+    display: inline-block;
+    margin-left: 140px;
+}
+
+.g_header .nav_wrap .nav_highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.nav_wrap .nav li {
+    position: relative;
+    float: left;
+    padding: 0 31px;
+}
+
+
+.nav_wrap .nav li a {
+    display: block;
+    height: 45px;
+    font-size: 17px;
+    text-align: center;
+    line-height: 42px;
+}
+
+.nav_wrap .nav .highlight {
+    padding: 0 23px;
+    background-color: #057DD1;
+}
+
+.nav_wrap .nav .highlight:first-child a:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: "|";
+    font-size: 13px;
+    color: #FFF;
+}
+
+.nav_wrap_p .nav .highlight {
+    padding: 0 50px;
+}
+
+.nav_wrap_p .nav .highlight > a:after {
+    content: "" !important;
+}
+
+
+.g_logo_area {
+    position: relative;
+    width: 1080px;
+    min-height: 140px;
+    margin: 0 auto;
+}
+
+.g_logo_area .logo a {
+    display: block;
+    width: 221px;
+    height: 140px;
+}
+
+.g_search_top {
+    position: absolute;
+    top: 36px;
+    left: 219px;
+    width: 690px;
+}
+
+.g_trade_type .radiocontainer .checkmark:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    content: "";
+    border-radius: 50%;
+    background-color: #159efd
+}
+
+.g_trade_type .f_green1 {
+    margin-left: 13px;
+    color: #00c73c
+}
+
+.g_trade_type .f_green1 .checkmark:after {
+    background-color: #00c73c;
+}
+.radiocontainer input:checked ~ .checkmark:after{
+    display: block;
+
+}
