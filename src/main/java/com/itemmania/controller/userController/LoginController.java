@@ -21,7 +21,7 @@ public class LoginController {
 //        UserEntity user = userService.getUser();
 
 
-        HttpSession session = request.getSession();
+//        HttpSession session = request.getSession();
 
 //        session.setAttribute("userInfo",user);
 
