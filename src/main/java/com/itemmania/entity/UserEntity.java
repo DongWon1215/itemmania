@@ -1,5 +1,6 @@
 package com.itemmania.entity;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -18,21 +19,27 @@ import javax.persistence.Table;
 public class UserEntity {
     @Id
     @Column
+    @NotNull
     private int u_num;
 
     @Column
+    @NotNull
     private String u_name;
 
     @Column
+    @NotNull
     private String u_realName;
 
     @Column
+    @NotNull
     private String u_password;
 
     @Column
+    @NotNull
     private String u_phoneNumber;
 
     @Column
+    @NotNull
     private String u_eMail;
 
     @Column

@@ -3,6 +3,7 @@ package com.itemmania.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -31,7 +32,7 @@ public class BoardEntity {
     private String g_server;
 
     @Column
-    private int g_time;
+    private LocalDate g_time;
 
     @Column
     private boolean s_type;
