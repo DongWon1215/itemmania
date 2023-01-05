@@ -18,9 +18,8 @@ public class BoardEntity {
     @Column
     private int boardNum;
 
-    @JoinColumn(name = "userNum")
-    @ManyToOne
-    private UserEntity userNum;
+    @Column
+    private int userNum;
 
     @Column
     private int gameNum;

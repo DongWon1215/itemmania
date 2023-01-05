@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoardService {
 
-    @Autowired
+    @Autowired(required = false)
     private BoardRepository boardRepository;
 
-    @Autowired
+    @Autowired(required = false)
     private BoardMapper boardMapper;
 
 }
