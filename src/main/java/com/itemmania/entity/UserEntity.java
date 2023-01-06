@@ -3,10 +3,7 @@ package com.itemmania.entity;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -38,7 +35,7 @@ public class UserEntity {
     @NotNull
     private String userPhoneNumber;
 
-    @Column
+    @Column(name = "user_email")
     @NotNull
     private String userEMail;
 
@@ -50,5 +47,13 @@ public class UserEntity {
 
     @Column
     private boolean userIsManager;
+
+    @Column
+    private int itemUnit;
+
+    @ManyToOne
+    @JoinColumn(name = "itemNum", referencedColumnName = "itemName")
+    private ItemEntity itemNum;
+
 
 }

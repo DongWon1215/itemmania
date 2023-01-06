@@ -36,6 +36,8 @@ dependencies {
 
     implementation 'org.mybatis:mybatis:3.5.9'
     implementation 'org.mybatis:mybatis-spring:2.0.7'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+    testImplementation 'org.springframework.security:spring-security-test'
 
 }
 
