@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ItemmaniaApplication {
 
     public static void main(String[] args) {
-        log.info("테스트용 문자");
         SpringApplication.run(ItemmaniaApplication.class, args);
     }
 
