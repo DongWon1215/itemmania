@@ -22,4 +22,22 @@ public class BuyEntity {
     @Column
     @NotNull
     private int buyNum;
+
+    @Column
+    @NotNull
+    private String userNum;
+
+    @Column
+    @NotNull
+    private int itemNum;
+
+    @Column
+    private int itemUnit;
+
+    @Column
+    private int price;
+
+    @Column
+    @NotNull
+    private LocalDate time;
 }
