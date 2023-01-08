@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class UserEntity {
     @Id
     @Column
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userNum;
 
     @Column
