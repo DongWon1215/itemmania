@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link type="text/css" rel="stylesheet" href="/css/UserForm/mypage.css">
+<body>
+
+<!--header 시작-->
+<div th:replace="fragment/header"/>
+
+<!--body 시작-->
+<div class="g_container" id="g_CONTENT">
+    <div class="g_remocon_l">
+    </div>
+    <div class="mr_top">
+        <!--    <div class="mr_top_left_box">-->
+        <div class="mr_user_level">
+            <span class="credit_mark2 credit_BRONZE _lg">BRONZE</span>
+        </div>
+        <!--<div class="mr_title">MYROOM</div>-->
+        <div class="mr_user_level_txt f_black2">
+            <div class="user_level_txt f_BRONZE">
+                BRONZE        </div>
+            [회원이름] 회원님의 신용등급은
+            <span class="f_BRONZE">일반 (0점)</span>
+            입니다.
+            <div class="mr_user_benefit_btn_wrapper">
+                <div class="mr_user_benefit_btn">
+                    <a href="#">혜택보기 <i class="arr">icon</i></a>
+                </div>
+
+                <div class="mr_user_benefit_btn" onmouseover="$('#credit_condition').show();" onmouseout="$('#credit_condition').hide();">승급조건 <i class="arr">icon</i></div>
+                <div class="credit_condition" id="credit_condition" style="display: none;">
+                    <span class="credit_up_silver">[실버]</span>까지 거래건수 <span class="f_blue1">[5]건</span> 남았습니다.
+                </div>
+            </div>
+        </div>
+        <div class="mr_user_mileage_txt">
+            <div class="mileage_area">
+                <div class="mileage_area_content available_mileage f_black1">사용가능 마일리지</div>
+                <div class="mileage_result f_blue1"><span class="over_mile">[30]</span> <span class="won f_black2">원</span>
+                </div>
+            </div>
+            <div class="mileage_area">
+                <div class="mileage_area_content all_mileage f_black2">총 마일리지</div>
+                <div class="mileage_all_result f_black2">[30] <span class="won f_black2">원</span></div>
+            </div>
+            <div class="mileage_area mileage_btn_area">
+                <div class="mileage_btn mileage_charge_btn" onclick="_window.open('', 685, 800);">
+                    <i class="SpGroup icon_charge">icon</i>충전하기
+                </div>
+                <div class="mileage_btn mileage_withdraw_btn"><a href="#"><i class="SpGroup icon_withdraw">icon</i>출금하기</a></div>
+            </div>
+        </div>
+        <!--        <div class="mr_user_level_sub_txt">-->
+        <!--        </div>-->
+    </div>
+
+    <!--aside 시작-->
+    <div class="aside">
+        <div class="nav_subject"><a href="#" class="myroom">MyRoom</a></div>
+        <div class="nav">
+            <div class="nav_title "><a href="#">메세지함</a></div>
+            <div class="nav_title "><a href="#">판매관련</a></div>
+            <div class="nav_title "><a href="#">구매관련</a></div>
+            <div class="nav_title "><a href="#">마일리지</a></div>
+            <ul class="nav_sub">
+                <li class=""><a href="#">내마일리지</a></li>
+                <li class=""><a href="#">마일리지충전</a></li>
+                <li class=""><a href="#">마일리지출금</a></li>
+                <li class=""><a href="#">마일리지전환</a></li>
+            </ul>
+            <div class="nav_title "><a href="#">개인정보</a></div>
+            <ul class="nav_sub">
+                <li class=""><a href="#">개인정보수정</a></li>
+                <li class=""><a href="#">로그인연동관리</a></li>
+                <li class=""><a href="#">신용등급/인증</a></li>
+            </ul>
+            <div class="nav_title "><a href="#">회원탈퇴</a></div>    </div>
+        <div style="margin-top:15px;text-align:center;"><script src="https://compass.adop.cc/assets/js/adop/adopJ.js?v=14"></script><ins class="adsbyadop_6838bf70-c4e4-4d67-8985-ee350b4cea65" _adop_zon="6838bf70-c4e4-4d67-8985-ee350b4cea65" _adop_type="re" style="display:inline-block;width:200px;height:200px;" _page_url=""><div style="width:200px;height:200px; "><iframe id="adopB43301" frameborder="0" marginwidth="0" marginheight="0" paddingwidth="0" paddingheight="0" scrolling="no" style="width: 100%; height: 100%;"></iframe></div></ins></div></div>
+    <div class="g_content">
+        <div class="content_area content_trade">
+            <div class="g_subtitle">나의 거래 현황</div>
+            <div class="bs_content sell_content2">
+                <div class="sell_content_left">
+                    <div class="icon_wrap">
+                        <i class="SpGroup sell_icon"></i>
+                    </div>
+                    <div class="product_wrap">
+                        <div class="sell_product">
+                            <div class="sell_title product_title">판매 등록</div>
+                            <div class="sell_result trade_result"><a href="#">0</a>
+                            </div>
+                        </div>
+                        <div class="bargain_product">
+                            <div class="bargain_title product_title">흥정 신청</div>
+                            <div class="bargain_result trade_result"><a href="#">0</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_line"></div>
+                <div class="sell_content_right">
+                    <div class="sell_pay_wait_product product">
+                        <div class="sell_pay_wait_title product_title product_title2">입금대기</div>
+                        <div class="sell_pay_wait_result trade_result2"><a href="#">0</a>
+                        </div>
+                    </div>
+                    <div class="arrow_wrap">
+                        <i class="arr2"></i>
+                    </div>
+                    <div class="sell_ing_product product">
+                        <div class="sell_ing_title product_title product_title2">판매중</div>
+                        <div class="sell_ing_title trade_result2"><a href="#">0</a>
+                        </div>
+                    </div>
+                    <div class="arrow_wrap">
+                        <i class="arr2"></i>
+                    </div>
+                    <div class="sell_complete_product product">
+                        <div class="sell_complete_title product_title product_title2">판매종료</div>
+                        <div class="complete_wrap"><a href="#"><span class="btn_detail"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bs_content buy_content2">
+                <div class="buy_content_left">
+                    <div class="icon_wrap">
+                        <i class="SpGroup buy_icon"></i>
+                    </div>
+                    <div class="product_wrap">
+                        <div class="buy_product">
+                            <div class="buy_title product_title">구매 등록</div>
+                            <div class="buy_result trade_result"><a href="#">0</a>
+                            </div>
+                        </div>
+                        <div class="bargain_product">
+                            <div class="bargain_title product_title">흥정 신청</div>
+                            <div class="bargain_result trade_result"><a href="#">0</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_line"></div>
+                <div class="buy_content_right">
+                    <div class="buy_pay_wait_product product">
+                        <div class="buy_pay_wait_title product_title product_title2">입금예정</div>
+                        <div class="buy_pay_wait_result trade_result2"><a href="#">0</a>
+                        </div>
+                    </div>
+                    <div class="arrow_wrap">
+                        <i class="arr2"></i>
+                    </div>
+                    <div class="buy_ing_product product">
+                        <div class="buy_ing_title product_title product_title2">구매중</div>
+                        <div class="buy_ing_title trade_result2"><a href="#">0</a></div>
+                    </div>
+                    <div class="arrow_wrap">
+                        <i class="arr2"></i>
+                    </div>
+                    <div class="buy_complete_product product">
+                        <div class="buy_complete_title product_title product_title2">구매종료</div>
+                        <div class="complete_wrap"><a href="#"><span class="btn_detail"></span></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content_area content_recent_trade">
+            <div class="g_subtitle">최근 거래내역</div>
+            <div class="content_table_wrap">
+                <table>
+                    <colgroup>
+                        <col width="50">
+                        <col width="100">
+                        <col width="100">
+                        <col width="270">
+                        <col width="120">
+                        <col width="80">
+                        <col width="100">
+                    </colgroup>
+                    <!--                <thead>-->
+                    <!--                <tr>-->
+                    <!--                    <th>카테고리</th>-->
+                    <!--                    <th>분류</th>-->
+                    <!--                    <th>제목</th>-->
+                    <!--                    <th>거래금액</th>-->
+                    <!--                    <th>거래종료일</th>-->
+                    <!--                    <th>구분</th>-->
+                    <!--                </tr>-->
+                    <!--                </thead>-->
+                    <tbody>
+                    <tr height="100" class="tbl_sell_area">
+                        <td colspan="7">최근 거래내역이 없습니다.</td>
+                    </tr>
+                    <tr height="100" class="tbl_buy_area">
+                        <td colspan="7">최근 거래내역이 없습니다.</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="g_finish"></div>
+    <iframe src="about:blank" width="0" height="0" name="frmTarget" style="border:none"></iframe>
+    <form id="reloadFrm" name="reloadFrm" method="post">
+    </form>
+    <div class="g_finish"></div>
+</div>
+</div>
+
+<!--footer 시작-->
+<div th:replace="fragment/footer"/>
+</body>
+</html>

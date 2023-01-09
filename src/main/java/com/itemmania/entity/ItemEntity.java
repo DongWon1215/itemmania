@@ -3,10 +3,7 @@ package com.itemmania.entity;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -15,12 +12,12 @@ import javax.persistence.Table;
 @ToString
 @Builder
 @Entity
-@Table(name = "")
+@Table(name = "item")
 public class ItemEntity {
 
     @Id
     @Column
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int itemNum;
 
     @NotNull
