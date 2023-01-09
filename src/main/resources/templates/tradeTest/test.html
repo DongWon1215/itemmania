@@ -10,22 +10,37 @@
 </head>
 <body>
 
+결제금액 : <input type="text" id="amount" value="10000"><br>
+결제사 : <select id="pgSelect">
+    <option value="kakaopay.TC0ONETIME">카카오페이</option>
+    <option value="html5_inicis.TC0ONETIME">이니시스웹표준</option>
+    <option value="inicis.TC0ONETIME">이니시스ActiveX결제창</option>
+    <option value="kcp.T0000">NHN KCP</option>
+    <option value="kcp_billing.TC0ONETIME">NHN KCP 정기결제</option>
+    <option value="uplus.TC0ONETIME">토스페이먼츠(구 LG U+)</option>
+    <option value="nice.nictest00m">나이스페이</option>
+</select>
+<hr>
 <button onclick="requestPay()">결제하기</button>
-...
+<hr>
+
 <script>
   function requestPay() {
+      IMP.init('imp82672540')
+      console.log($('#pgSelect').val())
+      console.log($('#amount').val())
     // IMP.request_pay(param, callback) 결제창 호출
     IMP.request_pay({ // param
-      pg: "html5_inicis",
+      pg: $('#pgSelect').val(),
       pay_method: "card",
-      merchant_uid: "ORD20180131-0000011",
-      name: "노르웨이 회전 의자",
-      amount: 649,
+      merchant_uid: "testCode" + Date.now(),
+      name: "아이템매니아 마일리지 구매",
+      amount: $('#amount').val(),
       buyer_email: "gildong@gmail.com",
       buyer_name: "홍길동",
       buyer_tel: "010-4242-4242",
       buyer_addr: "서울특별시 강남구 신사동",
-      buyer_postcode: "01181"
+
     }, function (rsp) { // callback
 
       if (rsp.success) {
