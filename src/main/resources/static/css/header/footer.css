@@ -1,9 +1,10 @@
-.g_footer_area{clear:both;margin-top:30px;background-color:#616161;letter-spacing:0;}
-.g_footer{overflow:hidden;border-bottom:1px solid #767676;}
-.g_footer .g_footer_menu{position:relative;width:1080px;height:43px;margin:0 auto;line-height:43px;}
-.g_footer .g_footer_menu li{float:left;margin-right:25px;color:#E1E1E1;}
+.g_footer_area{clear:both;margin-top:30px;background-color:#616161;letter-spacing:0;  box-sizing: border-box;}
+.g_footer{overflow:hidden;height:43px; border-bottom:1px solid #767676; box-sizing: border-box;}
+.g_footer .g_footer_menu{position:relative; width:1080px;height:43px;margin:0 auto;line-height:43px;}
+.g_footer .g_footer_menu li{float:left; margin-right:25px;color:#E1E1E1; box-sizing: border-box;}
 .g_footer .g_footer_menu .f_bold{color:#FEFFCF;}
-.g_footer .g_footer_menu li img{margin-top:-3px;}
+.g_footer .g_footer_menu li a{height: 100%; box-sizing: border-box;}
+.g_footer .g_footer_menu li a img{padding-top:6px; height: 100%;  box-sizing: border-box;}
 .g_footer_menu .sns{position:absolute;top:0;right:16px;}
 .g_footer_menu .sns a{display:inline-block;width:22px;height:22px;margin-right:2px;vertical-align:middle;text-indent:-9999px;}
 .g_footer_menu .sns .facebook{background-position:-802px -2px;}
@@ -11,7 +12,7 @@
 .g_footer_menu .sns .youtube{background-position:-802px -50px;}
 .g_footer_area .g_copyright{position:relative;box-sizing:border-box;width:1080px;height:150px;margin:0 auto;padding:20px 0;font-size:12px;color:#B0B0B0;}
 .g_footer_area .inicis_com{position:absolute;top:23px;right:30px;overflow:hidden;width:54px;height:54px;background-color:#616161;}
-.g_copyright .footer_logo{float:left;margin-top:40px;}
+.g_copyright .footer_logo{float:left;}
 .g_copyright .comp_info{float:left;margin-left:40px;line-height:18px;}
 .aside .nav_subject{position:relative;box-sizing:border-box;width:100%;height:87px;border:1px solid #DDD;border-bottom:0;font-size:25px;font-weight:bold;text-align:center;}
 .aside .nav_subject > a{display:inline-block;height:47px;margin-top:21px;background:url(//img2.itemmania.com/new_images/common/sp_subname.jpg) no-repeat;text-indent:-9999px;}
