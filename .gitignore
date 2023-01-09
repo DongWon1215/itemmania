@@ -35,3 +35,29 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### macOS Patch ###
+# iCloud generated files
+*.icloud
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
