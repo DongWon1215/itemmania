@@ -1,7 +1,8 @@
 <div class="g_logo_area" xmlns:th="http://www.w3.org/1999/html">
     <!--▼▼▼ 공통 로고 배너 ▼▼▼ -->
-    <div class="logo"><th href="#">
-        <img src="../../image/logo2-unscreen.gif" width="220px"/>
+    <div class="logo">
+        <th href="#">
+            <img src="../../image/logo2-unscreen.gif" width="220px"/>
     </div>
 
     </style>
@@ -24,7 +25,7 @@
                     </div>
                     <input type="text" class="g_text search_gs_name" name="searchGameServer" id="searchGameServer"
                            title="게임검색" style="ime-mode:active" placeholder="게임명 또는 서버명을 입력해주세요." autocomplete="off"
-                           data-gameserver="true">
+                           data-gameserver="true" value={search} onchange={onchange}>
                     <a href="javascript:;" class="delete_btn"></a></div>
                 <button type="submit" class="g_search_list" id="g_search_list" title="검색">
                     <span class="icon_search"></span>
@@ -33,3 +34,6 @@
         </form>
     </div>
 </div>
+<script>
+
+</script>
