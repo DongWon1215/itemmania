@@ -3,10 +3,7 @@ package com.itemmania.entity;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Getter
@@ -16,16 +13,16 @@ import java.time.LocalDate;
 @ToString
 @Builder
 @Entity
-@Table(name = "")
+@Table(name = "pay")
 public class PayEntity {
     @Id
     @Column
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int payNum;
 
-    @Column
-    @NotNull
-    private  int userNum;
+    @ManyToOne
+    @JoinColumn(name = "userNum")
+    private  UserEntity userNum;
 
     @Column
     @NotNull
