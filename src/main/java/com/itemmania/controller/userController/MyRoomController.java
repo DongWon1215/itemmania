@@ -11,7 +11,7 @@ public class MyRoomController {
     @GetMapping
     public String getMypageForm()
     {
-        return "UserForm/MyRoomForm";
+        return "userForm/myRoomForm";
     }
 
 
