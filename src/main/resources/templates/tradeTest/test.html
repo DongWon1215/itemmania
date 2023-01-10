@@ -10,15 +10,30 @@
 </head>
 <body>
 
-결제금액 : <input type="text" id="amount" value="10000"><br>
+결제금액 : <input type="text" id="amount" value="100"><br>
 결제사 : <select id="pgSelect">
     <option value="kakaopay.TC0ONETIME">카카오페이</option>
-    <option value="html5_inicis.TC0ONETIME">이니시스웹표준</option>
-    <option value="inicis.TC0ONETIME">이니시스ActiveX결제창</option>
+    <option value="html5_inicis.INIpayTest">이니시스웹표준</option>
     <option value="kcp.T0000">NHN KCP</option>
-    <option value="kcp_billing.TC0ONETIME">NHN KCP 정기결제</option>
-    <option value="uplus.TC0ONETIME">토스페이먼츠(구 LG U+)</option>
+<!--    <option value="uplus.tvivarepublica2">토스페이먼츠(구 LG U+)</option>-->
+    <option value="tosspay.tosstest">토스페이</option>
     <option value="nice.nictest00m">나이스페이</option>
+    <option value="danal_tpay.9810030929">다날 일반결제</option>
+    <option value="danal.A010002002">다날 휴대폰 소액결제</option>
+    <option value="jtnet.tpaytest0m">JTNet</option>
+    <option value="kicc.T5102001">kicc</option>
+    <option value="bluewalnut.imptest01m">블루월넛</option>
+    <option value="mobilians.170622040674">모빌리언스 휴대폰 소액결제</option>
+    <option value="payco.PARTNERTEST">페이코</option>
+    <option value="eximbay.1849705C64">엑심베이(달러기준, 테스트용 카드 써야 함)</option>
+    <option value="naverpay">네이버페이</option>
+<!--    <option value="naverpay.PARTNERTEST">네이버페이</option> 네이버페이는 이노시스 페이메소드 네이버페이로 -->
+    <option value="smilepay.cnstest25m">스마일페이</option>
+    <option value="alipay.YST000029m">알리페이</option>
+    <option value="happymoney">해피머니상품권</option>
+    <option value="booknlife">도서문화상품권</option>
+
+
 </select>
 <hr>
 <button onclick="requestPay()">결제하기</button>
@@ -29,17 +44,37 @@
       IMP.init('imp82672540')
       console.log($('#pgSelect').val())
       console.log($('#amount').val())
+
+      let pg = $('#pgSelect').val()
+      let pay_method = 'card'
+
+      if($('#pgSelect').val() == 'naverpay'){
+          pg = 'html5_inicis.INIpayTest'
+          pay_method = 'naverpay'
+      }
+
+      if($('#pgSelect').val() == 'happymoney'){
+          pg = 'html5_inicis.INIpayTest'
+          pay_method = 'happymoney'
+      }
+
+      if($('#pgSelect').val() == 'booknlife'){
+          pg = 'kcp.T0000'
+          pay_method = 'booknlife'
+      }
+
     // IMP.request_pay(param, callback) 결제창 호출
-    IMP.request_pay({ // param
-      pg: $('#pgSelect').val(),
-      pay_method: "card",
-      merchant_uid: "testCode" + Date.now(),
-      name: "아이템매니아 마일리지 구매",
-      amount: $('#amount').val(),
-      buyer_email: "gildong@gmail.com",
-      buyer_name: "홍길동",
-      buyer_tel: "010-4242-4242",
-      buyer_addr: "서울특별시 강남구 신사동",
+      IMP.request_pay({ // param
+        pg: pg,
+        pay_method: pay_method,
+        merchant_uid: "testCode" + Date.now(),
+        name: "아이템매니아 마일리지 구매",
+        amount: $('#amount').val(),
+        buyer_email: "gildong@gmail.com",
+        buyer_name: "홍길동",
+        buyer_tel: "010-4242-4242",
+        buyer_addr: "서울특별시 강남구 신사동",
+        m_redirect_url : "/trade"
 
     }, function (rsp) { // callback
 
@@ -47,7 +82,7 @@
         alert('결제성공')
         console.log(rsp)
       } else {
-      alert('결제실패')
+      alert(rsp.error_code + " : " + rsp.error_msg)
       }
 
     });

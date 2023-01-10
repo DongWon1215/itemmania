@@ -12,4 +12,6 @@ public class tradeTestController {
     public String trade(){
         return "tradeTest/test";
     }
+
 }
+
