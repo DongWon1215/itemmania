@@ -21,7 +21,7 @@ public class LoginController {
     @GetMapping
     public String logiPage()
     {
-        return "userForm/userForm";
+        return "userForm/loginForm";
     }
 
     @PostMapping
