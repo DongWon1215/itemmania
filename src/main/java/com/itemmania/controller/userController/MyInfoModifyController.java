@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/myroom/myinfo/modify")
 public class MyInfoModifyController {
 
-    /*@GetMapping
+    @GetMapping
     public String getMypageForm()
     {
-        return "userForm/myRoomForm";
-    }*/
+        return "userForm/myRoom/myinfoModify";
+    }
 
 
 }
