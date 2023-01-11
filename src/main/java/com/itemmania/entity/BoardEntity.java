@@ -12,14 +12,17 @@ import java.time.LocalDate;
 @ToString
 @Builder
 @Entity
-@Table(name = "")
+@Table(name = "board")
 public class BoardEntity {
+
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int boardNum;
 
-    @Column
-    private int userNum;
+    @ManyToOne
+    @JoinColumn(name = "userNum")
+    private UserEntity userNum;
 
     @Column
     private int gameNum;

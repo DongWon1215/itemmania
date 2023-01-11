@@ -1,0 +1,24 @@
+.content{overflow:hidden;width:1080px;margin:30px auto 0;}
+.top_area{position:relative;margin-bottom:50px;padding-top:20px;font-size:14px;color:#636363;}
+.top_area h1{margin-bottom:20px;font-size:35px;letter-spacing:-0.12em;color:#434343;}
+.sp_join{position:absolute;top:50px;right:0;width:570px;height:40px;background:url(//img2.itemmania.com/new_images/join/step_join.png) no-repeat;}
+.step2{background-position-y:-57px;}
+.step3{background-position-y:-112px;}
+.step4{background-position-y:-166px;}
+.join_new_banner{position:absolute;right:0;bottom:0;}
+
+.join_type{overflow:hidden;margin:100px 0 0 -30px;}
+.join_type li{position:relative;float:left;box-sizing:border-box;width:340px;height:310px;margin-left:30px;padding:60px 30px 0;border:2px solid #ADC1D5;border-radius:10px;font-size:15px;text-align:center;color:#444;}
+.join_type li p{margin-bottom:10px;font-size:30px;text-align:center;color:#1D1D1D;}
+.join_type li .btn_join{display:block;width:210px;height:60px;margin:35px auto 0;border-radius:40px;background-color:#6A8198;font-size:18px;font-weight:bold;text-align:center;letter-spacing:-0.08em;color:#FFF;}
+.join_type .normal{border-color:#44ADFF;}
+.join_type .normal p{color:#159EFD;}
+.join_type .normal .btn_join{background-color:#44ADFF;}
+
+.dn_text{margin-top:20px;font-size:12px;color:#767676;}
+.dn_text dt{font-weight:bold;}
+.benefit{box-sizing:border-box;margin-top:90px;padding:80px 0;background-color:#F1F1F1;}
+.benefit p{float:left;margin-top:35px;font-size:25px;font-weight:bold;color:#4C4C4C;letter-spacing:-0.1em;}
+.benefit p span{color:#E30000;}
+.benefit img{float:right;}
+.g_footer_area{margin-top:0;}

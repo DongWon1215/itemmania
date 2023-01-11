@@ -12,11 +12,11 @@ import javax.persistence.*;
 @ToString
 @Builder
 @Entity
-@Table(name = "")
+@Table(name = "user")
 public class UserEntity {
     @Id
     @Column
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userNum;
 
     @Column
@@ -52,7 +52,7 @@ public class UserEntity {
     private int itemUnit;
 
     @ManyToOne
-    @JoinColumn(name = "itemNum", referencedColumnName = "itemName")
+    @JoinColumn(name = "itemNum")
     private ItemEntity itemNum;
 
 

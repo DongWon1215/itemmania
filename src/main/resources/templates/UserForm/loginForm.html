@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link type="text/css" rel="stylesheet" href="/css/UserForm/login.css">
+<body>
+
+<div th:replace="fragment/header"/>
+<div class="g_container" id="g_CONTENT">
+    <div class="g_remocon_l">
+    </div>
+    <div class="login_form">
+        <div class="g_title">아이템매니아 회원 로그인</div>
+        <div class="user_login" id="login_before">
+            <!-- ▼ 로그인 폼 //-->
+            <form name="g_LOGIN_FORM" method="post" action="#">
+                <input type="hidden" name="returnUrl" value="#">
+                <input type="hidden" name="plogin_kr" id="plogin_kr">
+                <ul class="input_area">
+                    <li>
+                        <input type="text" id="user_id" name="user_id" maxlength="20" class="g_text" value="" placeholder="아이디">
+                    </li>
+                    <li>
+                        <input type="password" name="user_password" id="user_password" maxlength="16" class="g_password" placeholder="비밀번호">
+                    </li>
+                    <li>
+                        <button type="submit" class="btn btn_blue">로그인</button>
+                    </li>
+                    <li class="id_save">
+                        <input type="checkbox" name="id_save" value="ok" class="g_checkbox" id="id_save"><label for="id_save">아이디 저장</label>
+                    </li>
+                </ul>
+            </form>
+            <!-- ▲ 로그인 폼 //-->
+            <div class="gray_line"></div>
+
+            <!-- 네이버 아이디 로그인 -->
+            <button type="button" class="btn btn_green" id="naver_id_login" data-apiurl="#">
+                <i class="icon_naver"></i>네이버 아이디로 로그인
+            </button>
+            <!-- 카카오페이 인증 로그인 -->
+            <button type="button" class="btn btn_yellow" id="kakao_login">
+                <i class="icon_kakao"></i>카카오페이 인증 로그인
+            </button>
+            <!-- MYOTP 로그인 -->
+            <button type="button" class="btn btn_orange" id="myotp_id_login">
+                <i class="icon_myotp"></i>MyOtp 로그인<br>
+                <em>MyOTP 로그인은 핸드폰번호로 로그인 하는 서비스입니다.</em>
+            </button>
+
+            <div class="find_area">
+                <a href="#">아이디찾기</a>
+                <a href="#">비밀번호 찾기</a>
+                <a href="#">회원가입하기</a>
+            </div>
+
+            <!-- 아이핀 인증폼 -->
+            <form id="frmIpin" action="" method="post" target="frmTarget">
+                <input type="hidden" name="wis" value="LoginSecurity">
+            </form>
+            <iframe src="about:blank" width="0" height="0" name="frmTarget" style="border:0"></iframe>
+        </div>
+        <div class="login_ing" id="login_ing">
+            <div id="login_ing_txt"></div>
+            <button type="button" class="btn btn_gray" id="login_cancel_btn">취소하기</button>
+        </div> </div>
+    <div class="g_finish"></div>
+</div>
+    <div th:replace="fragment/footer"/>
+</body>
+</html>

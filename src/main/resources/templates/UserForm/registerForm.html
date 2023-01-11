@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<link type="text/css" rel="stylesheet" href="/css/UserForm/register.css">
+<div th:replace="fragment/header"/>
+<div class="content">
+
+    <div class="top_area">
+        <h1>회원가입</h1>
+        아이템매니아에 오신것을 환영합니다.<br>
+        회원이 되시면 보다 다양한 혜택을 받아보실 수 있습니다.
+        <div class="sp_join step1"></div>
+        <div class="join_new_banner">
+        </div>
+    </div>
+    <form method="post" id="frmType" name="frmType" action="https://www.itemmania.com/portal/user/join_agreement.html">
+    <input type="hidden" name="join_type" value="general">
+    <input type="hidden" name="joinCrt" value="T">
+    <ul class="join_type">
+        <li class="normal">
+            <p>일반회원</p>
+            만 19세 이상 내국인
+            <input type="submit" id="btnGeneral" value="가입하기" class="btn_join">
+        </li>
+        <li>
+            <p>주니어회원</p>
+            만 19세 미만 내국인
+            <input type="submit" id="btnJunior" value="가입하기" class="btn_join">
+        </li>
+    </ul>
+</form>
+
+    <dl class="dn_text">
+        <dt>※ 고객님께서 해당하는 유형을 선택하여 가입해주시기 바랍니다.</dt>
+        <dd>2005년 1월 1일 이후 태어난 고객님은 주니어회원(만 19세 미만)으로 선택해주세요.(단, 만 14세 미만은 회원가입이 불가합니다.)</dd>
+    </dl>
+</div>
+
+<div th:replace="fragment/footer"/>
+</body>
+</html>
