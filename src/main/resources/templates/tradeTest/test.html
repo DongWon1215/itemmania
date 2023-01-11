@@ -12,11 +12,20 @@
 
 결제금액 : <input type="text" id="amount" value="100"><br>
 결제사 : <select id="pgSelect">
-    
+
     <!-- 자사 페이 -->
     <option pg="kakaopay.TC0ONETIME" pay_method="card">카카오페이</option>
     <option pg="tosspay.tosstest" pay_method="card">토스페이</option>
     <option pg="html5_inicis.INIpayTest" pay_method="naverpay">네이버페이</option>
+    <option pg="html5_inicis.INIpayTest" pay_method="samsung">삼성페이/이니시스</option>
+<!--    <option pg="kcp.T0000" pay_method="samsung">삼성페이/kcp</option> 사용자가 결제를 취소했다고 뜸 -->
+<!--    <option pg="html5_inicis.INIpayTest" pay_method="kpay">kpay</option> 테스트 지원 안하는 것 같음 -->
+    <option pg="html5_inicis.INIpayTest" pay_method="lpay">lpay</option>
+    <option pg="html5_inicis.INIpayTest" pay_method="ssgpay">SSG페이</option>
+    <option pg="eximbay.1849705C64" pay_method="wechat">위쳇페이(달러)</option>
+    <option pg="eximbay.1849705C64" pay_method="alipay">알리페이(달러)</option>
+    <option pg="eximbay.1849705C64" pay_method="unionpay">유니온페이(달러)</option>
+<!--    <option pg="eximbay.1849705C64" pay_method="tenpay">텐페이</option> 테스트 지원 안하는 것 같음 -->
 
     <!-- 휴대폰 소액 결제 -->
     <option pg="danal.A010002002" pay_method="phone">다날/휴대폰 소액결제</option>
@@ -49,6 +58,9 @@
     <option pg="kcp.T0000" pay_method="happymoney">해피머니상품권/kcp</option>
     <option pg="html5_inicis.INIpayTest" pay_method="booknlife">도서문화상품권/이니시스</option>
     <option pg="kcp.T0000" pay_method="booknlife">도서문화상품권/kcp</option>
+
+    <!-- 포인트 -->
+    <option pg="kcp.T0000" pay_method="point">포인트 결제</option>
 
 </select>
 <hr>
