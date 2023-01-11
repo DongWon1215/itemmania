@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link type="text/css" rel="stylesheet" href="/css/UserForm/mypage.css">
+<body>
+
+<!--header 시작-->
+<div th:replace="fragment/header"/>
+
+<!--body 시작-->
+<div class="g_container" id="g_CONTENT">
+  <div class="g_remocon_l">
+  </div>
+
+  <!--aside 시작-->
+  <div th:replace="/UserForm/myRoom/myRoomAside"/>
+  <!--aside 끝-->
+
+  <div class="g_content">
+  <!-- ▼ 타이틀 //-->
+  <div class="g_title_blue">
+    내 마일리지
+    <ul class="g_path">
+      <li>홈</li>
+      <li>마이룸</li>
+      <li>마일리지</li>
+      <li class="select">내 마일리지</li>
+    </ul>
+  </div>
+  <!-- ▲ 타이틀 //-->
+  <!-- ▼ 메뉴탭 //-->
+  <div class="g_tab">
+    <div class="selected"><a href="/myroom/mymileage">마일리지 현황</a></div>
+    <div class=""><a href="/myroom/mymileage/detail_list">상세내역보기</a></div>
+  </div>
+  <!-- ▲ 메뉴탭 //-->        <!-- ▼ 마일리지 현황 //-->
+  <table class="g_blue_table">
+    <tbody>
+      <tr>
+        <th style="height: 80px">
+          현재 마일리지<br>
+        </th>
+        <td class="f_center">
+          <span class="f_red1 f_bold">{1234} 원</span><br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- ▲ 마일리지 현황 //-->
+  <div class="tb_bt_txt">※ 현재 마일리지는 "거래에 사용중인 마일리지와 출금 요청중인 마일리지"를 포함한 마일리지 입니다.</div>
+  <div class="g_btn">
+    <a href="#">
+      <img src="http://img4.itemmania.com/images/btn/btn_fill.gif" width="115" height="37" alt="마일리지 충전">
+    </a>
+    <a href="#">
+      <img src="http://img2.itemmania.com/images/btn/btn_pay.gif" width="115" height="37" alt="마일리지 출금">
+    </a>
+  </div>
+  <div class="g_finish"></div>
+
+  <!-- ▼ 알아두기 //-->
+  <div class="g_title_notice">알아두기</div>
+  <ul class="g_notice_box1">
+    <li>사용 전용 마일리지(유효기간 有)는 이벤트나 기타 사유로 인해 지급된 마일리지로 사용 가능한 유효기간이 존재합니다.</li>
+    <li>사용 전용 마일리지(유효기간 有/유효기간 無)는 마일리지 출금 및 상품권몰, M마일리지로 사용이 불가합니다.</li>
+    <li>출금 전용 마일리지는 아이템 구매와 같은 서비스 이용이 불가하며 출금 서비스만 이용 가능합니다.</li>
+  </ul>
+  <!-- ▲ 알아두기 //-->
+</div>
+  <div class="g_finish"></div>
+</div>
+
+<!--footer 시작-->
+<div th:replace="fragment/footer"/>
+
+</body>
+</html>
