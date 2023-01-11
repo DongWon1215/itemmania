@@ -13,6 +13,6 @@ public class LogoutController {
     {
         session.invalidate();
 
-        return "/";
+        return "index";
     }
 }
