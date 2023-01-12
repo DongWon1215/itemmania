@@ -22,11 +22,13 @@ public class BoardEntity {
     private int boardNum;
 
     @ManyToOne
+    @NonNull
     @JoinColumn(name = "userNum")
     // 회원 번호
     private UserEntity userNum;
 
     @Column
+    @NonNull
     // 게임 번호
     private int gameNum;
 
@@ -35,10 +37,12 @@ public class BoardEntity {
     private String gameServer;
 
     @Column
+    @NonNull
     // 게시글 작성 시간
     private LocalDate boardTime;
 
     @Column
+    @NonNull
     // 게시판 제목, 물품 제목
     private String boardTitle;
 
@@ -47,6 +51,7 @@ public class BoardEntity {
     private int saleUnit;
 
     @Column
+    @NonNull
     // 판매 금액
     private int salePrice;
 
