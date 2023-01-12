@@ -6,6 +6,8 @@
 </head>
 <link type="text/css" rel="stylesheet" href="/css/UserForm/login.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <body>
 
 <div th:replace="fragment/header"/>
@@ -92,6 +94,16 @@
         }
         })
     }
+</script>
+
+<script type="text/javascript">
+    var naver_id_login = new naver_id_login("vPoSYGCMBN6Ay_norea_", "http://localhost:8080/index");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("black", 2,40);
+    naver_id_login.setDomain("http://localhost:8080/");
+    naver_id_login.setState(state);
+    naver_id_login.setPopup();
+    naver_id_login.init_naver_id_login();
 </script>
 </body>
 </html>
