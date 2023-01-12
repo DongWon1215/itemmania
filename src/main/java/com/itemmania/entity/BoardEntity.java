@@ -78,4 +78,15 @@ public class BoardEntity {
     @Column
     // 프리미엄 서비스 우뮤
     private boolean salePremium;
+
+    @Column
+    // 거래 완료 시간
+    private LocalDate dealEndTime;
+
+    @Column
+    @NonNull
+    // board테이블 판매글 구매글 구분 (구매 : sale, 판매 : buy)
+    private String deal;
+
+
 }
