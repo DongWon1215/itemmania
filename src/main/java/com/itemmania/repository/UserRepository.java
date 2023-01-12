@@ -8,6 +8,8 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
 
     boolean existsByUserNameAndUserPassword(String userName, String userPassword);
 
+    UserEntity findByUserNameAndUserPhoneNumber(String userName, String userPhoneNumber);
+
 
 
 

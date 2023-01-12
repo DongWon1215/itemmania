@@ -5,6 +5,9 @@
     <title>Title</title>
 
     <link type="text/css" rel="stylesheet" href="/css/main/shortCut.css">
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body>
 <div class="g_header">
@@ -16,12 +19,46 @@
             </ul>
             <ul class="snav_right">
                 <li><a href="/login">로그인</a></li>
-                <li><a href="/logout">로그아웃</a></li>
+                <li><a onclick="totallogout()">로그아웃</a></li>
                 <li><a href="/regist">회원가입</a></li>
                 <li><a href="/myroom">마이룸</a></li>
             </ul>
         </div>
     </div>
 </div>
+
+<script>
+    function totallogout()
+    {
+        logout();
+        kakaoLogout();
+        window.location.replace("/logout");
+    }
+
+    function logout()
+    {
+        let naver_id_login = new naver_id_login("vPoSYGCMBN6Ay_norea_", "http://localhost:8080/index");
+        if(naver_id_login.oauthParams.access_token != null)
+        {
+
+        }
+    }
+    //카카오로그아웃
+    function kakaoLogout() {
+        if (Kakao.Auth.getAccessToken()) {
+            Kakao.API.request({
+                url: '',
+                success: function (response) {
+                    console.log(response)
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+            })
+            Kakao.Auth.setAccessToken(undefined)
+        }
+    }
+</script>
+
 </body>
 </html>
