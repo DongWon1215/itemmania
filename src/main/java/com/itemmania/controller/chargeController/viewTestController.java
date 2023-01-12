@@ -1,4 +1,4 @@
-package com.itemmania.controller.tradeController;
+package com.itemmania.controller.chargeController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +10,6 @@ public class viewTestController {
 
     @GetMapping
     public String view(){
-        return "tradeTest/viewTest";
+        return "chargeTest/viewTest";
     }
 }

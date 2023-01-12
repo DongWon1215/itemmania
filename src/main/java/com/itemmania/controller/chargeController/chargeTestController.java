@@ -1,16 +1,16 @@
-package com.itemmania.controller.tradeController;
+package com.itemmania.controller.chargeController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/trade")
-public class tradeTestController {
+@RequestMapping("/charge")
+public class chargeTestController {
 
     @GetMapping
     public String trade(){
-        return "tradeTest/test";
+        return "chargeTest/test";
     }
 
 }

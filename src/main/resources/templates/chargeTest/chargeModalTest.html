@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"
+            integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/charge.css">
+
+    <script>
+        $().ready(() => {
+            chargeModal = new bootstrap.Modal('#chargeModal')
+
+            $('#showModalBtn').click(() => {
+                chargeModal.show()
+            })
+
+        })
+    </script>
+</head>
+<body>
+
+<input type="button" value="모달창 띄우기" id="showModalBtn">
+
+<!-- Modal -->
+<div class="modal fade" id="chargeModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 900px">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">마일리지 충전</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="g_container" id="g_CONTENT">
+
+
+                    <div class="g_content" style="width: 820px">
+
+                        <div class="g_gray_border"></div>
+                        결제금액 : <input type="text" id="amount" value="100"><br>
+                        결제사 : <select id="pgSelect">
+
+                        <!-- 자사 페이 -->
+                        <option pg="kakaopay.TC0ONETIME" pay_method="card">카카오페이</option>
+                        <option pg="tosspay.tosstest" pay_method="card">토스페이</option>
+                        <option pg="html5_inicis.INIpayTest" pay_method="naverpay">네이버페이</option>
+                        <option pg="html5_inicis.INIpayTest" pay_method="samsung">삼성페이/이니시스</option>
+                        <!--    <option pg="kcp.T0000" pay_method="samsung">삼성페이/kcp</option> 사용자가 결제를 취소했다고 뜸 -->
+                        <!--    <option pg="html5_inicis.INIpayTest" pay_method="kpay">kpay</option> 테스트 지원 안하는 것 같음 -->
+                        <option pg="html5_inicis.INIpayTest" pay_method="lpay">lpay</option>
+                        <option pg="html5_inicis.INIpayTest" pay_method="ssgpay">SSG페이</option>
+<!--                        <option pg="eximbay.1849705C64" pay_method="wechat">위쳇페이(달러)</option>-->
+<!--                        <option pg="eximbay.1849705C64" pay_method="alipay">알리페이(달러)</option>-->
+<!--                        <option pg="eximbay.1849705C64" pay_method="unionpay">유니온페이(달러)</option>-->
+                        <!--    <option pg="eximbay.1849705C64" pay_method="tenpay">텐페이</option> 테스트 지원 안하는 것 같음 -->
+
+                        <!-- 휴대폰 소액 결제 -->
+                        <option pg="danal.A010002002" pay_method="phone">다날/휴대폰 소액결제</option>
+                        <option pg="mobilians.170622040674" pay_method="phone">모빌리언스/휴대폰 소액결제</option>
+
+                        <!-- 카드 -->
+                        <option pg="html5_inicis.INIpayTest" pay_method="card">이니시스웹표준/카드</option>
+                        <option pg="kcp.T0000" pay_method="card">NHN KCP</option>
+                        <!--    <option value="uplus.tvivarepublica2">토스페이먼츠(구 LG U+)</option> 왜 안되는지 모름 -->
+                        <option pg="nice.nictest00m" pay_method="card">나이스페이/카드</option>
+                        <option pg="danal_tpay.9810030929" pay_method="card">다날 일반결제/카드</option>
+                        <option pg="jtnet.tpaytest0m" pay_method="card">JTNet/카드</option>
+                        <option pg="kicc.T5102001" pay_method="card">kicc/카드</option>
+                        <option pg="bluewalnut.imptest01m" pay_method="card">블루월넛/카드</option>
+                        <option pg="payco.PARTNERTEST" pay_method="card">페이코/카드</option>
+                        <option pg="eximbay.1849705C64" pay_method="card">엑심베이(달러기준, 테스트용 카드 써야 함)</option>
+                        <!--    <option value="naverpay.PARTNERTEST">네이버페이</option> 네이버페이는 이노시스 페이메소드 네이버페이로 -->
+                        <option value="smilepay.cnstest25m" pay_method="card">스마일페이/카드</option>
+                        <!--    <option value="alipay.YST000029m">알리페이</option> 상품명 미기재 오류 뜸 -->
+                        <option value="paymentwall.75265cff0ab688b56feee630bdc3eff6">페이먼트월/카드</option>
+                        <!--    <option value="smartro.iamport01m">스마트로</option> 결제 중지된 상점 -->
+                        <option pg="settle.mid_test" pay_method="card">헥토파이낸셜/카드</option>
+
+                        <!-- 상품권 -->
+                        <option pg="html5_inicis.INIpayTest" pay_method="cultureland">문화상품권/이니시스</option>
+                        <option pg="cultureland_kcp" pay_method="cultureland">문화상품권/kcp</option>
+                        <option pg="html5_inicis.INIpayTest" pay_method="smartculture">스마트문상/이니시스</option>
+                        <option pg="kcp.T0000" pay_method="smartculture">스마트문상/kcp</option>
+                        <option pg="html5_inicis.INIpayTest" pay_method="happymoney">해피머니상품권/이니시스</option>
+                        <option pg="kcp.T0000" pay_method="happymoney">해피머니상품권/kcp</option>
+                        <option pg="html5_inicis.INIpayTest" pay_method="booknlife">도서문화상품권/이니시스</option>
+                        <option pg="kcp.T0000" pay_method="booknlife">도서문화상품권/kcp</option>
+
+                        <!-- 포인트 -->
+                        <option pg="kcp.T0000" pay_method="point">포인트 결제</option>
+
+                    </select>
+                        <hr>
+                        <button id="paySubmit">결제하기</button>
+                        <hr>
+                        <div class="g_finish"></div>
+                        <div class="mile_info" style="width: 816px">
+                            <div class="top_info">
+                                <img src="http://img4.itemmania.com/images/icon/icon_info.gif" width="69" height="69" alt="INFO 08"></div>
+                            <div class="g_no">
+                                <img src="http://img2.itemmania.com/new_images/myroom/img_mileage.gif" width="816" height="74" alt="마일리지 충전 안내">
+                            </div>
+                            <ul>
+                                <li class="title">
+                                    <img src="http://img3.itemmania.com/images/myroom/mileage/info01.gif" width="57" height="15" alt="무통장입금(전용계좌)">
+                                </li>
+                                <li>고객님의 입금편의를 위해 전용 입금 계좌를 제공하고 있으며 계좌 발급 후 입금하시면 마일리지로 충전됩니다.<br>모바일 사이트(m.itemmania.com)에서도 내 전용계좌 확인이 가능합니다.</li>
+                                <li class="line"></li>
+                                <li class="title">
+                                    <img src="http://img4.itemmania.com/images/myroom/mileage/info02.gif" width="155" height="15" alt="자동이체(실시간 계좌이체)">
+                                </li>
+                                <li>고객님의 은행계좌에서 계좌정보 및 공인인증서 확인 후 바로 마일리지로 충전 가능합니다.</li>
+                                <li class="line"></li>
+                                <li class="title">
+                                    <img src="http://img2.itemmania.com/images/myroom/mileage/info03.gif" width="93" height="15" alt="전화결제(ARS)">
+                                </li>
+                                <li>유선 일반전화기를 이용하여 마일리지를 충전하실 수 있습니다.</li>
+                                <li class="line"></li>
+                                <li class="title">
+                                    <img src="http://img4.itemmania.com/images/myroom/mileage/info05.gif" width="73" height="15" alt="상품권충전">
+                                </li>
+                                <li>문화상품권, 스마트문화상품권, 도서문화, 해피머니 상품권으로 마일리지를 충전하실 수 있습니다.</li>
+                                <li class="line"></li>
+                                <!--			<li class="title"><img src="--><!--/images/myroom/mileage/info06.gif" width="73" height="15" alt="편의점충전"></li>-->
+                                <!--			<li>가맹 편의점에서 아이템매니아 캐쉬를 구입 후 영수증에 기재된 일련번호를 입력하면 즉시 마일리지로 충전할 수 있습니다.</li>-->
+                                <!--			<li class="line"></li>-->
+                                <li class="title">
+                                    <img src="http://img3.itemmania.com/images/myroom/mileage/info07.gif" width="84" height="15" alt="선불카드충전">
+                                </li>
+                                <li>편의점 또는 문구점에서 판매되는 틴캐시, 에그머니, GP쿠폰 등으로 마일리지를 충전하실 수 있습니다.</li>
+                                <li class="line"></li>
+                                <li class="title">
+                                    <img src="http://img4.itemmania.com/images/myroom/mileage/info08.gif" width="101" height="15" alt="매니아전용충전">
+                                </li>
+                                <li>M마일리지 이용권, 마일리지상품권 등 아이템매니아와 제휴가 맺어진 상품권으로 마일리지를 충전하실 수 있습니다.</li>
+                            </ul>
+                        </div>
+                        <div class="subtxt">※ 마일리지 충전 시 마일리지 서비스 이용료가 부과됩니다.</div>
+                    </div>
+                    <div class="g_finish"></div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" id="btn_edit" class="btn btn-primary">수정</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $().ready(() => {
+
+        $('#pgSelect').on("change", function (){
+            console.log($('#pgSelect option:selected').attr('pg'))
+        })
+
+        $('#paySubmit').click(() => requestPay())
+    })
+
+    function requestPay() {
+        IMP.init('imp82672540')
+        console.log($('#pgSelect').val())
+        console.log($('#amount').val())
+
+        let pg = $('#pgSelect option:selected').attr('pg')
+        let pay_method = $('#pgSelect option:selected').attr('pay_method')
+
+        console.log('pg : ' +pg)
+        console.log('pay_method : ' + pay_method)
+        console.log('amount : ' + $('#amount').val())
+
+        // IMP.request_pay(param, callback) 결제창 호출
+        IMP.request_pay({ // param
+            pg: pg,
+            pay_method: pay_method,
+            merchant_uid: "testCode" + Date.now(),
+            name: "아이템매니아 마일리지 구매",
+            amount: $('#amount').val(),
+            buyer_email: "mngjs70@gmail.com",
+            buyer_name: "명진솔",
+            buyer_tel: "010-8887-2655",
+            buyer_addr: "서울특별시 광진구 자양동",
+            m_redirect_url : "/trade"
+
+        }, function (rsp) { // callback
+
+            if (rsp.success) {
+                chargeModal.close()
+                alert('결제성공' + $('#amount').val() + '원')
+                console.log(rsp)
+
+            } else {
+                alert(rsp.error_code + " : " + rsp.error_msg)
+            }
+
+        });
+    }
+
+</script>
+
+
+</body>
+</html>
