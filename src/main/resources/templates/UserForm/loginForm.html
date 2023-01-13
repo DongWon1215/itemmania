@@ -5,10 +5,6 @@
     <title>Title</title>
 </head>
 <link type="text/css" rel="stylesheet" href="/css/UserForm/login.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <body>
 
 <div th:replace="fragment/header"/>
@@ -19,7 +15,7 @@
         <div class="g_title">아이템매니아 회원 로그인</div>
         <div class="user_login" id="login_before">
             <!-- ▼ 로그인 폼 //-->
-            <form name="g_LOGIN_FORM" method="post">
+            <form name="g_LOGIN_FORM" method="post" action="#">
                 <input type="hidden" name="returnUrl" value="#">
                 <input type="hidden" name="plogin_kr" id="plogin_kr">
                 <ul class="input_area">
@@ -41,10 +37,11 @@
             <div class="gray_line"></div>
 
             <!-- 네이버 아이디 로그인 -->
-            <button type="button" class="btn btn_green" id="naver_id_login" data-apiurl="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=Bh2SL9Ki8Wmn6fGPvIti&redirect_uri=https%3A%2F%2Fwww.itemmania.com%2Fsocial_login%2Fnaver_callback.php&state=958cfabd4a35b7f93ccd3917cd9349d1|//www.itemmania.com/portal/user/p_login_form.html|">
-                </button>
+            <button type="button" class="btn btn_green" id="naver_id_login" data-apiurl="#">
+                <i class="icon_naver"></i>네이버 아이디로 로그인
+            </button>
             <!-- 카카오페이 인증 로그인 -->
-            <button type="button" class="btn btn_yellow" id="kakao_login" onclick="kakaoLogin()">
+            <button type="button" class="btn btn_yellow" id="kakao_login">
                 <i class="icon_kakao"></i>카카오페이 인증 로그인
             </button>
             <!-- MYOTP 로그인 -->
@@ -56,7 +53,7 @@
             <div class="find_area">
                 <a href="#">아이디찾기</a>
                 <a href="#">비밀번호 찾기</a>
-                <a href="/regist">회원가입하기</a>
+                <a href="#">회원가입하기</a>
             </div>
 
             <!-- 아이핀 인증폼 -->
@@ -72,66 +69,5 @@
     <div class="g_finish"></div>
 </div>
     <div th:replace="fragment/footer"/>
-
-
-<!--<script  type="text/javascript" src="/js/loginForm.js"/>-->
-<script>
-
-    function registerMember()
-    {
-        const loginRequest =
-            {
-                user_name:$('#user_id').val(),
-                user_password: $('#user_password').val()
-            }
-
-
-        $.ajax({url:'/login',type:'post',data:JSON.stringify(loginRequest),dataType:'JSON',contentType:'application/json; charset=utf-8',success:function(){}
-                ,error:function(err)
-        {
-            if(loginRequest.userPassword == null)
-                alert('비밀번호를 확인해주세요')
-        }
-        })
-    }
-</script>
-
-<script type="text/javascript">
-    var naver_id_login = new naver_id_login("vPoSYGCMBN6Ay_norea_", "http://localhost:8080/index");
-    var state = naver_id_login.getUniqState();
-    naver_id_login.setButton("green", 3,58);
-    naver_id_login.setDomain("http://localhost:8080/");
-    naver_id_login.setState(state);
-    naver_id_login.setPopup();
-    naver_id_login.init_naver_id_login();
-    naver_id_login.token
-</script>
-<script>
-    Kakao.init('3275951c9def6afe74afa750eab3456c'); //발급받은 키 중 javascript키를 사용해준다.
-    console.log(Kakao.isInitialized()); // sdk초기화여부판단
-    //카카오로그인
-    function kakaoLogin() {
-        Kakao.Auth.login({
-            success: function (response) {
-                console.log("카카오 로그인 시작부분은 들어왔음")
-
-                Kakao.API.request({
-                    url: '/v2/user/me',
-                    success: function (response) {
-                        console.log(response)
-                        // window.location.replace("/")
-                    },
-                    fail: function (error) {
-                        console.log(error)
-                        window.location.replace("/regist")
-                    },
-                })
-            },
-            fail: function (error) {
-                console.log(error)
-            },
-        })
-    }
-</script>
 </body>
 </html>
