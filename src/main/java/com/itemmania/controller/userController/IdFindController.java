@@ -28,6 +28,6 @@ public class IdFindController {
     {
         String userId = userService.findIdByNameAndBirthAndPhoneNum(findRequest);
 
-        model.addAttribute("",userId);
+        model.addAttribute("userId",userId);
     }
 }

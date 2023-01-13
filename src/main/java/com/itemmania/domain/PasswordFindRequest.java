@@ -10,10 +10,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 @Builder
-public class IdFindRequest {
+public class PasswordFindRequest {
 
     private String userRealName;
     private LocalDate userBirth;
-    private String userPhoneNumber;
+    private String userName;
     private String userEmail;
 }
