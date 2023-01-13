@@ -28,13 +28,6 @@ public class LoginController {
     @PostMapping
     public String login(HttpServletRequest request, @RequestBody LoginRequest loginRequest)
     {
-        log.info("일단 들어오긴 했다");
-        log.info("loginRequest = " + loginRequest);
-
-        log.info("getUserName = " + loginRequest.getUser_name());
-        log.info("getUserPassword = " + loginRequest.getUser_password());
-
-
         if(!userService.isExistUser(loginRequest.getUser_name(), loginRequest.getUser_password()))
             return "/UserForm/registerForm";
 
@@ -43,6 +36,12 @@ public class LoginController {
         HttpSession session = request.getSession();
 
         session.setAttribute("userInfo",user);
+
+        log.info("세션 만들어졌다");
+        log.info("세션 정보 ==> " + user);
+
+
+
 
         return "index";
     }

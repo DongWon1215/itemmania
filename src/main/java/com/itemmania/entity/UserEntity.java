@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -54,6 +55,10 @@ public class UserEntity {
     @ManyToOne
     @JoinColumn(name = "itemNum")
     private ItemEntity itemNum;
+
+    @Column
+    @NotNull
+    private LocalDate userBirth;
 
 
 }

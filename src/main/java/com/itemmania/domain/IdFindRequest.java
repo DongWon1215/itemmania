@@ -2,15 +2,17 @@ package com.itemmania.domain;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Builder
-public class UserDTO {
+public class IdFindRequest {
 
-    private int userNum;
     private String userName;
-    private String userPassword;
+    private LocalDate userBirth;
+    private String userPhoneNumber;
 }
