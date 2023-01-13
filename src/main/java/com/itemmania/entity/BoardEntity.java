@@ -1,12 +1,9 @@
 package com.itemmania.entity;
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -32,21 +29,17 @@ public class BoardEntity {
 
     @Column
     @NonNull
-    //@JoinColumn(name = "")
     // 게임 번호
     private int gameNum;
 
     @Column
-    @NonNull
-    //@JoinColumn(name = "")
     // 서버명
     private String gameServer;
 
     @Column
     @NonNull
-    @Temporal(TemporalType.TIMESTAMP)//날짜 타입 2013-01-12 17:47:11
     // 게시글 작성 시간
-    private Date boardTime;
+    private LocalDate boardTime;
 
     @Column
     @NonNull
@@ -93,7 +86,7 @@ public class BoardEntity {
     @Column
     @NonNull
     // board테이블 판매글 구매글 구분 (구매 : sale, 판매 : buy)
-    private String dealCheck;
+    private String deal;
 
 
 }
