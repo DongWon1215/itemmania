@@ -19,8 +19,14 @@ public class UserService {
     {
         return userRepository.findByUserNameAndUserPassword(userName, userPassword);
     }
+
     public boolean isExistUser(String userName, String userPassword)
     {
         return userRepository.existsByUserNameAndUserPassword(userName, userPassword);
+    }
+
+    public UserEntity insertUser(UserEntity userEntity)
+    {
+        return userRepository.save(userEntity);
     }
 }

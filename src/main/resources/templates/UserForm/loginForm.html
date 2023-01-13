@@ -84,13 +84,15 @@
                 user_name:$('#user_id').val(),
                 user_password: $('#user_password').val()
             }
+        console.log("성공하고 데이터를 로그인 컨트롤로 보내는중")
 
-
-        $.ajax({url:'/login',type:'post',data:JSON.stringify(loginRequest),dataType:'JSON',contentType:'application/json; charset=utf-8',success:function(){}
+        $.ajax({url:'/login',type:'post', async:false,data:JSON.stringify(loginRequest),dataType:'JSON',contentType:'application/json; charset=utf-8',success:function(){}
                 ,error:function(err)
         {
-            if(loginRequest.userPassword == null)
+            if(loginRequest.user_password == null)
                 alert('비밀번호를 확인해주세요')
+
+            console.log("뭐가 또 문제있는데?")
         }
         })
     }
@@ -119,8 +121,10 @@
                     url: '/v2/user/me',
                     success: function (response) {
                         console.log(response)
-                        // window.location.replace("/")
-                    },
+                        $.ajax(
+                            {
+                                url:'/login',type:'post', async:false,data:JSON.stringify(loginRequest),dataType:'JSON',contentType:'application/json; charset=utf-8'
+                                ,success:function(){}})},
                     fail: function (error) {
                         console.log(error)
                         window.location.replace("/regist")
