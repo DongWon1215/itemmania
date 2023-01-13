@@ -88,5 +88,5 @@ public class BoardEntity {
     // board테이블 판매글 구매글 구분 (구매 : sale, 판매 : buy)
     private String deal;
 
-
+  
 }
