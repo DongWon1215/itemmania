@@ -193,17 +193,18 @@
             buyer_name: "명진솔",
             buyer_tel: "010-8887-2655",
             buyer_addr: "서울특별시 광진구 자양동",
-            m_redirect_url : "/trade"
+            m_redirect_url : "/chargeModalTest"
 
         }, function (rsp) { // callback
 
             if (rsp.success) {
-                chargeModal.close()
                 alert('결제성공' + $('#amount').val() + '원')
                 console.log(rsp)
+                chargeModal.hide()
 
             } else {
                 alert(rsp.error_code + " : " + rsp.error_msg)
+                chargeModal.hide()
             }
 
         });

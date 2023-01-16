@@ -61,3 +61,7 @@
 .mile_info ul .line{ height:10px; margin-top:10px; margin-left:0; border-top:1px dotted #DBDBDB }
 .icon_new{ display:inline-block; width:15px; height:14px; margin-top:-3px; background:url(//img4.itemmania.com/images/icon/icon_n.png) no-repeat; vertical-align:middle; }
 .subtxt{margin-top:10px;font-size:13px;color:#1D1D1D;}
+
+li{
+    list-style: none;
+}
