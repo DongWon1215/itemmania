@@ -67,5 +67,13 @@ public class UserEntity {
     @NotNull
     private LocalDate userBirth;
 
-
+    public UserEntity(LocalDate userBirth, String userName, String userPassword, String userEMail, String userRealName, String userPhoneNumber)
+    {
+        this.userBirth = userBirth;
+        this.userName = userName;
+        this.userEMail = userEMail;
+        this.userPassword = userPassword;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userRealName = userRealName;
+    }
 }

@@ -19,7 +19,7 @@ public class InsertInfoConteroller {
     private UserService userService;
 
     @GetMapping
-    public String ToinsertForm(HttpServletRequest request, Model model)
+    public String ToInsertForm(HttpServletRequest request, Model model)
     {
         HttpSession session = request.getSession();
 
@@ -32,14 +32,12 @@ public class InsertInfoConteroller {
     }
 
     @PostMapping
-    public UserEntity userData(@RequestParam String )
+    public UserEntity userData(@RequestBody UserDTO user)
     {
-        if(userService.isExistUser())
+        if(userService.isExistUser(user.getUserName(),user.getUserPassword()))
             return null;
 
-
-
-        return userService.insertUser(userDTO.toUserEntity());
+        return userService.insertUser(user.toUserEntity());
     }
 
 }
