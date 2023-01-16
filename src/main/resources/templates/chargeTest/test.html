@@ -10,106 +10,29 @@
 </head>
 <body>
 
-결제금액 : <input type="text" id="amount" value="100"><br>
-결제사 : <select id="pgSelect">
-
-    <!-- 자사 페이 -->
-    <option pg="kakaopay.TC0ONETIME" pay_method="card">카카오페이</option>
-    <option pg="tosspay.tosstest" pay_method="card">토스페이</option>
-    <option pg="html5_inicis.INIpayTest" pay_method="naverpay">네이버페이</option>
-    <option pg="html5_inicis.INIpayTest" pay_method="samsung">삼성페이/이니시스</option>
-<!--    <option pg="kcp.T0000" pay_method="samsung">삼성페이/kcp</option> 사용자가 결제를 취소했다고 뜸 -->
-<!--    <option pg="html5_inicis.INIpayTest" pay_method="kpay">kpay</option> 테스트 지원 안하는 것 같음 -->
-    <option pg="html5_inicis.INIpayTest" pay_method="lpay">lpay</option>
-    <option pg="html5_inicis.INIpayTest" pay_method="ssgpay">SSG페이</option>
-    <option pg="eximbay.1849705C64" pay_method="wechat">위쳇페이(달러)</option>
-    <option pg="eximbay.1849705C64" pay_method="alipay">알리페이(달러)</option>
-    <option pg="eximbay.1849705C64" pay_method="unionpay">유니온페이(달러)</option>
-<!--    <option pg="eximbay.1849705C64" pay_method="tenpay">텐페이</option> 테스트 지원 안하는 것 같음 -->
-
-    <!-- 휴대폰 소액 결제 -->
-    <option pg="danal.A010002002" pay_method="phone">다날/휴대폰 소액결제</option>
-    <option pg="mobilians.170622040674" pay_method="phone">모빌리언스/휴대폰 소액결제</option>
-
-    <!-- 카드 -->
-    <option pg="html5_inicis.INIpayTest" pay_method="card">이니시스웹표준/카드</option>
-    <option pg="kcp.T0000" pay_method="card">NHN KCP</option>
-<!--    <option value="uplus.tvivarepublica2">토스페이먼츠(구 LG U+)</option> 왜 안되는지 모름 -->
-    <option pg="nice.nictest00m" pay_method="card">나이스페이/카드</option>
-    <option pg="danal_tpay.9810030929" pay_method="card">다날 일반결제/카드</option>
-    <option pg="jtnet.tpaytest0m" pay_method="card">JTNet/카드</option>
-    <option pg="kicc.T5102001" pay_method="card">kicc/카드</option>
-    <option pg="bluewalnut.imptest01m" pay_method="card">블루월넛/카드</option>
-    <option pg="payco.PARTNERTEST" pay_method="card">페이코/카드</option>
-    <option pg="eximbay.1849705C64" pay_method="card">엑심베이(달러기준, 테스트용 카드 써야 함)</option>
-<!--    <option value="naverpay.PARTNERTEST">네이버페이</option> 네이버페이는 이노시스 페이메소드 네이버페이로 -->
-    <option value="smilepay.cnstest25m" pay_method="card">스마일페이/카드</option>
-<!--    <option value="alipay.YST000029m">알리페이</option> 상품명 미기재 오류 뜸 -->
-    <option value="paymentwall.75265cff0ab688b56feee630bdc3eff6">페이먼트월/카드</option>
-<!--    <option value="smartro.iamport01m">스마트로</option> 결제 중지된 상점 -->
-    <option pg="settle.mid_test" pay_method="card">헥토파이낸셜/카드</option>
-
-    <!-- 상품권 -->
-    <option pg="html5_inicis.INIpayTest" pay_method="cultureland">문화상품권/이니시스</option>
-    <option pg="cultureland_kcp" pay_method="cultureland">문화상품권/kcp</option>
-    <option pg="html5_inicis.INIpayTest" pay_method="smartculture">스마트문상/이니시스</option>
-    <option pg="kcp.T0000" pay_method="smartculture">스마트문상/kcp</option>
-    <option pg="html5_inicis.INIpayTest" pay_method="happymoney">해피머니상품권/이니시스</option>
-    <option pg="kcp.T0000" pay_method="happymoney">해피머니상품권/kcp</option>
-    <option pg="html5_inicis.INIpayTest" pay_method="booknlife">도서문화상품권/이니시스</option>
-    <option pg="kcp.T0000" pay_method="booknlife">도서문화상품권/kcp</option>
-
-    <!-- 포인트 -->
-    <option pg="kcp.T0000" pay_method="point">포인트 결제</option>
-
-</select>
-<hr>
-<button id="paySubmit">결제하기</button>
-<hr>
-
+<button onclick="requestPay()">결제하기</button>
+...
 <script>
-
-    $().ready(() => {
-
-        $('#pgSelect').on("change", function (){
-            console.log($('#pgSelect option:selected').attr('pg'))
-        })
-
-        $('#paySubmit').click(() => requestPay())
-    })
-
   function requestPay() {
-      IMP.init('imp82672540')
-      console.log($('#pgSelect').val())
-      console.log($('#amount').val())
-
-      let pg = $('#pgSelect option:selected').attr('pg')
-      let pay_method = $('#pgSelect option:selected').attr('pay_method')
-
-      console.log('pg : ' +pg)
-      console.log('pay_method : ' + pay_method)
-      console.log('amount : ' + $('#amount').val())
-
     // IMP.request_pay(param, callback) 결제창 호출
-      IMP.request_pay({ // param
-        pg: pg,
-        pay_method: pay_method,
-        merchant_uid: "testCode" + Date.now(),
-        name: "아이템매니아 마일리지 구매",
-        amount: $('#amount').val(),
-        buyer_email: "mngjs70@gmail.com",
-        buyer_name: "명진솔",
-        buyer_tel: "010-8887-2655",
-        buyer_addr: "서울특별시 광진구 자양동",
-        m_redirect_url : "/trade"
-
+    IMP.request_pay({ // param
+      pg: "html5_inicis",
+      pay_method: "card",
+      merchant_uid: "ORD20180131-0000011",
+      name: "노르웨이 회전 의자",
+      amount: 649,
+      buyer_email: "gildong@gmail.com",
+      buyer_name: "홍길동",
+      buyer_tel: "010-4242-4242",
+      buyer_addr: "서울특별시 강남구 신사동",
+      buyer_postcode: "01181"
     }, function (rsp) { // callback
 
       if (rsp.success) {
-        alert('결제성공' + $('#amount').val() + '원')
+        alert('결제성공')
         console.log(rsp)
       } else {
-      alert(rsp.error_code + " : " + rsp.error_msg)
+      alert('결제실패')
       }
 
     });
