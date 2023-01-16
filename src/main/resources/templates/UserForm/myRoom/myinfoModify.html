@@ -19,19 +19,6 @@
   <div th:replace="/UserForm/myRoom/myRoomAside"/>
   <!--aside 끝-->
 
-  <form id="certifyForm" method="post">
-  <input type="hidden" name="userRealName" value="">
-  <input type="hidden" name="user_id" id="user_id" value="">
-  <input type="hidden" name="user_name" value="">
-  <input type="hidden" name="user_birth" value="">
-  <input type="hidden" name="user_gender" value="">
-  <input type="hidden" name="user_nation" value="">
-  <input type="hidden" name="user_mobile_type">
-  <input type="hidden" name="user_mobileA">
-  <input type="hidden" name="user_mobileB">
-  <input type="hidden" name="user_mobileC">
-</form>
-
   <div class="g_content">
     <div class="g_title_blue">
       개인정보 <span>수정</span>
@@ -42,22 +29,7 @@
         <li class="select">기본정보 수정</li>
       </ul>
     </div>
-    <!--<div class="g_tab">
-      <div class="selected">기본정보수정</div>
-      <div><a href="/myroom/myinfo/myinfo_passwd_modify.html">비밀번호수정</a></div>
-    </div>-->
-    <form id="frmInfo" name="frmInfo" method="post">
-      <input type="hidden" name="mpcKey" value="02moid2efe">
-      <input type="hidden" name="user_Mobile_auth" value="Y">
-      <input type="hidden" name="before_user_mobileA" value="010">
-      <input type="hidden" name="before_user_mobileB" value="4550">
-      <input type="hidden" name="before_user_mobileC" value="2247">
-      <input type="hidden" id="bTalkCheck" value="">
-      <input type="hidden" id="user_email_check" value="jennaud@naver.com">
-      <input type="hidden" name="user_email_previous" value="amVubmF1ZA==">
-      <input type="hidden" name="user_email2_previous" value="bmF2ZXIuY29t">
-      <input type="hidden" name="email_modify_check" value="N">
-      <div class="g_subtitle first">로그인 정보</div>
+
       <table class="g_blue_table">
         <colgroup>
           <col width="140">
@@ -91,18 +63,41 @@
           </td>
         </tr>
         <tr>
+          <th>비밀번호</th>
+          <td class="cell_num">
+            <div class="s_label">[password]</div>
+          </td>
+        </tr>
+        <tr>
+          <th>비밀번호 재확인</th>
+          <td class="cell_num">
+            <div class="s_label">[repassword]</div>
+          </td>
+        </tr>
+        <tr>
           <th>연락처</th>
           <td class="cell_num">
             <div class="s_label">휴대폰 번호</div>
-            <div class="g_selectbox mobile_type" id="slctMobile_type" style="width: 92px;">
-              <input type="hidden" name="user_mobile_type" value="2"><div class="value">KT</div>
-              <div class="arrow_img"></div></div>
-            <div class="g_selectbox" id="user_mobileA" style="width: 55px;"><input type="hidden" name="user_mobileA" value="010"><div class="value">010</div><div class="arrow_img"></div></div>
-            <div class="g_left margin_5">-
-              <input type="text" name="user_mobileB" id="user_mobileB" maxlength="4" class="g_text" value="4550"> -
-              <input type="text" name="user_mobileC" id="user_mobileC" maxlength="4" class="g_text" value="2247">
-              <img src="https://img3.itemmania.com/images/btn/btn_cer_ok.gif" width="60" height="20" alt="인증완료">
-            </div>
+            <select class="g_selectbox mobile_type" id="slctMobile_type" style="width: 92px;">
+              <option class="">SKT</option>
+              <option>KT</option>
+              <option>LG U+</option>
+              <option>SKT-A</option>
+              <option>KT-A</option>
+              <option>LG-A</option>
+              <!--<option>휴대폰없음</option>-->
+            </select>
+            <select class="g_selectbox" id="user_mobileA" style="width: 55px;">
+              <option>010</option>
+              <option>011</option>
+              <option>016</option>
+              <option>017</option>
+              <option>018</option>
+              <option>019</option>
+            </select>
+            <div class="g_left margin_5"/>
+            <input type="text" name="user_mobileB" id="user_mobileB" maxlength="4" class="g_text" value="1234"> -
+            <input type="text" name="user_mobileC" id="user_mobileC" maxlength="4" class="g_text" value="5678">
           </td>
         </tr>
         <tr>
@@ -110,58 +105,13 @@
           <td class="email_info">
             <div class="email_block">
               <div class="s_label">이메일:</div>
-              <input type="text" name="user_email" id="user_email" class="g_text" value="jennaud" readonly=""> @
+              <input type="text" name="user_email" id="user_email" class="g_text" value="hitem" readonly=""> @
               <input type="text" name="user_email2" id="user_email2" class="g_text" value="naver.com" readonly="">
-              <a href="javascript:;" class="btn btn_blue5" id="email_modify">정보변경</a>
               <a href="javascript:;" id="email_auth_btn" class="btn btn_gray3">인증받기</a>
             </div>
             <div class="agree_guide">
-              * 이메일 인증을 완료하신 경우 거래 및 상담 내용을 메일로 바로 알려 드립니다.<br>
               * 야후 또는 핫메일은 정상적인 메일인증이 안될 수도 있으니 참고하시가 바랍니다
             </div>
-          </td>
-        </tr>
-        <tr>
-          <th>광고정보<br>수신동의</th>
-          <td class="sms_info">
-            <input type="hidden" id="bSmsAccept" value="">
-            <input type="hidden" id="cell_auth" value="1">
-            <dl>
-              <dt>광고정보 수신 동의</dt>
-              <dd id="agreeState" class="btn_blue1" onclick="fnAllAgree(2)">모두 수신 허용</dd>
-            </dl>
-
-            <div class="g_finish"></div>
-            <div class="agree_guide">
-              * 고객이 수집 및 이용에 동의한 개인정보를 활용하여 전자적 전송매체(SMS, LMS, 카카오 알림, 앱 푸시 등 다양한 전송매체)를 통해,<br> 아이템매니아 및 제 3자의 상품 또는 서비스에 대한 개인 맞춤형 광고 정보를 전송할 수 있습니다.
-            </div>
-            <div>
-              <input type="checkbox" class="g_checkbox" name="sms_agree" id="sms_agree" value="Y"> <label for="sms_agree">SMS 수신동의</label>
-              <input type="checkbox" class="g_checkbox" name="email_agree" id="email_agree" value="Y"> <label for="email_agree">이메일 수신동의</label>
-              <input type="checkbox" class="g_checkbox" name="naver_smart_alarm" id="naver_smart_alarm" value="Y"> <label for="naver_smart_alarm">알림톡 서비스 수신동의(카카오톡 알림톡)</label>
-            </div>
-            <div class="g_finish"></div>
-            <div class="f_org1">
-              * 거래정보와 관련된 내용은 고객님의 거래안전을 위하여 수신동의 여부와 관계없이 SMS 발송 될 수 있습니다.<br>
-              * 광고 알림건에 대해서는 '수신거부'로 변경하여도 수정 전에 예약발송 SMS가 설정되어 있어 약 5일 동안은 SMS가 발송될 수 있습니다.
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th rowspan="2">주소</th>
-          <td class="myinfo_address">
-            <input type="text" name="user_zipcode" id="user_zipcode" class="g_text" readonly="" value="">
-            <input type="hidden" name="user_zipcodeA" id="user_zipcodeA" class="g_text" value="">
-            <input type="hidden" name="user_zipcodeB" id="user_zipcodeB" class="g_text" value="">
-            <a href="javascript:" id="find_address">
-              <img src="https://img4.itemmania.com/images/btn/btn_post_no.gif" width="80" height="20" alt="우편번호 찾기">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="myinfo_address_detail">
-            <input type="text" name="user_addressA" id="user_addressA" class="g_text" readonly="" value="">
-            <input type="text" name="user_addressB" id="user_addressB" class="g_text" readonly="" value="">
           </td>
         </tr>
         </tbody></table>
@@ -169,37 +119,6 @@
         <li>※ <span class="f_small">SKT-A, KT-A, LG-A 통신사는 알뜰폰 구분 입니다.</span></li>
         <li>※ <span class="f_small">013으로 시작되는 번호는 연락처 등록이 불가 합니다.</span></li>
       </ul>
-
-      <div class="g_subtitle">
-        <span class="g_left">계좌 정보</span>
-        <img src="https://img3.itemmania.com/images/btn/btn_acc_edit.gif" width="121" height="18" alt="출금 계좌 수정하기" class="g_right g_button" id="bankmodify_btn">
-      </div>
-      <table class="g_blue_table" id="myinfo_account">
-        <colgroup>
-          <col width="140">
-          <col width="240">
-          <col width="">
-        </colgroup>
-        <tbody><tr>
-          <th>은행명</th>
-          <td>&nbsp;</td>
-          <td rowspan="3">
-            <ul class="g_list bank_info">
-              <li>물품대금의 출금이나 환불 시 필요한 정보 입니다.</li>
-              <li>본인 명의 계좌가 아니면 출금이 불가능합니다.</li>
-              <li>수정을 원하시면 출금계좌 수정하기를 눌러주세요.</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <th>계좌번호</th>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <th>예금주</th>
-          <td>&nbsp;</td>
-        </tr>
-        </tbody></table>
 
       <div class="g_subtitle">개인정보 유효기간 설정</div>
       <table class="g_blue_table">
@@ -223,46 +142,10 @@
 
       <div class="g_btn">
         <input type="submit" value="정보 수정하기" class="btn_blue3 big_btn">
-        <a href="/myroom/myinfo/myinfo_check.html" class="btn_gray3 big_btn">취소 하기</a>
+        <button type="reset" class="btn_gray3 big_btn">취소 하기</button>
       </div>
-    </form>
-    <div class="SpGroup login_security">
-      <p class="login_title">개인정보 보호를 위해 <span class="ft_red">로그인 보안서비스</span>를 가입하세요!</p>
-      <div class="login_wrap">
-        <span class="SpGroup new"></span>
-        <span class="SpGroup login_plus"></span>
-        <span class="title">로그인 플러스</span>
-        <p>로그인 + 연산암호값을 입력하여 <br>안전하게 로그인하는 방식</p>
-        <a href="/myroom/myinfo/my_login_plus.html" class="btn_green2 detail_btn">자세히보기</a>
-      </div>
-      <div class="login_wrap">
-        <span class="SpGroup new"></span>
-        <span class="SpGroup login_prevent"></span>
-        <span class="title">로그인 도용방지</span>
-        <p>휴대폰과 컴퓨터 위치를 비교하여 <br>의심시 SMS발송 접속차단 가능</p>
-        <a href="/myroom/myinfo/my_login_prevent.html" class="btn_green2 detail_btn">자세히보기</a>
-      </div>
-      <div class="login_wrap">
-        <span class="SpGroup sms_service"></span>
-        <span class="title">SMS 알림</span>
-        <p>홈페이지 접속 시 휴대폰으로<br>알림메시지 전송</p>
-        <a href="/myroom/customer/sms_service_reg.html" class="btn_green2 detail_btn">자세히보기</a>
-      </div>
-    </div>
   </div>
 
-  <form id="reloadFrm" name="reloadFrm" method="post" action="myinfo_modify.html">
-    <input type="hidden" name="mpc_key" value="02moid2efe">
-    <input type="hidden" name="security_service_userinfo" value="">
-    <input type="hidden" name="security_type" value="none">
-    <input type="hidden" name="security_code" value="20">
-    <input type="hidden" name="security_number" value="">
-  </form>
-  <form id="smsFrm" name="smsFrm" method="post">
-    <input type="hidden" name="user_cell1" value="d20a31aa0d8e5f162caa127ac7c58fe4">
-    <input type="hidden" name="user_cell2" value="de5cdb3d558d63fc3b602ca23105ff9b">
-    <input type="hidden" name="user_cell3" value="b6f486f70efe713530aaf850ea21628e">
-  </form>
   <div id="emailModify" class="g_layer email_modify">
     <div class="inner">
       <div class="title">
@@ -278,14 +161,14 @@
           <tbody><tr>
             <th>이메일</th>
             <td>
-              <input type="text" name="user_email_tmp" class="g_text" value="jennaud"> @
+              <input type="text" name="user_email_tmp" class="g_text" value="test"> @
               <input type="text" name="user_email_tmp2" class="g_text" value="naver.com">
             </td>
           </tr>
           </tbody></table>
         <div class="g_btn_wrap">
-          <a href="javascript:;" id="email_submit"><img src="https://img3.itemmania.com/new_images/btn/pop_btn_ok.gif" width="63" height="35" alt="확인"></a>
-          <a href="javascript:;" id="cancel_submit"><img src="https://img4.itemmania.com/new_images/btn/pop_btn_cancel.gif" width="63" height="35" alt="취소"></a>
+          <a href="#" id="email_submit"><img src="https://img3.itemmania.com/new_images/btn/pop_btn_ok.gif" width="63" height="35" alt="확인"></a>
+          <a href="#" id="cancel_submit"><img src="https://img4.itemmania.com/new_images/btn/pop_btn_cancel.gif" width="63" height="35" alt="취소"></a>
         </div>
       </div>
     </div>

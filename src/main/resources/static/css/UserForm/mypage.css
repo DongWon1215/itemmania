@@ -503,6 +503,78 @@ body{min-width:1100px;}
 .g_big_box2 .etc{ width:100% }
 .g_big_box2 label{ vertical-align:middle }
 textarea{ width:620px; height:20px; margin-left:10px; padding:5px; resize:none; vertical-align:middle }
+.new_credit{padding:35px 50px 35px 50px; border:1px solid #e0e0e0; }
+.credit_info{ padding:25px 32px; border:3px solid #B4C4DE; background-color:#F5F8FE; }
+.credit_name{ display:inline-block; margin-left:13px; vertical-align:middle; }
+.credit_name > div{ margin-bottom:7px; font-size: 16px;}
+.credit_info .gubun{ display:inline-block; margin:1px 5px 0; color:#767676; font-size:11px; vertical-align:top; }
+.credit_gift{ float:right; }
+.credit_up{ overflow:hidden; margin-top:10px; padding-left:40px; padding-top:20px; height:60px;background-color:#F9F9F9; }
+.credit_up .credit_up_title{ float:left; padding:0 10px 0 25px }
+.credit_up .credit_up_title2{ float:left; padding:12px 10px 0 25px; }
+.credit_up .credit_up_text{ float:left; padding-top:1px; }
+.credit_up .credit{ font-size:13px; font-weight:bold; }
+.my_benefit{ height:363px; text-align: center;}
+.benefit_cnt {display: block; }
+.benefit_cnt li {float: left; position: relative; width:141px; border:1px solid #e0e0e0;}
+.benefit_cnt span {display: block;text-align: center; }
+.benefit_cnt .grade {height: 95px; padding-top: 20px; font-weight:bold; }
+.benefit_cnt .nb {height: 43px; padding-top: 10px; border-top: 1px solid #e0e0e0;}
+.benefit_cnt .cp {height: 75px; padding-top: 10px; font-weight:bold; border-top: 1px solid #e0e0e0; line-height:20px}
+.benefit_cnt .sp {height: 66px; padding-top: 10px; border-top: 1px solid #e0e0e0;}
+.benefit_cnt .credit_btn{display:none; }
+.benefit_cnt .on .line{position:absolute;width:133px;height:326px;top:-1px;}
+.benefit_cnt .area0.on .line {border:4px solid #28a60a;}
+.benefit_cnt .area1.on .line {border:4px solid #696969;}
+.benefit_cnt .area2.on .line {border:4px solid #fea62d;}
+.benefit_cnt .area3.on .line {border:4px solid #ec3868;}
+.benefit_cnt .area4.on .line {border:4px solid #775bd9;}
+.benefit_cnt p {text-align: center; font-size:15px; line-height:30px}
+.benefit_cnt .area0 p {color:#00C73C; }
+.benefit_cnt .area1 p {color:#7f7f7f;}
+.benefit_cnt .area2 p {color:#cd9817;}
+.benefit_cnt .area3 p {color:#EC3868;}
+.benefit_cnt .area4 p {color:#7d6eb1;}
+.area0 .bnt_ok {display: none;}
+.benefit_cnt .on .credit_btn{position:absolute;display:block;margin:10px 0 0 19px;width:106px;height:28px;color:#fff;font-size:12px;text-align:center;}
+.benefit_cnt .area0.on .credit_btn { background-color: #28a60a; }
+.benefit_cnt .area1.on .credit_btn { background-color: #696969; }
+.benefit_cnt .area2.on .credit_btn { background-color: #fea62d; }
+.benefit_cnt .area3.on .credit_btn { background-color: #ec3868; }
+.benefit_cnt .area4.on .credit_btn { background-color: #775bd9; }
+.ssada_benefit {position:relative;height:420px;background:url(//img4.itemmania.com/new_images/myroom/img_credit_ssada_bg.jpg?211006) no-repeat;margin-top: 30px;}
+.ssada_benefit .btn_ssada {display:block;position:absolute;top:144px;left:50px;}
+.ssada_benefit .btn_ssada_gift {display:block;position:absolute;top:149px;left:332px;}
+.ssada_benefit .btn_ssada_down {display:block;position:absolute;top:149px;left:518px;}
+.ssada_benefit .ssada_info {position:absolute;top:225px;left:50px;width:460px;color:#636363;}
+.ssada_benefit .ssada_info p {margin:3px 0;font-size:14px; font-weight:bold;color:#767676;}
+.ssada_benefit .ssada_info .notice{margin-top:8px}
+.ssada_benefit .ssada_info .ssada_infobox {width:100%;}
+.ssada_benefit .ssada_info .btn_view {display:inline-block;margin-left:5px;height:18px;border:1px solid #C6C6C6;background-color:#FFF;color:#222;font-size:12px;font-weight:normal;padding:0 10px;line-height:18px;}
+.add_info{ box-sizing:border-box;font-size:12px; color:#636363; }
+.add_info > ul{ overflow:hidden; margin-bottom:26px; }
+.add_info > ul > li{ float:left; margin-right:14px; }
+.add_info p{ margin:3px 0; font-size:16px; font-weight:bold; color:#1d1d1d;}
+.add_info > ul > li > span { display: inline-block; width:50px; height:45px; margin-top:3px; }
+.add_info > ul > li .icon_member { background-position: -774px -314px; }
+.add_info > ul > li .icon_sp { background-position: -829px -314px; }
+.add_info a {display:inline-block;margin-left:5px;padding:0 10px;height:18px;font-size:12px;line-height:18px;border: 1px solid #C6C6C6;background-color:#FFF;color: #222;font-weight:normal;vertical-align:baseline;}
+.user_class dt{ margin-top:10px; font-weight:bold; }
+.cert_box{padding:15px 20px;text-align: center;white-space: nowrap;}
+.cert_box > span{position:relative;box-sizing:border-box;width:113px;margin:0 5px;cursor:pointer;}
+.cert_box > span:first-child, .cert_box > .on{cursor:default;}
+.cert_box .certify{z-index:1;position:absolute;left:-50%;display:none;box-sizing:border-box;width:max-content;min-width:207px;margin-top:5px;padding:7px;border:2px solid #606E89;background-color:white;font-size:11px;font-weight:normal;text-align:center;color:#1D1D1D;}
+.admin_point{ overflow:hidden; border:1px solid #E1E1E1; }
+.admin_point li{ box-sizing:border-box; float:left; width:80%; padding:10px 15px; }
+.admin_point .gray_bg{ width:20%; padding:12px 8px 12px 10px; background-color:#F0F0F0; text-align:center; }
+.g_content .tb_list .th2{ background-color:#FAFAFA; }
+.g_content .tb_list td{ position:static; }
+#search_table .g_selectbox{ display:inline; float:left }
+#search_year, #search_year_end{ width:55px }
+#search_month, #search_month_end, #search_day, #search_day_end{ width:43px }
+#search_date .date_text{ margin:2px 3px 0 }
+#search_date .g_right{ width:190px; margin-top:1px; }
+.tb_list{ margin-top:10px; }
 
 /*바디 css*/
 body
