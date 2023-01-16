@@ -52,7 +52,9 @@
                     <td>
                         <div class="guide_add2">
                             <input type="text" name="user_id" class="g_text" id="user_id" maxlength="12">
-                            <span class="id_check" id="idCheck"></span>
+                            <span class="id_check" id="idCheck">
+                                <input type="button" id="idCheckor" onclick="idDoubleCheckor()" >중복확인</input>
+                            </span>
                         </div>
                     </td>
                 </tr>
@@ -60,7 +62,7 @@
                     <th>비밀번호</th>
                     <td>
                         <div class="guide_add">
-                            <input type="password" name="user_password" class="g_password" id="user_password" maxlength="16">
+                            <input type="password" name="user_password" class="g_password" id="user_password" maxlength="16" onchange="pwConditionCheck()">
                             <div class="password_help" id="password_help"></div>
                         </div>
                         <div class="muser_password" id="muser_password"></div>
@@ -70,7 +72,7 @@
                     <th>비밀번호 확인</th>
                     <td>
                         <div class="guide_add">
-                            <input type="password" name="user_password_validate" class="g_password" id="user_password_validate" maxlength="16">
+                            <input type="password" name="user_password_validate" class="g_password" id="user_password_validate" maxlength="16" onchange="pwDuplicateCheck()">
                             <div class="password_help" id="password_help2"></div>
                         </div>
                         <div class="DuplicateCheck" id="DuplicateCheck"></div>
@@ -140,14 +142,29 @@
             <div th:replace="fragment/footer"/>
 </div>
 <script>
+    function idDoubleCheckor() {
+        $.ajax({
+            url: '/regist/doublecheck',
+            type: 'post',
+            async: false,
+            data: JSON.stringify(document.getElementById('user_id')),
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8'
+            ,
+            success: function () {
+                alert("동일한 아이디가 있습니다")
+            },
+            fail: function () {
+                alert("사용 가능한 아이딥니다")
+                document.getElementById('idCheckor').disabled = 'disabled'
+            }
+        })
+    }
+</script>
+
+<script>
     let pw = document.getElementById('user_password').val;
     let pw_validate = document.getElementById('user_password_validate').val;
-
-    function pwcheckor()
-    {
-        pwConditionCheck();
-        pwDuplicateCheck();
-    }
 
     function pwConditionCheck()
     {

@@ -29,6 +29,11 @@ public class UserService {
         return userRepository.existsByUserNameAndUserPassword(userName, userPassword);
     }
 
+    public boolean isExsitNickName(String userName)
+    {
+        return userRepository.existsByUserName(userName);
+    }
+
     public UserEntity insertUser(UserEntity userEntity)
     {
         return userRepository.save(userEntity);

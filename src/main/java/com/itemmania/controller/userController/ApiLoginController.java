@@ -30,6 +30,8 @@ public class ApiLoginController {
 
 //        UserEntity user = userService.getUser(loginRequest.getUser_name(), loginRequest.getUser_password());
 
+
+
         HttpSession session = request.getSession();
 
         session.setAttribute("kakaoAccessToken", Token);

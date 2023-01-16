@@ -104,38 +104,44 @@
     naver_id_login.token
 </script>
 <script>
-
-    Kakao.init('3275951c9def6afe74afa750eab3456c'); //발급받은 키 중 javascript키를 사용해준다.
-    console.log(Kakao.isInitialized()); // sdk초기화여부판단
-    //카카오로그인
-    function kakaoLogin() {
-        Kakao.Auth.login({
-            success: function (response) {
-                // console.log("카카오 로그인 시작부분은 들어왔음")
-
-                Kakao.API.request({
-                    url: '/v2/user/me',
-                    success: function (response) {
-                        let accessToken = Kakao.Auth.getAccessToken();
-                        Kakao.Auth.setAccessToken(accessToken);
-                        console.log("response ==>" + response)
-                        console.log("token ==>" + accessToken)
-                        $.ajax(
-                            {
-                                url:'/apilogin',type:'post', async:false,data:JSON.stringify(accessToken),dataType:'JSON',contentType:'application/json; charset=utf-8'
-                                ,success:function(){}})},
-                    fail: function (error) {
-                        console.log(error)
-                        console.log("여기 왔냐? 오면 안되는데")
-                        window.location.replace("/regist")
-                    },
-                })
-            },
-            fail: function (error) {
-                console.log(error)
-            },
-        })
+    function loginWithKakao() {
+        Kakao.Auth.authorize({
+            redirectUri: 'http://localhost:8080/apilogin',
+        });
     }
 </script>
+<!--<script>-->
+<!--    Kakao.init('3275951c9def6afe74afa750eab3456c'); //발급받은 키 중 javascript키를 사용해준다.-->
+<!--    console.log(Kakao.isInitialized()); // sdk초기화여부판단-->
+<!--    //카카오로그인-->
+<!--    function kakaoLogin() {-->
+<!--        Kakao.Auth.login({-->
+<!--            success: function (response) {-->
+<!--                // console.log("카카오 로그인 시작부분은 들어왔음")-->
+
+<!--                Kakao.API.request({-->
+<!--                    url: '/v2/user/me',-->
+<!--                    success: function (response) {-->
+<!--                        let accessToken = Kakao.Auth.getAccessToken();-->
+<!--                        Kakao.Auth.setAccessToken(accessToken);-->
+<!--                        console.log("response ==>" + response)-->
+<!--                        console.log("token ==>" + accessToken)-->
+<!--                        $.ajax(-->
+<!--                            {-->
+<!--                                url:'/apilogin',type:'post', async:false,data:JSON.stringify(accessToken),dataType:'JSON',contentType:'application/json; charset=utf-8'-->
+<!--                                ,success:function(){}})},-->
+<!--                    fail: function (error) {-->
+<!--                        console.log(error)-->
+<!--                        console.log("여기 왔냐? 오면 안되는데")-->
+<!--                        window.location.replace("/regist")-->
+<!--                    },-->
+<!--                })-->
+<!--            },-->
+<!--            fail: function (error) {-->
+<!--                console.log(error)-->
+<!--            },-->
+<!--        })-->
+<!--    }-->
+<!--</script>-->
 </body>
 </html>
