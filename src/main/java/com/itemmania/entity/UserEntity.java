@@ -2,6 +2,8 @@ package com.itemmania.entity;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -41,15 +43,20 @@ public class UserEntity {
     private String userEMail;
 
     @Column
+    @ColumnDefault("0")
     private int userMileage;
 
     @Column
+    @ColumnDefault("0")
     private int userCreditScore;
 
     @Column
+    @NotNull
+    @ColumnDefault("0")
     private boolean userIsManager;
 
     @Column
+    @ColumnDefault("0")
     private int itemUnit;
 
     @ManyToOne

@@ -16,9 +16,9 @@ public class BoardListService {
     private BoardRepository boardRepository;
 
     public List<BoardEntity> getList() {
-       log.info("BoardListService 들어옴");
+//       log.info("BoardListService 들어옴");
         List<BoardEntity> all = boardRepository.findAll();
-        log.info("BoardListService 탈출");
+//        log.info("BoardListService 탈출");
         return all;
     }
 

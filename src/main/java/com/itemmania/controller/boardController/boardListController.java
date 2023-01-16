@@ -19,9 +19,9 @@ public class boardListController {
 
     @GetMapping("/board/boardList")
     public void getList(Model model) {
-        log.info("boardListController  들어옴");
+//        log.info("boardListController  들어옴");
         List<BoardEntity> listAll = boardListService.getList();
-        log.info(listAll);
+//        log.info(listAll);
   model.addAttribute("boardList", listAll);
     }
 }
