@@ -37,7 +37,7 @@ public class UserEntity {
 
     @Column(name = "user_email")
     @NotNull
-    private String userEMail;
+    private String userEmail;
 
     @Column
     private int userMileage;
