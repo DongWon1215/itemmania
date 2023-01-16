@@ -5,10 +5,11 @@ import com.itemmania.entity.UserEntity;
 import com.itemmania.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/regist/insert")
@@ -18,20 +19,27 @@ public class InsertInfoConteroller {
     private UserService userService;
 
     @GetMapping
-    public String ToinsertForm()
+    public String ToinsertForm(HttpServletRequest request, Model model)
     {
+        HttpSession session = request.getSession();
+
+        String token = (String)session.getAttribute("Token");
+
+        if(token != null)
+            model.addAttribute("data");
+
         return "/UserForm/inputInfoForm";
     }
 
-//    @PostMapping
-//    public UserEntity userData(@RequestBody UserDTO userDTO)
-//    {
-//        if(userService.isExistUser(userDTO.getUserName(),userDTO.getUserPassword()))
-//            return null;
-//
-//
-//
-//        return userService.insertUser(userDTO.toUserEntity());
-//    }
+    @PostMapping
+    public UserEntity userData(@RequestParam String )
+    {
+        if(userService.isExistUser())
+            return null;
+
+
+
+        return userService.insertUser(userDTO.toUserEntity());
+    }
 
 }

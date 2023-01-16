@@ -40,7 +40,12 @@
                 </colgroup>
                 <tr>
                     <th>이름</th>
-                    <td><</td>
+                    <th:block th:if="${data} != null">
+                        <td>${data.name}</td>
+                    </th:block>
+                    <th:block th:if="${data} == null">
+                        <input type="text" name="user_name" class="g_text" id="user_name" maxlength="12">
+                    </th:block>
                 </tr>
                 <tr>
                     <th>아이디</th>
@@ -68,6 +73,7 @@
                             <input type="password" name="user_password_validate" class="g_password" id="user_password_validate" maxlength="16">
                             <div class="password_help" id="password_help2"></div>
                         </div>
+                        <div class="DuplicateCheck" id="DuplicateCheck"></div>
                     </td>
                 </tr>
                 <tr>
@@ -133,5 +139,46 @@
     </div>
             <div th:replace="fragment/footer"/>
 </div>
+<script>
+    let pw = document.getElementById('user_password').val;
+    let pw_validate = document.getElementById('user_password_validate').val;
+
+    function pwcheckor()
+    {
+        pwConditionCheck();
+        pwDuplicateCheck();
+    }
+
+    function pwConditionCheck()
+    {
+        let req = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$";
+        if(!req.text(pw))
+        {
+            document.getElementById('muser_password').innerText='비밀번호에 대소문자, 특수문자가 반드시 하나씩 포함되어야 합니다';
+            document.getElementById('muser_password').style.color='red';
+        }
+        if(pw.length < 6 || pw.length > 12)
+        {
+            document.getElementById('muser_password').innerText='비밀번호는 6글자 이상 12글자 이하여야 합니다';
+            document.getElementById('muser_password').style.color='red';
+        }
+
+    }
+
+    function pwDuplicateCheck()
+    {
+        if(pw == pw_validate && pw != '' && pw_validate != '')
+        {
+            document.getElementById('DuplicateCheck').innerText='비밀번호가 일치합니다';
+            document.getElementById('DuplicateCheck').style.color='blue';
+        }
+
+        else
+        {
+            document.getElementById('DuplicateCheck').innerText='비밀번호가 일치하지 않습니다';
+            document.getElementById('DuplicateCheck').style.color='red';
+        }
+    }
+</script>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class ApiLoginController {
 //        session.setAttribute("userInfo",user);
 
         log.info("세션 만들어졌다");
-        log.info("세션 정보 ==> " + user);
+        log.info("세션 정보 ==> " + Token);
         return "index";
     }
 }
