@@ -1,6 +1,5 @@
 <link type="text/css" rel="stylesheet" href="/css/board/boardList.css">
 
-
 <div th:replace="fragment/header" xmlns:th="http://www.thymeleaf.org"/>
 <!--content_center-> class 입력시 중앙정렬-->
 <div class="content_center">
@@ -153,8 +152,13 @@
                 <div class="col_05">등록시간</div>
             </li>
         </ul>
+        <div id="demo"></div>
         <ul class="search_list search_list_normal">
-            <span th:text="${boardList}"></span>
+
+            <div th:text="${boarList}">
+
+            </div>
+
             <!--
             boardList.boardNum //게시판 번호
             boardList.userNum //회원 번호
@@ -186,6 +190,7 @@
                 <div class="col_04"><i class="sp_list icon_good">우수인증</i> <i class="sp_list icon_200">200%보상</i> <i
                         class="sp_list icon_200_buy">200%구매보상</i> <i class="sp_list icon_dc active_icon">할인</i></div>
                 <div class="col_05"><span>14:44</span></div>
+            </li>
         </ul>
         <div class="loading g_hidden"></div>
         <div class="load_more">

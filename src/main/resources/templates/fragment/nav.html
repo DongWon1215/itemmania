@@ -1,8 +1,56 @@
 <html lang="ko">
 <link type="text/css" rel="stylesheet" href="/css/main/nav.css">
 <link type="text/css" rel="stylesheet" href="/css/main/header.css">
-
 <div class="g_header ">
+    <script>
+        /*  $(document).ready(() => {
+              console.log('준비완료');
+              $('#boardListSale').on('click', function () {
+                  $.ajax({
+                      url: '/board/boardList/sale',
+                      type: 'get',
+                      contentType: 'application/json',
+
+                      success: function (json) {
+                          alert("성공")
+                          $.each(json, function (index, data) {
+                              $("#demo").append(index)
+                              $("#demo").append(data.boardNum)
+                              $("#demo").append(data.boardTitle)
+                              $("#demo").append(data.saleAria)
+                              $("#demo").append(data.saleNickName)
+
+
+                          })
+                      }
+                  }).fail(function (xhr, status, errorThrown) {
+                      $("#demo").html("오류가 발생했습니다.<br>")
+                          .append("오류명: " + errorThrown + "<br>")
+                          .append("상태: " + status);
+                  })
+              });
+
+              $('#boardListBuy').on('click', function () {
+                  $.ajax({
+                      url: '/board/boardList/buy',
+                      type: 'get',
+                      contentType: 'application/json',
+                  }).done(function (json) {
+
+                      $("<h1>").text(json.title).appendTo("body");
+                      $("<div class=\"content\">").html(json.html).appendTo("body");
+
+                  }).fail(function (xhr, status, errorThrown) {
+
+                      $("#text").html("오류가 발생했습니다.<br>")
+                          .append("오류명: " + errorThrown + "<br>")
+                          .append("상태: " + status);
+
+                  })
+              });
+          })*/
+    </script>
+
 
     <div class="nav_wrap">
         <div class="content_center">
@@ -11,8 +59,8 @@
                 <li class="highlight"><a href="#">구매등록</a></li>
             </ul>
             <ul class="nav nav_ct">
-                <li><a href="/board/boardList/sale">삽니다<i class="icon_new"></i></a></li>
-                <li><a href="/board/boardList/buy">팝니다<i class="icon_new"></i></a></li>
+                <li><a href="/board/boardList/sale" id="boardListSale">삽니다<i class="icon_new"></i></a></li>
+                <li><a href="/board/boardList/buy" id="boardListBuy">팝니다<i class="icon_new"></i></a></li>
                 <li><a href="/myroom">마이룸</a></li>
                 <li><a href="#">포인트 충전</a></li>
                 <li><a href="#"></a></li>
@@ -22,5 +70,5 @@
 </div>
 </nav>
 </div>
-
 </html>
+

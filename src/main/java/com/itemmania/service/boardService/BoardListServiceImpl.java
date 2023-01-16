@@ -15,14 +15,14 @@ public class BoardListServiceImpl implements BoardListService {
     @Autowired
     private BoardRepository boardRepository;
 
-    public List<BoardEntity> getAllList() {
+    /*public List<BoardEntity> getAllList() {
         // 모두 출력
         log.info("BoardListService 들어옴");
         List<BoardEntity> getAllList = boardRepository.findAll();
         log.info(getAllList + "겟올리스트");
         log.info("BoardListService 탈출");
         return getAllList;
-    }
+    }*/
 
     public List<BoardEntity> getDealCheckList(String DealCheck) {
         // sale 출력
