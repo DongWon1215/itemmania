@@ -152,29 +152,9 @@
                 <div class="col_05">등록시간</div>
             </li>
         </ul>
-        <div id="demo"></div>
         <ul class="search_list search_list_normal">
+            <li id="boardList"></li>
 
-            <div th:text="${boarList}">
-
-            </div>
-
-            <!--
-            boardList.boardNum //게시판 번호
-            boardList.userNum //회원 번호
-            boardList.gameNum //게임 번호
-            boardList.gameServer //서버명
-            boardList.boardTime //게시글 작성 시간
-            boardList.boardTitle //게시판 제목, 물품 제목
-            boardList.saleUnit //물건 수량
-            boardList.salePrice /판매 금액
-            boardList.saleNickName //거래하는 본인 캐릭터 명
-            boardList.saleAria //게시판 상세 -> 상세설명
-            boardList.salePhoto //게시판 상세 -> 판매 스크린샷(최대5장)
-            boardList.saleType //판매 물품 수량  타입 (일반[value:0], 분할[value:1])
-            boardList.boardTradeStatus //거래 현황  (진행중 [value:0], 거래완료 [value:1])
-            boardList.salePremium //프리미엄 서비스 우뮤
-            -->
             <li data-tid="" data-state="a">
                 <div class="col_01"><a href="javascript:;" data-scode="16178" data-sname="" data-search="true">아만</a>
                 </div>
@@ -200,3 +180,19 @@
 
 </div>
 <div th:replace="fragment/footer"/>
+<!--
+           boardList.boardNum //게시판 번호
+           boardList.userNum //회원 번호
+           boardList.gameNum //게임 번호
+           boardList.gameServer //서버명
+           boardList.boardTime //게시글 작성 시간
+           boardList.boardTitle //게시판 제목, 물품 제목
+           boardList.saleUnit //물건 수량
+           boardList.salePrice /판매 금액
+           boardList.saleNickName //거래하는 본인 캐릭터 명
+           boardList.saleAria //게시판 상세 -> 상세설명
+           boardList.salePhoto //게시판 상세 -> 판매 스크린샷(최대5장)
+           boardList.saleType //판매 물품 수량  타입 (일반[value:0], 분할[value:1])
+           boardList.boardTradeStatus //거래 현황  (진행중 [value:0], 거래완료 [value:1])
+           boardList.salePremium //프리미엄 서비스 우뮤
+           -->
