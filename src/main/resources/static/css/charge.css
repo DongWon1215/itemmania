@@ -1,0 +1,67 @@
+/*
+ * @title		마일리지충전
+ * @author		김보람
+ * @date		2012.02.15
+ * @update		수정날짜(수정자)
+ * @description
+ */
+
+/* ▼ 마일리지 충전방법 */
+.g_big_box1{ overflow:hidden; margin:0 0 30px -9px; }
+.g_big_box1 li{ position:relative; float:left; width:154px; height:31px; margin:0 0 5px 9px; border:1px solid #CCD3DC; background-color:#FFF; font-size:11px; line-height:33px; text-indent:8px; letter-spacing:-1px; cursor:pointer; color:#6E6E6E; }
+.g_big_box1 li:hover{ font-weight:bold; color:#407FD4 }
+.g_big_box1 span{ display:block; position:absolute; top:0; right:0; height:31px; background:url(//localhost:8080/image/sp_mile_charge_221213.png) no-repeat; text-indent:-9999px }
+.g_big_box1 .img_charge01{ width:42px; background-position:-1px -65px }
+.g_big_box1 .img_charge02{ width:42px; background-position:-53px -161px }
+.g_big_box1 .img_charge03{ width:42px; background-position:-1px -33px }
+.g_big_box1 .img_charge04{ width:42px; background-position:-64px -193px }
+.g_big_box1 .img_charge05{ width:34px; background-position:-130px -1px }
+.g_big_box1 .img_charge06{ width:42px; background-position:-1px -1px }
+.g_big_box1 .img_charge07{ width:51px; background-position:-1px -161px }
+.g_big_box1 .img_charge08{ width:42px; background-position:-77px -225px }
+.g_big_box1 .img_charge09{ width:42px; background-position:-1px -97px }
+.g_big_box1 .img_charge10{ width:42px; background-position:-87px -1px }
+.g_big_box1 .img_charge11{ width:42px; background-position:-87px -33px }
+.g_big_box1 .img_charge12{ width:42px; background-position:-1px -129px }
+.g_big_box1 .img_charge13{ width:51px; background-position:-44px -97px }
+.g_big_box1 .img_charge14{ width:42px; background-position:-87px -65px }
+.g_big_box1 .img_charge15{ width:42px; background-position:-44px -65px }
+.g_big_box1 .img_charge16{ width:42px; background-position:-44px -129px }
+.g_big_box1 .img_charge17{ width:42px; background-position:-96px -97px }
+.g_big_box1 .img_charge18{ width:75px; background-position:-1px -225px }
+.g_big_box1 .img_charge19{ width:42px; background-position:-44px -33px }
+.g_big_box1 .img_charge20{ width:42px; background-position:-87px -129px }
+.g_big_box1 .img_charge21{ width:42px; background-position:-96px -161px }
+.g_big_box1 .img_charge22{ width:42px; background-position:-44px -1px }
+.g_big_box1 .img_charge23{ width:42px; background-position:-107px -193px }
+.g_big_box1 .img_charge24{ width:42px; background-position:-120px -225px }
+.g_big_box1 .img_charge25{ width:62px; background-position:-1px -193px }
+.g_big_box1 .img_charge26{ width:42px; background-position:-130px -33px }
+.g_big_box1 .img_charge27{ width:42px; background-position:-87px -257px }
+.g_big_box1 .img_charge28{ width:42px; background-position:-131px -64px }
+.g_big_box1 .img_charge29{ width:42px; background-position:-133px -129px }
+.g_big_box1 .img_charge30{ width:42px; background-position:-130px -257px }
+.g_big_box1 .img_charge31{ width:42px; background-position:-1px -288px }
+.g_big_box1 .img_charge32{ width:42px; background-position:-45px -288px }
+.g_big_box1 .img_charge33{ width:42px; background-position:-87px -288px }
+.g_big_box1 .img_charge34{ width:42px; background-position:-132px -288px }
+.g_big_box1 .img_charge35{width:42px;background-position:-1px -320px;}
+.g_big_box1 .img_charge36{width:42px;background-position:-45px -321px;}
+.g_big_box1 .img_charge37{width:42px;background-position:-89px -321px;}
+.g_big_box1 .img_charge38{width:70px;background-position:-1px -351px;}
+.g_big_box1 .img_charge39{width:70px;background-position:-71px -351px;}
+.g_big_box1 .none{ cursor:auto }
+/* ▲ 마일리지 충전방법 */
+
+.mile_info{ margin-top:20px; padding-bottom:15px; border:2px solid #E3E3E3 }
+.mile_info .top_info{ position:absolute; margin:-2px 0 0 -2px; _margin-left:-1px }
+.mile_info ul{ width:695px; margin:19px 0 0 40px; color:#767676 }
+.mile_info ul li{ margin-left:10px }
+.mile_info ul .title{ margin:0 0 5px }
+.mile_info ul .line{ height:10px; margin-top:10px; margin-left:0; border-top:1px dotted #DBDBDB }
+.icon_new{ display:inline-block; width:15px; height:14px; margin-top:-3px; background:url(//img4.itemmania.com/images/icon/icon_n.png) no-repeat; vertical-align:middle; }
+.subtxt{margin-top:10px;font-size:13px;color:#1D1D1D;}
+
+li{
+    list-style: none;
+}
