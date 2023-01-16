@@ -32,15 +32,15 @@ public class BoardEntity {
 
     @Column
     @NonNull
-    //@JoinColumn(name = "")
+    @JoinColumn(name = "gameServer")
     // 게임 번호
     private int gameNum;
 
     @Column
     @NonNull
-    //@JoinColumn(name = "")
+    @JoinColumn(name = "gameServer")
     // 서버명
-    private String gameServer;
+    private int gameServer;
 
     @Column
     @NonNull
@@ -94,6 +94,6 @@ public class BoardEntity {
     @NonNull
     // board테이블 판매글 구매글 구분 (구매 : sale, 판매 : buy)
     private String dealCheck;
-//test
+
 
 }
