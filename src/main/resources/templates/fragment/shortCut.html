@@ -17,10 +17,10 @@
                 <li class="selected"><a href="/">아이템매니아 포탈</a></li>
                 <li><a href="/regist">아이템거래</a></li>
             </ul>
-            <ul class="snav_right" onchange="isLogined()">
+            <ul class="snav_right" onchange="isLogin()">
                 <li id="login_button"><a href="/login">로그인</a></li>
 
-                <li id="logout_button"><a onclick="totallogout()" style="cursor:pointer">로그아웃</a></li>
+                <li id="logout_button"><a onclick="total_logout()" style="cursor:pointer">로그아웃</a></li>
                 <li><a href="/regist">회원가입</a></li>
                 <li><a href="/myroom">마이룸</a></li>
             </ul>
@@ -29,10 +29,10 @@
 </div>
 
 <script>
-    function totallogout()
+    function total_logout()
     {
         // logout();
-        kakaoLogout();
+        // kakaoLogout();
         window.location.replace("/logout");
     }
 
@@ -52,18 +52,18 @@
         }
     }
 
-    function isLogined()
+    function isLogin()
     {
-        if()
-        {
-            document.querySelector('login_button').style.visibility=false;
-            document.querySelector('logout_button').style.visibility=true;
-        }
-            else
-        {
-            document.querySelector('login_button').style.visibility=true;
-            document.querySelector('logout_button').style.visibility=false;
-        }
+        // if()
+        // {
+        //     document.querySelector('login_button').style.visibility=false;
+        //     document.querySelector('logout_button').style.visibility=true;
+        // }
+        //     else
+        // {
+        //     document.querySelector('login_button').style.visibility=true;
+        //     document.querySelector('logout_button').style.visibility=false;
+        // }
     }
 </script>
 

@@ -30,15 +30,16 @@ public class ApiLoginController {
 
 //        UserEntity user = userService.getUser(loginRequest.getUser_name(), loginRequest.getUser_password());
 
-
-
         HttpSession session = request.getSession();
 
         session.setAttribute("kakaoAccessToken", Token);
 //        session.setAttribute("userInfo",user);
 
-        log.info("세션 만들어졌다");
         log.info("세션 정보 ==> " + Token);
+//        log.info(TypeOf(Token));
+
+//        String username = Token;
+
         return "index";
     }
 }
