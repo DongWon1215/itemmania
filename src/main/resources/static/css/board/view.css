@@ -49,10 +49,3 @@ ins > div{margin:0 auto;text-align:center;}
 .character_select > ul > li > span{position:absolute;top:15px;left:9px;width:85px;}
 .character_select > ul > li > select, .character_select > ul > li > input{width:100%;font-size:12px;}
 
-
-/* 추가 css */
-.g_list li:before, .g_list dd:before {
-    position: absolute;
-    left: 0;
-    content: "· "
-}

@@ -724,7 +724,7 @@ table tr .left {
 .g_list li:before, .g_list dd:before {
     position: absolute;
     left: 0;
-    content: "Â·"
+    content: "· "
 }
 
 .g_path {
