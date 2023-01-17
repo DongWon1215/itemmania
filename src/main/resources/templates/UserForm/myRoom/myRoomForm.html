@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
-<link type="text/css" rel="stylesheet" href="/css/UserForm/mypage.css">
 <body>
 
 <!--header 시작-->
@@ -48,10 +48,17 @@
                 <div class="mileage_all_result f_black2">[30] <span class="won f_black2">원</span></div>
             </div>
             <div class="mileage_area mileage_btn_area">
-                <div class="mileage_btn mileage_charge_btn" onclick="_window.open('', 685, 800);">
-                    <i class="SpGroup icon_charge">icon</i>충전하기
+                <div class="mileage_btn mileage_charge_btn" th:insert="/fragment/chargeModal">
+                    <i class="SpGroup icon_charge">icon</i>
+                        충전하기
+                    </a>
                 </div>
-                <div class="mileage_btn mileage_withdraw_btn"><a href="#"><i class="SpGroup icon_withdraw">icon</i>출금하기</a></div>
+                <div class="mileage_btn mileage_withdraw_btn">
+                    <a href="#">
+                    <i class="SpGroup icon_withdraw">icon</i>
+                        출금하기
+                    </a>
+                </div>
             </div>
         </div>
         <!--        <div class="mr_user_level_sub_txt">-->
@@ -193,5 +200,7 @@
 
 <!--footer 시작-->
 <div th:replace="fragment/footer"/>
+<link type="text/css" rel="stylesheet" href="/css/UserForm/mypage.css">
+
 </body>
 </html>
