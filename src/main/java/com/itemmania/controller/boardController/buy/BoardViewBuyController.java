@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,13 +24,13 @@ public class BoardViewBuyController {
 
 
     @GetMapping
-    public String getBoardViewBuy(Model model){
+    public String getBoardViewBuy(Model model, @RequestParam(value = "title") String boardTime) {
         log.info("BoardViewBuyController  들어옴");
         List<BoardEntity> listAll = boardViewService.getList();
         log.info(listAll);
-        model.addAttribute("boardList", listAll);
+        model.addAttribute("boardList", boardTime);
 
-        return("board/buy/boardViewBuy");
+        return ("board/buy/boardViewBuy");
     }
 
 }
