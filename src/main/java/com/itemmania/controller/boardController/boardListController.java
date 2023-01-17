@@ -20,9 +20,16 @@ public class boardListController {
     @GetMapping("/board/boardList")
     public void getsaleList(Model model, @RequestParam(value = "deal", required = false) String deal) {
         log.info("보드리스트 컨트롤러 들어옴보드리스트 컨트롤러 들어옴" + deal);
+        boolean yes = true;
+        boolean no = false;
 
-        List<BoardEntity> dealCheckList = boardListService.getDealCheckList(deal);
-        log.info(dealCheckList);
+        List<BoardEntity> dealCheck_PremiumList = boardListService.getDealCheckPremiumList(deal, yes);
+        List<BoardEntity> dealCheckList = boardListService.getDealCheckList(deal, no);
+
+        log.info("일반" + dealCheckList);
+        log.info("프리미엄" + dealCheck_PremiumList);
         model.addAttribute("boarList", dealCheckList);
+        model.addAttribute("boarPList", dealCheck_PremiumList);
+
     }
 }
