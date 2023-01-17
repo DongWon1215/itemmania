@@ -23,14 +23,18 @@ public class BoardListServiceImpl implements BoardListService {
         log.info("BoardListService 탈출");
         return getAllList;
     }*/
+    public List<BoardEntity> getDealCheckPremiumList(String DealCheck, boolean yes) {
+        // boardList_Premium 출력
+        List<BoardEntity> getboardList_P = boardRepository.boardListPremium(DealCheck, yes);
+        log.info("보드 리스트 프리미엄 값" + getboardList_P);
+        return getboardList_P;
+    }
 
-    public List<BoardEntity> getDealCheckList(String DealCheck) {
-        // sale 출력
-        log.info("BoardListService 들어옴");
-
-        List<BoardEntity> getsaleList = boardRepository.findByDealCheck(DealCheck);
-        log.info("BoardListService 탈출");
-        return getsaleList;
+    public List<BoardEntity> getDealCheckList(String DealCheck, boolean no) {
+        // boardList 출력
+        List<BoardEntity> getboardList = boardRepository.boardListNotPremium(DealCheck, no);
+        log.info("보드 리스트 프리미엄아닌 값" + getboardList);
+        return getboardList;
     }
 
 
