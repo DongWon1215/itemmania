@@ -1,18 +1,17 @@
-package com.itemmania.controller.boardController.sale;
-
+package com.itemmania.controller.boardController.buy;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/view_sale")
-public class BoardViewSaleController {
-
+@RequestMapping("/buy_request")
+public class BoardBuyRequestController {
 
     @GetMapping
-    public String getBoardViewSale()
+    public String getBoardViewBuy()
     {
-        return "board/sale/boardViewSale";
+        return "board/buy/boardBuyRequest";
     }
+
 }

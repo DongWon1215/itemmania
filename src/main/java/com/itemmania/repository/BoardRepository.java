@@ -1,13 +1,24 @@
 package com.itemmania.repository;
 
 import com.itemmania.entity.BoardEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
     // sale buy 구분출력
     List<BoardEntity> findByDealCheck(String DealCheck);
+
+    @Transactional
+    @Modifying  // insert, update, delete
+    /*@Query("delete from BoardEntity b where b.boardNum = ?1")*/
+
+    @Query("delete from BoardEntity b where b.boardNum = :boardNum")
+    int deleteByBno(@Param("boardNum") Integer boardNum);
 
 }
    /* INSERT INTO `proj`.`board` (
