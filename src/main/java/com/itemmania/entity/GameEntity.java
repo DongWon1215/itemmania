@@ -25,5 +25,7 @@ public class GameEntity {
     @JoinColumn(name = "gameNum")
     private String gameName;
 
+    @Column
+    private String gameCurrency;
 
 }
