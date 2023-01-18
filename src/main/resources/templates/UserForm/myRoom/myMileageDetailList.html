@@ -38,43 +38,158 @@
     </div>
     <!-- ▲ 메뉴탭 //-->
 
-    <form id="frmPeriod" name="frmPeriod" action="detail_list.html" method="post">
+
       <table class="g_blue_table" id="search_table">
         <colgroup>
           <col width="130">
           <col>
         </colgroup>
-        <tbody><tr>
-          <th>조회기간</th>
+        <tr>
+          <th rowspan="2">조회기간</th>
           <td id="search_date">
             <div class="g_left">
               <!-- ▼ 시작 날짜 //-->
-              <div class="g_selectbox" id="search_year"><input type="hidden" name="search_year" value="2023"><div class="value">2023</div><div class="arrow_img"></div></div>
-              <div class="g_left date_text">년</div>
-              <div class="g_selectbox" id="search_month"><input type="hidden" name="search_month" value="1"><div class="value">1</div><div class="arrow_img"></div></div>
-              <div class="g_left date_text">월</div>
-              <div class="g_selectbox" id="search_day"><input type="hidden" name="search_day" value="11"><div class="value">11</div><div class="arrow_img"></div></div>
-              <div class="g_left date_text">일 ~</div>
+
+              <select id="search_year" name="search_year">
+                <option value="2018" >2018</option>
+                <option value="2019" >2019</option>
+                <option value="2020" >2020</option>
+                <option value="2021" >2021</option>
+                <option value="2022" >2022</option>
+                <option value="2023" >2023</option>
+              </select>년
+              <select id="search_month" name="search_month">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>월
+              <select id="search_day" name="search_day">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+              </select>일 ~
+
               <!-- ▲ 시작날짜 //-->
               <!-- ▼ 마지막날짜 //-->
-              <div class="g_selectbox" id="search_year_end"><input type="hidden" name="search_year_end" value="2023"><div class="value">2023</div><div class="arrow_img"></div></div>
-              <div class="g_left date_text">년</div>
-              <div class="g_selectbox" id="search_month_end"><input type="hidden" name="search_month_end" value="1"><div class="value">1</div><div class="arrow_img"></div></div>
-              <div class="g_left date_text">월</div>
-              <div class="g_selectbox" id="search_day_end"><input type="hidden" name="search_day_end" value="11"><div class="value">11</div><div class="arrow_img"></div></div>
-              <div class="g_left date_text">일</div>
+              <select id="search_year_end" name="search_year_end">
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </select>년
+              <select id="search_month_end" name="search_month_end">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>월
+              <select id="search_day_end" name="search_day_end">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+              </select>일
             </div>
             <div class="g_right">
-              <a href="javascript:$.date_scope(1);"><img src="http://img3.itemmania.com/images/btn/btn_today.gif" width="34" height="18" alt="당일"></a>
-              <a href="javascript:$.date_scope(3);"><img src="http://img4.itemmania.com/images/btn/btn_3day.gif" width="34" height="18" alt="3일"></a>
-              <a href="javascript:$.date_scope(7);"><img src="http://img2.itemmania.com/images/btn/btn_7day.gif" width="34" height="18" alt="7일"></a>
-              <a href="javascript:$.date_scope(15);"><img src="http://img3.itemmania.com/images/btn/btn_15day.gif" width="34" height="18" alt="15일"></a>
-              <a href="javascript:$.date_scope(30);"><img src="http://img4.itemmania.com/images/btn/btn_30day.gif" width="34" height="18" alt="30일"></a>
+              <a href="javascript:date_scope(1);"><img src="http://img3.itemmania.com/images/btn/btn_today.gif" width="34" height="18" alt="당일"></a>
+              <a href="javascript:date_scope(3);"><img src="http://img4.itemmania.com/images/btn/btn_3day.gif" width="34" height="18" alt="3일"></a>
+              <a href="javascript:date_scope(7);"><img src="http://img2.itemmania.com/images/btn/btn_7day.gif" width="34" height="18" alt="7일"></a>
+              <a href="javascript:date_scope(15);"><img src="http://img3.itemmania.com/images/btn/btn_15day.gif" width="34" height="18" alt="15일"></a>
+              <a href="javascript:date_scope(30);"><img src="http://img4.itemmania.com/images/btn/btn_30day.gif" width="34" height="18" alt="30일"></a>
             </div>
           </td>
         </tr>
-        </tbody></table>
-    </form>
+        <tr>
+          <td>
+            <div class="g_left">
+              <input type="radio" name="search_select" id="search_select1" value="all" class="g_radio" checked onclick="document.frmPeriod.submit();">
+              <label for="search_select1">전체</label>
+              <input type="radio" name="search_select" id="search_select2" value="increase" class="g_radio"  onclick="document.frmPeriod.submit();">
+              <label for="search_select2">증가된 마일리지</label>
+              <input type="radio" name="search_select" id="search_select3" value="decrease" class="g_radio"  onclick="document.frmPeriod.submit();">
+              <label for="search_select3">감소된 마일리지</label>
+            </div>
+            <div class="g_right">
+              <input type="image" src="http://img2.itemmania.com/images/btn/btn_check1.gif" width="64" height="18" alt="조회하기" onclick="dateSubmit()">
+            </div>
+          </td>
+        </tr>
+        </table>
+
 
     <table class="g_blue_table tb_list">
       <colgroup>
@@ -109,6 +224,83 @@
 
 <!--footer 시작-->
 <div th:replace="fragment/footer"/>
+
+
+<script>
+
+  var startDate
+  var endDate
+
+  $().ready(() => {
+    $('#search_month').on("change", () => getLastDate())
+    $('#search_year').on("change", () => getLastDate())
+    $('#search_month_end').on("change", () => getLastDate2())
+    $('#search_year_end').on("change", () => getLastDate2())
+  })
+
+  function getLastDate(){
+    const lastDate = new Date($('#search_year option:selected').val(), $('#search_month option:selected').val(), 0).getDate()
+    console.log(lastDate)
+
+    $('#search_day').html('')
+    let html = ''
+
+    for (let i = 1; i <= lastDate; i++) {
+      html += '<option value="' + i + '">' + i + '</option>'
+    }
+
+    $('#search_day').append(html)
+  }
+
+  function getLastDate2(){
+    const lastDate = new Date($('#search_year_end option:selected').val(), $('#search_month_end option:selected').val(), 0).getDate()
+    console.log(lastDate)
+
+    $('#search_day_end').html('')
+    let html = ''
+
+    for (let i = 1; i <= lastDate; i++) {
+      html += '<option value="' + i + '">' + i + '</option>'
+    }
+
+    $('#search_day_end').append(html)
+  }
+
+  function dateSubmit(){
+    startDate = new Date($('#search_year option:selected').val(), $('#search_month option:selected').val(), $('#search_day option:selected').val())
+    endDate = new Date($('#search_year_end option:selected').val(), $('#search_month_end option:selected').val(), $('#search_day_end option:selected').val())
+
+    console.log(startDate, endDate)
+    console.log(endDate > startDate)
+
+    if(endDate <= startDate){
+      alert('정상적인 날자 범위가 아닙니다')
+      return
+    }
+
+    alert('정상적인 날자 범위입니다')
+    // 비동기로 db에서 데이터 받아와서 html append
+  }
+
+  function date_scope(date){
+    endDate = new Date()
+    startDate = new Date()
+    startDate.setDate(startDate.getDate() - date)
+
+    $('#search_year').val(startDate.getFullYear())
+    $('#search_month').val(startDate.getMonth()+1)
+    $('#search_day').val(startDate.getDate())
+
+    $('#search_year_end').val(endDate.getFullYear())
+    $('#search_month_end').val(endDate.getMonth()+1)
+    $('#search_day_end').val(endDate.getDate())
+
+    console.log(startDate.getFullYear(), startDate.getMonth()+1, startDate.getDate())
+
+    console.log(startDate, endDate)
+  }
+
+</script>
 
 </body>
 </html>
