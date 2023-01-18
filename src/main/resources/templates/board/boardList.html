@@ -170,7 +170,7 @@
 
             <li th:each="P_List:${boarPList}" data-tid="2023011707392798" data-state="a">
                 <div class="col_01"><a href="javascript:;" data-scode="16179" data-sname="카마인"
-                                       data-search="true" th:text="${P_List.gameServer}"></a></div>
+                                       data-search="true" th:text="${P_List.serverNum.gameServerName}"></a></div>
                 <div class="col_02 active"><a href="javascript:;" data-same="false">
                     <div class="mulline">
                         <span class="title title_blue" th:text="${P_List.boardTitle}"></span>
@@ -213,11 +213,44 @@
             <li th:each="List:${boarList}" data-tid="2023011707336513" data-state="a">
 
                 <div class="col_01"><a href="javascript:;" data-scode="18182" data-sname="니나브"
-                                       data-search="true" th:text="${List.gameServer}"></a></div>
-                <div class="col_02 active"><a href="javascript:;" data-same="false">
-                    <div class="mulline"><br> <span class="title" th:text="${List.boardTitle}"></span>
-                    </div>
-                </a>
+                                       data-search="true" th:text="${List.salePrice}"></a></div>
+                <div class="col_02 active">
+                    <a th:href="@{/view_buy(
+                    boardNum=${List.boardNum},
+                    gameNum=${List.gameNum.gameNum.gameName},
+                    boardTitle=${List.boardTitle},
+                    serverNum=${List.serverNum.gameServerName},
+                    boardTime=${List.boardTime},
+                    boardTradeStatus=${List.boardTradeStatus},
+                    saleType=${List.saleType},
+                    saleUnit=${List.saleUnit},
+                    salePrice=${List.salePrice},
+                    saleNickName=${List.saleNickName},
+                    saleAria=${List.saleAria},
+                    salePhoto=${List.salePhoto},
+                    salePremium=${List.salePremium},
+                    dealEndTime=${List.dealEndTime},
+                    dealCheck=${List.dealCheck},
+                    userNum=${List.userNum.userNum},
+                    itemNum=${List.userNum.itemNum.itemNum},
+                    itemUnit=${List.userNum.itemUnit},
+                    userRealName=${List.userNum.userRealName},
+                    userName=${List.userNum.userName},
+                    userPhoneNum=${List.userNum.userPhoneNumber},
+                    userEmail=${List.userNum.userEmail},
+                    userCreditScore=${List.userNum.userCreditScore},
+                    userMaileage=${List.userNum.userMileage},
+                    userIsManager=${List.userNum.userIsManager})}
+                   ">
+                        <!--  </a>
+
+                          <a th:href="@{/view_buy(List=${List})}">-->
+
+
+                        <div class="mulline">
+                            <span class="title" th:text="${List.boardTitle}"></span>
+                        </div>
+                    </a>
                     <div class="sp_list view_detail"></div>
                 </div>
                 <div class="col_03">
@@ -232,10 +265,8 @@
                  <div>
                      <a th:href="@{/view_buy(title=${List.boardTitle})}">
                          <div class="col_02 active">
-                             <div class="mulline"><span class="unit" th:text="${'['+List.salePrice+']'}">  </span> <br>
-
+                             <div class="mulline">
                                  <span class="title" th:text="${List.boardTitle}"></span>
-
                              </div>
 
                              <div class="sp_list view_detail"></div>
