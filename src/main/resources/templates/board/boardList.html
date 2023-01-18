@@ -242,11 +242,6 @@
                     userMaileage=${List.userNum.userMileage},
                     userIsManager=${List.userNum.userIsManager})}
                    ">
-                        <!--  </a>
-
-                          <a th:href="@{/view_buy(List=${List})}">-->
-
-
                         <div class="mulline">
                             <span class="title" th:text="${List.boardTitle}"></span>
                         </div>
@@ -259,26 +254,6 @@
                 <div class="col_04"><i class="sp_list icon_good">우수인증</i> <i class="sp_list icon_200">200%보상</i> <i
                         class="sp_list icon_200_buy">200%구매보상</i> <i class="sp_list icon_dc">할인</i></div>
                 <div class="col_05"><span th:text="${#strings.substring(List.boardTime,0,10)}"></span></div>
-
-                <!-- <div class="col_01"><a href="javascript:;" th:text="${List.gameServer}"></a>
-                 </div>
-                 <div>
-                     <a th:href="@{/view_buy(title=${List.boardTitle})}">
-                         <div class="col_02 active">
-                             <div class="mulline">
-                                 <span class="title" th:text="${List.boardTitle}"></span>
-                             </div>
-
-                             <div class="sp_list view_detail"></div>
-                         </div>
-                     </a>
-                 </div>
-                 <div class="col_03">
-                     <div class="mulline" th:text="${List.salePrice}"></div>
-                 </div>
-                 <div class="col_04"><i class="sp_list icon_good">우수인증</i> <i class="sp_list icon_200">200%보상</i> <i
-                         class="sp_list icon_200_buy">200%구매보상</i> <i class="sp_list icon_dc active_icon">할인</i></div>
-                 <div class="col_05"><span th:text="${#strings.substring(List.boardTime,0,10)}"></span></div>-->
             </li>
         </ul>
     </div>
@@ -290,65 +265,3 @@
 
 </div>
 <div th:replace="fragment/footer"/>
-<!--
-           boardList.boardNum //게시판 번호
-           boardList.userNum //회원 번호
-           boardList.gameNum //게임 번호
-           boardList.gameServer //서버명
-           boardList.boardTime //게시글 작성 시간
-           boardList.boardTitle //게시판 제목, 물품 제목
-           boardList.saleUnit //물건 수량
-           boardList.salePrice /판매 금액
-           boardList.saleNickName //거래하는 본인 캐릭터 명
-           boardList.saleAria //게시판 상세 -> 상세설명
-           boardList.salePhoto //게시판 상세 -> 판매 스크린샷(최대5장)
-           boardList.saleType //판매 물품 수량  타입 (일반[value:0], 분할[value:1])
-           boardList.boardTradeStatus //거래 현황  (진행중 [value:0], 거래완료 [value:1])
-           boardList.salePremium //프리미엄 서비스 우뮤
-           -->
-
-
-<!--  <li data-tid="" data-state="a">
-                 <div class="col_01"><a href="javascript:;" data-scode="16178" data-sname="" data-search="true">아만</a>
-                 </div>
-                 <div class="col_02 active"><a href="javascript:;" data-same="false">
-                     <div class="mulline"><span class="unit">[3만~4,569만]  </span> <br> <span class="title">█▓▓▓▓▓█ 절대 블럭없습니다 2OO%보상★바로 우편거래 █▓▓▓▓▓█</span>
-                     </div>
-                 </a>
-                     <div class="sp_list view_detail"></div>
-                 </div>
-                 <div class="col_03">
-                     <div class="mulline"> 1만당 7,800원<br> <span>최소 23,400원</span></div>
-                 </div>
-                 <div class="col_04"><i class="sp_list icon_good">우수인증</i> <i class="sp_list icon_200">200%보상</i> <i
-                         class="sp_list icon_200_buy">200%구매보상</i> <i class="sp_list icon_dc active_icon">할인</i></div>
-                 <div class="col_05"><span>14:44</span></div>
-             </li>-->
-
-
-<!--              <input type="hidden" th:value="${List.userNum}"/>  &lt;!&ndash;회원 번호&ndash;&gt;
-                         <input type="hidden" th:value="${List.userName}"/>&lt;!&ndash;회원 아이디&ndash;&gt;
-                         <input type="hidden" th:value="${List.userRealName}"/>&lt;!&ndash;회원 본명&ndash;&gt;
-                         <input type="hidden" th:value="${List.userPassword}"/>&lt;!&ndash;회원 비밀번호&ndash;&gt;
-                         <input type="hidden" th:value="${List.userPhoneNumber}"/> &lt;!&ndash;회원 폰번호&ndash;&gt;
-                   <input type="hidden" th:value="${List.userEmail}"/>&lt;!&ndash;회원 이메일&ndash;&gt;
-                   <input type="hidden" th:value="${List.userMileage}"/>&lt;!&ndash;유저마일리지&ndash;&gt;
-                   <input type="hidden" th:value="${List.userCreditScore}"/>&lt;!&ndash;회원 신용점수&ndash;&gt;
-                   <input type="hidden" th:value="${List.userIsManager}"/>&lt;!&ndash;회원 구분(0: 유저 1: 관리자)&ndash;&gt;
-                   <input type="hidden" th:value="${List.itemUnit}"/>&lt;!&ndash;아이템 수량&ndash;&gt;
-                   <input type="hidden" th:value="${List.itemNum}"/>&lt;!&ndash;아이템 번호&ndash;&gt;
-                   <input type="hidden" th:value="${List.gameNum}"/>&lt;!&ndash;게임번호&ndash;&gt;
-                   <input type="hidden" th:value="${List.gameServer}"/>서버명
-                <input type="hidden" name="boardTime" th:value="${List.boardTime}"/>게시글 작성시간
-                <input type="hidden" name="boardTitle" th:value="${List.boardTitle}"/>게시판 제목,물품제목
-                <input type="hidden" name="saleUnit" th:value="${List.saleUnit}"/>수량
-                <input type="hidden" name="salePrice" th:value="${List.salePrice}"/>금액
-                <input type="hidden" name="saleNickName" th:value="${List.saleNickName}"/>거래하는 본인캐릭터 명
-                <input type="hidden" name="saleAria" th:value="${List.saleAria}"/>상세설명
-                <input type="hidden" name="salePhoto" th:value="${List.salePhoto}"/>판매 스크린샷 최대5장
-                <input type="hidden" name="saleType" th:value="${List.saleType}"/>타입 (일반[value:0] 분할[value:1])
-                <input type="hidden" name="boardTradeStatus" th:value="${List.boardTradeStatus}"/>거래현황 (진행중 [value:0] 거래완료 [value:1])
-                <input type="hidden" name="salePremium" th:value="${List.salePremium}"/>프리미엄서비스 유무
-                <input type="hidden" name="dealEndTime" th:value="${List.dealEndTime}"/>거래완료시간
-                <input type="hidden" name="dealCheck" th:value="${List.dealCheck}"/>board 판매 구매 구분
--->
