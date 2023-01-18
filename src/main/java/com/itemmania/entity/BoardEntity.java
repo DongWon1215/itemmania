@@ -30,17 +30,17 @@ public class BoardEntity {
     // 회원 번호
     private UserEntity userNum;
 
-    @Column
+    @ManyToOne
     @NonNull
-    @JoinColumn(name = "gameServer")
+    @JoinColumn(name = "gameNum")
     // 게임 번호
-    private int gameNum;
+    private GameServerEntity gameNum;
 
-    @Column
+    @ManyToOne
     @NonNull
     @JoinColumn(name = "gameServer")
     // 서버명
-    private int gameServer;
+    private GameServerEntity serverNum;
 
     @Column
     @NonNull

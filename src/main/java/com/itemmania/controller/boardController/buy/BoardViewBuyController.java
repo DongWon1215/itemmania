@@ -24,11 +24,14 @@ public class BoardViewBuyController {
 
 
     @GetMapping
-    public String getBoardViewBuy(Model model, @RequestParam(value = "title") String boardTime) {
+    public String getBoardViewBuy(Model model,
+                                  @RequestParam(value = "boardTitle") String boardTitle,
+                                  @RequestParam(value = "salePrice") String  salePrice) {
         log.info("BoardViewBuyController  들어옴");
         List<BoardEntity> listAll = boardViewService.getList();
         log.info(listAll);
-        model.addAttribute("boardList", boardTime);
+        model.addAttribute("boardTitle", boardTitle);
+        model.addAttribute("salePrice", salePrice);
 
         return ("board/buy/boardViewBuy");
     }
