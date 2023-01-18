@@ -34,12 +34,12 @@ public class BoardEntity {
     @NonNull
     @JoinColumn(name = "gameNum")
     // 게임 번호
-    private GameServerEntity gameNum;
+    private GameEntity gameNum;
 
     @ManyToOne
     @NonNull
-    @JoinColumn(name = "gameServer")
-    // 서버명
+    @JoinColumn(name = "serverNum")
+    // 서버 번호
     private GameServerEntity serverNum;
 
     @Column

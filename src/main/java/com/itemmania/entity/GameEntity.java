@@ -22,7 +22,6 @@ public class GameEntity {
 
     @Column(unique = true)
     @NotNull
-    @JoinColumn(name = "gameNum")
     private String gameName;
 
     @Column
