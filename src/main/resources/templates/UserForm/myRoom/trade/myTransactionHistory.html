@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link type="text/css" rel="stylesheet" href="/css/UserForm/trade.css">
+</head>
+<body>
+
+<!--header 시작-->
+<div th:replace="fragment/header"/>
+
+<!--main 시작-->
+<div id="g_SLEEP" class="g_sleep g_hidden">
+  <div id="g_OVERLAY" class="g_overlay"></div>
+</div>
+<div class="g_body" id="g_BODY">
+  <!--▼▼▼ 알림톡 ▼▼▼ -->
+
+  <div class="g_container" id="g_CONTENT">
+    <div class="g_remocon_l">
+    </div>
+
+    <div class="aside">
+      <div class="nav_subject"><a href="http://www.itemmania.com/myroom/" class="myroom">MyRoom</a></div>
+      <div class="nav">
+        <div class="nav_title "><a href="http://www.itemmania.com/myroom/message/">메세지함</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/sell/sell_regist.html">판매관련</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/buy/buy_regist.html">구매관련</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/goods_alarm/alarm_sell_list.html">물품등록 알리미</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/complete/sell.html">종료내역</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/complete/cancel_sell.html">취소내역</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/mileage/my_mileage/">마일리지</a></div><ul class='nav_sub g_list'><li class=""><a href="http://www.itemmania.com/myroom/mileage/my_mileage/">내마일리지</a></li><li class=""><a href="http://www.itemmania.com/myroom/mileage/guide/charge.html">마일리지충전</a></li><li class=""><a href="http://www.itemmania.com/myroom/mileage/payment/payment_switch.html">마일리지출금</a></li><li class=""><a href="http://www.itemmania.com/myroom/mileage/change/culturecash/">마일리지전환</a></li></ul><div class="nav_title "><a href="http://www.itemmania.com/myroom/myinfo/myinfo_check.html">개인정보</a></div><ul class='nav_sub g_list'><li class=""><a href="http://www.itemmania.com/myroom/myinfo/myinfo_check.html">개인정보수정</a></li><li class=""><a href="http://www.itemmania.com/myroom/myinfo/myinfo_login_sync.html">로그인연동관리</a></li><li class=""><a href="http://www.itemmania.com/myroom/myinfo/myinfo_offer_check.html">수신/동의철회</a></li><li class=""><a href="http://www.itemmania.com/myroom/myinfo/credit_rating.html">신용등급/인증</a></li></ul><div class="nav_title "><a href="http://www.itemmania.com/myroom/lotto/lottopot.html">로또 추천번호</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/fortune/index.html">운세/사주</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/pmall/spointmall.html">쇼핑포인트</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/cash_receipt/cash_receipt_list.html">현금영수증</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/coupon/free.html">이용권현황</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/myinfo/myinfo_safe_settlement.html">보안센터</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/customer/">환경설정</a></div><div class="nav_title "><a href="http://www.itemmania.com/myroom/user_leave/user_leave_form.html">회원탈퇴</a></div>    </div>
+    </div>    <a name="top"></a>
+
+
+    <div class="g_content">
+      <!-- ▼ 타이틀 //-->
+      <div class="g_title_blue">
+        구매 종료 <span>내역</span>
+        <ul class="g_path">
+          <li>홈</li>
+          <li>마이룸</li>
+          <li>종료내역</li>
+          <li class="select">구매 종료 내역</li>
+        </ul>
+      </div>
+      <!-- ▲ 타이틀 //-->
+      <div id="outData">
+        <!-- ▼ 물품정보 //-->
+        <div class="g_subtitle first">물품정보</div>
+        <table class="g_green_table">
+          <colgroup>
+            <col width="130">
+            <col width="250">
+            <col width="130">
+            <col/>
+          </colgroup>
+          <tr>
+            <th>카테고리</th>
+            <td colspan="3">서든어택 > 기타 > 게임머니</td>
+          </tr>
+          <tr>
+            <th>물품제목</th>
+            <td colspan="3">[수량 : 14조] 1900:1비율로 판매합니다.</td>
+          </tr>
+          <tr>
+            <th>거래번호</th>
+            <td>#2021080711361354</td>
+            <th class="continue">등록일시</th>
+            <td>2021-08-07 17:52:33&#160;</td>
+          </tr>
+          <tr>
+            <th>구매수량</th>
+            <td colspan="3">14조 게임머니&#160;</td>
+          </tr>
+          <tr>
+            <th>구매금액</th>
+            <td colspan="3">266,000 원 (1조당 19,000원)</td>
+          </tr>
+        </table>
+        <!-- ▲ 물품정보 //-->
+        <!-- ▼ 거래종료내역 //-->
+        <div class="g_subtitle">거래종료내역</div>
+        <table class="g_green_table">
+          <colgroup>
+            <col width="130">
+            <col width="250">
+            <col width="130">
+            <col/>
+          </colgroup>
+          <tr>
+            <th>입금확인일</th>
+            <td>2021-08-07 17:52:33</td>
+            <th class="continue">종료일시</th>
+            <td>2021-08-07 17:57:42</td>
+          </tr>
+        </table>
+        <!-- ▲ 거래종료내역 //-->
+
+        <!-- ▼ 거래진행상황 //-->
+
+        <!-- ▼ 판매진행안내 //-->
+        <div class="trade_progress buy">
+          <div class="g_subtitle">
+            거래 진행 상황
+          </div>
+          <div class="trade_progress_content">
+            <div class="guide_wrap">
+              <div class="guide_set">
+                <span class="SpGroup buy_regist_icon"></span>
+                <span class="state">구매등록</span>
+                <p>구매할 물품을 등록해놓은<br/>[거래대기] 상태입니다.<br/>판매신청이 들어올때까지<br/>기다려주세요.</p>
+              </div>
+              <div class="guide_set">
+                <span class="SpGroup pay_wait_icon"></span>
+                <span class="state">입금대기</span>
+                <p>구매자가 입금을<br/>준비하고 있습니다.<br/>입금완료 후, 구매중 상태가<br/>되면 거래를 시작해주세요.</p>
+                <i class="SpGroup arr_mini"></i>
+              </div>
+              <div class="guide_set">
+                <span class="SpGroup buy_ing_icon"></span>
+                <span class="state">구매중</span>
+                <p>현재 판매자와 거래중입니다.<br/>판매자와 반드시 전화통화로<br/>거래하시기 바랍니다.<br/>[통화 불가 시 1:1대화함 사용]
+                </p>
+                <i class="SpGroup arr_mini"></i>
+              </div>
+              <div class="guide_set">
+                <span class="SpGroup trade_icon"></span>
+                <span class="state">인수완료</span>
+                <p>거래종료 예정입니다.<br/>판매자가 인계확인 할 때까지<br/>기다려주세요.</p>
+                <i class="SpGroup arr_mini"></i>
+              </div>
+              <div class="guide_set active">
+                <span class="SpGroup buy_complete_icon"></span>
+                <span class="state">구매완료</span>
+                <p>거래가 정상적으로<br/>종료되었습니다.<br/>문제 발생 시<br/>고객센터로 문의해주세요.</p>
+                <i class="SpGroup arr_mini"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ▲ 판매진행안내 //-->            <!-- ▲ 거래진행상황 //-->
+
+        <div class="tb_bt_txt">
+          <div class="g_left">
+            <a href="#" onclick="_window.open('talk', '/myroom/include/talk.html?info=68xaxRfBmWlkzxCmr5RqcYA06vPwBMWWbWlcs6cdiglOMukvztE/VXlnuqqHEaatZgyfG0Ba7WxbB4ww2C8N|iTIyCYzH0y6weXhO9o4VkIdm4Rq6gzGM7CSQDDWWhbOGRGc2p8ecq|GZIc|K6Z8tbQqieUkJLwLZtyPWeNaE0OU|RDndiWhfBFlyukarp8c0H2AQsakWfERNf/VdN9YSoS4bEcTi|ZtUeJW07ItY0XZe2XOhWkvTJyrHHrK3Ku/gDTq8/AExZY|PTjJLHIMpmNilF|JftNY16CU8mqkZRknBuj2ezvR6GZihu03m9y6bBx|GnoA3aIAefFxSYtBK2fVfypV|8a7VuEgB4LFVBweBxPs4XZbex2CtLKtnV/T5uaGIiJuNYpf9efBSl1oO8GCD3cC1c2BXXE6Ow8/tt3Y8GXiGrUcYz7YEJ5guYU1N3cnla|VLCpvGnaHcHcr|cr|MCjXowG8qR9ukKRUsKIkn1GKCRBU7mXtjlVAA4aO/Sj3Y/FCcjqcDt5FAO/TDS85bfxEMCG6T6pmBT1fA3wXSHwgzvM84YtI55IX2PLGgUFtrqEe87H6L16kmHJDLuuKtBK55daj4x3z2TEv6Tgb6oyiQP/FuWwrnDl0CUCd2e0t43x44FNBrWtxjSck0IsXOWXug7F8lLzUgxe46a70IOR6LLM6GS3vL4bZ0YAqERtrUYg8rfv/XA/xMe|gQza3ARqZNkS7UQ3i1MqGbGFgiICOquotZGIbPtlvf02EOl3duUjMIFK|XYUwulQ0HXAJSvPLhs4unwz7r|G2RqLWaZIkPji|i/y0kX19Gq34K1CM4k28jkzkzENoePI4Lej3OmaN1|A3mSZqAvCU81Lv/0YY1u3ljg==', 620, 550);"><img src="http://img2.itemmania.com/images/btn/btn_1vs1_talk.gif" width="71" height="20" alt="1:1 대화함"></a>
+            <a href="#" onclick="location.href='/customer/compensate/index.html';"><img src="http://img3.itemmania.com/images/btn/btn_bo.gif" width="66" height="20" alt="보상제도"></a>
+            <a href="#" onclick="location.href='/guide/compensation.html';"><img src="http://img4.itemmania.com/images/btn/btn_200per.gif" width="94" height="20" alt="200% 사고보상"></a>
+            1:1 대화함은 올해를 제외한 이전 6개월만 보관됩니다.
+          </div>
+          <div class="g_right">
+            <a href="#" onclick="content_printer('outData');"><img src="http://img2.itemmania.com/images/btn/btn_print.gif" width="96" height="20" alt="프린트 하기"></a>
+          </div>
+        </div>
+        <div class="g_finish"></div>
+        <!-- ▼ 상세설명 //-->
+        <div class="g_subtitle">상세설명</div>
+        <div class="gray_box">
+          <div class="detail_info">
+            <div class="detail_text">
+              1. 캐릭터명 정확히 기재해주세요.
+              <br>2. 누군가가 여기로 신청하라고 했으면 100% 사기입니다.
+              <br>3. 노블 판매하여 얻은 SP 입니다.
+              <br>4. 수수료는 구매자 부담입니다.
+              <br>5. 10만sp당 190,000원 입니다.
+            </div><!--//.detail_text-->
+          </div>
+        </div>
+        <!-- ▲ 상세설명 //-->
+      </div>
+      <div class="g_right">
+        <a href="before_buy_end.html?type="><img src="http://img3.itemmania.com/images/btn/btn_list.gif" width="32" height="14" alt="목록"></a>
+        <a href="#top"><img src="http://img4.itemmania.com/images/btn/btn_top.gif" width="32" height="14" alt="TOP"></a>
+      </div>
+      <!--
+                  <div id="amends_box">
+              <ul class="Aamends_bg2">
+                  <li>업계최초! 최대! 최저가 <span class="f_red1">200%</span> 보상</li>
+                  <li class="button">
+                      <a href="/guide/compensation_2.html"><img src="/images/btn/btn_priceview.gif" width="79" height="20" alt="자세히보기"></a>
+                  </li>
+              </ul>
+              <div class="amends_btns">
+                                          <a href="#" onclick="alert('검수가 진행중 입니다!');"><img src="/images/btn/btn_requital03.gif" width="118" height="21" alt="검수중"></a>
+                                          <a href="#" onclick="_window.open('ef', 'popup/pop_process.php?type=2&trade_id=&tbName=&state=&id=', 10, 10);"><img src="/images/btn/btn_requital02.gif" width="133" height="21" alt="신청결과"></a>
+                                  </div>
+          </div>
+                  -->
+      <iframe name="print_content" id="print_content" width="1" height="1" style="visibility:hidden"></iframe>
+      <form name="excelForm" id="excelForm" method="post">
+        <input type="hidden" name="id" value="2021080711361354">
+        <input type="hidden" name="type" value="sell">
+        <input type="hidden" name="date" value="2021">
+      </form>
+    </div>
+    <div class="g_finish"></div>
+  </div>
+</div>
+<!--
+<script type="text/javascript" src="/_js/_jquery3.js?v=190220"></script>
+<script type="text/javascript" src="/_js/_comm.min.js?v=23011110"></script>
+<script type="text/javascript" src="/_js/_gs_control_200924.min.js?v=21101416"></script>
+<script type="text/javascript" src="/_js/_common_initialize_new.min.js?v=21110910"></script>
+<script type="text/javascript" src="/portal/banner/js/banner.js?v=190220"></script>
+<script type="text/javascript" src="js/_view.js?190220"></script>
+<script type="text/javascript">
+  var gsVersion = '2301171207';
+  var _LOGINCHECK = '1';
+  _initialize();
+</script>
+<script type="text/javascript" src="/advertise/advertise_code.js?v=221219"></script>
+-->
+
+<!--footer 시작-->
+<div th:replace="fragment/footer"/>
+</body>
+</html>

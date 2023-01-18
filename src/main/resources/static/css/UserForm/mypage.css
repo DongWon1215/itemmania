@@ -672,7 +672,7 @@ body
 .tab_sib{overflow:hidden;padding-bottom:7px;font-size:12px}
 .g_list dt{position:relative;margin-bottom:5px}
 .g_list li,.g_list dd{position:relative;margin-bottom:3px;padding-left:7px}
-.g_list li:before,.g_list dd:before{position:absolute;left:0;content:"Â·"}
+.g_list li:before,.g_list dd:before{position:absolute;left:0;content:"· "}
 .g_path{position:absolute;top:10px;right:0;font-weight:bold;letter-spacing:-1px}
 .g_path li{position:relative;float:left;margin-right:5px;padding-right:10px;font-size:12px;color:#636363}
 .g_path li:after{position:absolute;right:0;content:">";font-size:12px}
