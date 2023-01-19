@@ -71,7 +71,7 @@ public class UserEntity {
     {
         this.userBirth = userBirth;
         this.userName = userName;
-        this.userEMail = userEMail;
+        this.userEmail = userEMail;
         this.userPassword = userPassword;
         this.userPhoneNumber = userPhoneNumber;
         this.userRealName = userRealName;
