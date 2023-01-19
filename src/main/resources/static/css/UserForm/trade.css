@@ -1,0 +1,65 @@
+/* ▼ regist by and sell */
+.regist_btn01{ width:86px; height:20px; text-align:center; padding-top:1px; font-size:11px; box-sizing:border-box; }
+.regist_btn02{ width:54px; height:30px; text-align:center; padding-top:1px; font-size:11px; box-sizing:border-box; }
+.regist_btn03{ font-weight:bold; text-align:center; font-size:12px; box-sizing:border-box; border:1px solid #6D6D6D; background-color:#848484; vertical-align:middle; color:#FFF }
+.regist_btn04{ font-weight:bold; text-align:center; font-size:12px; box-sizing:border-box; border:1px solid #8F22B8; background-color:#9C59A6; vertical-align:middle; color:#FFF }
+.regist_btn05{ font-weight:bold; text-align:center; font-size:12px; box-sizing:border-box; border:1px solid #628509; background-color:#79A508; vertical-align:middle; color:#FFF }
+.regist_btn06{ font-weight:bold; text-align:center; font-size:12px; box-sizing:border-box; border:1px solid #4D5F91; background-color:#7A8CBE; vertical-align:middle; color:#FFF }
+.regist_btn07{ font-weight:bold; text-align:center; font-size:12px; box-sizing:border-box; border:1px solid #5E96B1; background-color:#5FBDBC; vertical-align:middle; color:#FFF }
+.regist_btn08{ text-align:center; font-size:11px; box-sizing:border-box; border:1px solid #B72F00; background-color:#E64C00; vertical-align:middle; color:#FFF }
+.regist_btn09{ width:45px; display:inline-block; padding:3px 0 5px; text-align:center; font-size:11px; box-sizing:border-box; border:1px solid #495162; background-color:#586175; vertical-align:middle; color:#FFF; font-weight:bold; }
+.regist_btn10{ width:45px; display:inline-block; padding:3px 0 5px; margin-left:5px; text-align:center; font-size:11px; box-sizing:border-box; border:1px solid #C5C5C5; background-color:#F0F0F0; vertical-align:middle; font-weight:bold; }
+.regist_btn11{ float:right; display:inline-block; padding:3px 5px 5px; margin-top:10px; text-align:center; font-size:11px; box-sizing:border-box; border:1px solid #9b9b9b; background-color:#FFF; font-weight:bold; }
+
+.btn_padding01{ padding:3px 15px 4px 15px;}
+.btn_padding02{ padding:3px 21px 4px 20px;}
+.btn_padding03{ padding:3px 10px 4px 9px;}
+.btn_padding04{padding:0px 9px;}
+/* ▲ regist by and sell */
+
+/* ▼ 나의 거래현황 */
+.bs_content{ position:relative; width:820px; height:104px; box-sizing: border-box; border:5px solid #EFF0F2;}
+/*↓ last-child 미확인*/
+.bs_content:last-child{ background-position:-2px -209px;}
+.bs_content > .icon_wrap {position: absolute; top:20px; left:15px;}
+.bs_content > .icon_wrap > span {display: inline-block; width:55px; height:55px; text-indent: -9999px;}
+.bs_content > .icon_wrap > .sell_icon{background-position: -612px -314px; }
+.bs_content > .icon_wrap > .buy_icon{background-position: -669px -314px; }
+.bs_content > .arr_icon{display: inline-block; position: absolute; top:37px; width:25px; height:20px; background-position: -726px -314px;}
+.bs_content > .arr1{left:423px;}
+.bs_content > .arr2{left:606px;}
+.bs_content > .step_title{position: absolute; top:15px; font-size:12px; color:#767676;}
+.bs_content > .deposit_product_title{left:293px;}
+.bs_content > .product_title{left:475px;}
+.bs_content > .complete_title{left:660px;}
+.bs_content > .regist_product{position:absolute;left:87px;width:147px;top:30px; font-size:12px; }
+.bs_content > .bargain_request_product{position:absolute;left:87px;width:147px;top:53px; font-size:12px; }
+.bs_content > .regist_product > .regist_title,
+.bs_content > .bargain_request_product > .bargain_request_title{float:left;}
+.bs_content > .regist_product > .regist_result,
+.bs_content > .bargain_request_product > .bargain_request_result{float:right; font-weight:bold;}
+.bs_content > .box_line{position:absolute; top:10px; left:264px; width:0; height:73px; border:0.5px solid #EFF0F1;}
+.bs_content > .deposit_product{ position:absolute; left:293px; top:45px; font-size:30px; font-weight:bold; }
+.bs_content > .deposit_product span{ font-size:12px; }
+.bs_content > .sell_product{ position:absolute; left:475px; top:45px; font-size:30px; font-weight:bold; }
+.bs_content > .sell_product span{ font-size:12px; }
+.bs_content > .detail_btn{display:block;position:absolute;left:660px;top:56px;width:81px;text-align:center;height:22px;font-size:12px;cursor:pointer;line-height:22px;background-color:#586175; color:#FFF;}
+.bs_content > .detail_btn > .arr_right{display:inline-block; margin-left:7px; width:5px; height:9px; background-position: -802px -74px;}
+/* ▲ 나의 거래현황 */
+
+.notice_box{ margin-top:20px; padding:15px 20px; border:1px solid #DDD; background-color:#F6F7F9; font-size:12px; }
+.notice_box dt{ margin-bottom:10px; padding-left:20px; background:url(//img3.itemmania.com/images/icon/img_notice.gif) no-repeat 0 3px; font-weight:bold; }
+.notice_box li, .notice_box dd{ margin-bottom:4px; }
+
+
+/*물품등록 알리미*/
+.sell_alarm_keyword{color:#159efd;}
+.buy_alarm_keyword{color:#13A33F;}
+
+
+
+
+
+
+
+

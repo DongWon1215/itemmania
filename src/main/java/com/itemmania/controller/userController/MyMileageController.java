@@ -1,18 +1,18 @@
-package com.itemmania.controller.boardController.sale;
-
+package com.itemmania.controller.userController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/view_sale")
-public class BoardViewSaleController {
-
+@RequestMapping("/myroom/mymileage")
+public class MyMileageController {
 
     @GetMapping
-    public String getBoardViewSale()
+    public String getMypageForm()
     {
-        return "board/sale/boardViewSale";
+        return "userForm/myRoom/myMileage";
     }
+
+
 }
