@@ -30,11 +30,13 @@ public class BoardEntity {
     // 회원 번호
     private UserEntity userNum;
 
-    @ManyToOne
+/*    @ManyToOne
     @NonNull
     @JoinColumn(name = "gameNum")
     // 게임 번호
-    private GameEntity gameNum;
+    private GameEntity gameNum;*/
+    // 기존 gameNum 삭제처리
+    // serverNum을 통하여 gameserver테이블 Join 후 gameNum 부르고 return list<GameEntity>로 게임가져오기 
 
     @ManyToOne
     @NonNull
