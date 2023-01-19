@@ -1,10 +1,203 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
+    <title>title</title>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
+<div th:replace="fragment/header"/>
+<div id="g_SLEEP" class="g_sleep g_hidden">
+    <div id="g_OVERLAY" class="g_overlay"></div>
+</div>
+<div class="g_body" id="g_BODY">
+    <div class="myotp_id_layer_wrapper">
+        <div class="inner"></div>
+    </div>
+    <div class="g_layer all_menu_layer" id="all_menu_layer">
+        <div class="inner">
+            <a href="javascript:;" class="sp_icon close_r" id="menu_close">닫기</a>
+        </div>
+    </div>
+    <div class="g_container" id="g_CONTENT">
+        <div class="g_remocon_l">
+        </div>
 
+        <div class="top_area">
+            <h1>회원가입</h1>
+            아이템매니아에 오신것을 환영합니다.<br>
+            회원이 되시면 보다 다양한 혜택을 받아보실 수 있습니다.
+            <div class="sp_join step3"></div>
+            <div class="join_new_banner">
+            </div>
+        </div>
+    </form>
+        <form id="frmInfo">
+            <table>
+                <colgroup>
+                    <col width="206">
+                    <col/>
+                </colgroup>
+                <tr>
+                    <th>이름</th>
+                    <th:block th:if="${data} != null">
+                        <td>${data.name}</td>
+                    </th:block>
+                    <th:block th:if="${data} == null">
+                        <input type="text" name="user_name" class="g_text" id="user_name" maxlength="12">
+                    </th:block>
+                </tr>
+                <tr>
+                    <th>아이디</th>
+                    <td>
+                        <div class="guide_add2">
+                            <input type="text" name="user_id" class="g_text" id="user_id" maxlength="12">
+                            <span class="id_check" id="idCheck">
+                                <input type="button" id="idCheckor" onclick="idDoubleCheckor()" >중복확인</input>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td>
+                        <div class="guide_add">
+                            <input type="password" name="user_password" class="g_password" id="user_password" maxlength="16" onchange="pwConditionCheck()">
+                            <div class="password_help" id="password_help"></div>
+                        </div>
+                        <div class="muser_password" id="muser_password"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>비밀번호 확인</th>
+                    <td>
+                        <div class="guide_add">
+                            <input type="password" name="user_password_validate" class="g_password" id="user_password_validate" maxlength="16" onchange="pwDuplicateCheck()">
+                            <div class="password_help" id="password_help2"></div>
+                        </div>
+                        <div class="DuplicateCheck" id="DuplicateCheck"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>연락처(휴대폰)</th>
+                    <td class="mobile_area">
+                        <select id="slctMobile_type" name="user_mobile_type">
+                            <option value="1"selected>SKT</option>
+                            <option value="2">KT</option>
+                            <option value="3">LG U+</option>
+                            <option value="4">SKT-A</option>
+                            <option value="5">KT-A</option>
+                            <option value="6">LG-A</option>
+                            <option value="N">휴대폰없음</option>
+                        </select>
+                        <select name="user_mobileA" id="user_mobileA">
+                            <option value="010"selected>010</option>
+                            <option value="011">011</option>
+                            <option value="016">016</option>
+                            <option value="017">017</option>
+                            <option value="018">018</option>
+                            <option value="019">019</option>
+                        </select>
+                        -
+                        <input type="text" name="user_mobileB" id="user_mobileB" maxlength="4" class="g_text" value="">
+                        -
+                        <input type="text" name="user_mobileC" id="user_mobileC" maxlength="4" class="g_text" value="">
+                        <span class="f_black3">※ SMS 수신거부는 가입 후 마이룸에서 가능합니다.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td class="email_area">
+                        <input type="text" name="user_email" maxlength="30" class="g_text"> @
+                        <input type="text" name="user_email_direct" value="" maxlength="30" class="g_text">
+                        <select id="slctEmail_host" name="user_email_host">
+                            <option value="direct">직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="daum.net">daum.net</option>
+                            <option value="hotmail.com">hotmail.com</option>
+                            <option value="nate.com">nate.com</option>
+                            <option value="yahoo.co.kr">yahoo.co.kr</option>
+                            <option value="paran.com">paran.com</option>
+                            <option value="empas.com">empas.com</option>
+                            <option value="dreamwiz.com">dreamwiz.com</option>
+                            <option value="freechal.com">freechal.com</option>
+                            <option value="lycos.co.kr">lycos.co.kr</option>
+                            <option value="korea.com">korea.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="hanmir.com">hanmir.com</option>
+                        </select>
+                        <input type="button" value="중복확인" id="emailCheckBtn" class="btn_blue3">
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="g_btn">
+                <input type="submit" value="회원가입" class="btn_blue3 big_btn">
+            </div>
+        </form>
+
+        <div class="g_finish"></div>
+    </div>
+            <div th:replace="fragment/footer"/>
+</div>
+<script>
+    function idDoubleCheckor() {
+        $.ajax({
+            url: '/regist/doublecheck',
+            type: 'post',
+            async: false,
+            data: JSON.stringify(document.getElementById('user_id')),
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8'
+            ,
+            success: function () {
+                alert("동일한 아이디가 있습니다")
+            },
+            fail: function () {
+                alert("사용 가능한 아이딥니다")
+                document.getElementById('idCheckor').disabled = 'disabled'
+            }
+        })
+    }
+</script>
+
+<script>
+    let pw = document.getElementById('user_password').val;
+    let pw_validate = document.getElementById('user_password_validate').val;
+
+    function pwConditionCheck()
+    {
+        let req = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$";
+        if(!req.text(pw))
+        {
+            document.getElementById('muser_password').innerText='비밀번호에 대소문자, 특수문자가 반드시 하나씩 포함되어야 합니다';
+            document.getElementById('muser_password').style.color='red';
+        }
+        if(pw.length < 6 || pw.length > 12)
+        {
+            document.getElementById('muser_password').innerText='비밀번호는 6글자 이상 12글자 이하여야 합니다';
+            document.getElementById('muser_password').style.color='red';
+        }
+
+    }
+
+    function pwDuplicateCheck()
+    {
+        if(pw == pw_validate && pw != '' && pw_validate != '')
+        {
+            document.getElementById('DuplicateCheck').innerText='비밀번호가 일치합니다';
+            document.getElementById('DuplicateCheck').style.color='blue';
+        }
+
+        else
+        {
+            document.getElementById('DuplicateCheck').innerText='비밀번호가 일치하지 않습니다';
+            document.getElementById('DuplicateCheck').style.color='red';
+        }
+    }
+
+
+</script>
 </body>
 </html>

@@ -30,6 +30,5 @@ public class boardListController {
         log.info("프리미엄" + dealCheck_PremiumList);
         model.addAttribute("boarList", dealCheckList);
         model.addAttribute("boarPList", dealCheck_PremiumList);
-
     }
 }

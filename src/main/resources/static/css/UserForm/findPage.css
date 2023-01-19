@@ -1,0 +1,51 @@
+.g_container{ width:960px; }
+.find_title{margin-top:40px;font-size:30px;color:#000;text-align:center;}
+.find_title > span{margin-top:15px;display:block;font-size:16px;font-weight:bold;color:#000;text-align: center;}
+.tab_area{ margin-top:40px; }
+.tab_area:after{ content:''; display:block; clear:both; margin-bottom:40px; }
+.tab_area > div{ position:relative; box-sizing:border-box; float:left; width:50%; height:60px; border:1px solid #C6C6C6; background-color:#FFF; text-align:center; color:#666; font-size:20px; font-weight:bold; line-height:60px; }
+.tab_area > div > a{ display:block; text-align:center; }
+.tab_area > .selected{ background-color:#159EFD; border:1px solid #159EFD;color:#FFF;}
+.tab_area > .selected:after{ content:''; position:absolute; left:50%; bottom:-9px; margin-left:-10px; border-top:10px solid #159EFD; border-right:10px solid transparent; border-left:10px solid transparent; }
+.collapse:after{ content:''; display:block; clear:both; }
+.collapse .last_cont {border-bottom: 1px solid #D0D0D0;}
+.collapse .collapse_title{ position:relative; margin-bottom:-1px; padding:21px 10px 19px 40px; height:23px; border-top:1px solid #D0D0D0; border-bottom:1px solid #D0D0D0; background:url(//img2.itemmania.com/new_images/find/icon_join_b.gif) no-repeat 0 50%; font-size:16px; font-weight:bold; cursor:pointer }
+.collapse.active .collapse_title{ background-image:url(//img2.itemmania.com/new_images/find/icon_join_b_on.gif); }
+.collapse .collapse_title:after{ content:''; position:absolute; top:48%; right:20px; width:11px; height:9px; background:url(//img2.itemmania.com/new_images/find/icon_arr.png) no-repeat; }
+.collapse .collapse_title .blue{ color:#159EFD }
+.collapse .collapse_cont{ display:none; overflow:hidden; padding:40px; background-color:#FBFBFB; text-align:center; font-size:14px; }
+.collapse.active .collapse_cont{ display:block }
+.collapse .collapse_cont label{ font-weight:bold; }
+.collapse .id_list > label{ display:block; margin:5px 0; text-align:center; }
+.collapse .collapse_cont dl{ clear:both; box-sizing:border-box; position:relative; display:inline-block; width:547px; padding-left:110px; font-size:14px; }
+.collapse .collapse_cont dt, .collapse .collapse_cont dd{ position:relative; margin-bottom:10px; }
+.collapse .collapse_cont dt{ position:absolute; left:0; width:110px; height:44px; font-weight:bold; line-height:44px; }
+.collapse .collapse_cont dd .g_text, .collapse .collapse_cont dd .g_password{ width:100%; height:44px; text-align:center; }
+.collapse .collapse_cont dd:last-child{padding-top:10px;text-align:center;}
+.collapse .collapse_cont .write_id dd:last-child{padding:0;}
+.collapse .collapse_cont .pw_area .g_password{ padding-right:70px; }
+.collapse .collapse_cont .pw_area .password_help{ position:absolute; right:10px; top:8px; font-weight:bold; }
+.collapse .collapse_cont .muser_password{ font-size:12px; }
+.collapse .collapse_cont .mobile .g_text{ width:137px; }
+.collapse .collapse_cont .g_btn{ margin:20px 0 10px; }
+.collapse .collapse_cont .btn_blue3{ width:220px; padding:15px 0; background-color:#159EFD;font-size:15px;}
+.collapse .collapse_cont .btn_gray3{ display:inline-block; width:220px; padding:15px 0; font-size:15px; box-sizing: border-box; border:1px solid #8E8E8E;}
+.collapse .collapse_cont .big_btn{ width:274px; height:60px; border-radius: 50px; font-size:20px;}
+.collapse .collapse_cont .small_btn{ width:130px; }
+.collapse .collapse_cont .icon_mobile{ display:inline-block; width:63px; height:68px; margin-bottom:15px; background:url(//img3.itemmania.com/new_images/find/icon_phone.png) no-repeat; text-indent:-9999px; }
+.collapse .collapse_cont .icon_ipin{ display:inline-block; width:100px; height:100px; margin-bottom:15px; background:url(//img3.itemmania.com/new_images/find/icon_ipin2.png) no-repeat; text-indent:-9999px; }
+.collapse .collapse_cont .big_txt{margin-top:42px;display:block;font-size:18px; font-weight:bold; text-align:center; }
+.collapse .collapse_cont .big_txt2{display:block;font-size:18px; font-weight:bold; text-align:center; }
+.collapse .collapse_cont .small_txt{margin-top:10px;display:block;font-size:16px;color:#9F9F9F; text-align:center; }
+.collapse .collapse_cont .des_txt{ display:block; margin:30px 0; font-size:12px; color:#9F9F9F; text-align:center; }
+.collapse .collapse_cont .write_id{ width:350px; margin-top:20px; }
+.bt_txt{ margin-top:24px; font-weight:bold; font-size:14px; }
+.join_btn{ display:inline-block; width:136px; height:46px; margin-left:20px; background-color:#FF7F47; color:#FFF; font-size:15px; text-align:center; line-height:50px; }
+.collapse .collapse_cont .change_area{ text-align:center; }
+.collapse .collapse_cont .gray_box{ box-sizing:border-box; width:470px; margin:0 auto; padding:20px 50px; background-color:#F1F1F1; line-height:40px; font-weight:bold; text-align:center; }
+.collapse .collapse_cont .gray_box .g_text{ width:300px; height:40px; margin-left:5px; text-align:center; font-size:15px; }
+.collapse .collapse_cont .gray_box .certkey_txt{ margin-left:60px; font-size:12px; font-weight:normal; }
+.g-recaptcha > div{ margin:0 auto; }
+
+/* 비밀번호 찾기 id 노출 div */
+.collapse .collapse_cont .id_wrapper {margin:0 auto; width:547px; height:40px; text-align: center;}

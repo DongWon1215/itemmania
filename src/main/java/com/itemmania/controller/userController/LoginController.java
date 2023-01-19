@@ -26,22 +26,18 @@ public class LoginController {
     }
 
     @PostMapping
-    public String login(HttpServletRequest request, @RequestBody LoginRequest loginRequest)
+    public String login(HttpServletRequest request, @RequestParam("user_id") String user_id, @RequestParam("user_password") String user_Pw)
     {
-        log.info("일단 들어오긴 했다");
-
-        log.info("getUserName = " + loginRequest.getUser_name());
-        log.info("getUserPassword = " + loginRequest.getUser_password());
-
-
-        if(!userService.isExistUser(loginRequest.getUser_name(), loginRequest.getUser_password()))
+        if(!userService.isExistUser(user_id, user_Pw))
             return "/UserForm/registerForm";
 
-        UserEntity user = userService.getUser(loginRequest.getUser_name(), loginRequest.getUser_password());
+        UserEntity user = userService.getUser(user_id, user_Pw);
 
         HttpSession session = request.getSession();
 
         session.setAttribute("userInfo",user);
+
+        log.info("세션 정보 ==> " + user);
 
         return "index";
     }
