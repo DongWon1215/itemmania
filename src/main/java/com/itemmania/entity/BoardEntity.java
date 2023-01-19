@@ -44,6 +44,12 @@ public class BoardEntity {
     // 서버 번호
     private GameServerEntity serverNum;
 
+    @ManyToOne
+    @NonNull
+    @JoinColumn(name = "tradeNum")
+    // 서버 번호
+    private TradeEntity tradeNum;
+
     @Column
     @NonNull
     @Temporal(TemporalType.TIMESTAMP)//날짜 타입 2013-01-12 17:47:11
