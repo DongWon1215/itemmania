@@ -21,9 +21,17 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
     @Query("select b from BoardEntity b where b.dealCheck = ?1 and b.salePremium = ?2")
     List<BoardEntity> boardListNotPremium(String dealCheck, boolean no);
 
+    // 체크한 dealCheck + 사용자가 입력한 게임 or 게임서버 결과를 리스트로 받음
+    @Query("""
+            select b from BoardEntity b
+            where b.salePremium = ?1 and b.dealCheck = ?2 and b.serverNum.gameNum.gameName = ?3 or b.serverNum.gameServerName = ?4""")
+    List<BoardEntity> boardSearchList(int premium, String dealCheck, String gameName, String gameServerName);
 
-
-
+    // 체크한 dealCheck + 사용자가 입력한 게임 or 게임서버 결과를 리스트로 받음
+    @Query("""
+            select b from BoardEntity b
+            where b.salePremium = :premium and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = ?3 or b.serverNum.gameServerName = ?4""")
+    List<BoardEntity> boardP_SearchList(int premium, String dealCheck, String gameName, String gameServerName);
 
 
     @Transactional
@@ -37,12 +45,14 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
    /*
 
 
-    INSERT INTO `proj`.`board` (
-        `board_time`, `board_title`, `board_trade_status`, `deal_check`, `game_num`,
+        INSERT INTO `proj`.`board` (
+        `board_time`, `board_title`, `board_trade_status`, `deal_check`,
         `server_num`, `sale_aria`, `sale_nick_name`, `sale_photo`, `sale_premium`,
         `sale_price`, `sale_type`, `sale_unit`, `user_num`)
-        VALUES ( '2020-02-02', '게시판 제목sale',0, 'sale', '1', '1',
-        '상세설명', '본인닉네임', '등록사진', 0, '999',  0,'1','1');
+        VALUES ( '2020-02-02', '게시판 제목sale',0, 'sale', '6',
+        '상세설명', '본인닉네임', '등록사진', 1, '999',  0,'1','1');
+
+
 
 
         */
