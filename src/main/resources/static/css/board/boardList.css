@@ -17,6 +17,14 @@
 .g_title_blue .trade_sub_title .quotation > span{color:#767676;}
 .g_title_blue .trade_sub_title .quotation > a{margin-left:10px;color:#9F9F9F;}
 .g_title_blue .trade_sub_title .quotation .f_normal{font-weight:normal;}
+.g_title_green .trade_sub_title{float:left;font-size:20px;letter-spacing:-2px;}
+.g_title_green .trade_sub_title li{float:left;margin-right:15px;}
+.g_title_green .trade_sub_title .game_name{padding-top:4px;font-size:15px;letter-spacing:-1px;color:#1D1D1D;}
+.g_title_green .trade_sub_title .game_name span{vertical-align:middle;}
+.g_title_green .trade_sub_title .quotation{display:none;padding-top:10px;font-size:12px;}
+.g_title_green .trade_sub_title .quotation > span{color:#767676;}
+.g_title_green .trade_sub_title .quotation > a{margin-left:10px;color:#9F9F9F;}
+.g_title_green .trade_sub_title .quotation .f_normal{font-weight:normal;}
 .btn_reg{display:inline-block;box-sizing:border-box;width:98px;height:30px;border-radius:15px;background-color:#159EFD;font-size:14px;font-weight:bold;text-align:center;vertical-align:top;cursor:pointer;line-height:28px;color:white !important;}
 .trade_sub_title .favorite{display:inline-block;width:23px;height:22px;margin:0 10px 0 4px;cursor:pointer;}
 .trade_sub_title .favorite.onfav{background-image:url(//img2.itemmania.com/new_images/sell/icon_star.png);}
