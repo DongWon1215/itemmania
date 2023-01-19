@@ -44,3 +44,25 @@ $(document).ready(() => {
         })
     });
 })
+/*
+
+function searchbarSubmit() {
+    var f = document.getElementById("g_searchbar_form");
+    var h = f.querySelector('[name="search_game"]');
+    var c = f.querySelector('[name="search_server"]');
+    var a = h.value;
+    var g = c.value;
+    var b = f.querySelector('[name="search_type"]:checked').value;
+    var d = (g === "0" || g === "") ? "list.html" : "list_search.html";
+    var e = "//trade.itemmania.com/" + b + "/" + d;
+    if (a.isEmpty()) {
+        alert("게임을 선택해주세요.");
+        return false
+    } else {
+        _myService.setLastSearch()
+    }
+    f.action = e;
+    return true
+}
+
+*/
