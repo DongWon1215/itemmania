@@ -44,7 +44,6 @@ $(document).ready(() => {
         })
     });
 })
-/*
 
 function searchbarSubmit() {
     var f = document.getElementById("g_searchbar_form");
@@ -65,4 +64,3 @@ function searchbarSubmit() {
     return true
 }
 
-*/

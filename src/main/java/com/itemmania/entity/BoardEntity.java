@@ -52,9 +52,8 @@ public class BoardEntity {
 
     @Column
     @NonNull
-    @Temporal(TemporalType.TIMESTAMP)//날짜 타입 2013-01-12 17:47:11
     // 게시글 작성 시간
-    private Date boardTime;
+    private LocalDate boardTime;
 
     @Column
     @NonNull

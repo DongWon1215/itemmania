@@ -1,20 +1,33 @@
+<html>
+<script>
+    function searchbarSubmit() {
+        //form태그 아이디 받기
+        var formId = document.getElementById("g_searchbar_form");
+
+        // 받은 formId에 속해있는  value추출
+        var st = formId.querySelector('[name="search_type"]:checked').value;
+        var sGameServer = formId.querySelector('[name="searchGameServer"]').value;
+
+        console.log(st + "-" + sGameServer);
+
+    }
+</script>
 <div class="g_logo_area" xmlns:th="http://www.w3.org/1999/html">
     <!--▼▼▼ 공통 로고 배너 ▼▼▼ -->
     <div class="logo">
-        <a href="/board/boardList?deal=sale">
+        <a href="/">
             <img src="../../image/logo.gif" width="220px"/>
         </a>
     </div>
     </style>
     <div class="g_search_top">
-        <form id="g_searchbar_form" method="post" action="" onsubmit="return searchbarSubmit();">
-
+        <form id="g_searchbar_form" method="post" action="/boardSearch" onsubmit="return searchbarSubmit();">
             <div class="g_search_wrapper">
                 <div class="search_area">
                     <div class="g_trade_type">
                         <label class="radiocontainer f_blue1">
                             팝니다
-                            <input type="radio" name="search_type" value="sell" checked="">
+                            <input type="radio" name="search_type" value="sale" checked="">
                             <span class="checkmark"></span>
                         </label>
                         <label class="radiocontainer f_green1">
@@ -34,15 +47,4 @@
         </form>
     </div>
 </div>
-<script>
-    function searchbarSubmit() {
-        var formId = document.getElementById("g_searchbar_form");
-        var search_type = formId.querySelector('[name="search_type"]')
-
-        formId.querySelector('[name="sear"]')
-
-
-    }
-
-
-</script>
+</html>
