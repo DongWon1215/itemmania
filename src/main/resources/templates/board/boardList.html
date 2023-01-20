@@ -234,7 +234,7 @@
             <li th:each="List:${boarList}" data-tid="2023011707336513" data-state="a">
 
                 <div class="col_01"><a href="javascript:;" data-scode="18182" data-sname="니나브"
-                                       data-search="true" th:text="${List.salePrice}"></a></div>
+                                       data-search="true" th:text="${List.serverNum.gameServerName}"></a></div>
                 <div class="col_02 active">
                     <a th:href="@{/board/view(boardNum=${List.boardNum},deal=${List.dealCheck})}">
                     <div class="mulline">
