@@ -19,8 +19,8 @@ public class BoardSearchService {
 
     //삽니다, 팝니다 구분하여 사용자가 입력한 게임or게임서버를 검색후 프리미엄 결과값만 출력 
     public List<BoardEntity> getP_SearchDataCheck(String dealCheck, String gameName, String gameServerName) {
-        int premium = 1;
-        log.info(premium+ dealCheck + gameName + gameServerName);
+        boolean premium = true;
+        log.info(premium + dealCheck + gameName + gameServerName);
 
         List<BoardEntity> P_list = boardRepository.boardP_SearchList(premium, dealCheck, gameName, gameServerName);
         log.info("검색서비스_프리미엄" + P_list);
@@ -29,8 +29,8 @@ public class BoardSearchService {
 
     //삽니다, 팝니다 구분하여 사용자가 입력한 게임or게임서버를 검색후 일반 결과값만 출력
     public List<BoardEntity> getSearchDataCheck(String dealCheck, String gameName, String gameServerName) {
-        int premium = 0;
-        log.info(premium+dealCheck + gameName + gameServerName);
+        boolean premium = false;
+        log.info(premium + dealCheck + gameName + gameServerName);
 
         List<BoardEntity> list = boardRepository.boardSearchList(premium, dealCheck, gameName, gameServerName);
         log.info("검색서비스_일반" + list);
