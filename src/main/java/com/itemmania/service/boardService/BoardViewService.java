@@ -13,10 +13,10 @@ public class BoardViewService {
     @Autowired
     private BoardRepository boardRepository;
 
-    public List<BoardEntity> getList() {
-        List<BoardEntity> all = boardRepository.findAll();
-        return all;
+    public BoardEntity selectBoardView(int boardNum){
+        return boardRepository.findById(boardNum).get();
     }
+
 
 
 

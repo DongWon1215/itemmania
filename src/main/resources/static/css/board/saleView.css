@@ -4,7 +4,8 @@
 .aside .menu_know .g_list{ margin-top:3px; padding:4px 7px 8px; background-color:#FFF; font-size:11px; line-height:15px; color:#767676; }
 .aside .menu_know .g_list dt{ margin:7px 0; padding-left:5px; background-color:#E8F2FF; font-weight:bold; }
 .aside .menu_know .g_list dd{ margin:0 0 4px 5px; }
-.certify_info{ overflow:hidden;/* border:1px solid #D5E2F2;*/ background-color:transparent; }
+
+.certify_info{ overflow:hidden; border:1px solid #D5E2F2; background-color:#F2F7FD; }
 .seller_info{ float:left; width:247px; padding:14px 0; background-color:#E9F3FF; }
 .seller_info li{ float:left; }
 .seller_info .credit_mark{ margin-left:25px; }
@@ -20,8 +21,7 @@
 .detail_text .g_screenshot2{margin-top:0;}
 .dfServer{ float:left; margin-bottom:5px; }
 .df_server_code{ float:left; margin-right:3px; }
-
-/*  */
+/* 더치트 거래사기 실시간 조회서비스 */
 .trade_fraud{ overflow:hidden }
 .trade_fraud > div{ position:relative; float:left; box-sizing:border-box; width:50%; padding:16px 13px 17px 13px; line-height:27px; }
 .trade_fraud .direct{ padding:16px 20px 17px 24px; }
@@ -34,18 +34,15 @@
 .fraud_result .warn{ background:url(//img3.itemmania.com/images/sell/fraud_srh/img_pop_danger.gif) no-repeat }
 .fraud_result .info_txt{ width:356px; margin-top:20px; padding:15px 0; border:2px solid #D4DEE6; text-align:center; letter-spacing:-1px; color:#5B5B5B; }
 .screenshot{float:left;margin-right:5px;}
-
-/**/
+/* NHN 배너 */
 ins > div{margin:0 auto;text-align:center;}
-
-/* */
+/* 퀵아이콘 */
 .quick_icon{position:absolute; top:6px; right:10px;}
 
-/* */
+/* 캐릭터정보 */
 .preview_area{cursor:pointer;}
 .character_select{display:inline-block;width:245px;padding:0 10px;vertical-align:top;}
 .character_select > ul > li{position:relative;overflow:hidden;padding:15px 10px 15px 95px;border-bottom:1px solid #EAEAEA;white-space:nowrap;-ms-text-overflow:ellipsis;text-overflow:ellipsis;}
 .character_select > ul > li:last-child{border-bottom:0;}
 .character_select > ul > li > span{position:absolute;top:15px;left:9px;width:85px;}
 .character_select > ul > li > select, .character_select > ul > li > input{width:100%;font-size:12px;}
-
