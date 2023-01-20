@@ -24,14 +24,14 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
     // 체크한 dealCheck + 사용자가 입력한 게임 or 게임서버 결과를 리스트로 받음
     @Query("""
             select b from BoardEntity b
-            where b.salePremium = ?1 and b.dealCheck = ?2 and b.serverNum.gameNum.gameName = ?3 or b.serverNum.gameServerName = ?4""")
-    List<BoardEntity> boardSearchList(int premium, String dealCheck, String gameName, String gameServerName);
+            where b.salePremium = :premium and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = :gameName or b.serverNum.gameServerName = :gameServerName""")
+    List<BoardEntity> boardSearchList(boolean premium, String dealCheck, String gameName, String gameServerName);
 
     // 체크한 dealCheck + 사용자가 입력한 게임 or 게임서버 결과를 리스트로 받음
     @Query("""
             select b from BoardEntity b
-            where b.salePremium = :premium and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = ?3 or b.serverNum.gameServerName = ?4""")
-    List<BoardEntity> boardP_SearchList(int premium, String dealCheck, String gameName, String gameServerName);
+            where b.salePremium = :premium and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = :gameName or b.serverNum.gameServerName = :gameServerName""")
+    List<BoardEntity> boardP_SearchList(boolean premium, String dealCheck, String gameName, String gameServerName);
 
 
     @Transactional
