@@ -2,19 +2,14 @@ package com.itemmania.repository;
 
 import com.itemmania.entity.BoardEntity;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Repository
 public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
-
     // sale buy 구분출력
     List<BoardEntity> findByDealCheck(String DealCheck);
 
@@ -30,15 +25,15 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
     // 체크한 dealCheck + 사용자가 입력한 게임 or 게임서버 결과를 리스트로 받음
     @Query("""
             select b from BoardEntity b
-            where b.salePremium = true and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = :gameName or b.serverNum.gameServerName = :gameServerName  """)
-    Page<BoardEntity> boardP_SearchList(Pageable pageable, String dealCheck, String gameName, String gameServerName);
+            where b.salePremium = true and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = :gameName or b.serverNum.gameServerName = :gameServerName ORDER BY b.boardNum desc  """)
+    List<BoardEntity> boardP_SearchList( String dealCheck, String gameName, String gameServerName);
 
 
     // 체크한 dealCheck + 사용자가 입력한 게임 or 게임서버 결과를 리스트로 받음
     @Query("""
             select b from BoardEntity b
-            where b.salePremium = false and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = :gameName or b.serverNum.gameServerName = :gameServerName   """)
-    List<BoardEntity> boardSearchList(Pageable pageable, String dealCheck, String gameName, String gameServerName);
+            where b.salePremium = false and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = :gameName or b.serverNum.gameServerName = :gameServerName ORDER BY b.boardNum desc  """)
+    List<BoardEntity> boardSearchList( String dealCheck, String gameName, String gameServerName);
 
 
     @Transactional
