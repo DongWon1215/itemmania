@@ -1,4 +1,4 @@
-package com.itemmania.controller.boardController.buy;
+package com.itemmania.controller.boardController.requestView;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

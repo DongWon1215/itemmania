@@ -47,7 +47,7 @@ public class BoardEntity {
     @ManyToOne
     @NonNull
     @JoinColumn(name = "tradeNum")
-    // 서버 번호
+    // 거래 번호
     private TradeEntity tradeNum;
 
     @Column

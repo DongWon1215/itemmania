@@ -188,12 +188,11 @@
 
     <div class="search_list_all">
         <ul class="search_list search_list_premium">
-
             <li th:each="P_List:${boarPList}" data-tid="2023011707392798" data-state="a">
                 <div class="col_01"><a href="javascript:;" data-scode="16179" data-sname="카마인"
                                        data-search="true" th:text="${P_List.serverNum.gameServerName}"></a></div>
                 <div class="col_02 active">
-                    <a th:href="@{/view_buy(boardNum=${P_List.boardNum})}">
+                    <a th:href="@{/board/view(boardNum=${P_List.boardNum},deal=${P_List.dealCheck})}">
                         <div class="mulline">
                             <span class="title title_blue" th:text="${P_List.boardTitle}"></span>
                         </div>
@@ -237,8 +236,8 @@
                 <div class="col_01"><a href="javascript:;" data-scode="18182" data-sname="니나브"
                                        data-search="true" th:text="${List.salePrice}"></a></div>
                 <div class="col_02 active">
-                    <a th:href="@{/view_buy(boardNum=${List.boardNum})}">
-                        <div class="mulline">
+                    <a th:href="@{/board/view(boardNum=${List.boardNum},deal=${List.dealCheck})}">
+                    <div class="mulline">
                             <span class="title" th:text="${List.boardTitle}"></span>
                         </div>
                     </a>

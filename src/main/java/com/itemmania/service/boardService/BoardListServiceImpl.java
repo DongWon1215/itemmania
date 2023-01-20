@@ -23,6 +23,7 @@ public class BoardListServiceImpl implements BoardListService {
         log.info("BoardListService 탈출");
         return getAllList;
     }
+
     public List<BoardEntity> getDealCheckPremiumList(String DealCheck, boolean yes) {
         // boardList_Premium 출력
         List<BoardEntity> getboardList_P = boardRepository.boardListPremium(DealCheck, yes);
