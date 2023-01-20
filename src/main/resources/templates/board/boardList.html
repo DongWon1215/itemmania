@@ -5,13 +5,15 @@
 <!--content_center-> class 입력시 중앙정렬-->
 <div class="g_container">
     <div class="spacer_bottom_20"></div>
-    <th:block th:if="${#strings.equals(param.deal,'buy')}">
+    <th:block th:if="${#strings.equals(searchType,'sale')}">
         <div class="g_title_blue">
             <div class="g_left">
                 <ul class="trade_sub_title">
+                    <span th:text="${searchType}"></span>
                     <li>팝니다</li>
                     <li class="game_name">
-                        <span>로스트아크_서버전체</span>
+                        <!--<span>로스트아크_서버전체</span>-->
+                        <span th:text="${searchGameServer}"></span>
                     </li>
                 </ul>
             </div>
@@ -22,20 +24,20 @@
     </th:block>
 
 
-    <th:block th:if="${#strings.equals(param.deal,'sale')}">
-    <div class="g_title_green">
-        <div class="g_left">
-            <ul class="trade_sub_title">
-                <li>삽니다</li>
-                <li class="game_name">
-                    <span>로스트아크_서버전체</span>
-                </li>
-            </ul>
+    <th:block th:if="${#strings.equals(searchType,'buy')}">
+        <div class="g_title_green">
+            <div class="g_left">
+                <ul class="trade_sub_title">
+                    <span th:text="${searchType}"></span>
+                    <li class="game_name">
+                        <span th:text="${searchType}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="g_right">
+                <a href="/buy/?game=2696&amp;server=18182" class="btn_reg">구매등록 +</a>
+            </div>
         </div>
-        <div class="g_right">
-            <a href="/buy/?game=2696&amp;server=18182" class="btn_reg">구매등록 +</a>
-        </div>
-    </div>
     </th:block>
 
     <div class="g_tab">
@@ -79,52 +81,6 @@
             <div class="search_box">
                 <div class="search_reset">초기화</div>
                 <div class="search_row">
-                    <div class="search_tit">물품유형</div>
-                    <ul id="goods">
-                        <li>
-                            <input id="goods_type_1" type="radio" name="goods_type" value="1"
-                                   class="g_btn_white2_radio"
-                                   checked="">
-                            <label for="goods_type_1">전체</label>
-                        </li>
-                        <li>
-                            <input id="goods_type_2" type="radio" name="goods_type" value="2"
-                                   class="g_btn_white2_radio">
-                            <label for="goods_type_2">일반</label>
-                        </li>
-
-                        <li>
-                            <input id="goods_type_3" type="radio" name="goods_type" value="3"
-                                   class="g_btn_white2_radio">
-                            <label for="goods_type_3">분할</label>
-                        </li>
-
-                        <li>
-                            <input id="goods_type_4" type="radio" name="goods_type" value="4"
-                                   class="g_btn_white2_radio">
-                            <label for="goods_type_4">흥정</label>
-                        </li>
-                    </ul>
-                    <div class="search_tit">거래상태</div>
-                    <ul id="state">
-                        <li>
-                            <input id="trade_state_1" type="radio" name="trade_state" value="1"
-                                   class="g_btn_white2_radio" checked="">
-                            <label for="trade_state_1">전체</label>
-                        </li>
-                        <li>
-                            <input id="trade_state_2" type="radio" name="trade_state" value="2"
-                                   class="g_btn_white2_radio">
-                            <label for="trade_state_2">거래대기</label>
-                        </li>
-                        <li>
-                            <input id="trade_state_3" type="radio" name="trade_state" value="3"
-                                   class="g_btn_white2_radio">
-                            <label for="trade_state_3">거래종료</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="search_row">
                     <div class="search_tit">신용등급</div>
                     <ul id="credit">
                         <li>
@@ -153,29 +109,26 @@
                             <label for="credit_type_6">실버 이상</label>
                         </li>
                     </ul>
-                    <div class="search_tit">기타조건</div>
-                    <ul id="etc">
+                    <div class="search_tit">거래상태</div>
+                    <ul id="state">
                         <li>
-                            <input type="checkbox" name="compen" id="compen" class="g_checkbox check_purple">
-                            <label for="compen">200% 보상 물품</label>
+                            <input id="trade_state_1" type="radio" name="trade_state" value="1"
+                                   class="g_btn_white2_radio" checked="">
+                            <label for="trade_state_1">전체</label>
                         </li>
                         <li>
-                            <input type="checkbox" name="sell_compen" id="sell_compen"
-                                   class="g_checkbox check_purple">
-                            <label for="sell_compen">200% 구매보상</label>
+                            <input id="trade_state_2" type="radio" name="trade_state" value="2"
+                                   class="g_btn_white2_radio">
+                            <label for="trade_state_2">거래대기</label>
                         </li>
                         <li>
-                            <input type="checkbox" name="discont" id="discont" class="g_checkbox check_purple">
-                            <label for="discont">구매할인 물품</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="excellent" id="excellent" class="g_checkbox check_purple">
-                            <label for="excellent">우수인증 물품</label>
+                            <input id="trade_state_3" type="radio" name="trade_state" value="3"
+                                   class="g_btn_white2_radio">
+                            <label for="trade_state_3">거래종료</label>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="toggleer"></div>
         </form>
     </div>
     <div class="g_subtitle">
@@ -237,7 +190,7 @@
                                        data-search="true" th:text="${List.serverNum.gameServerName}"></a></div>
                 <div class="col_02 active">
                     <a th:href="@{/board/view(boardNum=${List.boardNum},deal=${List.dealCheck})}">
-                    <div class="mulline">
+                        <div class="mulline">
                             <span class="title" th:text="${List.boardTitle}"></span>
                         </div>
                     </a>
@@ -253,8 +206,17 @@
         </ul>
     </div>
     <div class="loading g_hidden"></div>
+    <span th:text="${pageNum}"></span>
+    <span th:text="${previous}"></span>
+    <span th:text="${next}"></span>
+    <div class="pagination justify-content-center">
+        <a th:href="@{/board/boardList/(search_type=${searchType},searchGameServer=${searchGameServer}, page = ${previous})}">글
+            이전페이지</a>
+        <a th:href="@{/board/boardList/(search_type=${searchType},searchGameServer=${searchGameServer}, page = ${next})}">글
+            다음페이지</a>
+    </div>
     <div class="load_more">
-        + 50개 더보기
+        + 10개 더보기
     </div>
 </div>
 
