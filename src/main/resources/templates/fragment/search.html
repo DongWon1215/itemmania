@@ -1,21 +1,20 @@
 <html>
 <script>
     function searchbarSubmit() {
+
         //form태그 아이디 받기
         var formId = document.getElementById("g_searchbar_form");
 
         // 받은 formId에 속해있는  value추출
-        var st = formId.querySelector('[name="search_type"]:checked').value;
+        var st = formId.querySelector('[name="deal"]:checked').value;
         var sGameServer = formId.querySelector('[name="searchGameServer"]').value;
-
+        console.log("form 태그 이동" + st +"&"+ sGameServer)
         console.log(st + "-" + sGameServer);
-
-
         //검색시 링크에 deal=sale   deal=buy 값 파라미터로 넣어서 보내줘야함
 
     }
 </script>
-<div class="g_logo_area" xmlns:th="http://www.w3.org/1999/html">
+<div class="g_logo_area">
     <!--▼▼▼ 공통 로고 배너 ▼▼▼ -->
     <div class="logo">
         <a href="/">
@@ -30,12 +29,12 @@
                     <div class="g_trade_type">
                         <label class="radiocontainer f_blue1">
                             팝니다
-                            <input type="radio" name="search_type" value="sale" checked="">
+                            <input type="radio" name="deal" value="sale" checked="">
                             <span class="checkmark"></span>
                         </label>
                         <label class="radiocontainer f_green1">
                             삽니다
-                            <input type="radio" name="search_type" value="buy">
+                            <input type="radio" name="deal" value="buy">
                             <span class="checkmark"></span>
                         </label>
                     </div>

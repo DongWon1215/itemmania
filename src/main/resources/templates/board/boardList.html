@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <link type="text/css" rel="stylesheet" href="/css/board/boardList.css">
 
-<div th:replace="fragment/header" xmlns:th="http://www.thymeleaf.org"/>
+<div th:replace="fragment/header"/>
 <!--content_center-> class 입력시 중앙정렬-->
 <div class="g_container">
     <div class="spacer_bottom_20"></div>
@@ -210,9 +210,9 @@
     <span th:text="${previous}"></span>
     <span th:text="${next}"></span>
     <div class="pagination justify-content-center">
-        <a th:href="@{/board/boardList/(search_type=${searchType},searchGameServer=${searchGameServer}, page = ${previous})}">글
+        <a th:href="@{/board/boardList/(deal=${searchType},searchGameServer=${searchGameServer}, page = ${previous})}">글
             이전페이지</a>
-        <a th:href="@{/board/boardList/(search_type=${searchType},searchGameServer=${searchGameServer}, page = ${next})}">글
+        <a th:href="@{/board/boardList/(deal=${searchType},searchGameServer=${searchGameServer}, page = ${next})}">글
             다음페이지</a>
     </div>
     <div class="load_more">

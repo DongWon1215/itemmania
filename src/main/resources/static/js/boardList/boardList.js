@@ -1,3 +1,4 @@
+/*
 $(document).ready(() => {
     console.log('준비완료');
     $('#boardListSale').on('click', function () {
@@ -44,7 +45,9 @@ $(document).ready(() => {
         })
     });
 })
+*/
 
+/*
 function searchbarSubmit() {
     var f = document.getElementById("g_searchbar_form");
     var h = f.querySelector('[name="search_game"]');
@@ -63,4 +66,5 @@ function searchbarSubmit() {
     f.action = e;
     return true
 }
+*/
 

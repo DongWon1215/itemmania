@@ -17,17 +17,17 @@ import java.util.List;
 
 @Log4j2
 @Controller
-@RequestMapping("/board")
 public class BoardSearchController {
 
 
     @Autowired
     private BoardSearchService boardSearchService;
 
-    @GetMapping("/boardList")
-    public void getBoardSearch(Model model, @PageableDefault(size = 5, sort = "boardNum", direction = Sort.Direction.DESC) Pageable pageable,
-                               @RequestParam(value = "search_type") String search_type,
-                               @RequestParam(value = "searchGameServer") String searchGameServer) {
+    @RequestMapping(value = "/board/boardList", method = RequestMethod.GET)
+    /*@GetMapping("/board/boardList")*/
+    public void getBoardSearch(Model model, @PageableDefault(size = 5, sort = "boardNum", direction = Sort.Direction.DESC) Pageable pageable
+            , @RequestParam(required = false, value = "deal") String search_type,
+                               @RequestParam(required = false,value = "searchGameServer") String searchGameServer) {
         log.info("검색컨트롤러 들어옴");
         log.info(search_type);
         log.info(searchGameServer);
@@ -53,6 +53,7 @@ public class BoardSearchController {
         model.addAttribute("next", pageable.next().getPageNumber());
         // 현재 페이지번호 -1을 한 다음페이지 값
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        String url = "/board/boardList?{}";
 
 
     }
