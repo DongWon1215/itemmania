@@ -1,4 +1,4 @@
-package com.itemmania.controller.boardController;
+package com.itemmania.controller.boardController.boardList;
 
 import com.itemmania.entity.BoardEntity;
 import com.itemmania.service.boardService.BoardListService;
@@ -17,7 +17,7 @@ public class BoardListController {
     @Autowired
     private BoardListService boardListService;
 
-    @GetMapping("/board/boardList")
+    @GetMapping("/board/boardList2")
     public void getsaleList(Model model, @RequestParam(value = "deal", required = false) String deal) {
         log.info("보드리스트 컨트롤러 들어옴보드리스트 컨트롤러 들어옴" + deal);
         boolean yes = true;
