@@ -27,7 +27,7 @@ public class BoardViewController {
             @RequestParam(value = "deal")String dealCheck, // 판매,구매 구별
             Model model
     ) {
-        log.info("BoardViewBuyController 들어옴");
+        log.info("BoardVieController 들어옴");
         model.addAttribute("boardView",boardViewService.selectBoardView(boardNum));
         model.addAttribute("boardList",boardListService.getAllList());
         log.info("boardView");
@@ -36,11 +36,11 @@ public class BoardViewController {
 
         if (dealCheck.equals(buy)) {
 
-            log.info("팝니다!!!! 들어감");
+            log.info("삽니다!!!! 들어감");
             return "/board/view/boardViewBuy";
 
         } else {
-            log.info("삽니다!!!! 들어감");
+            log.info("팝니다!!!! 들어감");
             return "/board/view/boardViewSale";
 
         }

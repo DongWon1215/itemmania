@@ -14,28 +14,19 @@
 .add_info dt{ padding-top:3px; font-weight:bold; }
 .add_info dt, .add_info dd{ float:left; margin-right:13px; }
 .wideview{box-sizing:border-box; width:820px;height:46px; border:1px solid #E0E0E0; background-color:#FFF; font-size:14px; text-align:center; cursor:pointer;line-height:46px;}
+
+
 .detail_info{ height:138px; margin-bottom:5px; padding:20px 5px 20px 20px; border:1px solid #E1E1E1; background-color:#FBFBFB; }
 .detail_info.wide{ height:518px; }
 .detail_info .detail_text{ overflow:hidden; height:100%; }
 .detail_info.wide .detail_text{overflow:auto; }
+
 .detail_text .g_screenshot2{margin-top:0;}
 .dfServer{ float:left; margin-bottom:5px; }
 .df_server_code{ float:left; margin-right:3px; }
-/* 더치트 거래사기 실시간 조회서비스 */
-.trade_fraud{ overflow:hidden }
-.trade_fraud > div{ position:relative; float:left; box-sizing:border-box; width:50%; padding:16px 13px 17px 13px; line-height:27px; }
-.trade_fraud .direct{ padding:16px 20px 17px 24px; }
-.trade_fraud .direct:before{ position:absolute; left:0; height:32px; content:""; border-left:1px solid #D5D5D5; font-size:30px; }
-.trade_fraud .srh_btn{ display:inline-block; box-sizing:border-box; width:103px; height:29px; margin-left:6px; border:1px solid #696969; background-color:#8E8E8E; text-align:center; line-height:25px; color:#FFF; }
-.trade_fraud .g_text{ width:235px; height:29px; margin-top:-2px; }
-.fraud_result{ width:406px }
-.fraud_result .result{ width:360px; height:136px }
-.fraud_result .none{ background:url(//img3.itemmania.com/images/sell/fraud_srh/img_pop_safe.gif) no-repeat }
-.fraud_result .warn{ background:url(//img3.itemmania.com/images/sell/fraud_srh/img_pop_danger.gif) no-repeat }
-.fraud_result .info_txt{ width:356px; margin-top:20px; padding:15px 0; border:2px solid #D4DEE6; text-align:center; letter-spacing:-1px; color:#5B5B5B; }
-.screenshot{float:left;margin-right:5px;}
-/* NHN 배너 */
+
 ins > div{margin:0 auto;text-align:center;}
+
 /* 퀵아이콘 */
 .quick_icon{position:absolute; top:6px; right:10px;}
 
