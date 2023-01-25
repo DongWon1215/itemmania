@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>view sale</title>
+
+</head>
+<body>
+<div th:replace="fragment/header"/>
+<div class="g_container" id="g_CONTENT">
+
+    <div class="aside">
+        <div class="title">안전거래수칙</div>
+        <div class="menu_know">
+            <p>판매 신청 전 이것만은 꼭!!</p>
+            <dl class="g_list">
+                <dt>구매자 연락처,캐릭터명 확인</dt>
+                <dd>상대 거래자의 연락처, 캐릭터명을 반드시 확인합니다. 결제가 완료<br>되면 마이룸에서 구매자 정보를<br>확인하실 수 있습니다.</dd>
+                <dt>게임 상에서 채팅은 금물!</dt>
+                <dd>게임상에서 채팅은 금물입니다.<br>전화 통화 또는 1:1 대화함으로<br>거래를 하시기 바랍니다.</dd>
+                <dt>고의적 취소,직거래유도 주의</dt>
+                <dd>고의적인 취소 또는 직거래를<br>유도할 경우 사이트 이용에<br>제한을 받으실 수 있습니다.</dd>
+            </dl>
+            <div class="f_green2 f_small">
+                * 다른사람의 정보를 기재하거나<br>다른 게임 서버에 거래신청을 하여<br>문제가 발생할 경우, 거래신청자에게<br>책임이 있습니다.
+            </div>
+        </div><!--//.menu_know-->
+    </div><!--//.aside-->
+
+
+    <div class="g_content">
+        <!-- ▼ 타이틀 //-->
+        <div class="g_title_green">
+            판매정보
+            <span>확인</span>
+            <!-- 경로 -->
+            <ul class="g_path">
+                <li>홈</li>
+                <li class="select">삽니다</li>
+            </ul>
+        </div><!--//.g_title_green-->
+        <div class="g_gray_border"></div>
+        <!-- ▲ 타이틀 //-->
+        <a name="top"></a>
+            <!-- ▼ 물품정보 //-->
+            <div class="g_subtitle first">물품정보</div>
+            <table class="g_green_table">
+                <colgroup>
+                    <col width="160">
+                    <col width="250">
+                    <col width="160">
+                    <col/>
+                </colgroup>
+                <tr>
+                    <th>카테고리</th>
+                    <td colspan="3">
+                        <span th:text="${boardView.serverNum.gameNum.gameName}"/> &gt; <span th:text="${boardView.serverNum.gameServerName}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>물품제목</th>
+                    <td colspan="3" th:text="${boardView.boardTitle}"></td>
+                </tr>
+                <tr>
+                    <th>거래번호</th>
+                    <td>
+                        &#35;<span th:text="${boardView.tradeNum}"/>
+                    </td>
+                    <th>등록일시</th>
+                    <td th:text="${boardView.boardTime}"></td>
+                </tr>
+                <tr>
+                    <th>판매수량</th>
+                    <td>
+                        <span th:text="${boardView.saleUnit}"/>  <span th:text="${boardView.serverNum.gameNum.gameCurrency}"/>
+                    </td>
+                    <th>판매금액</th>
+                    <td>
+                        <span th:text="${boardView.salePrice}"/>  원
+                    </td>
+                </tr>
+            </table><!--//.g_green_table-->
+            <!-- ▲ 물품정보 //-->
+
+            <div class="g_subtitle">
+                구매자정보
+            </div>
+            <div class="certify_info">
+                <div class="buyer_info">
+                    <span class="credit_mark vip">V</span>
+                    <strong class="vip_txt">VIP 회원</strong> (거래점수 : <span th:text="${boardView.userNum.userCreditScore}"/>점)
+                </div>
+
+                <!--인증기능 미구현상태임으로 주석처리-->
+<!--                <dl class="add_info">
+                    <dt>인증상태</dt>
+                    <dd>
+                        <span class='cert_state on'>우수인증</span><span class='cert_state on'>휴대폰</span><span class='cert_state on'>이메일</span><span class='cert_state on'>출금계좌</span>                    </dd>
+                </dl>-->
+            </div>
+
+            <!-- ▼ 개인정보 //-->
+<!--            <style>
+                .SafetyNumber_plus {display:none;}
+            </style>
+            &lt;!&ndash; ▼ 연락처 중복 //&ndash;&gt;
+            <input type="hidden" name="user_id" id="user_id" value="ekqls856">
+            <input type="hidden" name="user_contactA" id="user_contactA" value="N">
+            <input type="hidden" name="user_contactB" id="user_contactB" value="">
+            <input type="hidden" name="user_contactC" id="user_contactC" value="">
+            <input type="hidden" name="slctMobile_type" id="slctMobile_type" value="2">
+            <input type="hidden" name="user_mobileA" id="user_mobileA" value="010">
+            <input type="hidden" name="user_mobileB" id="user_mobileB" value="4876">
+            <input type="hidden" name="user_mobileC" id="user_mobileC" value="4064">&lt;!&ndash; ▲ 연락처 중복 //&ndash;&gt;-->
+
+            <div class="g_subtitle">내 거래정보</div>
+
+            <table class="g_green_table private_area">
+                <colgroup>
+                    <col width="160">
+                    <col/>
+                </colgroup>
+                <tr>
+                    <th>이름</th>
+                    <td th:text="${boardView.userNum.userRealName}"></td>
+                </tr>
+                <tr>
+                    <th>판매자 캐릭터명</th>
+                    <td>
+                        <div class="g_left">
+                            <input type="text" name="user_character" id="user_character" class="g_text" maxlength="30" tabindex="2">
+                            물품을 전달 하실 본인의 캐릭터명
+                        </div>
+                        <div class="character_noti">
+                            * 본인이 사용하는 서버/캐릭터 명
+                            <em>미 선택 및 미 기재 시</em> 문제가 발생될 수 있으며, 거래신청자에게 책임이 있습니다.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>연락처</th>
+                    <td>
+                    <span id="spnUserPhone">자택번호 없음 </span>
+                        (
+                        <label><input type="checkbox" class="g_checkbox" name="user_cell_check" id="user_cell_check" value="on" checked> 자택번호안내</label> ) /
+                        <span id="spnUserCell">010-4876-4064</span>
+                        <a href="javascript:_window.open('private_edit', '/user/contact_edit.html', 496, 350);" class="btn_white1 after"><p>연락처 수정<span>&gt;</span></p></a>
+                    </td>
+                </tr>
+            </table><!--//.g_green_table private-->
+
+            <script>
+                window.onload = function(){
+
+                    if(document.getElementById('safe_guide') !== null) {
+                        LayerControl({
+                            el: document.getElementById('safe_guide'),
+                            layer: document.getElementById('safe_layer'),
+                            close_btn : document.getElementById('safe_layer').querySelector('.close'),
+                            mask: false,
+                            type: 'style'
+                        });
+                    }
+
+                    if(document.getElementById('safe_plus_guide') !== null){
+                        LayerControl({
+                            el: document.getElementById('safe_plus_guide'),
+                            layer: document.getElementById('safe_plus_layer'),
+                            close_btn : document.getElementById('safe_plus_layer').querySelector('.close'),
+                            mask: false,
+                            type: 'style'
+                        });
+                    }
+                };
+            </script>            <!-- ▲ 개인정보 //-->
+
+            <ul class="box6 notice_box">
+                <li>고의적인 취소 또는 직거래 유도를 할 경우 사이트 이용 제한을 받게 됩니다.</li>
+                <li>거래 교환 창 스크린샷과 완료 스크린샷을 보유하시기 바랍니다.</li>
+            </ul>
+
+            <!-- ▼ 판매신청 //-->
+            <div class="g_btn">
+                <img src="http://img2.itemmania.com/new_images/btn/btn_sell.gif" width="137" height="46" alt="판매신청" class="g_button" onclick="fnFormChecker();">
+            </div><!--//.g_btn-->
+        </form><!--//.freSell-->
+        <!-- ▲ 판매신청 //-->
+
+        <!-- ▼ 상세설명 //-->
+        <div class="g_subtitle">
+            상세설명
+        </div>
+
+        <div class="detail_info" id="detail_info">
+            <div class="detail_text" th:text="${boardView.saleAria}">
+            </div>
+        </div>
+        <div class="wideview" id="wideview">+ 전체보기</div>
+        <!-- ▲ 상세설명 //-->
+
+        <div class="g_right">
+            <a href='#'><img src="http://img4.itemmania.com/images/btn/btn_list.gif" width="32" height="14" alt="목록"></a>
+            <a href="#top"><img src="http://img4.itemmania.com/images/btn/btn_top.gif" width="32" height="14" alt="TOP"></a>
+        </div>
+
+        <div class="g_finish"></div>
+
+        </div><!--//.detail_info-->
+
+
+
+    <!-- ▼ 신청확인 팝업 //-->
+    <div id="dvGoodsInfo" class="g_popup green dvGoodsInfo">
+        <div class="layer_title">
+            <img src="http://img4.itemmania.com/images/buy/titlep_info_gg.gif" width="102" height="19" alt="물품신청정보">
+            <img class="btn_close" src="http://img4.itemmania.com/images/icon/popup_x.gif" width="15" height="15" alt="닫기" onclick="g_nodeSleep.disable();">
+        </div>
+        <div class="layer_content">
+            <table class="g_green_table">
+                <colgroup>
+                    <col width="160">
+                    <col width="250">
+                    <col width="160">
+                    <col/>
+                </colgroup>
+                <tr>
+                    <th>카테고리</th>
+                    <td colspan="3">
+                        <span th:text="${boardView.serverNum.gameNum.gameName}"/> &gt; <span th:text="${boardView.serverNum.gameServerName}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>물품제목</th>
+                    <td colspan="3" th:text="${boardView.boardTitle}"></td>
+                </tr>
+                <tr>
+                    <th>거래번호</th>
+                    <td>
+                        &#35;<span th:text="${boardView.tradeNum}"/>
+                    </td>
+                    <th>등록일시</th>
+                    <td th:text="${boardView.boardTime}"></td>
+                </tr>
+                <tr>
+                    <th>판매수량</th>
+                    <td>
+                        <span th:text="${boardView.saleUnit}"/>  <span th:text="${boardView.serverNum.gameNum.gameCurrency}"/>
+                    </td>
+                    <th>판매금액</th>
+                    <td>
+                        <span th:text="${boardView.salePrice}"/>  원
+                    </td>
+                </tr>
+            </table><!--//.g_green_table-->
+
+            <div class="g_subtitle attention">거래 사고 주의사항</div>
+            <ul class="attention_box">
+                <li>1. 판매 신청 시
+                    <span class="deco">본인 정보(게임명/서버/캐릭터)를 등록</span>하세요.<br>
+                </li>
+                <li>2. 반드시
+                    <span class="deco">구매자 캐릭터에게 거래물품을 전달</span>하세요.
+                </li>
+                <li>3. 입금확인 문자 메시지를 받으신 후 반드시 [홈페이지] > [마이룸]에서 입금 확인 여부를 확인하세요.</li>
+                <li class="f_blue3">타인 게임정보 기재 또는, 다른 게임/서버에 물품 등록, 구매자 캐릭터가 아닌 다른 캐릭터에게 물품을 전달할 경우 판매자에게 불이익이 발생할 수 있습니다.</li>
+            </ul>
+            <ul class="box6 notice_box">
+                <li>판매물품의 해킹, 복사, 사기 등의 문제가 발생할 때 민/형사상 책임은 판매자에게 있음을 동의합니다.</li>
+                <li>거래 교환 창 스크린샷과 완료 스크린샷을 보유하시기 바랍니다.</li>
+            </ul>
+            <div class="last_txt">판매 신청하시려는 물품이 위와 같습니까?</div>
+            <div class="g_btn">
+                <img src="http://img4.itemmania.com/new_images/btn/btn_pop_ok_g.gif" width="63" height="35" alt="확인" onclick="$('#frmSell').submit();">
+                <img src="http://img4.itemmania.com/new_images/btn/pop_btn_cancel.gif" width="63" height="35" alt="취소" onclick="g_nodeSleep.disable();">
+            </div>
+        </div><!--//.layer_content-->
+    </div><!--//.dvGoodsInfo-->
+    <!-- ▲ 확인 팝업 //-->
+
+<!--
+    <form id="creditForm" name="creditForm" method="post">
+        <input type="hidden" id="infoId" value="22ff5edf13da4569fe988415163add9e">
+        <input type="hidden" name="id" id="encryptId">
+        <input type="hidden" name="type" id="encryptType">
+    </form>
+-->
+
+
+    <div class="g_finish"></div>
+
+    </div><!--//.g_content-->
+
+    </div><!--//.g_container-->'
+
+
+    <div th:replace="fragment/footer"/>
+    <link type="text/css" rel="stylesheet" href="/css/board/buyView.css">
+
+</body>
+</html>

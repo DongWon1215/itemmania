@@ -30,11 +30,13 @@ public class BoardEntity {
     // 회원 번호
     private UserEntity userNum;
 
-    @ManyToOne
+/*    @ManyToOne
     @NonNull
     @JoinColumn(name = "gameNum")
     // 게임 번호
-    private GameEntity gameNum;
+    private GameEntity gameNum;*/
+    // 기존 gameNum 삭제처리
+    // serverNum을 통하여 gameserver테이블 Join 후 gameNum 부르고 return list<GameEntity>로 게임가져오기 
 
     @ManyToOne
     @NonNull
@@ -42,11 +44,16 @@ public class BoardEntity {
     // 서버 번호
     private GameServerEntity serverNum;
 
+    @ManyToOne
+    @NonNull
+    @JoinColumn(name = "tradeNum")
+    // 거래 번호
+    private TradeEntity tradeNum;
+
     @Column
     @NonNull
-    @Temporal(TemporalType.TIMESTAMP)//날짜 타입 2013-01-12 17:47:11
     // 게시글 작성 시간
-    private Date boardTime;
+    private LocalDate boardTime;
 
     @Column
     @NonNull

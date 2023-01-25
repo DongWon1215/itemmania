@@ -575,6 +575,37 @@ textarea{ width:620px; height:20px; margin-left:10px; padding:5px; resize:none; 
 #search_date .date_text{ margin:2px 3px 0 }
 #search_date .g_right{ width:190px; margin-top:1px; }
 .tb_list{ margin-top:10px; }
+.trade_title{ overflow:hidden;width:100%;white-space:nowrap;text-overflow:ellipsis }
+table .left > img{ margin-right:3px;}
+.trade_progress{overflow:hidden;margin-top:20px;}
+.trade_progress > .trade_progress_content{position:relative;box-sizing:border-box;height:240px;margin-bottom:10px;border:1px solid #DDD;background-color:#F6F7F9;}
+.trade_progress > .trade_progress_content > .guide_wrap{padding:20px 19px;font-size:0;text-align:center;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set{position:relative;display:inline-block;width:20%;text-align:center;vertical-align:top;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set2{width:33%;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set.active:before{position:absolute;top:-1px;left:50%;display:block;width:114px;height:114px;margin-left:-60px;content:"";border:3px solid #159EFD;border-radius:100px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set.active > p{font-weight:bold;color:#0081DB;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set.active > .state{color:#0081DB;}
+.trade_progress.buy > .trade_progress_content > .guide_wrap > .guide_set.active:before{border-color:#2EB30C;}
+.trade_progress.buy > .trade_progress_content > .guide_wrap > .guide_set.active > p{color:#278C0D;}
+.trade_progress.buy > .trade_progress_content > .guide_wrap > .guide_set.active > .state{color:#278C0D;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .SpGroup{display:inline-block;width:117px;height:117px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .state{position:absolute;top:80px;left:0;display:block;width:100%;font-size:13px;font-weight:bold;text-align:center;color:#1D1D1D;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > p{margin-top:20px;font-size:12px;text-align:center;color:#636363;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .arr_mini{position:absolute;top:50px;left:-10px;display:block;width:19px;height:16px;background-position:-752px -314px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .sell_regist_icon{background-position:-2px -482px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .pay_wait_icon{background-position:-122px -482px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .sell_ing_icon{background-position:-240px -482px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .trade_icon{background-position:-359px -482px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .sell_complete_icon{background-position:-478px -482px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .buy_regist_icon{background-position:-2px -601px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .buy_ing_icon{background-position:-240px -601px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .buy_complete_icon{background-position:-478px -601px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .check_apply{background-position: -953px -1224px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .check_re_apply{background-position: -953px -1343px;}
+.trade_progress > .trade_progress_content > .guide_wrap > .guide_set > .check_ok{background-position: -953px -1462px;}
+.trade_progress_txt{margin-bottom:10px;padding:10px 0;border:1px solid #DDD;background-color:#F6F7F9;font-size:13px;font-weight:bold;text-align:center;color:#0081DB;}
+.trade_progress_txt > img{margin:-3px 0 0 5px;}
+.buy .trade_progress_txt{color:#278C0D;}
 
 /*바디 css*/
 body

@@ -1,0 +1,63 @@
+.aside .title{ padding:10px 0; background-color:#00C73C; text-align:center; color:#FFF; font-size:16px; }
+.aside .menu_know{ padding:0 10px 25px; border:1px solid #E1E1E1; border-top:0; background-color:#F0F0F0; text-align:center; }
+.aside .menu_know p{ padding:7px 0 5px; text-align:center; font-size:13px; font-weight:bold; }
+.aside .menu_know .g_list{ margin-top:3px; padding:4px 7px 8px; background-color:#FFF; color:#767676; line-height:15px; font-size:11px; }
+.aside .menu_know .g_list dt{ margin:7px 0; padding-left:5px; background-color:#ECF8EC; font-weight:bold; }
+.aside .menu_know .g_list dd{ margin:0 0 4px 5px; }
+.aside .f_green2{ margin:7px 0 0 7px; }
+.sell_quantity{ width:60px; text-align:right; }
+.dfServer{ float:left; margin-right:10px; line-height:23px; }
+.df_server_code{ float:left; margin-right:3px; }
+
+.certify_info{ overflow:hidden; border:1px solid #C1E2C1; background-color:#F4FBF4; }
+.buyer_info{float:left;width:247px;padding:14px 0;background-color:#ECF8EC;}
+.buyer_info li{ float:left; }
+.buyer_info .credit_mark{ margin-left:25px; }
+.buyer_info strong{ font-size:14px; font-weight:bold; }
+.add_info{ float:left; margin:17px 10px 0 64px; }
+.add_info dt{ padding-top:3px; font-weight:bold; }
+.add_info dt, .add_info dd{ float:left; margin-right:13px; }
+.wideview{width:820px; height:46px;border:1px solid #E0E0E0; background-color:#FFF; font-size:14px; text-align:center; line-height: 46px; box-sizing: border-box;cursor: pointer;}
+
+
+.detail_info{ height:138px; margin-bottom:5px; padding:20px 5px 20px 20px; background-color:#FBFBFB; border:1px solid #E1E1E1; }
+.detail_info.wide{ height:518px; }
+.detail_info .detail_text{ overflow:hidden; height:100%; }
+.detail_info.wide .detail_text{overflow:auto; }
+
+.private_area .guide_txt{ position:absolute; top:10px; right:5px; font-size:11px; color:#13A33F; text-decoration:underline; }
+.private_area .btn_white1.after{ position:absolute; top:8px; right:0; display:inline-block; margin-left:3px; padding:0px 18px 1px 10px; font-size:11px; }
+.private_area .btn_white1.after p{ vertical-align: middle; }
+.private_area .btn_white1.after span{color:#159EFD; font-weight: bold; font-size: 16px; vertical-align: middle; margin-left: 8px;}
+.private_area .character_noti{ clear:both; margin-top:5px; color:#FF2400; font-size:12px; }
+.private_area .character_noti em{ text-decoration:underline; }
+.notice_box{ margin-top:15px; padding:20px; font-size:12px; letter-spacing:-1px; line-height:180%; }
+.notice_box dt{ margin-bottom:5px; }
+.notice_box dd{ margin-left:14px; color:#767676; }
+
+.dvGoodsInfo{ width:680px; }
+.dvGoodsInfo .last_txt{ margin-top:10px; text-align:center; font-weight:bold; }
+.dvGoodsInfo .notice_box{ padding:10px 20px; }
+.attention{ height:20px; margin-top:10px; padding:12px 0 3px 15px; background:url(//img4.itemmania.com/images/icon/icon_v.gif) no-repeat 0 -491px; color:#ED1C24; font-size:12px; font-weight:bold; }
+.attention_box{ padding:15px 20px; border:1px solid #E8C5C5; background-color:#FFEDE8; color:#767676; font-size:13px }
+.attention_box li{ font-weight:bold }
+.attention_box .f_blue3{ font-size:12px; margin-top:10px; font-weight:normal; }
+.attention_box li .deco{ text-decoration:underline; color:#FF2400; }
+
+
+
+.elt_contract{max-width:1000px;}
+.elt_contract .g_btn_wrap .btn_blue3{width:100px;height:35px;line-height:33px;text-align:center;font-weight:bold;}
+.elt_contract .character_info{overflow:hidden;}
+.character_info table{float:left;width:50%;}
+.character_info table + table{margin-top:0;}
+.contract_box{overflow-y:auto;box-sizing:border-box;height:370px;margin-bottom:20px;padding:20px;border:2px solid #D5E2F2;white-space:pre-wrap;color:#5B5B5B;}
+.contract_box .contract_title{padding:10px 0;background-color:#E8F2FF;font-size:18px;font-weight:bold;text-align:center;color:#1D1D1D;}
+.contract_box table{width:60%;border-top:1px solid #000;}
+.contract_box table tr th, .contract_box table tr td{height:auto;padding:5px 10px;border:1px solid #5B5B5B;font-weight:normal;text-align:left;color:#5B5B5B;}
+.contract_box .under{box-sizing:border-box;display:inline-block;min-width:60px;padding:0 20px;border-bottom:1px solid #5B5B5B;}
+.contract_box .uinfo{display:inline-block;width:60px;}
+
+
+ins > div{margin:0 auto;text-align:center;}
+.quick_icon{position:absolute; display:inline-block; width:73px; height:23px; vertical-align:middle; top:7px; right:10px;}

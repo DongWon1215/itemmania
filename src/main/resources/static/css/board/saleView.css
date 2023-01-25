@@ -1,0 +1,39 @@
+.aside .title_blue{ padding:10px 0; background-color:#159EFD; font-size:16px; text-align:center; color:#FFF; }
+.aside .menu_know{ padding:0 10px 25px; border:1px solid #E1E1E1; border-top:0; background-color:#F0F0F0; text-align:center; }
+.aside .menu_know p{ padding:7px 0 5px; font-size:13px; font-weight:bold; text-align:center; }
+.aside .menu_know .g_list{ margin-top:3px; padding:4px 7px 8px; background-color:#FFF; font-size:11px; line-height:15px; color:#767676; }
+.aside .menu_know .g_list dt{ margin:7px 0; padding-left:5px; background-color:#E8F2FF; font-weight:bold; }
+.aside .menu_know .g_list dd{ margin:0 0 4px 5px; }
+
+.certify_info{ overflow:hidden; border:1px solid #D5E2F2; background-color:#F2F7FD; }
+.seller_info{ float:left; width:247px; padding:14px 0; background-color:#E9F3FF; }
+.seller_info li{ float:left; }
+.seller_info .credit_mark{ margin-left:25px; }
+.seller_info strong{ font-size:14px; font-weight:bold; }
+.add_info{ float:left; margin:17px 10px 0 64px; }
+.add_info dt{ padding-top:3px; font-weight:bold; }
+.add_info dt, .add_info dd{ float:left; margin-right:13px; }
+.wideview{box-sizing:border-box; width:820px;height:46px; border:1px solid #E0E0E0; background-color:#FFF; font-size:14px; text-align:center; cursor:pointer;line-height:46px;}
+
+
+.detail_info{ height:138px; margin-bottom:5px; padding:20px 5px 20px 20px; border:1px solid #E1E1E1; background-color:#FBFBFB; }
+.detail_info.wide{ height:518px; }
+.detail_info .detail_text{ overflow:hidden; height:100%; }
+.detail_info.wide .detail_text{overflow:auto; }
+
+.detail_text .g_screenshot2{margin-top:0;}
+.dfServer{ float:left; margin-bottom:5px; }
+.df_server_code{ float:left; margin-right:3px; }
+
+ins > div{margin:0 auto;text-align:center;}
+
+/* 퀵아이콘 */
+.quick_icon{position:absolute; top:6px; right:10px;}
+
+/* 캐릭터정보 */
+.preview_area{cursor:pointer;}
+.character_select{display:inline-block;width:245px;padding:0 10px;vertical-align:top;}
+.character_select > ul > li{position:relative;overflow:hidden;padding:15px 10px 15px 95px;border-bottom:1px solid #EAEAEA;white-space:nowrap;-ms-text-overflow:ellipsis;text-overflow:ellipsis;}
+.character_select > ul > li:last-child{border-bottom:0;}
+.character_select > ul > li > span{position:absolute;top:15px;left:9px;width:85px;}
+.character_select > ul > li > select, .character_select > ul > li > input{width:100%;font-size:12px;}

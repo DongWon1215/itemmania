@@ -2,28 +2,43 @@ package com.itemmania.repository;
 
 import com.itemmania.entity.BoardEntity;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Repository
 public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
+
     // sale buy 구분출력
     List<BoardEntity> findByDealCheck(String DealCheck);
 
     // 구매 판매 구분하고 프리미엄만 출력
-    @Query("select b from BoardEntity b where b.dealCheck = ?1 and b.salePremium = ?2 ")
+    @Query("select b from BoardEntity b where b.dealCheck = ?1 and b.salePremium = ?2 ORDER BY b.boardNum desc  ")
     List<BoardEntity> boardListPremium(String dealCheck, boolean yes);
 
     // 구매 판매 구분하고 프리미엄 아닌것 출력
-    @Query("select b from BoardEntity b where b.dealCheck = ?1 and b.salePremium = ?2")
+    @Query("select b from BoardEntity b where b.dealCheck = ?1 and b.salePremium = ?2 ORDER BY b.boardNum desc  ")
     List<BoardEntity> boardListNotPremium(String dealCheck, boolean no);
 
 
+    // 체크한 dealCheck + 사용자가 입력한 게임 or 게임서버 결과를 리스트로 받음
+    @Query("""
+            select b from BoardEntity b
+            where b.salePremium = true and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = :gameName or b.serverNum.gameServerName = :gameServerName  """)
+    Page<BoardEntity> boardP_SearchList(Pageable pageable, String dealCheck, String gameName, String gameServerName);
 
 
+    // 체크한 dealCheck + 사용자가 입력한 게임 or 게임서버 결과를 리스트로 받음
+    @Query("""
+            select b from BoardEntity b
+            where b.salePremium = false and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = :gameName or b.serverNum.gameServerName = :gameServerName   """)
+    List<BoardEntity> boardSearchList(Pageable pageable, String dealCheck, String gameName, String gameServerName);
 
 
     @Transactional
@@ -37,12 +52,14 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
    /*
 
 
-    INSERT INTO `proj`.`board` (
-        `board_time`, `board_title`, `board_trade_status`, `deal_check`, `game_num`,
+        INSERT INTO `proj`.`board` (
+        `board_time`, `board_title`, `board_trade_status`, `deal_check`,
         `server_num`, `sale_aria`, `sale_nick_name`, `sale_photo`, `sale_premium`,
         `sale_price`, `sale_type`, `sale_unit`, `user_num`)
-        VALUES ( '2020-02-02', '게시판 제목sale',0, 'sale', '1', '1',
-        '상세설명', '본인닉네임', '등록사진', 0, '999',  0,'1','1');
+        VALUES ( '2020-02-02', '게시판 제목sale',0, 'sale', '6',
+        '상세설명', '본인닉네임', '등록사진', 1, '999',  0,'1','1');
+
+
 
 
         */

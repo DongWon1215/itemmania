@@ -14,12 +14,13 @@
     <div class="top_bg">
         <div class="g_snav">
             <ul class="snav_left">
-                <li class="selected"><a href="/">아이템매니아 포탈</a></li>
+                <li class="selected"><a href="/">하이템브로커 포탈</a></li>
                 <li><a href="/regist">아이템거래</a></li>
             </ul>
-            <ul class="snav_right">
-                <li><a href="/login">로그인</a></li>
-                <li><a onclick="totallogout()">로그아웃</a></li>
+            <ul class="snav_right" onchange="isLogin()">
+                <li id="login_button"><a href="/login">로그인</a></li>
+
+                <li id="logout_button"><a onclick="total_logout()" style="cursor:pointer">로그아웃</a></li>
                 <li><a href="/regist">회원가입</a></li>
                 <li><a href="/myroom">마이룸</a></li>
             </ul>
@@ -28,10 +29,10 @@
 </div>
 
 <script>
-    function totallogout()
+    function total_logout()
     {
-        logout();
-        kakaoLogout();
+        // logout();
+        // kakaoLogout();
         window.location.replace("/logout");
     }
 
@@ -46,17 +47,23 @@
     //카카오로그아웃
     function kakaoLogout() {
         if (Kakao.Auth.getAccessToken()) {
-            Kakao.API.request({
-                url: '',
-                success: function (response) {
-                    console.log(response)
-                },
-                error: function (error) {
-                    console.log(error)
-                },
-            })
+            Kakao.Auth.logout()
             Kakao.Auth.setAccessToken(undefined)
         }
+    }
+
+    function isLogin()
+    {
+        // if()
+        // {
+        //     document.querySelector('login_button').style.visibility=false;
+        //     document.querySelector('logout_button').style.visibility=true;
+        // }
+        //     else
+        // {
+        //     document.querySelector('login_button').style.visibility=true;
+        //     document.querySelector('logout_button').style.visibility=false;
+        // }
     }
 </script>
 

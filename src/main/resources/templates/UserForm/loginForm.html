@@ -16,10 +16,10 @@
     <div class="g_remocon_l">
     </div>
     <div class="login_form">
-        <div class="g_title">아이템매니아 회원 로그인</div>
+        <div class="g_title">하이템브로커 회원 로그인</div>
         <div class="user_login" id="login_before">
             <!-- ▼ 로그인 폼 //-->
-            <form name="g_LOGIN_FORM" method="post">
+            <form name="g_LOGIN_FORM" method="post" action="/login">
                 <input type="hidden" name="returnUrl" value="#">
                 <input type="hidden" name="plogin_kr" id="plogin_kr">
                 <ul class="input_area">
@@ -54,16 +54,11 @@
             </button>
 
             <div class="find_area">
-                <a href="#">아이디찾기</a>
-                <a href="#">비밀번호 찾기</a>
+                <a href="find/id">아이디찾기</a>
+                <a href="find/pw">비밀번호 찾기</a>
                 <a href="/regist">회원가입하기</a>
             </div>
 
-            <!-- 아이핀 인증폼 -->
-            <form id="frmIpin" action="" method="post" target="frmTarget">
-                <input type="hidden" name="wis" value="LoginSecurity">
-            </form>
-            <iframe src="about:blank" width="0" height="0" name="frmTarget" style="border:0"></iframe>
         </div>
         <div class="login_ing" id="login_ing">
             <div id="login_ing_txt"></div>
@@ -84,13 +79,15 @@
                 user_name:$('#user_id').val(),
                 user_password: $('#user_password').val()
             }
+        console.log("성공하고 데이터를 로그인 컨트롤로 보내는중")
 
-
-        $.ajax({url:'/login',type:'post',data:JSON.stringify(loginRequest),dataType:'JSON',contentType:'application/json; charset=utf-8',success:function(){}
+        $.ajax({url:'/login',type:'post', async:false,data:JSON.stringify(loginRequest),dataType:'JSON',contentType:'application/json; charset=utf-8',success:function(){}
                 ,error:function(err)
         {
-            if(loginRequest.userPassword == null)
+            if(loginRequest.user_password == null)
                 alert('비밀번호를 확인해주세요')
+
+            console.log("뭐가 또 문제있는데?")
         }
         })
     }
@@ -106,6 +103,13 @@
     naver_id_login.init_naver_id_login();
     naver_id_login.token
 </script>
+<!--<script>-->
+<!--    function loginWithKakao() {-->
+<!--        Kakao.Auth.authorize({-->
+<!--            redirectUri: 'http://localhost:8080/apilogin',-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
 <script>
     Kakao.init('3275951c9def6afe74afa750eab3456c'); //발급받은 키 중 javascript키를 사용해준다.
     console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -113,14 +117,17 @@
     function kakaoLogin() {
         Kakao.Auth.login({
             success: function (response) {
-                console.log("카카오 로그인 시작부분은 들어왔음")
-
                 Kakao.API.request({
                     url: '/v2/user/me',
                     success: function (response) {
-                        console.log(response)
-                        // window.location.replace("/")
-                    },
+                        let accessToken = Kakao.Auth.getAccessToken();
+                        Kakao.Auth.setAccessToken(accessToken);
+                        // console.log("response ==>" + response)
+                        // console.log("token ==>" + accessToken)
+                        $.ajax(
+                            {
+                                url:'/apilogin',type:'post', async:false,data:JSON.stringify(accessToken),dataType:'JSON',contentType:'application/json; charset=utf-8'
+                                ,success:function(){}})},
                     fail: function (error) {
                         console.log(error)
                         window.location.replace("/regist")

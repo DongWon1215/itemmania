@@ -37,9 +37,5 @@ public class PayEntity {
 
     @Column
     @NotNull
-    private  boolean payIsSuccess;
-
-    @Column
-    @NotNull
     private LocalDate payTime;
 }
