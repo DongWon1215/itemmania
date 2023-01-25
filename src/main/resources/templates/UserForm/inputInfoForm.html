@@ -8,7 +8,8 @@
 <body>
 <div th:replace="fragment/header"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
 <div id="g_SLEEP" class="g_sleep g_hidden">
     <div id="g_OVERLAY" class="g_overlay"></div>
 </div>
@@ -163,13 +164,10 @@
                     alert("동일한 아이디가 있습니다")
                 }
                 else
-                {
                     alert("사용 가능한 아이디 입니다")
-                    document.getElementById('idCheckor').disabled = 'disabled'
-                }
             },
             fail: function (e) {
-                errormessage(e)
+
             }
         })
     }
@@ -179,15 +177,12 @@
         $.ajax({
             url: '/regist/emailDoublecheck',
             type: 'post',
-            data: email,
-            success: function () {
+            data: {userEmail:email},
+            success: function (data) {
                 if(data)
-                    alert("동일한 아이디가 있습니다")
+                    alert("동일한 이메일이 있습니다")
                 else
-                {
-                    alert("사용 가능한 아이디 입니다")
-                    document.getElementById('idCheckor').disabled = 'disabled'
-                }
+                    alert("사용 가능한 이메일 입니다")
             },
             fail: function () {
             }
@@ -198,9 +193,7 @@
     function emailDirChange()
     {
         if(document.getElementById('slctEmail_host').value != "direct")
-        {
             document.getElementById('user_email_direct').value = document.getElementById('slctEmail_host').value;
-        }
     }
 </script>
 <script>
@@ -215,11 +208,6 @@
             document.getElementById('muser_password').innerText='비밀번호에 대소문자와 특수문자가 반드시 하나씩 포함되어야 하며 길이가 6~12글자 이내여야 합니다';
             document.getElementById('muser_password').style.color='red';
         }
-        // if(pw.length < 6 || pw.length > 12)
-        // {
-        //     document.getElementById('muser_password').innerText='비밀번호는 6글자 이상 12글자 이하여야 합니다';
-        //     document.getElementById('muser_password').style.color='red';
-        // }
 
     }
 
@@ -243,36 +231,36 @@
     }
 </script>
 <script>
-    const UserDTO ={
-        userName : $('#user_id'),
-        userPassword : $('#user_password'),
-        userRealName : $('#user_name'),
-        userEmail : $('#user_email') + '@'+ $('#user_email_direct'),
-        userPhoneNum : $('#user_mobileA') + $('#user_mobileB') + $('#user_mobileC'),
-        userBirth : $('#user_birth')
-    }
 
     function RegistMember()
     {
+        const UserDTO = {
+            userName : document.getElementById('user_id').value,
+            userPassword : document.getElementById('user_password').value,
+            userRealName : document.getElementById('user_name').value,
+            userEmail : document.getElementById('user_email').value + '@'+ document.getElementById('user_email_direct').value,
+            userPhoneNum : document.getElementById('user_mobileA').value + document.getElementById('user_mobileB').value + document.getElementById('user_mobileC').value,
+            userBirth : document.getElementById('user_birth').value
+        }
         console.log(UserDTO)
         $.ajax(
             {
-
                 url:'/regist/insert',
                 type:'post',
                 async:'false',
                 data:JSON.stringify(UserDTO),
                 dataType:'JSON',
                 contentType:'application/json; charset=utf-8',
-                success:function ()
+                success:function (result)
                 {
-                    console.log(UserDTO)
-                    alert("회원가입에 성공 하였습니다")
+                    if(result)
+                        alert("회원가입에 성공 하였습니다")
+
+                    else
+                        alert("회원가입에 실패 하였습니다")
                 },
                 fail:function ()
                 {
-                    console.log(UserDTO)
-                    alert("회원가입에 실패 하였습니다")
                 }
             })
     }

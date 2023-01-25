@@ -34,15 +34,16 @@ public class InsertInfoConteroller {
     }
 
     @PostMapping
-    public UserEntity userData(@RequestBody UserDTO user)
+    public String userData(@RequestBody UserDTO user)
     {
-
-        log.info(user);
+        log.info("데이터 =>" + user);
 
         if(userService.isExistUser(user.getUserName(),user.getUserPassword()))
-            return null;
+            return "/regist";
 
-        return userService.insertUser(user.toUserEntity());
+        userService.insertUser(user.toUserEntity());
+
+        return "/index";
     }
 
 }

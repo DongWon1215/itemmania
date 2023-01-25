@@ -26,7 +26,7 @@ public class DoubleCheckorController {
     }
 
     @PostMapping("/regist/emailDoublecheck")
-    public Boolean isEmailExist(@RequestBody String userEmail)
+    public Boolean isEmailExist(@RequestParam("userEmail") String userEmail)
     {
         log.info(userEmail);
 
