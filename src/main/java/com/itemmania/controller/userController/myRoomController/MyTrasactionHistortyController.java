@@ -1,4 +1,4 @@
-package com.itemmania.controller.userController;
+package com.itemmania.controller.userController.myRoomController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

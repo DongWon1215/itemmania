@@ -1,17 +1,17 @@
-package com.itemmania.controller.userController;
+package com.itemmania.controller.userController.myRoomController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/myroom/user_leave")
-public class MyRoomUserLeaveController {
+@RequestMapping("/myroom/myinfo/credit_rating")
+public class MyInfoCreditRatingController {
 
     @GetMapping
     public String getMypageForm()
     {
-        return "userForm/myRoom/myRoomUserLeaveForm";
+        return "userForm/myRoom/myinfoCreditRating";
     }
 
 
