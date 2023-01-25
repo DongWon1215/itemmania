@@ -1,4 +1,4 @@
-package com.itemmania.controller.userController;
+package com.itemmania.controller.userController.memberConfig;
 
 import com.itemmania.domain.UserDTO;
 import com.itemmania.entity.UserEntity;

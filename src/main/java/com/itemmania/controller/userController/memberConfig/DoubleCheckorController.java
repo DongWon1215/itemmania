@@ -1,4 +1,4 @@
-package com.itemmania.controller.userController;
+package com.itemmania.controller.userController.memberConfig;
 
 import com.itemmania.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

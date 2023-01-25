@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,10 +11,6 @@
 <div class="g_container" id="g_CONTENT">
   <div class="g_remocon_l">
   </div>
-  <script type="text/javascript">
-    var USER_TYPE = "general";
-    window.name = 'joinAtFrm';	// 중요 아이핀 인증 시 꼭 필요
-  </script>
 
 
   <div class="top_area">
@@ -616,17 +612,7 @@
 - 로또추천번호 : 적중내역 확인일로부터 1년 보관</span>
 				</pre>
   </div>
-  <div class="certify_box">
-    <form id="reqCBAForm" name="reqCBAForm" method="post" action="/certify/ipin_auth/v3/module/ipin_request.php" target="Parent_window">
-      <input type="hidden" name="wis" value="MemberJoin">
-      <input type="hidden" name="join_type" value="general">
-      <input type="hidden" name="user_agreement">
-      <input type="hidden" name="user_service">
-    </form>
-    <iframe src="about:blank" name="Parent_window" class="g_hidden"></iframe>
-  </div>
-  <div class="g_finish"></div>
-    <a href="/regist/insert">다음으로</a>
+    <input type="button" onclick="isAllChecked()">다음으로</input>
 </div>
 
 
@@ -648,5 +634,18 @@
 
     }
 </script>
+<script>
+    function isAllChecked()
+    {
+        if($('#user_agreement1').is(":checked") && $('#user_agreement2').is(":checked"))
+        {
+
+        }
+
+        else
+            alert("필수 요소에 모두 체크 하세요")
+    }
+</script>
+
 </body>
 </html>

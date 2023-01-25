@@ -7,6 +7,8 @@
 </head>
 <body>
 <div th:replace="fragment/header"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <div id="g_SLEEP" class="g_sleep g_hidden">
     <div id="g_OVERLAY" class="g_overlay"></div>
 </div>
@@ -53,7 +55,7 @@
                         <div class="guide_add2">
                             <input type="text" name="user_id" class="g_text" id="user_id" maxlength="12">
                             <span class="id_check" id="idCheck">
-                                <input type="button" id="idCheckor" onclick="idDoubleCheckor()" >중복확인</input>
+                                <input type="button" name="user_id_checker" id="idChecker" onclick="idDoubleChecker()">중복확인</input>
                             </span>
                         </div>
                     </td>
@@ -148,7 +150,7 @@
             <div th:replace="fragment/footer"/>
 </div>
 <script>
-    function idDoubleCheckor() {
+    function idDoubleChecker() {
         $.ajax({
             url: '/regist/doublecheck',
             type: 'post',
@@ -171,7 +173,7 @@
 
     function pwConditionCheck()
     {
-        let pw = document.getElementById($('#user_password').val);
+        let pw = document.getElementById('user_password').value;
         let req = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
         console.log(pw)
         if(!req.test(pw))
@@ -179,18 +181,18 @@
             document.getElementById('muser_password').innerText='비밀번호에 대소문자와 특수문자가 반드시 하나씩 포함되어야 하며 길이가 6~12글자 이내여야 합니다';
             document.getElementById('muser_password').style.color='red';
         }
-        if(pw.length < 6 || pw.length > 12)
-        {
-            document.getElementById('muser_password').innerText='비밀번호는 6글자 이상 12글자 이하여야 합니다';
-            document.getElementById('muser_password').style.color='red';
-        }
+        // if(pw.length < 6 || pw.length > 12)
+        // {
+        //     document.getElementById('muser_password').innerText='비밀번호는 6글자 이상 12글자 이하여야 합니다';
+        //     document.getElementById('muser_password').style.color='red';
+        // }
 
     }
 
     function pwDuplicateCheck()
     {
-        let pw = document.getElementById('user_password').val;
-        let pw_validate = document.getElementById('user_password_validate').val;
+        let pw = document.getElementById('user_password').value;
+        let pw_validate = document.getElementById('user_password_validate').value;
         console.log(pw)
         console.log(pw_validate)
         if(pw == pw_validate && pw != '' && pw_validate != '')
@@ -218,7 +220,27 @@
 
     function RegistMember()
     {
-        $.ajax({url:'/regist',type:'post',async:'false',dataType:UserDTO,success:function (){alert("회원가입에 성공 하였습니다")},fail:function (){alert("회원가입에 실패 하였습니다")}})
+        console.log(UserDTO)
+        $.ajax(
+            {
+
+                url:'/regist',
+                type:'post',
+                async:'false',
+                data:JSON.stringify(UserDTO),
+                dataType:'JSON',
+                contentType:'application/json; charset=utf-8',
+                success:function ()
+                {
+                    console.log(UserDTO)
+                    alert("회원가입에 성공 하였습니다")
+                },
+                fail:function ()
+                {
+                    console.log(UserDTO)
+                    alert("회원가입에 실패 하였습니다")
+                }
+            })
     }
 </script>
 </body>
