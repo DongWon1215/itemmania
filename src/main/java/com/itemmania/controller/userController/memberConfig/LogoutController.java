@@ -1,4 +1,4 @@
-package com.itemmania.controller.userController;
+package com.itemmania.controller.userController.memberConfig;
 
 import lombok.extern.log4j.Log4j2;
 import org.apache.tomcat.util.http.parser.Authorization;

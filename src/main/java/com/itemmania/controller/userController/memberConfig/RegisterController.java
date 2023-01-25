@@ -1,4 +1,4 @@
-package com.itemmania.controller.userController;
+package com.itemmania.controller.userController.memberConfig;
 
 import com.itemmania.domain.LoginRequest;
 import com.itemmania.domain.UserDTO;
@@ -18,11 +18,4 @@ public class RegisterController {
         return "/UserForm/registerForm";
     }
 
-    @PostMapping
-    public String registMember(@RequestBody UserDTO userDTO)
-    {
-
-
-        return "/index";
-    }
 }

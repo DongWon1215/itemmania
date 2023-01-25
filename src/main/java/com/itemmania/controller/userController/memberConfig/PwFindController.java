@@ -1,6 +1,7 @@
-package com.itemmania.controller.userController;
+package com.itemmania.controller.userController.memberConfig;
 
 import com.itemmania.domain.IdFindRequest;
+import com.itemmania.domain.PasswordFindRequest;
 import com.itemmania.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,23 +12,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/find/id")
-public class IdFindController {
-
+@RequestMapping("/find/pw")
+public class PwFindController {
     @Autowired
     private UserService userService;
 
     @GetMapping
     public String findform()
     {
-        return "/UserForm/idFindForm";
+        return "/UserForm/pwFindForm";
     }
 
     @PostMapping
-    public void sendInfo(@RequestBody IdFindRequest findRequest, Model model)
+    public void sendInfo(@RequestBody PasswordFindRequest findRequest, Model model)
     {
-        String userId = userService.findIdByNameAndBirthAndPhoneNum(findRequest);
+        String userPassword = userService.findPasswordByNameAndBirthAndPhoneNum(findRequest);
 
-        model.addAttribute("userId",userId);
+        model.addAttribute("userPw",userPassword);
     }
 }
