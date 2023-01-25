@@ -1,0 +1,52 @@
+.content{overflow:hidden;width:1080px;margin:30px auto 0;}
+.top_area{position:relative;margin-bottom:50px;padding-top:20px;font-size:14px;color:#636363;}
+.top_area h1{margin-bottom:20px;font-size:35px;letter-spacing:-0.12em;color:#434343;}
+.sp_join{position:absolute;top:50px;right:0;width:570px;height:40px;background:url(//img2.itemmania.com/new_images/join/step_join.png) no-repeat;}
+.step2{background-position-y:-57px;}
+.step3{background-position-y:-112px;}
+.step4{background-position-y:-166px;}
+.join_new_banner{position:absolute;right:0;bottom:0;}
+.agree_check{padding:20px 0;border-top:1px solid #000;border-bottom:1px solid #E6E6E6;font-size:16px;font-weight:bold;}
+.agree_check > input{display:none;}
+.agree_check label{position:relative;display:block;padding-left:35px;background:url(//img3.itemmania.com/new_images/join/icon_join_b.gif) no-repeat;line-height:30px;}
+.agree_check input:checked + label{background:url(//img3.itemmania.com/new_images/join/icon_join_b_on.gif) no-repeat;}
+.agree_check label span{font-size:13px;}
+.agree_check_s{padding:20px 0 10px;font-weight:bold;}
+.agree_check_s > input{display:none;}
+.agree_check_s label{position:relative;display:block;padding-left:35px;background:url(//img3.itemmania.com/new_images/join/icon_join_s.gif) no-repeat;line-height:22px;}
+.agree_check_s input:checked + label{background:url(//img3.itemmania.com/new_images/join/icon_join_s_on.gif) no-repeat;}
+.agree_check_s label .black{font-weight:normal;color:#A2A2A2;}
+.agree_check_s label .normal{font-weight:normal;}
+.clause_box{overflow:hidden;overflow-y:auto;box-sizing:border-box;height:100px;margin-bottom:5px;padding:8px 20px;border:1px solid #E3E3E3;font-size:12px;color:#8A8A8A;}
+.clause_box2{height:70px;}
+.clause_box > pre{white-space:pre-wrap;word-wrap:break-word;word-break:break-all;}
+.sub_tab{overflow:hidden;margin-bottom:15px;color:#000;}
+.sub_tab li{float:left;}
+.sub_tab .gb{padding:0 10px;}
+.sub_tab .on{font-weight:bold;}
+/* 약관 동의 */
+/* 본인 확인 */
+.g_smtitle{font-size:15px;}
+.certify_box{overflow:hidden;margin-bottom:70px;}
+.certify_box .box{float:left;box-sizing:border-box;width:530px;height:220px;padding:40px;border-radius:10px;text-align:center;}
+.certify_box .blue{border:1px solid #ADCBE2;background-color:#EAF3FF;}
+.certify_box .green{margin-right:20px;border:1px solid #C1E2C1;background-color:#ECF8EC;}
+.certify_box .box img{float:left;margin:0 30px 0 75px;}
+.certify_box .box p{margin-bottom:15px;font-size:16px;font-weight:bold;}
+.certify_box .box .box_desc{float:left;width:240px;margin-bottom:30px;}
+.certify_box .box .btn_blue3{display:block;clear:both;width:150px;margin:10px auto;text-align:center;line-height:44px;}
+.certify_box .box .btn_green2{display:block;clear:both;width:150px;margin:10px auto;text-align:center;line-height:44px;}
+/* 외국인 등록번호 */
+.certify_box .foreign_box{height:280px;padding:22px 35px;}
+.certify_box .foreign_box ul{overflow:hidden;margin:15px 0 0 45px;}
+.certify_box .foreign_box ul li{margin-bottom:5px;}
+.certify_box .foreign_box ul li .g_left{width:110px;font-weight:bold;line-height:30px;}
+.certify_box .foreign_box ul li input{width:110px;height:30px;}
+.certify_box .foreign_box img{margin-top:33px;}
+.certify_box .box .foreign_number{float:none;width:auto;margin-bottom:20px;}
+.reg_agree_wrapper{clear:both;text-align:center;}
+.certify_box .box .foreign_ipin{margin:33px 0 35px;}
+.certify_box .box .foreign_ipin ~ .reg_agree_wrapper{margin-bottom:25px;}
+/* 외국인 등록번호 */
+/* 본인 확인 */
+.font_large{font-size:13px;font-weight: bold;}

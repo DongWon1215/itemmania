@@ -16,10 +16,10 @@
     <div class="g_remocon_l">
     </div>
     <div class="login_form">
-        <div class="g_title">아이템매니아 회원 로그인</div>
+        <div class="g_title">하이템브로커 회원 로그인</div>
         <div class="user_login" id="login_before">
             <!-- ▼ 로그인 폼 //-->
-            <form name="g_LOGIN_FORM" method="post">
+            <form name="g_LOGIN_FORM" method="post" action="/login">
                 <input type="hidden" name="returnUrl" value="#">
                 <input type="hidden" name="plogin_kr" id="plogin_kr">
                 <ul class="input_area">
@@ -126,7 +126,7 @@
                         // console.log("token ==>" + accessToken)
                         $.ajax(
                             {
-                                url:'/apilogin',type:'post', async:false,data:JSON.stringify(response),dataType:'JSON',contentType:'application/json; charset=utf-8'
+                                url:'/apilogin',type:'post', async:false,data:JSON.stringify(accessToken),dataType:'JSON',contentType:'application/json; charset=utf-8'
                                 ,success:function(){}})},
                     fail: function (error) {
                         console.log(error)
