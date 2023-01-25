@@ -94,7 +94,7 @@
 
             <!--구매 신청 버튼-->
             <div class="g_btn_wrap">
-                <a href="/buy_request">
+                <a th:href="@{/board/requestPage(boardNum=${boardView.boardNum},deal=${boardView.dealCheck})}">
                     <img src="http://img2.itemmania.com/new_images/btn/btn_buy.gif" width="137" height="46" alt="구매신청">
                 </a>
             </div>
@@ -118,9 +118,6 @@
             </div>
             <div class="g_finish"></div>
 
-            <!--        <div style="margin-top:15px;text-align:center;">
-                        <iframe src="http://vod.shoppingcall.me/ad_shoppingCallme.php?aid=433" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" width="820" height="76"></iframe>
-                    </div>-->
         </div><!--g_content-->
 
     </div><!--//.g_container-->
