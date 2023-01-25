@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link type="text/css" rel="stylesheet" href="/css/UserForm/mypage.css">
+<body>
+
+<!--header 시작-->
+<div th:replace="fragment/header"/>
+
+<!--body 시작-->
+<div class="g_container" id="g_CONTENT">
+  <div class="g_remocon_l">
+  </div>
+
+  <!--aside 시작-->
+  <div th:replace="/UserForm/myRoom/myRoomAside"/>
+  <!--aside 끝-->
+
+  <div class="g_content">
+    <!-- ▼ 타이틀 //-->
+    <div class="g_title_blue">
+      판매 <span>관련</span>
+      <ul class="g_path">
+        <li>홈</li>
+        <li>마이룸</li>
+        <li>판매관련</li>
+        <li class="select">판매등록 물품</li>
+      </ul>
+    </div>
+    <!-- ▲ 타이틀 //-->
+
+    <!-- ▼ 메뉴탭 //-->
+    <div class="g_tab">
+      <div class="selected"><a href="/myroom/sellRegister">판매등록물품</a></div>
+      <div class=""><a href="/myroom/sell_ing">판매중인 물품</a></div>
+    </div>
+    <!-- ▲ 메뉴탭 //-->
+    <!-- ▼ 테이블 상단 //-->
+    <ul class="tab_sib">
+      <li id="icon_info" class="g_left">
+        - 등록물품은 7일 후 자동으로 삭제됩니다. (캐릭터거래의 경우 30일)
+      </li>
+      <li class="g_right">
+        <a href="#" class="regist_btn01 btn_blue4">판매 등록 &gt;</a>
+      </li>
+    </ul>
+    <!-- ▲ 테이블 상단 //-->
+
+    <div class="g_finish"></div>
+
+    <form id="reInsertFrm" method="POST">
+      <input type="hidden" name="id">
+    </form>
+
+    <form id="frmList" method="POST">
+      <input type="hidden" id="process" name="process">
+      <input type="hidden" id="trade_id" name="trade_id">
+
+      <!-- ▼ 판매등록물품 //-->
+      <table class="g_blue_table tb_list">
+        <colgroup>
+          <col width="150">
+          <col width="70">
+          <col>
+          <col width="95">
+          <col width="80">
+          <col width="110">
+        </colgroup>
+        <tbody><tr>
+          <th>카테고리</th>
+          <th>분류</th>
+          <th>제목</th>
+          <th>거래금액</th>
+          <th>등록일</th>
+          <th>구분</th>
+        </tr>
+        <tr>
+          <td colspan="6" class="first">등록된 물품이 없습니다.</td>
+        </tr>
+        </tbody></table>
+      <!-- ▲ 판매등록물품 //-->
+      <a href="javascript:;" onclick="tradeProcess('deleteSelectAll');" class="regist_btn11 btn_padding03">현재 페이지 물품 삭제</a>
+      <div class="g_finish"></div>
+    </form>
+
+    <div class="g_finish"></div>
+    <!-- ▼ 판매진행안내 //-->
+    <div class="trade_progress">
+      <div class="g_subtitle">판매진행 안내</div>
+      <div class="trade_progress_content">
+        <div class="guide_wrap">
+          <div class="guide_set">
+            <span class="SpGroup sell_regist_icon"></span>
+            <span class="state">판매물품 등록</span>
+            <p>팝니다에<br>판매물품이 등록된<br>상태입니다.</p>
+          </div>
+          <div class="guide_set">
+            <span class="SpGroup pay_wait_icon"></span>
+            <span class="state">입금대기</span>
+            <p>구매신청 후 입금 확인 단계,<br>입금 확인 즉시 판매자에게<br>SMS를 발송합니다.</p>
+            <i class="SpGroup arr_mini"></i>
+          </div>
+          <div class="guide_set">
+            <span class="SpGroup sell_ing_icon"></span>
+            <span class="state">판매중</span>
+            <p>구매자의 정보를 확인 가능,<br>게임상에서 거래의<br>진행이 가능합니다.</p>
+            <i class="SpGroup arr_mini"></i>
+          </div>
+          <div class="guide_set">
+            <span class="SpGroup trade_icon"></span>
+            <span class="state">인계</span>
+            <p>구매자에게 물품을<br>건네주었다면<br>인계확인을 완료합니다.</p>
+            <i class="SpGroup arr_mini"></i>
+          </div>
+          <div class="guide_set">
+            <span class="SpGroup sell_complete_icon"></span>
+            <span class="state">판매종료</span>
+            <p>구매자가 인수확인을<br>완료하면, 거래는<br>즉시 종료됩니다.</p>
+            <i class="SpGroup arr_mini"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ▲ 판매진행안내 //-->    </div>
+
+  <div class="g_finish"></div>
+</div>
+
+<!--footer 시작-->
+<div th:replace="fragment/footer"/>
+</body>
+</html>

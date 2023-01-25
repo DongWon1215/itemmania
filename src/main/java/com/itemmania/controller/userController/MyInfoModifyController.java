@@ -29,6 +29,7 @@ public class MyInfoModifyController {
         log.info("UserRequest......." + req);
         rttr.addAttribute("UserNum", req.getUserNum());
         rttr.addFlashAttribute("msg", "modify");
+        myInfoModifyService.modifyUser(req);
         return "redirect:/myroom";
     }
 
