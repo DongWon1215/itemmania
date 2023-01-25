@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -19,12 +20,19 @@ import java.net.URL;
 public class LogoutController {
 
     @GetMapping("/logout")
-    public String Logout(HttpSession session)
+    public String Logout(HttpServletRequest request)
     {
+        HttpSession session = request.getSession();
+
         if(session.getAttribute("kakaoAccessToken") != null)
         {
-            kakaologout((String)session.getAttribute("kakaoAccessToken"));
             log.info("토큰 가져왔다");
+            log.info("kakaoAccessToken =>" + session.getAttribute("kakaoAccessToken"));
+            if(kakaologout((String)session.getAttribute("kakaoAccessToken")))
+                log.info("성공적으로 로그아웃 했다");
+            
+            else
+                log.info("로그아웃에 실패했다");
         }
 
 //        if(session.getAttribute("naverAccessToken") != null)
@@ -47,6 +55,7 @@ public class LogoutController {
             conn.setRequestProperty("Authorization", "Bearer" + accessToken);
 
             int responseCode = conn.getResponseCode();
+            log.info(conn.getRequestProperty("Authorization"));
             log.info("responseCode : " + responseCode);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
