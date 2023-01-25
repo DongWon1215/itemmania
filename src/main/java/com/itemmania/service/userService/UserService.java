@@ -34,6 +34,11 @@ public class UserService {
         return userRepository.existsByUserName(userName);
     }
 
+    public boolean isExistEmail(String userEmail)
+    {
+        return userRepository.existsByUserEmail(userEmail);
+    }
+
     public UserEntity insertUser(UserEntity userEntity)
     {
         return userRepository.save(userEntity);

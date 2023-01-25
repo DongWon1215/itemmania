@@ -46,16 +46,16 @@
                         <td>${data.name}</td>
                     </th:block>
                     <th:block th:if="${data} == null">
-                        <td><input type="text" name="user_name" class="g_text" id="user_name" maxlength="12"></td>
+                        <td><input type="text" required="true" name="user_name" class="g_text" id="user_name" maxlength="12"></td>
                     </th:block>
                 </tr>
                 <tr>
                     <th>아이디</th>
                     <td>
                         <div class="guide_add2">
-                            <input type="text" name="user_id" class="g_text" id="user_id" maxlength="12">
+                            <input type="text" required="true" name="user_id" class="g_text" id="user_id" maxlength="12">
                             <span class="id_check" id="idCheck">
-                                <input type="button" name="user_id_checker" id="idChecker" onclick="idDoubleChecker()">중복확인</input>
+                                <input type="button" name="user_id_checker" id="idChecker" onclick="idDoubleChecker()" value="중복확인">
                             </span>
                         </div>
                     </td>
@@ -64,7 +64,7 @@
                     <th>비밀번호</th>
                     <td>
                         <div class="guide_add">
-                            <input type="password" name="user_password" class="g_password" id="user_password" maxlength="16" onchange="pwConditionCheck()">
+                            <input type="password" required="true" name="user_password" class="g_password" id="user_password" maxlength="16" onchange="pwConditionCheck()">
                             <div class="password_help" id="password_help"></div>
                         </div>
                         <div class="muser_password" id="muser_password"></div>
@@ -74,7 +74,7 @@
                     <th>비밀번호 확인</th>
                     <td>
                         <div class="guide_add">
-                            <input type="password" name="user_password_validate" class="g_password" id="user_password_validate" maxlength="16" onchange="pwDuplicateCheck()">
+                            <input type="password" required="true" name="user_password_validate" class="g_password" id="user_password_validate" maxlength="16" onchange="pwDuplicateCheck()">
                             <div class="password_help" id="password_help2"></div>
                         </div>
                         <div class="DuplicateCheck" id="DuplicateCheck"></div>
@@ -92,7 +92,7 @@
                             <option value="6">LG-A</option>
                             <option value="N">휴대폰없음</option>
                         </select>
-                        <select name="user_mobileA" id="user_mobileA">
+                        <select name="user_mobileA" required="true" id="user_mobileA">
                             <option value="010"selected>010</option>
                             <option value="011">011</option>
                             <option value="016">016</option>
@@ -101,17 +101,17 @@
                             <option value="019">019</option>
                         </select>
                         -
-                        <input type="text" name="user_mobileB" id="user_mobileB" maxlength="4" class="g_text" value="">
+                        <input type="text" name="user_mobileB" required="true" id="user_mobileB" maxlength="4" class="g_text" >
                         -
-                        <input type="text" name="user_mobileC" id="user_mobileC" maxlength="4" class="g_text" value="">
+                        <input type="text" name="user_mobileC" required="true" id="user_mobileC" maxlength="4" class="g_text" onchange="emailDirChange()">
                         <span class="f_black3">※ SMS 수신거부는 가입 후 마이룸에서 가능합니다.</span>
                     </td>
                 </tr>
                 <tr>
                     <th>이메일</th>
                     <td class="email_area">
-                        <input type="text" name="user_email" maxlength="30" class="g_text"> @
-                        <input type="text" name="user_email_direct" value="" maxlength="30" class="g_text">
+                        <input type="text" id="user_email" name="user_email" required="true" maxlength="30" class="g_text"> @
+                        <input type="text" id="user_email_direct" name="user_email_direct" required="true" value="" maxlength="30" class="g_text">
                         <select id="slctEmail_host" name="user_email_host">
                             <option value="direct">직접입력</option>
                             <option value="naver.com">naver.com</option>
@@ -128,7 +128,7 @@
                             <option value="gmail.com">gmail.com</option>
                             <option value="hanmir.com">hanmir.com</option>
                         </select>
-                        <input type="button" value="중복확인" id="emailCheckBtn" class="btn_blue3">
+                        <input type="button" value="중복확인" id="emailCheckBtn" class="btn_blue3" onclick="eMailDoubleChecker()">
                     </td>
                 </tr>
                 <tr>
@@ -151,24 +151,58 @@
 </div>
 <script>
     function idDoubleChecker() {
+        console.log(document.getElementById('user_id').value)
         $.ajax({
-            url: '/regist/doublecheck',
+            url: '/regist/idDoublecheck',
             type: 'post',
-            data: JSON.stringify(document.getElementById('user_id')),
-            dataType: 'JSON',
-            contentType: 'application/json; charset=utf-8'
-            ,
+            data: {userName:document.getElementById('user_id').value},
+            success: function (data) {
+                console.log(data);
+                if(data)
+                {
+                    alert("동일한 아이디가 있습니다")
+                }
+                else
+                {
+                    alert("사용 가능한 아이디 입니다")
+                    document.getElementById('idCheckor').disabled = 'disabled'
+                }
+            },
+            fail: function (e) {
+                errormessage(e)
+            }
+        })
+    }
+    function eMailDoubleChecker() {
+        let email = document.getElementById('user_email').value + '@'+ document.getElementById('user_email_direct').value;
+        console.log(email)
+        $.ajax({
+            url: '/regist/emailDoublecheck',
+            type: 'post',
+            data: email,
             success: function () {
-                alert("동일한 아이디가 있습니다")
+                if(data)
+                    alert("동일한 아이디가 있습니다")
+                else
+                {
+                    alert("사용 가능한 아이디 입니다")
+                    document.getElementById('idCheckor').disabled = 'disabled'
+                }
             },
             fail: function () {
-                alert("사용 가능한 아이디 입니다")
-                document.getElementById('idCheckor').disabled = 'disabled'
             }
         })
     }
 </script>
-
+<script>
+    function emailDirChange()
+    {
+        if(document.getElementById('slctEmail_host').value != "direct")
+        {
+            document.getElementById('user_email_direct').value = document.getElementById('slctEmail_host').value;
+        }
+    }
+</script>
 <script>
 
     function pwConditionCheck()
@@ -224,7 +258,7 @@
         $.ajax(
             {
 
-                url:'/regist',
+                url:'/regist/insert',
                 type:'post',
                 async:'false',
                 data:JSON.stringify(UserDTO),

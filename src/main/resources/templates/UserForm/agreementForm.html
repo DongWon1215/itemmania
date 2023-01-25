@@ -612,7 +612,7 @@
 - 로또추천번호 : 적중내역 확인일로부터 1년 보관</span>
 				</pre>
   </div>
-    <input type="button" onclick="isAllChecked()">다음으로</input>
+    <input type="button" value="다음으로" onclick="isAllChecked()">
 </div>
 
 
@@ -639,7 +639,7 @@
     {
         if($('#user_agreement1').is(":checked") && $('#user_agreement2').is(":checked"))
         {
-
+            window.location.replace("/regist/insert")
         }
 
         else

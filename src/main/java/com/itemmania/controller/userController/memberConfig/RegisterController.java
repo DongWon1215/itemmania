@@ -18,11 +18,4 @@ public class RegisterController {
         return "/UserForm/registerForm";
     }
 
-    @PostMapping
-    public String registMember(@RequestBody UserDTO userDTO)
-    {
-
-
-        return "/index";
-    }
 }

@@ -3,6 +3,7 @@ package com.itemmania.controller.userController.memberConfig;
 import com.itemmania.domain.UserDTO;
 import com.itemmania.entity.UserEntity;
 import com.itemmania.service.userService.UserService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/regist/insert")
+@Log4j2
 public class InsertInfoConteroller {
 
     @Autowired
@@ -34,6 +36,9 @@ public class InsertInfoConteroller {
     @PostMapping
     public UserEntity userData(@RequestBody UserDTO user)
     {
+
+        log.info(user);
+
         if(userService.isExistUser(user.getUserName(),user.getUserPassword()))
             return null;
 
