@@ -21,30 +21,30 @@
 
   <div class="g_content">
     <!-- ▼ 타이틀 //-->
-    <div class="g_title_blue">
-      판매 <span>관련</span>
+    <div class="g_title_green">
+      구매 <span>관련</span>
       <ul class="g_path">
         <li>홈</li>
         <li>마이룸</li>
-        <li>판매관련</li>
-        <li class="select">판매등록 물품</li>
+        <li>구매관련</li>
+        <li class="select">구매등록 물품</li>
       </ul>
     </div>
     <!-- ▲ 타이틀 //-->
 
     <!-- ▼ 메뉴탭 //-->
     <div class="g_tab">
-      <div class=""><a href="/myroom/sellRegister">판매등록물품</a></div>
-      <div class="selected"><a href="/myroom/sell_ing">판매중인 물품</a></div>
+      <div class="selected"><a href="/myroom/buyRegister">구매등록물품</a></div>
+      <div class=""><a href="/myroom/buy_ing">구매중인 물품</a></div>
     </div>
     <!-- ▲ 메뉴탭 //-->
     <!-- ▼ 테이블 상단 //-->
     <ul class="tab_sib">
       <li id="icon_info" class="g_left">
-        - 구매자가 입금을 완료한 상태입니다. 구매자와 전화통화 또는 1:1대화함으로 거래를 진행해주시기 바랍니다.
+        - 등록물품은 7일 후 자동으로 삭제됩니다. (캐릭터거래의 경우 30일)
       </li>
       <li class="g_right">
-      </li>
+        <a href="/buy/?type=general" class="regist_btn01 btn_green2">구매 등록 &gt;</a>      </li>
     </ul>
     <!-- ▲ 테이블 상단 //-->
 
@@ -59,7 +59,7 @@
       <input type="hidden" id="trade_id" name="trade_id">
 
       <!-- ▼ 판매등록물품 //-->
-      <table class="g_blue_table tb_list">
+      <table class="g_green_table tb_list">
         <colgroup>
           <col width="150">
           <col width="70">
@@ -81,6 +81,7 @@
         </tr>
         </tbody></table>
       <!-- ▲ 판매등록물품 //-->
+      <a href="javascript:;" onclick="tradeProcess('deleteSelectAll');" class="regist_btn11 btn_padding03">현재 페이지 물품 삭제</a>
       <div class="g_finish"></div>
     </form>
 
