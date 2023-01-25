@@ -129,11 +129,17 @@
                         <input type="button" value="중복확인" id="emailCheckBtn" class="btn_blue3">
                     </td>
                 </tr>
+                <tr>
+                    <th>생년월일</th>
+                    <td class ="birthday_area">
+                        <input type="date" required="true" max="2099-12-31" min="1980-01-01" id="user_birth">
+                    </td>
+                </tr>
 
             </table>
 
             <div class="g_btn">
-                <input type="submit" value="회원가입" class="btn_blue3 big_btn">
+                <input type="submit" value="회원가입" class="btn_blue3 big_btn" onclick="RegistMember()">
             </div>
         </form>
 
@@ -199,8 +205,21 @@
             document.getElementById('DuplicateCheck').style.color='red';
         }
     }
+</script>
+<script>
+    const UserDTO ={
+        userName : $('#user_id'),
+        userPassword : $('#user_password'),
+        userRealName : $('#user_name'),
+        userEmail : $('#user_email') + '@'+ $('#user_email_direct'),
+        userPhoneNum : $('#user_mobileA') + $('#user_mobileB') + $('#user_mobileC'),
+        userBirth : $('#user_birth')
+    }
 
-
+    function RegistMember()
+    {
+        $.ajax({url:'/regist',type:'post',async:'false',dataType:UserDTO,success:function (){alert("회원가입에 성공 하였습니다")},fail:function (){alert("회원가입에 실패 하였습니다")}})
+    }
 </script>
 </body>
 </html>
