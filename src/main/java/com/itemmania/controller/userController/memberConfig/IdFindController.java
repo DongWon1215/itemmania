@@ -30,11 +30,13 @@ public class IdFindController {
     public String sendInfo(@RequestBody IdFindRequest idFindRequest)
     {
 //        log.info(idFindRequest);
+        String userId = userService.findIdByNameAndBirthAndPhoneNum(idFindRequest);
 
-        return userService.findIdByNameAndBirthAndPhoneNum(idFindRequest);
+        log.info(userId);
 
-//        log.info(userId);
+        if(userId == null)
+            return "empty";
 
-//        return userId;
+        return userId;
     }
 }
