@@ -5,6 +5,8 @@ import com.itemmania.domain.LoginRequest;
 import com.itemmania.entity.UserEntity;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
+import net.minidev.json.JSONObject;
+import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +16,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @Log4j2
-@ResponseBody
 @RequestMapping("/apilogin")
 public class ApiLoginController {
 
@@ -22,6 +23,7 @@ public class ApiLoginController {
     private UserService userService;
 
     @PostMapping
+    @ResponseBody
     public String apiLogin(HttpServletRequest request, @RequestBody KakaoDTO Token)
     {
 //        if(!userService.isExistUser(loginRequest.getUser_name(), loginRequest.getUser_password()))
@@ -34,13 +36,18 @@ public class ApiLoginController {
         if(userService.isExistEmail(Token.getAccount_email()))
         {
             session.setAttribute("userInfo",userService.findUserByNameAndEmail(Token.getProfile_nickname(),Token.getAccount_email()));
+            log.info(userService.findUserByNameAndEmail(Token.getProfile_nickname(),Token.getAccount_email()));
+//            return "{\"test\":\"test\"}";
             return "/";
         }
 
         session.setAttribute("kakaoData", Token);
 //        session.setAttribute("userInfo",user);
 
-        log.info("세션 정보 ==> " + Token);
+//        log.info("세션 정보 ==> " + Token);
+
+//        JSONObject json = new JSONObject();
+//        json.put()
 
 //        log.info(TypeOf(Token));
 
