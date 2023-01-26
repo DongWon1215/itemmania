@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -18,9 +18,12 @@
                 <li><a href="/regist">아이템거래</a></li>
             </ul>
             <ul class="snav_right" onchange="isLogin()">
+<!--                <th:block th:if="">-->
                 <li id="login_button"><a href="/login">로그인</a></li>
-
+<!--                </th:block>-->
+<!--                <th:block th:unless="">-->
                 <li id="logout_button"><a onclick="total_logout()" style="cursor:pointer">로그아웃</a></li>
+<!--                </th:block>-->
                 <li><a href="/regist">회원가입</a></li>
                 <li><a href="/myroom">마이룸</a></li>
             </ul>

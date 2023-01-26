@@ -1,9 +1,12 @@
 package com.itemmania.controller.userController.memberConfig;
 
+import com.itemmania.domain.KakaoDTO;
 import com.itemmania.domain.UserDTO;
 import com.itemmania.entity.UserEntity;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
+import net.minidev.json.JSONObject;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,25 +28,35 @@ public class InsertInfoConteroller {
     {
         HttpSession session = request.getSession();
 
-        String token = (String)session.getAttribute("Token");
+        KakaoDTO token = (KakaoDTO)session.getAttribute("kakaoData");
+
+//        log.info("카카오 데이터 ->" + token);
 
         if(token != null)
-            model.addAttribute("data");
+            model.addAttribute("data",token);
 
-        return "/UserForm/inputInfoForm";
+        return "/UserForm/userRegist/inputInfoForm";
     }
 
     @PostMapping
-    public String userData(@RequestBody UserDTO user)
+    @ResponseBody
+    public JSONObject userData(HttpServletRequest request,@RequestBody UserDTO user)
     {
         log.info("데이터 =>" + user);
 
         if(userService.isExistUser(user.getUserName(),user.getUserPassword()))
-            return "/regist";
+//            return "/UserForm/userRegist/registerForm";
+            return null;
+        UserEntity userInfo = userService.insertUser(user.toUserEntity());
+        JSONObject json = new JSONObject();
+        json.put("userData",userInfo);
 
-        userService.insertUser(user.toUserEntity());
+        HttpSession session = request.getSession();
 
-        return "/index";
+        session.setAttribute("userInfo",userInfo);
+
+        return json;
+//        return "/index";
     }
 
 }

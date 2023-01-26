@@ -88,6 +88,7 @@
                 alert('비밀번호를 확인해주세요')
 
             console.log("뭐가 또 문제있는데?")
+            console.log(err)
         }
         })
     }
@@ -103,13 +104,6 @@
     naver_id_login.init_naver_id_login();
     naver_id_login.token
 </script>
-<!--<script>-->
-<!--    function loginWithKakao() {-->
-<!--        Kakao.Auth.authorize({-->
-<!--            redirectUri: 'http://localhost:8080/apilogin',-->
-<!--        });-->
-<!--    }-->
-<!--</script>-->
 <script>
     Kakao.init('3275951c9def6afe74afa750eab3456c'); //발급받은 키 중 javascript키를 사용해준다.
     console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -124,14 +118,44 @@
                         Kakao.Auth.setAccessToken(accessToken);
                         // console.log("response ==>" + response)
                         // console.log("token ==>" + accessToken)
+
+                        // kakaoAccount = JSON.parse(response)
+
+                        console.log(response.kakao_account)
+                        // console.log(kakaoAccount)
+
+                        kakaoDTO = {
+                            profile_nickname : response.kakao_account.profile.nickname,
+                            account_email : response.kakao_account.email,
+                            birthday : 1990 + response.kakao_account.birthday,
+                        }
+
                         $.ajax(
                             {
-                                url:'/apilogin',type:'post', async:false,data:JSON.stringify(accessToken),dataType:'JSON',contentType:'application/json; charset=utf-8'
-                                ,success:function(){}})},
+                                url:'/apilogin',type:'post', async:false,data:JSON.stringify(kakaoDTO),contentType:'application/json; charset=utf-8'
+                                ,success:function(result)
+                                {
+                                    console.log(result)
+
+                                    window.location.replace(result)
+                                },
+                                fail:function (error)
+                                {
+                                    console.log("fail message")
+                                    console.log(error)
+                                    window.location.replace("/regist")
+                                },
+                                error:function (error)
+                                {
+                                    console.log("error message")
+                                    console.log(error)
+                                }
+                            }
+                            )},
                     fail: function (error) {
                         console.log(error)
                         window.location.replace("/regist")
-                    },
+                    }
                 })
             },
             fail: function (error) {
