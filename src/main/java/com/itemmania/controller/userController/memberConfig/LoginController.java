@@ -1,6 +1,5 @@
 package com.itemmania.controller.userController.memberConfig;
 
-import com.itemmania.domain.LoginRequest;
 import com.itemmania.entity.UserEntity;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
@@ -22,14 +21,14 @@ public class LoginController {
     @GetMapping
     public String loginPage()
     {
-        return "userForm/loginForm";
+        return "userForm/userRegist/loginForm";
     }
 
     @PostMapping
     public String login(HttpServletRequest request, @RequestParam("user_id") String user_id, @RequestParam("user_password") String user_Pw)
     {
         if(!userService.isExistUser(user_id, user_Pw))
-            return "/UserForm/registerForm";
+            return "/UserForm/userRegist/registerForm";
 
         UserEntity user = userService.getUser(user_id, user_Pw);
 

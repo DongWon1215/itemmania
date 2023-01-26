@@ -44,7 +44,7 @@
                 <tr>
                     <th>이름</th>
                     <th:block th:if="${data} != null">
-                        <td>${data.name}</td>
+                        <td>${data.profile_nickname}</td>
                     </th:block>
                     <th:block th:if="${data} == null">
                         <td><input type="text" required="true" name="user_name" class="g_text" id="user_name" maxlength="12"></td>
@@ -111,6 +111,10 @@
                 <tr>
                     <th>이메일</th>
                     <td class="email_area">
+                        <th:block th:if="${data} != null">
+                            <td>${data.profile_nickname}</td>
+                        </th:block>
+                        <th:block th:if="${data} == null">
                         <input type="text" id="user_email" name="user_email" required="true" maxlength="30" class="g_text"> @
                         <input type="text" id="user_email_direct" name="user_email_direct" required="true" value="" maxlength="30" class="g_text">
                         <select id="slctEmail_host" name="user_email_host">
@@ -130,6 +134,7 @@
                             <option value="hanmir.com">hanmir.com</option>
                         </select>
                         <input type="button" value="중복확인" id="emailCheckBtn" class="btn_blue3" onclick="eMailDoubleChecker()">
+                        </th:block>
                     </td>
                 </tr>
                 <tr>
@@ -142,7 +147,7 @@
             </table>
 
             <div class="g_btn">
-                <input type="submit" value="회원가입" class="btn_blue3 big_btn" onclick="RegistMember()">
+                <input type="button" value="회원가입" class="btn_blue3 big_btn" onclick="RegistMember()">
             </div>
         </form>
 
@@ -241,19 +246,23 @@
             userPhoneNum : document.getElementById('user_mobileA').value + document.getElementById('user_mobileB').value + document.getElementById('user_mobileC').value,
             userBirth : document.getElementById('user_birth').value
         }
-        console.log(UserDTO)
+        // console.log(UserDTO)
         $.ajax(
             {
                 url:'/regist/insert',
                 type:'post',
-                async:'false',
                 data:JSON.stringify(UserDTO),
                 dataType:'JSON',
                 contentType:'application/json; charset=utf-8',
                 success:function (result)
                 {
-                    if(result)
+                    console.log(result)
+
+                    if(result != null)
+                    {
                         alert("회원가입에 성공 하였습니다")
+                        window.location.replace("/");
+                    }
 
                     else
                         alert("회원가입에 실패 하였습니다")

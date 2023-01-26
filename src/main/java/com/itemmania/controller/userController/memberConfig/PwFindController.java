@@ -1,6 +1,5 @@
 package com.itemmania.controller.userController.memberConfig;
 
-import com.itemmania.domain.IdFindRequest;
 import com.itemmania.domain.PasswordFindRequest;
 import com.itemmania.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class PwFindController {
     @GetMapping
     public String findform()
     {
-        return "/UserForm/pwFindForm";
+        return "/UserForm/userRegist/pwFindForm";
     }
 
     @PostMapping

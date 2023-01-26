@@ -49,6 +49,11 @@ public class UserService {
         return userRepository.findByUserNameAndUserPhoneNumber(userName,phoneNum);
     }
 
+    public UserEntity findUserByNameAndEmail(String userName, String userEmail)
+    {
+        return userRepository.findByUserRealNameAndUserEmail(userName,userEmail);
+    }
+
     public String findIdByNameAndBirthAndPhoneNum(IdFindRequest idFindRequest)
     {
         return userMapper.findIdByNameAndBirthAndPhoneNum(idFindRequest);

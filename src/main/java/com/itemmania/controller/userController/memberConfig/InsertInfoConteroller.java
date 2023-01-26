@@ -1,5 +1,6 @@
 package com.itemmania.controller.userController.memberConfig;
 
+import com.itemmania.domain.KakaoDTO;
 import com.itemmania.domain.UserDTO;
 import com.itemmania.entity.UserEntity;
 import com.itemmania.service.userService.UserService;
@@ -25,25 +26,27 @@ public class InsertInfoConteroller {
     {
         HttpSession session = request.getSession();
 
-        String token = (String)session.getAttribute("Token");
+        KakaoDTO token = (KakaoDTO)session.getAttribute("kakaoData");
 
         if(token != null)
             model.addAttribute("data");
 
-        return "/UserForm/inputInfoForm";
+        return "/UserForm/userRegist/inputInfoForm";
     }
 
     @PostMapping
-    public String userData(@RequestBody UserDTO user)
+    @ResponseBody
+    public UserEntity userData(@RequestBody UserDTO user)
     {
         log.info("데이터 =>" + user);
 
         if(userService.isExistUser(user.getUserName(),user.getUserPassword()))
-            return "/regist";
+//            return "/UserForm/userRegist/registerForm";
+            return null;
 
-        userService.insertUser(user.toUserEntity());
+        return userService.insertUser(user.toUserEntity());
 
-        return "/index";
+//        return "/index";
     }
 
 }
