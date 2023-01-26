@@ -20,27 +20,26 @@ import java.net.URL;
 public class LogoutController {
 
     @GetMapping("/logout")
-    public String Logout(HttpServletRequest request)
+    public void Logout(HttpServletRequest request)
     {
         HttpSession session = request.getSession();
 
-        if(session.getAttribute("kakaoAccessToken") != null)
-        {
-            log.info("토큰 가져왔다");
-            log.info("kakaoAccessToken =>" + session.getAttribute("kakaoAccessToken"));
-            if(kakaologout((String)session.getAttribute("kakaoAccessToken")))
-                log.info("성공적으로 로그아웃 했다");
-            
-            else
-                log.info("로그아웃에 실패했다");
-        }
+//        if(session.getAttribute("kakaoData") != null)
+//        {
+//            log.info("토큰 가져왔다");
+//            log.info("kakaoData =>" + session.getAttribute("kakaoData"));
+//            if(kakaologout((String)session.getAttribute("kakaoData")))
+//                log.info("성공적으로 로그아웃 했다");
+//
+//            else
+//                log.info("로그아웃에 실패했다");
+//        }
 
 //        if(session.getAttribute("naverAccessToken") != null)
 //            logout((String)session.getAttribute("naverAccessToken"));
 
         session.invalidate();
 
-        return "index";
     }
 
 
