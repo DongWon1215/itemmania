@@ -1,0 +1,71 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--주소값 정확하게 적어줘야함!-->
+<mapper namespace="com.itemmania.mapper.BoardMapper">
+
+    <sql id="boardTrade">
+        <!--거래 진행중-->
+        <if test="boardTradeStatus == false">
+            AND board_trade_status = #{boardTradeStatus} AND game_server_name = #{searchGameServer}
+        </if>
+        <!--거래완료-->
+        <if test="boardTradeStatus == true">
+            AND board_trade_status = #{boardTradeStatus} AND game_server_name = #{searchGameServer}
+        </if>
+    </sql>
+
+
+    <!--메인검색서치-->
+    <!--parameterType => 파라미터로 받는 DTO-->
+    <!--resultType => 결과 값을 반환할 그릇 -->
+    <select id="boardSearchList"
+            parameterType="com.itemmania.domain.BoardSearchOption"
+            resultType="com.itemmania.domain.BoardSearchOptionVO">
+        select * from board b
+        INNER JOIN game_server gs ON b.server_num = gs.server_num
+        INNER JOIN game g ON gs.game_num = g.game_num
+        <where>
+            <choose>
+                <!--구매-->
+                <when test='deal != null  and(deal eq "buy".toString())'>
+                    deal_check = #{deal}
+                    <!--프리미엄 게시판 인것-->
+                    <if test='salePremium == true'>
+                        AND sale_premium = #{salePremium}
+                        <include refid="boardTrade"/>
+                    </if>
+
+                    <!--프리미엄 게시판이 아닌것-->
+                    <if test='salePremium == false'>
+                        AND sale_premium = #{salePremium}
+                        <include refid="boardTrade"/>
+                        ORDER BY board_num DESC
+                        LIMIT #{size} OFFSET ${p*size}
+                    </if>
+                </when>
+
+                <!--판매-->
+                <when test='deal != null  and(deal eq "sale".toString())'>
+                    deal_check = #{deal}
+                    <!--프리미엄 게시판 인것-->
+                    <if test='salePremium == true'>
+                        AND sale_premium = #{salePremium}
+                        <include refid="boardTrade"/>
+                    </if>
+                    <!--프리미엄 게시판이 아닌것-->
+                    <if test='salePremium == false'>
+                        AND sale_premium = #{salePremium}
+                        <include refid="boardTrade"/>
+                        ORDER BY board_num DESC
+                        LIMIT #{size} OFFSET ${p*size}
+                    </if>
+                </when>
+            </choose>
+        </where>
+
+    </select>
+
+
+</mapper>
+

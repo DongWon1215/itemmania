@@ -24,6 +24,7 @@ public class BoardListServiceImpl implements BoardListService {
         return getAllList;
     }
 
+/*
     public List<BoardEntity> getDealCheckPremiumList(String DealCheck, boolean yes) {
         // boardList_Premium 출력
         List<BoardEntity> getboardList_P = boardRepository.boardListPremium(DealCheck, yes);
@@ -37,6 +38,7 @@ public class BoardListServiceImpl implements BoardListService {
         log.info("보드 리스트 프리미엄아닌 값" + getboardList);
         return getboardList;
     }
+*/
 
 
 }

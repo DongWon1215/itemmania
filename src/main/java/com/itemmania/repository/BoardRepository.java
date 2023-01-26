@@ -18,6 +18,8 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
     // sale buy 구분출력
     List<BoardEntity> findByDealCheck(String DealCheck);
 
+
+/*
     // 구매 판매 구분하고 프리미엄만 출력
     @Query("select b from BoardEntity b where b.dealCheck = ?1 and b.salePremium = ?2 ORDER BY b.boardNum desc  ")
     List<BoardEntity> boardListPremium(String dealCheck, boolean yes);
@@ -25,8 +27,9 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
     // 구매 판매 구분하고 프리미엄 아닌것 출력
     @Query("select b from BoardEntity b where b.dealCheck = ?1 and b.salePremium = ?2 ORDER BY b.boardNum desc  ")
     List<BoardEntity> boardListNotPremium(String dealCheck, boolean no);
+*/
 
-
+/*
     // 체크한 dealCheck + 사용자가 입력한 게임 or 게임서버 결과를 리스트로 받음
     @Query("""
             select b from BoardEntity b
@@ -38,7 +41,8 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
     @Query("""
             select b from BoardEntity b
             where b.salePremium = false and b.dealCheck = :dealCheck and b.serverNum.gameNum.gameName = :gameName or b.serverNum.gameServerName = :gameServerName   """)
-    List<BoardEntity> boardSearchList(Pageable pageable, String dealCheck, String gameName, String gameServerName);
+    Page<BoardEntity> boardSearchList(Pageable pageable, String dealCheck, String gameName, String gameServerName);
+*/
 
 
     @Transactional
