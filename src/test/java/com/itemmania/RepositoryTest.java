@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @SpringBootTest
 public class RepositoryTest {
@@ -91,7 +92,7 @@ public class RepositoryTest {
         TradeEntity tradeEntity = new TradeEntity();
         tradeEntity.setSellerNum(user);
         tradeEntity.setConsumerNum(user2);
-        tradeEntity.setTradeTime(LocalDate.now());
+        tradeEntity.setTradeTime(LocalDateTime.now());
         tradeEntity.setTradeIsSuccess(true);
         tradeEntity.setTradeAmount(500);
         tradeEntity.setTradeUnit(1);
@@ -123,7 +124,7 @@ public class RepositoryTest {
         TradeEntity tradeEntity = new TradeEntity();
         tradeEntity.setSellerNum(user);
         tradeEntity.setConsumerNum(user2);
-        tradeEntity.setTradeTime(LocalDate.now());
+        tradeEntity.setTradeTime(LocalDateTime.now());
         tradeEntity.setTradeIsSuccess(true);
         tradeEntity.setTradeAmount(1500);
         tradeEntity.setTradeUnit(1);
@@ -139,6 +140,14 @@ public class RepositoryTest {
         LocalDate endDate = LocalDate.now();
 
         System.out.println(myMileageDetailListService.getList(user.getUserNum(), startDate, endDate));
+    }
+
+    @Test
+    public void timeTest(){
+        LocalDateTime dateTime = LocalDateTime.now();
+        System.out.println(dateTime);
+        LocalDate localDate = LocalDate.now();
+        System.out.println(localDate);
     }
 
 }

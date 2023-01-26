@@ -2,7 +2,7 @@ package com.itemmania.domain;
 
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class MyMileageDetailDTO {
 
     private Integer amount;
-    private LocalDate time;
+    private LocalDateTime time;
     private Boolean plus;
     private String description;
 

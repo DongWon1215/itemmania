@@ -4,7 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -37,5 +37,5 @@ public class PayEntity {
 
     @Column
     @NotNull
-    private LocalDate payTime;
+    private LocalDateTime payTime;
 }

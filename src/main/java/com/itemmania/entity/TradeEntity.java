@@ -4,7 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -45,5 +45,5 @@ public class TradeEntity {
 
     @Column
     @NotNull
-    private LocalDate tradeTime;
+    private LocalDateTime tradeTime;
 }
