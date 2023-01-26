@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @Log4j2
-//@MapperScan
+@MapperScan("com.itemmania.mapper")
 public class ItemmaniaApplication {
 
     public static void main(String[] args) {

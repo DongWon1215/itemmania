@@ -9,16 +9,11 @@
         <div class="g_title_blue">
             <div class="g_left">
                 <ul class="trade_sub_title">
-                    <span th:text="${searchType}"></span>
                     <li>팝니다</li>
                     <li class="game_name">
-                        <!--<span>로스트아크_서버전체</span>-->
                         <span th:text="${searchGameServer}"></span>
                     </li>
                 </ul>
-            </div>
-            <div class="g_right">
-                <a href="/sell/" class="btn_reg">판매등록 +</a>
             </div>
         </div>
     </th:block>
@@ -28,22 +23,16 @@
         <div class="g_title_green">
             <div class="g_left">
                 <ul class="trade_sub_title">
-                    <span th:text="${searchType}"></span>
+                    <li>삽니다</li>
                     <li class="game_name">
-                        <span th:text="${searchType}"></span>
+                        <span th:text="${searchGameServer}"></span>
                     </li>
                 </ul>
-            </div>
-            <div class="g_right">
-                <a href="/buy/?game=2696&amp;server=18182" class="btn_reg">구매등록 +</a>
             </div>
         </div>
     </th:block>
 
     <div class="g_tab">
-        <div class="" value="money">게임머니</div>
-        <div class="" value="item">아이템</div>
-        <div class="" value="etc">기타</div>
         <div class="side">
             <ul class="search_word">
                 <li>
@@ -141,24 +130,24 @@
 
     <div class="search_list_all">
         <ul class="search_list search_list_premium">
-            <li th:each="P_List:${boarPList}" data-tid="2023011707392798" data-state="a">
-                <div class="col_01"><a href="javascript:;" data-scode="16179" data-sname="카마인"
-                                       data-search="true" th:text="${P_List.serverNum.gameServerName}"></a></div>
+            <li th:each="P_List:${boarPList}" >
+                <div class="col_01">
+                    <span th:text="${P_List.game_server_name}"></span>
+                    </div>
                 <div class="col_02 active">
-                    <a th:href="@{/board/view(boardNum=${P_List.boardNum},deal=${P_List.dealCheck})}">
+                    <a th:href="@{/board/view(boardNum=${P_List.board_num},deal=${P_List.deal_check})}">
                         <div class="mulline">
-                            <span class="title title_blue" th:text="${P_List.boardTitle}"></span>
+                            <span class="title title_blue" th:text="${P_List.board_title}"></span>
                         </div>
                     </a>
-                    <div class="sp_list view_detail"></div>
                 </div>
                 <div class="col_03">
-                    <div class="mulline" th:text="${P_List.salePrice}"></div>
+                    <div class="mulline" th:text="${P_List.sale_price}"></div>
                 </div>
                 <div class="col_04"><i class="sp_list icon_good">우수인증</i> <i class="sp_list icon_200">200%보상</i> <i
                         class="sp_list icon_200_buy">200%구매보상</i> <i class="sp_list icon_dc active_icon">할인</i>
                 </div>
-                <div class="col_05"><span th:text="${#strings.substring(P_List.boardTime,0,10)}"></span></div>
+                <div class="col_05"><span th:text="${#strings.substring(P_List.board_time,0,10)}"></span></div>
             </li>
         </ul>
         <div class="loading g_hidden"></div>
@@ -183,42 +172,95 @@
                 <div class="col_05">등록시간</div>
             </li>
         </ul>
-        <ul class="search_list search_list_normal">
-            <li th:each="List:${boarList}" data-tid="2023011707336513" data-state="a">
+        <ul id="demo" class="search_list search_list_normal">
+            <li th:each="List:${boarList}">
 
-                <div class="col_01"><a href="javascript:;" data-scode="18182" data-sname="니나브"
-                                       data-search="true" th:text="${List.serverNum.gameServerName}"></a></div>
+                <div class="col_01"><span th:text="${List.game_server_name}"></span></div>
                 <div class="col_02 active">
-                    <a th:href="@{/board/view(boardNum=${List.boardNum},deal=${List.dealCheck})}">
+                    <a th:href="@{/board/view(boardNum=${List.board_num},deal=${List.deal_check})}">
                         <div class="mulline">
-                            <span class="title" th:text="${List.boardTitle}"></span>
+                            <span class="title" th:text="${List.board_title}"></span>
                         </div>
                     </a>
                     <div class="sp_list view_detail"></div>
                 </div>
                 <div class="col_03">
-                    <div class="mulline" th:text="${List.salePrice}"></div>
+                    <div class="mulline" th:text="${List.sale_price}"></div>
                 </div>
                 <div class="col_04"><i class="sp_list icon_good">우수인증</i> <i class="sp_list icon_200">200%보상</i> <i
                         class="sp_list icon_200_buy">200%구매보상</i> <i class="sp_list icon_dc">할인</i></div>
-                <div class="col_05"><span th:text="${#strings.substring(List.boardTime,0,10)}"></span></div>
+                <div class="col_05"><span th:text="${#strings.substring(List.board_time,0,10)}"></span></div>
             </li>
         </ul>
     </div>
-    <div class="loading g_hidden"></div>
-    <span th:text="${pageNum}"></span>
-    <span th:text="${previous}"></span>
-    <span th:text="${next}"></span>
-    <div class="pagination justify-content-center">
-        <a th:href="@{/board/boardList/(deal=${searchType},searchGameServer=${searchGameServer}, page = ${previous})}">글
-            이전페이지</a>
-        <a th:href="@{/board/boardList/(deal=${searchType},searchGameServer=${searchGameServer}, page = ${next})}">글
-            다음페이지</a>
+
+    <div class="load_more" id="boardListPaging">
+        + 5개 더보기 (변경예정)
     </div>
-    <div class="load_more">
-        + 10개 더보기
-    </div>
+
 </div>
 
 <div th:replace="fragment/footer"/>
 </html>
+
+
+<script>
+    var pageNum = 1
+    $(document).ready(() => {
+        console.log('준비완료');
+        $('#boardListPaging').on('click', function () {
+
+
+            $.ajax({
+                url: '/board/boardListAjax',
+                type: 'get',
+                contentType: 'text',
+                data: {
+                    salePremium: false,
+                    deal: 'sale',
+                    searchGameServer: '김주환',
+                    p: ++pageNum
+                }
+            }).done(function (data) {
+                console.log("결과확인")
+                console.log(data)
+
+                if (data == "") {
+                    alert("마지막 페이지 입니다")
+                }
+                let listHtml = "";
+
+                $.each(data, function (index, el) {
+
+                    listHtml += '<li>' +
+                        '               <div class="col_01">' + el.game_server_name + '</div>';
+
+                    listHtml += '       <div class="col_02 active">';
+                    listHtml += '	        <a href="/board/view?boardNum=' + el.board_num + '&deal=' + el.deal_check + '">';
+                    listHtml += '	            <div class="mulline">';
+                    listHtml += '	    	        <span class="title">' + el.board_title + '</span>';
+                    listHtml += '               </div>'
+                    listHtml += '	        </a>';
+                    listHtml += '       </div>'
+                    listHtml += '        <div class="col_03">'
+                    listHtml += '            <div class="mulline">' + el.sale_price + '</div>'
+                    listHtml += '        </div>'
+                    listHtml += '<div class="col_04"><i class="sp_list icon_good">우수인증</i> <i class="sp_list icon_200">200%보상</i> <i class="sp_list icon_200_buy">200%구매보상</i> <i class="sp_list icon_dc">할인</i></div>\n' +
+                        '                <div class="col_05"><span>Sun Feb 02</span></div>'
+                    listHtml += '</div>'
+                    listHtml += '</li>'
+                })
+
+                $("#demo").append(listHtml)
+
+
+            }).fail(function (xhr, status, errorThrown) {
+                $("#demo").html("오류가 발생했습니다.<br>")
+                    .append("오류명: " + +errorThrown + "<br>")
+                    .append("상태: " + status);
+            })
+        })
+    })
+
+
+</script>
