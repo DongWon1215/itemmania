@@ -43,7 +43,8 @@
                 <tr>
                     <th>이름</th>
                     <th:block th:if="${data} != null">
-                        <td  id="kakao_name" th:text="${data.profile_nickname}"/>
+                        <td th:text="${data.profile_nickname}"/>
+                        <input type="hidden" class="g_text" id="user_name" th:value="${data.profile_nickname}">
                     </th:block>
                     <th:block th:if="${data} == null">
                         <td><input type="text" required="true" name="user_name" class="g_text" id="user_name" maxlength="12"></td>
@@ -110,7 +111,9 @@
                 <tr>
                     <th>이메일</th>
                     <th:block th:if="${data} != null">
-                        <td id="kakao_email" th:text="${data.account_email}"/>
+                        <td th:text="${data.account_email}"/>
+                        <input type="hidden" id="user_email" th:value="${data.account_email}"/>
+                        <input type="hidden" id="user_email_direct" value=""/>
                     </th:block>
                     <th:block th:if="${data} == null">
                     <td class="email_area">
