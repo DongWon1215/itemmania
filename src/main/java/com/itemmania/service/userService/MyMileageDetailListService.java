@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -28,29 +29,40 @@ public class MyMileageDetailListService {
 
     public List<MyMileageDetailDTO> getList(int userNum, LocalDate startDate, LocalDate endDate){
 
-        List<MyMileageDetailDTO> myMileageDetailDTOS = null;
+        List<MyMileageDetailDTO> myMileageDetailDTOS = new ArrayList<>();
         List<TradeEntity> consumeList = tradeRepository.findByTradeIsSuccessTrueAndConsumerNum_UserNumAndTradeTimeBetween(userNum, startDate, endDate);
         List<TradeEntity> sellList = tradeRepository.findByTradeIsSuccessTrueAndSellerNum_UserNumAndTradeTimeBetween(userNum, startDate, endDate);
         List<PayEntity> payList = payRepository.findByUserNum_UserNumAndPayTimeBetween(userNum, startDate, endDate);
         List<BuyEntity> buyList = buyRepository.findByUserNum_UserNumAndTimeBetween(userNum, startDate, endDate);
 
-        for(TradeEntity tradeEntity : consumeList){
-            myMileageDetailDTOS.add(new MyMileageDetailDTO(tradeEntity.getTradeAmount(), tradeEntity.getTradeTime(), false, "#구매 : " + tradeEntity.getBoardNum().getBoardTitle()));
-        }
-        
-        for(TradeEntity tradeEntity : sellList){
-            myMileageDetailDTOS.add(new MyMileageDetailDTO(tradeEntity.getTradeAmount(), tradeEntity.getTradeTime(), true, "#판매 : " + tradeEntity.getBoardNum().getBoardTitle()));
+        if(consumeList != null) {
+            for (TradeEntity tradeEntity : consumeList) {
+                myMileageDetailDTOS.add(new MyMileageDetailDTO(tradeEntity.getTradeAmount(), tradeEntity.getTradeTime(), false, "#구매 : " + tradeEntity.getBoardNum().getBoardTitle()));
+            }
         }
 
-        for(PayEntity payEntity : payList){
-            myMileageDetailDTOS.add(new MyMileageDetailDTO(payEntity.getPayAmount(), payEntity.getPayTime(), true, "#충전 : " + payEntity.getPayPayment()));
+        if(sellList != null) {
+
+            for (TradeEntity tradeEntity : sellList) {
+                myMileageDetailDTOS.add(new MyMileageDetailDTO(tradeEntity.getTradeAmount(), tradeEntity.getTradeTime(), true, "#판매 : " + tradeEntity.getBoardNum().getBoardTitle()));
+            }
         }
 
-        for(BuyEntity buyEntity : buyList){
-            myMileageDetailDTOS.add(new MyMileageDetailDTO(buyEntity.getPrice(), buyEntity.getTime(), false, "#프리미엄권 구매 : " + buyEntity.getBuyNum()));
+        if(payList != null) {
+            for (PayEntity payEntity : payList) {
+                myMileageDetailDTOS.add(new MyMileageDetailDTO(payEntity.getPayAmount(), payEntity.getPayTime(), true, "#충전 : " + payEntity.getPayPayment()));
+            }
         }
 
-        myMileageDetailDTOS.sort(Comparator.comparing(MyMileageDetailDTO::getTime).reversed());
+        if(buyList != null) {
+            for (BuyEntity buyEntity : buyList) {
+                myMileageDetailDTOS.add(new MyMileageDetailDTO(buyEntity.getPrice(), buyEntity.getTime(), false, "#프리미엄권 구매 : " + buyEntity.getBuyNum()));
+            }
+        }
+
+        if(myMileageDetailDTOS != null) {
+            myMileageDetailDTOS.sort(Comparator.comparing(MyMileageDetailDTO::getTime).reversed());
+        }
 
         return myMileageDetailDTOS;
     }

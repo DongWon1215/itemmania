@@ -22,11 +22,11 @@ public class TradeEntity {
     private int tradeNum;
 
     @ManyToOne
-    @JoinColumn(name = "userNum", insertable = false, updatable = false)
+    @JoinColumn(name = "consumerNum")
     private UserEntity consumerNum;
 
     @ManyToOne
-    @JoinColumn(name = "userNum", insertable = false, updatable = false)
+    @JoinColumn(name = "sellerNum")
     private UserEntity sellerNum;
 
     @ManyToOne
