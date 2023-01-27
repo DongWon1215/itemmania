@@ -56,6 +56,23 @@
                     console.log(result)
 
                     $.ajax({url:'/logout',type:'post',data:JSON.stringify(result),success:function (){console.log("성공적으로 로그아웃 됨")},error:function (err){console.log(err)}})
+                    // $.ajax({url:'/oauth/logout?client_id=${ad443805b417fd3da8d9b69982652698}&logout_redirect_uri=${http://localhost:8080/logout}',type:'get',
+                    //     success:function (result)
+                    //     {
+                    //     console.log("result")
+                    //     console.log(result)
+                    //     },
+                    //     fail:function (fail)
+                    //     {
+                    //         console.log("fail")
+                    //         console.log(fail)
+                    //     },
+                    //     error:function (error)
+                    //     {
+                    //         console.log("error")
+                    //         console.log(error)
+                    //     }
+                    // })
                 })
         }
     }

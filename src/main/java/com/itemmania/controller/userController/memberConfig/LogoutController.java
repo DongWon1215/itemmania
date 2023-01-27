@@ -65,7 +65,7 @@ public class LogoutController {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println(result);
+            log.info(result);
 
             return true;
 

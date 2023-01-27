@@ -20,7 +20,11 @@ public SecurityFilterChain filterChai(HttpSecurity httpSecurity)throws Exception
                 .antMatchers("/board/**").hasRole("USER")
                 .antMatchers("/myroom/**").hasRole("USER");
 
-        httpSecurity.formLogin().loginPage("/login").successHandler(new CustomLoginSuccessHandler());
+        httpSecurity.formLogin().loginPage("/login");
+
+        httpSecurity.logout().logoutUrl("/logout").logoutSuccessUrl("/");
+
+        httpSecurity.rememberMe().key("123456789").rememberMeParameter("remember-me").tokenValiditySeconds(60*60*10);
 
         return httpSecurity.build();
     }
