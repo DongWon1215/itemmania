@@ -18,12 +18,12 @@
                 <li><a href="/regist">아이템거래</a></li>
             </ul>
             <ul class="snav_right" onchange="isLogin()">
-<!--                <th:block th:if="">-->
+                <th:block sec:authorize="isAnonymous()">
                 <li id="login_button"><a href="/login">로그인</a></li>
-<!--                </th:block>-->
-<!--                <th:block th:unless="">-->
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
                 <li id="logout_button"><a onclick="total_logout()" style="cursor:pointer">로그아웃</a></li>
-<!--                </th:block>-->
+                </th:block>
                 <li><a href="/regist">회원가입</a></li>
                 <li><a href="/myroom">마이룸</a></li>
             </ul>
@@ -34,12 +34,12 @@
 <script>
     function total_logout()
     {
-        // logout();
-        // kakaoLogout();
+        // naverlogout();
+        kakaoLogout();
         window.location.replace("/logout");
     }
 
-    function logout()
+    function naverlogout()
     {
         let naver_id_login = new naver_id_login("vPoSYGCMBN6Ay_norea_", "http://localhost:8080/index");
         if(naver_id_login.oauthParams.access_token != null)
@@ -51,7 +51,29 @@
     function kakaoLogout() {
         if (Kakao.Auth.getAccessToken()) {
             Kakao.Auth.logout()
-            Kakao.Auth.setAccessToken(undefined)
+                .then(function (result)
+                {
+                    console.log(result)
+
+                    $.ajax({url:'/logout',type:'post',data:JSON.stringify(result),success:function (){console.log("성공적으로 로그아웃 됨")},error:function (err){console.log(err)}})
+                    // $.ajax({url:'/oauth/logout?client_id=${ad443805b417fd3da8d9b69982652698}&logout_redirect_uri=${http://localhost:8080/logout}',type:'get',
+                    //     success:function (result)
+                    //     {
+                    //     console.log("result")
+                    //     console.log(result)
+                    //     },
+                    //     fail:function (fail)
+                    //     {
+                    //         console.log("fail")
+                    //         console.log(fail)
+                    //     },
+                    //     error:function (error)
+                    //     {
+                    //         console.log("error")
+                    //         console.log(error)
+                    //     }
+                    // })
+                })
         }
     }
 
