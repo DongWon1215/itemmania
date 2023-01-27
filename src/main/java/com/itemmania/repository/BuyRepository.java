@@ -4,10 +4,11 @@ import com.itemmania.entity.BuyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface BuyRepository extends JpaRepository<BuyEntity,Integer> {
 
-    List<BuyEntity> findByUserNum_UserNumAndTimeBetween(int userNum, LocalDate timeStart, LocalDate timeEnd);
+    List<BuyEntity> findByUserNum_UserNumAndTimeBetween(int userNum, LocalDateTime timeStart, LocalDateTime timeEnd);
 
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -27,7 +28,7 @@ public class MyMileageDetailListService {
     @Autowired
     private BuyRepository buyRepository;
 
-    public List<MyMileageDetailDTO> getList(int userNum, LocalDate startDate, LocalDate endDate){
+    public List<MyMileageDetailDTO> getList(int userNum, LocalDateTime startDate, LocalDateTime endDate){
 
         List<MyMileageDetailDTO> myMileageDetailDTOS = new ArrayList<>();
         List<TradeEntity> consumeList = tradeRepository.findByTradeIsSuccessTrueAndConsumerNum_UserNumAndTradeTimeBetween(userNum, startDate, endDate);

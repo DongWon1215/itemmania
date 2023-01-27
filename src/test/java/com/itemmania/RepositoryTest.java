@@ -63,7 +63,7 @@ public class RepositoryTest {
         buyEntity.setItemNum(itemEntity);
         buyEntity.setPrice(buyEntity.getItemUnit() * buyEntity.getItemNum().getItemPrice());
         buyEntity.setUserNum(userRepository.findById(1).get());
-        buyEntity.setTime(LocalDate.now());
+        buyEntity.setTime(LocalDateTime.now());
 
         UserEntity user = userRepository.findById(1).get();
         user.setItemUnit(user.getItemUnit()+buyEntity.getItemUnit());
@@ -119,7 +119,7 @@ public class RepositoryTest {
 
         UserEntity user = userRepository.findById(1).get();
 
-        UserEntity user2 = userRepository.findById(2).get();
+        UserEntity user2 = userRepository.findById(4).get();
 
         TradeEntity tradeEntity = new TradeEntity();
         tradeEntity.setSellerNum(user);
@@ -136,8 +136,8 @@ public class RepositoryTest {
     @Test
     public void getMyMileageDetailListTest(){
         UserEntity user = userRepository.findById(1).get();
-        LocalDate startDate = LocalDate.of(1,1,1);
-        LocalDate endDate = LocalDate.now();
+        LocalDateTime startDate = LocalDateTime.of(1,1,1,1,1);
+        LocalDateTime endDate = LocalDateTime.now();
 
         System.out.println(myMileageDetailListService.getList(user.getUserNum(), startDate, endDate));
     }

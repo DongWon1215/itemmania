@@ -17,9 +17,9 @@ public class MyMileageDetailListTest {
     @Test
     public void getList(){
 
-        LocalDate starDate;
-        starDate = LocalDate.of(0, 0, 0);
-        System.out.println(myMileageDetailListService.getList(1, starDate, LocalDate.now()));
+        LocalDateTime starDate;
+        starDate = LocalDateTime.of(1, 1, 1, 1,1);
+        System.out.println(myMileageDetailListService.getList(1, starDate, LocalDateTime.now()));
     }
 
 
