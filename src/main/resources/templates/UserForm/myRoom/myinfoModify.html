@@ -44,14 +44,14 @@
         <tbody><tr>
           <th>이름</th>
           <td colspan="3">
-            <input type="text" id="userRealName" class="g_text" th:value="${user.userRealName}">
+            <input type="text" id="userRealName" class="g_text" th:value="${user.userRealName}" readonly>
           </a>
           </td>
         </tr>
         <tr>
           <th>아이디</th>
           <td colspan="3">
-            <input type="text" id="userName" class="g_text" th:value="${user.userName}">
+            <input type="text" id="userName" name="userName" class="g_text" th:value="${user.userName}" readonly>
           </td>
         </tr>
         </tbody></table>
@@ -110,8 +110,8 @@
           <td class="email_info">
             <div class="email_block">
               <div class="s_label">이메일:</div>
-              <input type="text" name="userEmail" id="userEmail" class="g_text" th:value="${#strings.substring(user.userEmail, 0, 1)}"> @
-              <input type="text" name="userEmail2" id="userEmail2" class="g_text" >
+              <input type="text" name="userEmail" id="userEmail" class="g_text" th:value="${#strings.arraySplit(user.userEmail, '@')[0]}"> @
+              <input type="text" name="userEmail2" id="userEmail2" class="g_text" th:value="${#strings.arraySplit(user.userEmail, '@')[1]}">
               <a href="javascript:;" id="email_auth_btn" class="btn btn_gray3">인증받기</a>
             </div>
             <div class="agree_guide">
@@ -119,14 +119,14 @@
             </div>
           </td>
         </tr>
-        <tr>
+        <!--<tr>
           <th>생년월일</th>
           <td class="cell_num">
             <div class="s_label">
               <input type="date" name="userBirth" id="userBirth" class="g_text" th:value="${user.userBirth}">
             </div>
           </td>
-        </tr>
+        </tr>-->
         </tbody></table>
       <ul class="tb_bt_txt f_red1">
         <li>※ <span class="f_small">SKT-A, KT-A, LG-A 통신사는 알뜰폰 구분 입니다.</span></li>

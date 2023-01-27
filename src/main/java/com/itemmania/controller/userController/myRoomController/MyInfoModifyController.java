@@ -36,12 +36,11 @@ public class MyInfoModifyController {
     }
 
     @PostMapping
-    public String modifyUser(UserModifyRequest req, RedirectAttributes rttr, UserModifyRequest userModifyRequest){
+    public String modifyUser(UserModifyRequest req, RedirectAttributes rttr){
 
-        log.info("userModifyRequest......." + userModifyRequest);
-        log.info("UserRequest......." + req);
-        rttr.addAttribute("userNum", req.getUserNum());
-        rttr.addFlashAttribute("msg", "modify");
+        log.info("userModifyRequest......." + req);
+//        rttr.addAttribute("userNum", req.getUserNum());
+//        rttr.addFlashAttribute("msg", "modify");
         myInfoModifyService.modifyUser(req);
         return "redirect:/myroom";
 
