@@ -31,7 +31,9 @@
     </div>
 
     <form method="post">
-      <input type="text" name="userNum" id="userNum">
+
+      <input type="hidden" name="userNum" id="userNum" th:value="${user.userNum}">
+
       <table class="g_blue_table">
         <colgroup>
           <col width="140">
@@ -42,14 +44,14 @@
         <tbody><tr>
           <th>이름</th>
           <td colspan="3">
-            <input type="text" id="userRealName" class="g_text" value="userRealName">
+            <input type="text" id="userRealName" class="g_text" th:value="${user.userRealName}">
           </a>
           </td>
         </tr>
         <tr>
           <th>아이디</th>
           <td colspan="3">
-            <input type="text" id="userId" class="g_text" value="userId">
+            <input type="text" id="userName" class="g_text" th:value="${user.userName}">
           </td>
         </tr>
         </tbody></table>
@@ -64,7 +66,7 @@
           <th>비밀번호</th>
           <td class="cell_num">
             <div class="s_label">
-              <input type="password" name="userPassword" id="userPassword" class="g_text">
+              <input type="password" name="userPassword" id="userPassword" class="g_text" th:value="${user.userPassword}">
             </div>
           </td>
         </tr>
@@ -72,7 +74,7 @@
           <th>비밀번호 확인</th>
           <td class="cell_num">
             <div class="s_label">
-              <input type="password" id="repassword" class="g_text" onchange="pwDuplicateCheck()">
+              <input type="password" id="repassword" class="g_text" onchange="pwDuplicateCheck()" th:value="${user.userPassword}">
               <div class="" id="DuplicateCheck"/>
             </div>
           </td>
@@ -90,7 +92,7 @@
               <option>LG-A</option>
               <!--<option>휴대폰없음</option>-->
             </select>
-            <select class="g_selectbox" name="user_mobileA" id="user_mobileA" style="width: 55px;">
+            <select class="g_selectbox" name="user_mobileA" id="user_mobileA" style="width: 55px;" th:value="${#strings.substring(user.userPhoneNumber, 0, 3)}">
               <option>010</option>
               <option>011</option>
               <option>016</option>
@@ -99,8 +101,8 @@
               <option>019</option>
             </select>
             <div class="g_left margin_5"/>
-            <input type="text" name="user_mobileB" id="user_mobileB" maxlength="4" class="g_text"> -
-            <input type="text" name="user_mobileC" id="user_mobileC" maxlength="4" class="g_text">
+            <input type="text" name="user_mobileB" id="user_mobileB" maxlength="4" class="g_text" th:value="${#strings.substring(user.userPhoneNumber, 3, 7)}"> -
+            <input type="text" name="user_mobileC" id="user_mobileC" maxlength="4" class="g_text" th:value="${#strings.substring(user.userPhoneNumber, 7, 11)}">
           </td>
         </tr>
         <tr>
@@ -108,8 +110,8 @@
           <td class="email_info">
             <div class="email_block">
               <div class="s_label">이메일:</div>
-              <input type="text" name="userEmail" id="userEmail" class="g_text" readonly=""> @
-              <input type="text" name="userEmail2" id="userEmail2" class="g_text" readonly="">
+              <input type="text" name="userEmail" id="userEmail" class="g_text" th:value="${#strings.substring(user.userEmail, 0, 1)}"> @
+              <input type="text" name="userEmail2" id="userEmail2" class="g_text" >
               <a href="javascript:;" id="email_auth_btn" class="btn btn_gray3">인증받기</a>
             </div>
             <div class="agree_guide">
@@ -121,7 +123,7 @@
           <th>생년월일</th>
           <td class="cell_num">
             <div class="s_label">
-              <input type="date" name="userBirth" id="userBirth" class="g_text">
+              <input type="date" name="userBirth" id="userBirth" class="g_text" th:value="${user.userBirth}">
             </div>
           </td>
         </tr>

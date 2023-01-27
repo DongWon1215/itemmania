@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Log4j2
@@ -24,12 +26,13 @@ public class MyInfoModifyController {
     private MyInfoModifyService myInfoModifyService;
 
     @GetMapping
-    public String getMypageForm(Model model, @RequestParam(value = "userNum", required = false)int userNum)
-    {
-        log.info("UserModifyController 들어옴");
-        model.addAttribute("user", myInfoModifyService.selectUser(userNum));
+    public String getMypageForm(Model model, HttpServletRequest request){
 
+        HttpSession session = request.getSession();
+        log.info("UserModifyController......." + session.getAttribute("userInfo"));
+        model.addAttribute("user", myInfoModifyService.selectUser(2));
         return "userForm/myRoom/myinfoModify";
+
     }
 
     @PostMapping
