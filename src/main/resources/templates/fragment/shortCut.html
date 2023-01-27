@@ -34,12 +34,12 @@
 <script>
     function total_logout()
     {
-        // logout();
+        // naverlogout();
         kakaoLogout();
         window.location.replace("/logout");
     }
 
-    function logout()
+    function naverlogout()
     {
         let naver_id_login = new naver_id_login("vPoSYGCMBN6Ay_norea_", "http://localhost:8080/index");
         if(naver_id_login.oauthParams.access_token != null)

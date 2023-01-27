@@ -1,5 +1,6 @@
 package com.itemmania.config;
 
+import com.itemmania.security.CustomLoginSuccessHandler;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,11 @@ public SecurityFilterChain filterChai(HttpSecurity httpSecurity)throws Exception
     {
         httpSecurity.csrf().disable();
 
-        httpSecurity.authorizeHttpRequests().antMatchers("/").permitAll();
+        httpSecurity.authorizeHttpRequests().antMatchers("/").permitAll()
+                .antMatchers("/board").hasRole("USER")
+                .antMatchers("/myroom").hasRole("USER");
+
+        httpSecurity.formLogin().loginPage("/login").successHandler(new CustomLoginSuccessHandler());
 
         return httpSecurity.build();
     }
