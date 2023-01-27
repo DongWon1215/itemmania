@@ -20,7 +20,7 @@ public class MyroomTest {
     // 회원 수정 테스트 -> 완료
     @Test
     public void updateMemberTest(){
-        userRepository.updateUserByUserNum("tester", "tester", "tester", "tester", LocalDate.parse("2000-06-12"), 1);
+        userRepository.updateUserByUserNum("tester", "tester", "tester", LocalDate.parse("2000-06-12"), 1);
         log.info("회원 수정...");
     }
 
