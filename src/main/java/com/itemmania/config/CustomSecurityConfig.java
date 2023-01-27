@@ -17,8 +17,8 @@ public SecurityFilterChain filterChai(HttpSecurity httpSecurity)throws Exception
         httpSecurity.csrf().disable();
 
         httpSecurity.authorizeHttpRequests().antMatchers("/").permitAll()
-                .antMatchers("/board").hasRole("USER")
-                .antMatchers("/myroom").hasRole("USER");
+                .antMatchers("/board/**").hasRole("USER")
+                .antMatchers("/myroom/**").hasRole("USER");
 
         httpSecurity.formLogin().loginPage("/login").successHandler(new CustomLoginSuccessHandler());
 
