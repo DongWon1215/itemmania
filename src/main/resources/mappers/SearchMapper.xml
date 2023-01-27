@@ -7,11 +7,11 @@
     <sql id="boardTrade">
         <!--거래 진행중-->
         <if test="boardTradeStatus == false">
-            AND board_trade_status = #{boardTradeStatus} AND game_server_name = #{searchGameServer}
+            AND board_trade_status = #{boardTradeStatus} AND game_server_name = #{searchOption.searchGameServer}
         </if>
         <!--거래완료-->
         <if test="boardTradeStatus == true">
-            AND board_trade_status = #{boardTradeStatus} AND game_server_name = #{searchGameServer}
+            AND board_trade_status = #{boardTradeStatus} AND game_server_name = #{searchOption.searchGameServer}
         </if>
     </sql>
 
@@ -28,8 +28,8 @@
         <where>
             <choose>
                 <!--구매-->
-                <when test='deal != null  and(deal eq "buy".toString())'>
-                    deal_check = #{deal}
+                <when test='searchOption.deal != null  and(searchOption.deal eq "buy".toString())'>
+                    deal_check = #{searchOption.deal}
                     <!--프리미엄 게시판 인것-->
                     <if test='salePremium == true'>
                         AND sale_premium = #{salePremium}
@@ -41,13 +41,13 @@
                         AND sale_premium = #{salePremium}
                         <include refid="boardTrade"/>
                         ORDER BY board_num DESC
-                        LIMIT #{size} OFFSET ${p*size}
+                        LIMIT #{searchOption.size} OFFSET ${searchOption.p*searchOption.size}
                     </if>
                 </when>
 
                 <!--판매-->
-                <when test='deal != null  and(deal eq "sale".toString())'>
-                    deal_check = #{deal}
+                <when test='searchOption.deal != null  and(searchOption.deal eq "sale".toString())'>
+                    deal_check = #{searchOption.deal}
                     <!--프리미엄 게시판 인것-->
                     <if test='salePremium == true'>
                         AND sale_premium = #{salePremium}
@@ -58,7 +58,7 @@
                         AND sale_premium = #{salePremium}
                         <include refid="boardTrade"/>
                         ORDER BY board_num DESC
-                        LIMIT #{size} OFFSET ${p*size}
+                        LIMIT #{searchOption.size} OFFSET ${searchOption.p*searchOption.size}
                     </if>
                 </when>
             </choose>

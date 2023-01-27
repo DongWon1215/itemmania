@@ -21,12 +21,12 @@ public class BoardSearchController {
 
     /*@RequestMapping(value = "/board/boardList")*/
     @GetMapping("/board/boardList")
-    public void getBoardSearch(Model model, BoardSearchOption searchOption) {
+    public String getBoardSearch(Model model, BoardSearchOption searchOption) {
 
         log.info("컨트롤 겟 옵션" + searchOption);
 
-        List<BoardSearchOptionVO> p_searchDataCheck = boardSearchService.getP_SearchDataCheck(searchOption.getP(), searchOption.getSize(), searchOption.getDeal(), searchOption.getSearchGameServer());
-        List<BoardSearchOptionVO> searchDataCheck = boardSearchService.getSearchDataCheck(searchOption.getP(),searchOption.getSize(), searchOption.getDeal(), searchOption.getSearchGameServer());
+        List<BoardSearchOptionVO> p_searchDataCheck = boardSearchService.getP_SearchDataCheck(searchOption);
+        List<BoardSearchOptionVO> searchDataCheck = boardSearchService.getSearchDataCheck(searchOption);
         log.info("프리미엄 리스트" + p_searchDataCheck);
         log.info("일반 리스트" + searchDataCheck);
 
@@ -41,7 +41,8 @@ public class BoardSearchController {
         model.addAttribute("boarList", searchDataCheck);
 
 
-    }
 
+        return "";
+    }
 }
 

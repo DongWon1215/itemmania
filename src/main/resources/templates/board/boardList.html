@@ -47,25 +47,10 @@
     </div>
     <div class="g_finish"></div>
     <div id="detail_search" class="detail_search">
-        <form id="frm_search" name="frm_search" method="POST">
-            <input type="hidden" name="game_code" id="game_code" value="2696">
-            <input type="hidden" name="server_code" id="server_code" value="">
-            <input type="hidden" name="search_game" id="search_game" value="2696">
-            <input type="hidden" name="search_server" id="search_server" value="">
-            <input type="hidden" name="search_game_text" id="search_game_text" value="로스트아크">
-            <input type="hidden" name="search_server_text" id="search_server_text" value="">
-            <input type="hidden" name="search_goods" id="search_goods" value="all">
-            <input type="hidden" name="search_word" id="search_word" value="">
-            <input type="hidden" name="search_type" id="search_type" value="sell">
-            <input type="hidden" name="money_listOrder" id="money_listOrder" value="">
-            <input type="hidden" name="good_listOrder" id="good_listOrder" value="">
-            <input type="hidden" name="srch_item_depth1" id="srch_item_depth1" value="">
-            <input type="hidden" name="srch_item_depth2" id="srch_item_depth2" value="">
-            <input type="hidden" name="srch_item_depth3" id="srch_item_depth3" value="">
-            <input type="hidden" name="srch_item_depth4" id="srch_item_depth4" value="">
-            <input type="hidden" name="order" id="order" value="2">
-            <input type="hidden" name="srch_char_alarm" id="srch_char_alarm" value="">
-            <input type="hidden" name="overlap" id="overlap" value="">
+        <form id="frm_search" name="frm_search" method="POST" action="/board/boardList">
+            <input type="hidden" name="game_code" id="game_code" th:value="${searchGameServer}">
+            <input type="hidden" name="server_code" id="server_code" th:value="${searchType}">
+
 
             <div class="search_box">
                 <div class="search_reset">초기화</div>
@@ -130,10 +115,10 @@
 
     <div class="search_list_all">
         <ul class="search_list search_list_premium">
-            <li th:each="P_List:${boarPList}" >
+            <li th:each="P_List:${boarPList}">
                 <div class="col_01">
                     <span th:text="${P_List.game_server_name}"></span>
-                    </div>
+                </div>
                 <div class="col_02 active">
                     <a th:href="@{/board/view(boardNum=${P_List.board_num},deal=${P_List.deal_check})}">
                         <div class="mulline">
@@ -208,8 +193,18 @@
     var pageNum = 1
     $(document).ready(() => {
         console.log('준비완료');
+
+
+        // 라디오버튼, 체크박스 검색
+        $('.search_box input[type="radio"]').on('click', function () {
+            $('#frm_search').submit();
+        });
+
+
         $('#boardListPaging').on('click', function () {
 
+            const searchGameServer = '[[${searchGameServer}]]';
+            const searchType = '[[${searchType}]]';
 
             $.ajax({
                 url: '/board/boardListAjax',
@@ -217,8 +212,8 @@
                 contentType: 'text',
                 data: {
                     salePremium: false,
-                    deal: 'sale',
-                    searchGameServer: '김주환',
+                    deal: searchType,
+                    searchGameServer: searchGameServer,
                     p: ++pageNum
                 }
             }).done(function (data) {

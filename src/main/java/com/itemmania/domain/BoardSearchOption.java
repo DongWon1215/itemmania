@@ -17,15 +17,16 @@ public class BoardSearchOption {
     // 판매중인지 거래완료인지 구분
     private boolean boardTradeStatus;
 
+    // 게시판 게시자의 회원 신용점수
+    private long userCreditScore;
 
     // 사용자가 검색한 게임, 서버이름
     private String searchGameServer;
     // 페이지 번호
     private int p = 0;
 
-    // 페이지 사이즈
+    // 페이지 출력 개수
     private int size = 5;
-
 
 
 }

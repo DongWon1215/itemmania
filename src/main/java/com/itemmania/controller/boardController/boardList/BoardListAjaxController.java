@@ -20,15 +20,11 @@ public class BoardListAjaxController {
     private BoardSearchService boardSearchService;
 
     @GetMapping("/board/boardListAjax")
-    public List<BoardSearchOptionVO> getBoardAjax(Model model,
-                                                  BoardSearchOption searchOption) {
+    public List<BoardSearchOptionVO> getBoardAjax(BoardSearchOption searchOption) {
 
         log.info("서치옵션" + searchOption);
-        List<BoardSearchOptionVO> searchDataCheck = boardSearchService.getSearchDataCheck(searchOption.getP(), searchOption.getSize(), searchOption.getDeal(), searchOption.getSearchGameServer());
+        List<BoardSearchOptionVO> searchDataCheck = boardSearchService.getSearchDataCheck(searchOption);
         log.info("에이젝스 컨트롤러 리스트 " + searchDataCheck);
-
-        // 검색 결과를 토대로 출력한 일반 리스트
-        model.addAttribute("boarAjaxList", searchDataCheck);
 
 
         return searchDataCheck;
