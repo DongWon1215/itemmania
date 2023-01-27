@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,6 +11,8 @@
 <div th:replace="fragment/header"/>
 
 <!--body 시작-->
+<input type="hidden" name="userNum" id="userNum">
+
 <div class="g_container" id="g_CONTENT">
     <div class="g_remocon_l">
     </div>
@@ -23,7 +25,8 @@
         <div class="mr_user_level_txt f_black2">
             <div class="user_level_txt f_BRONZE">
                 BRONZE        </div>
-            [회원이름] 회원님의 신용등급은
+            [회원이름]
+            회원님의 신용등급은
             <span class="f_BRONZE">일반 (0점)</span>
             입니다.
             <div class="mr_user_benefit_btn_wrapper">

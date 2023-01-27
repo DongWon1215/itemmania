@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserEntity,Integer> {
@@ -20,15 +21,14 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
 
     UserEntity findByUserRealNameAndUserEmail(String userRealName, String userEmail);
 
-
-
     // 회원정보 수정 (마이룸 > 개인정보수정)
     @Transactional
     @Modifying
     @Query("""
-            update UserEntity u set u.userRealName = ?1, u.userPassword = ?2, u.userPhoneNumber = ?3, u.userEmail = ?4
-            where u.userNum = ?5""")
-    int updateUserByUserNum(String userRealName, String userPassword, String userPhoneNumber, String userEmail, int userNum);
+            update UserEntity u set u.userRealName = ?1, u.userPassword = ?2, u.userPhoneNumber = ?3, u.userEmail = ?4, u.userBirth = ?5
+            where u.userNum = ?6""")
+    int updateUserByUserNum(String userRealName, String userPassword, String userPhoneNumber, String userEmail, LocalDate userBirth, int userNum);
+
 
 
 

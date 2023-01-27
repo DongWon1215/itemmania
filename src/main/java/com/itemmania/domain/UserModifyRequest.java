@@ -6,6 +6,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -25,8 +26,10 @@ public class UserModifyRequest {
 
     private String userEmail;
 
+    private LocalDate userBirth;
+
     public UserEntity toUserEntity(){
-        return UserEntity.builder().userRealName(userRealName).userPassword(userPassword).userPhoneNumber(userPhoneNumber).userEmail(userEmail).build();
+        return UserEntity.builder().userRealName(userRealName).userPassword(userPassword).userPhoneNumber(userPhoneNumber).userEmail(userEmail).userBirth(userBirth).build();
     }
 
 }
