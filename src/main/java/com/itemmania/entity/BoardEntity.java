@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -44,16 +45,16 @@ public class BoardEntity {
     // 서버 번호
     private GameServerEntity serverNum;
 
-    @ManyToOne
+/*    @ManyToOne
     @NonNull
     @JoinColumn(name = "tradeNum")
     // 거래 번호
-    private TradeEntity tradeNum;
+    private TradeEntity tradeNum;*/
 
     @Column
     @NonNull
     // 게시글 작성 시간
-    private LocalDate boardTime;
+    private LocalDateTime boardTime;
 
     @Column
     @NonNull
@@ -95,7 +96,7 @@ public class BoardEntity {
 
     @Column
     // 거래 완료 시간
-    private LocalDate dealEndTime;
+    private LocalDateTime dealEndTime;
 
     @Column
     @NonNull
