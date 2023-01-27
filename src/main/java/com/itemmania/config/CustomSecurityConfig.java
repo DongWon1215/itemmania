@@ -19,8 +19,8 @@ public class CustomSecurityConfig {
         httpSecurity.csrf().disable();
 
         httpSecurity.authorizeHttpRequests()
-                .antMatchers("/board/**").hasRole("USER")
-                .antMatchers("/myroom/**").hasRole("USER")
+//                .antMatchers("/board/**").hasRole("USER")
+//                .antMatchers("/myroom/**").hasRole("USER")
                 .anyRequest().permitAll();
 
         httpSecurity.formLogin().loginPage("/login");
