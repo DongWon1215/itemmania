@@ -29,7 +29,7 @@ public class MyRoomController {
     {
         HttpSession session = request.getSession();
         log.info("UserModifyController......." + session.getAttribute("userInfo"));
-        model.addAttribute("user", myInfoReadService.selectUser(1));
+        model.addAttribute("user", session.getAttribute("userInfo"));
         //log.info("myroom userNum............" + userNum);
         return "userForm/myRoom/myRoomForm";
         

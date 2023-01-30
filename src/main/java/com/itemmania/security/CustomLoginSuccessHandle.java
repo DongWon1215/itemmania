@@ -36,6 +36,6 @@ public class CustomLoginSuccessHandle implements AuthenticationSuccessHandler {
 
         session.setAttribute("userInfo",user.getUserEntity());
 
-        response.sendRedirect("/myroom");
+        response.sendRedirect("/");
     }
 }
