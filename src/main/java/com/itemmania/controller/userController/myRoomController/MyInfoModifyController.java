@@ -2,6 +2,7 @@ package com.itemmania.controller.userController.myRoomController;
 
 import com.itemmania.domain.UserModifyRequest;
 import com.itemmania.service.userService.MyInfoModifyService;
+import com.itemmania.service.userService.MyInfoReadService;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Log4j2
@@ -23,22 +26,24 @@ public class MyInfoModifyController {
     @Autowired
     private MyInfoModifyService myInfoModifyService;
 
-    @GetMapping
-    public String getMypageForm(Model model, @RequestParam(value = "userNum", required = false)int userNum)
-    {
-        log.info("UserModifyController 들어옴");
-        model.addAttribute("user", myInfoModifyService.selectUser(userNum));
+    private MyInfoReadService myInfoReadService;
 
+    @GetMapping
+    public String getMypageForm(Model model, HttpServletRequest request){
+
+        HttpSession session = request.getSession();
+        log.info("UserModifyController......." + session.getAttribute("userInfo"));
+        model.addAttribute("user", myInfoReadService.selectUser(2));
         return "userForm/myRoom/myinfoModify";
+
     }
 
     @PostMapping
-    public String modifyUser(UserModifyRequest req, RedirectAttributes rttr, UserModifyRequest userModifyRequest){
+    public String modifyUser(UserModifyRequest req, RedirectAttributes rttr){
 
-        log.info("userModifyRequest......." + userModifyRequest);
-        log.info("UserRequest......." + req);
-        rttr.addAttribute("userNum", req.getUserNum());
-        rttr.addFlashAttribute("msg", "modify");
+        log.info("userModifyRequest......." + req);
+//        rttr.addAttribute("userNum", req.getUserNum());
+//        rttr.addFlashAttribute("msg", "modify");
         myInfoModifyService.modifyUser(req);
         return "redirect:/myroom";
 
