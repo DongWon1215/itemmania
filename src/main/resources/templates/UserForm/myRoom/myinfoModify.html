@@ -31,6 +31,9 @@
     </div>
 
     <form method="post">
+
+      <input type="hidden" name="userNum" id="userNum" th:value="${user.userNum}">
+
       <table class="g_blue_table">
         <colgroup>
           <col width="140">
@@ -41,14 +44,14 @@
         <tbody><tr>
           <th>이름</th>
           <td colspan="3">
-            <input type="text" id="userRealName" class="g_text" value="userRealName">
+            <input type="text" id="userRealName" class="g_text" th:value="${user.userRealName}" readonly>
           </a>
           </td>
         </tr>
         <tr>
           <th>아이디</th>
           <td colspan="3">
-            <input type="text" id="userId" class="g_text" value="userId">
+            <input type="text" id="userName" name="userName" class="g_text" th:value="${user.userName}" readonly>
           </td>
         </tr>
         </tbody></table>
@@ -60,26 +63,19 @@
         </colgroup>
         <tbody>
         <tr>
-          <th>닉네임</th>
-          <td class="cell_num">
-            <div class="s_label">
-              <input type="text" id="userName" class="g_text" value="userName">
-            </div>
-          </td>
-        </tr>
-        <tr>
           <th>비밀번호</th>
           <td class="cell_num">
             <div class="s_label">
-              <input type="password" id="password" class="g_text">
+              <input type="password" name="userPassword" id="userPassword" class="g_text" th:value="${user.userPassword}">
             </div>
           </td>
         </tr>
         <tr>
-          <th>비밀번호 재확인</th>
+          <th>비밀번호 확인</th>
           <td class="cell_num">
             <div class="s_label">
-              <input type="password" id="repassword" class="g_text">
+              <input type="password" id="repassword" class="g_text" onchange="pwDuplicateCheck()" th:value="${user.userPassword}">
+              <div class="" id="DuplicateCheck"/>
             </div>
           </td>
         </tr>
@@ -96,7 +92,7 @@
               <option>LG-A</option>
               <!--<option>휴대폰없음</option>-->
             </select>
-            <select class="g_selectbox" id="user_mobileA" style="width: 55px;">
+            <select class="g_selectbox" name="user_mobileA" id="user_mobileA" style="width: 55px;" th:value="${#strings.substring(user.userPhoneNumber, 0, 3)}">
               <option>010</option>
               <option>011</option>
               <option>016</option>
@@ -105,8 +101,8 @@
               <option>019</option>
             </select>
             <div class="g_left margin_5"/>
-            <input type="text" name="user_mobileB" id="user_mobileB" maxlength="4" class="g_text" value="1234"> -
-            <input type="text" name="user_mobileC" id="user_mobileC" maxlength="4" class="g_text" value="5678">
+            <input type="text" name="user_mobileB" id="user_mobileB" maxlength="4" class="g_text" th:value="${#strings.substring(user.userPhoneNumber, 3, 7)}"> -
+            <input type="text" name="user_mobileC" id="user_mobileC" maxlength="4" class="g_text" th:value="${#strings.substring(user.userPhoneNumber, 7, 11)}">
           </td>
         </tr>
         <tr>
@@ -114,12 +110,20 @@
           <td class="email_info">
             <div class="email_block">
               <div class="s_label">이메일:</div>
-              <input type="text" name="user_email" id="user_email" class="g_text" value="hitem" readonly=""> @
-              <input type="text" name="user_email2" id="user_email2" class="g_text" value="naver.com" readonly="">
+              <input type="text" name="userEmail" id="userEmail" class="g_text" th:value="${#strings.arraySplit(user.userEmail, '@')[0]}"> @
+              <input type="text" name="userEmail2" id="userEmail2" class="g_text" th:value="${#strings.arraySplit(user.userEmail, '@')[1]}">
               <a href="javascript:;" id="email_auth_btn" class="btn btn_gray3">인증받기</a>
             </div>
             <div class="agree_guide">
               * 야후 또는 핫메일은 정상적인 메일인증이 안될 수도 있으니 참고하시가 바랍니다
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>생년월일</th>
+          <td class="cell_num">
+            <div class="s_label">
+              <input type="date" name="userBirth" id="userBirth" class="g_text" th:value="${user.userBirth}">
             </div>
           </td>
         </tr>
@@ -128,7 +132,6 @@
         <li>※ <span class="f_small">SKT-A, KT-A, LG-A 통신사는 알뜰폰 구분 입니다.</span></li>
         <li>※ <span class="f_small">013으로 시작되는 번호는 연락처 등록이 불가 합니다.</span></li>
       </ul>
-    </form>
 
       <div class="g_subtitle">개인정보 유효기간 설정</div>
       <table class="g_blue_table">
@@ -154,6 +157,7 @@
         <input type="submit" value="정보 수정하기" class="btn_blue3 big_btn">
         <button type="reset" class="btn_gray3 big_btn">취소 하기</button>
       </div>
+    </form>
   </div>
 
   <div id="emailModify" class="g_layer email_modify">
@@ -198,4 +202,24 @@
   }
 </script>
 
+<!--비밀번호 확인 체크-->
+<script>
+  function pwDuplicateCheck()
+  {
+    let pw = document.getElementById('password').value;
+    let repw = document.getElementById('repassword').value;
+    console.log('pw..........' + pw)
+    console.log('repw..........' + repw)
+    if(pw == repw && pw != '' && repw != '')
+    {
+      document.getElementById('DuplicateCheck').innerText='비밀번호가 일치합니다';
+      document.getElementById('DuplicateCheck').style.color='blue';
+    }
+    else
+    {
+      document.getElementById('DuplicateCheck').innerText='비밀번호가 일치하지 않습니다';
+      document.getElementById('DuplicateCheck').style.color='red';
+    }
+  }
+</script>
 </html>

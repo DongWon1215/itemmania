@@ -5,10 +5,7 @@ import com.itemmania.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/find/pw")
@@ -23,10 +20,14 @@ public class PwFindController {
     }
 
     @PostMapping
-    public void sendInfo(@RequestBody PasswordFindRequest findRequest, Model model)
+    @ResponseBody
+    public String sendInfo(@RequestBody PasswordFindRequest findRequest)
     {
         String userPassword = userService.findPasswordByNameAndBirthAndPhoneNum(findRequest);
 
-        model.addAttribute("userPw",userPassword);
+        if(userPassword == null)
+            return "empty";
+
+        return userPassword;
     }
 }

@@ -104,20 +104,26 @@
 
       console.log(FindRequest)
 
-      $.ajax({url:'/find/id',type:'post',async:false,data:JSON.stringify(FindRequest),dataType:'JSON',contentType:'application/JSON',success:function (result)
+      $.ajax({url:'/find/id',type:'post',async:false,data:JSON.stringify(FindRequest),contentType:'application/JSON',success:function (result)
         {
           console.log(result)
 
-          if(result == null)
+          if(result == "empty")
             alert("등록된 데이터와 일치하는 아이디가 없습니다")
 
           else
-            alert(result.userRealName)
+            alert(result)
         },
         fail:function ()
         {
-          alert("아이디 검색에 실패하였습니다")}
-      })
+          alert("아이디 검색에 실패하였습니다")
+        },
+                error:function (error)
+                {
+                  console.log(error)
+                }
+      }
+      )
     }
   </script>
 </div>
