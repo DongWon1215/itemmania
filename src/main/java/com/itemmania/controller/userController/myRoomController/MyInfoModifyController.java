@@ -1,6 +1,7 @@
 package com.itemmania.controller.userController.myRoomController;
 
 import com.itemmania.domain.UserModifyRequest;
+import com.itemmania.entity.UserEntity;
 import com.itemmania.service.userService.MyInfoModifyService;
 import com.itemmania.service.userService.MyInfoReadService;
 import com.itemmania.service.userService.UserService;
@@ -33,7 +34,7 @@ public class MyInfoModifyController {
 
         HttpSession session = request.getSession();
         log.info("UserModifyController......." + session.getAttribute("userInfo"));
-        model.addAttribute("user", myInfoReadService.selectUser(2));
+        model.addAttribute("user", (UserEntity) session.getAttribute("userInfo"));
         return "userForm/myRoom/myinfoModify";
 
     }
