@@ -24,8 +24,6 @@ public class CustomUserDetail implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        log.info(" >>>>> loadUserByUsername => " + username);
-
         Optional<UserEntity> member = userRepository.findByUserName(username);
 
         if(member.isEmpty())
@@ -41,12 +39,7 @@ public class CustomUserDetail implements UserDetailsService {
         else
             authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
-
         CustomUser user = new CustomUser(userEntity.getUserName(),userEntity.getUserPassword(),authorities,userEntity);
-
-        log.info(" user info =================>" + user);
-        log.info(" user info =================>" + userEntity.getUserPassword());
-
 
         return user;
     }
