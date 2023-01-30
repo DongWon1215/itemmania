@@ -1,5 +1,6 @@
 package com.itemmania.config;
 
+import com.itemmania.security.CustomLoginSuccessHandle;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @Log4j2
@@ -21,7 +23,7 @@ public class CustomSecurityConfig {
                 .antMatchers("/board/**","/myroom/**").hasRole("USER")
                 .anyRequest().permitAll();
 
-        httpSecurity.formLogin().loginPage("/login");
+        httpSecurity.formLogin().loginPage("/login").successHandler(successHandler());
 
         httpSecurity.logout().logoutUrl("/logout").logoutSuccessUrl("/");
 
@@ -34,5 +36,11 @@ public class CustomSecurityConfig {
     public PasswordEncoder passwordEncoder()
     {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler successHandler()
+    {
+        return new CustomLoginSuccessHandle();
     }
 }
