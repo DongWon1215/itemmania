@@ -20,6 +20,9 @@ public class BoardSearchOptionVO {
     // 회원 번호
     private int user_num;
 
+    // 회원의 신용점수
+    private int user_credit_score;
+
     // 게임 이름
     private String game_name;
 

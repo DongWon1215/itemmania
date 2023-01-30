@@ -1,3 +1,4 @@
+/*
 package com.itemmania.controller.boardController.boardList;
 
 
@@ -19,9 +20,11 @@ public class BoardSearchController {
     @Autowired
     private BoardSearchService boardSearchService;
 
-    /*@RequestMapping(value = "/board/boardList")*/
+    */
+/*@RequestMapping(value = "/board/boardList")*//*
+
     @GetMapping("/board/boardList")
-    public String getBoardSearch(Model model, BoardSearchOption searchOption) {
+    public void getBoardSearch(Model model, BoardSearchOption searchOption) {
 
         log.info("컨트롤 겟 옵션" + searchOption);
 
@@ -40,9 +43,7 @@ public class BoardSearchController {
         // 검색 결과를 토대로 출력한 일반 리스트
         model.addAttribute("boarList", searchDataCheck);
 
-
-
-        return "";
     }
 }
 
+*/

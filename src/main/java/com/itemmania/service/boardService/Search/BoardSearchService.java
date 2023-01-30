@@ -20,8 +20,7 @@ public class BoardSearchService {
     public List<BoardSearchOptionVO> getP_SearchDataCheck(BoardSearchOption searchOption) {
         log.info("프리미엄 서비스 ->" + searchOption);
         boolean salePremium = true;
-        boolean boardTradeStatus = false;
-        List<BoardSearchOptionVO> P_list = boardMapper.boardSearchList(searchOption, salePremium, boardTradeStatus);
+        List<BoardSearchOptionVO> P_list = boardMapper.boardSearchList(searchOption, salePremium);
         log.info("검색서비스_프리미엄" + P_list);
         return P_list;
     }
@@ -30,9 +29,8 @@ public class BoardSearchService {
     public List<BoardSearchOptionVO> getSearchDataCheck(BoardSearchOption searchOption) {
         log.info("일반 서비스and 검색서치옵션 ->" + searchOption);
         boolean salePremium = false;
-        boolean boardTradeStatus = false;
 
-        List<BoardSearchOptionVO> list = boardMapper.boardSearchList(searchOption, salePremium, boardTradeStatus);
+        List<BoardSearchOptionVO> list = boardMapper.boardSearchList(searchOption, salePremium);
 
         return list;
     }

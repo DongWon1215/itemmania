@@ -13,7 +13,6 @@ public class BoardSearchOption {
     // 프리미엄 서비스 유무
     private boolean salePremium;
 
-
     // 판매중인지 거래완료인지 구분
     private boolean boardTradeStatus;
 

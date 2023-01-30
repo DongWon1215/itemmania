@@ -47,9 +47,9 @@
     </div>
     <div class="g_finish"></div>
     <div id="detail_search" class="detail_search">
-        <form id="frm_search" name="frm_search" method="POST" action="/board/boardList">
-            <input type="hidden" name="game_code" id="game_code" th:value="${searchGameServer}">
-            <input type="hidden" name="server_code" id="server_code" th:value="${searchType}">
+        <form id="frm_search" name="frm_search" method="POST" action="/board/subsearch">
+            <input type="hidden" name="searchGameServer" id="game_code" th:value="${searchGameServer}">
+            <input type="hidden" name="deal" th:value="${searchType}">
 
 
             <div class="search_box">
@@ -58,46 +58,41 @@
                     <div class="search_tit">신용등급</div>
                     <ul id="credit">
                         <li>
-                            <input id="credit_type_1" type="radio" name="credit_type" value="1"
-                                   class="g_btn_white2_radio" checked="">
+                            <input id="credit_type_1" type="radio" name="userCreditScore" value="0"
+                                   class="g_btn_white2_radio" th:checked="${userCreditScore == 0?true : false }">
                             <label for="credit_type_1">전체</label>
                         </li>
                         <li>
-                            <input id="credit_type_2" type="radio" name="credit_type" value="2"
-                                   class="g_btn_white2_radio">
+                            <input id="credit_type_2" type="radio" name="userCreditScore" value="4"
+                                   class="g_btn_white2_radio" th:checked="${userCreditScore eq 4}">
                             <label for="credit_type_2">VIP 이상</label>
                         </li>
                         <li>
-                            <input id="credit_type_4" type="radio" name="credit_type" value="4"
-                                   class="g_btn_white2_radio">
+                            <input id="credit_type_4" type="radio" name="userCreditScore" value="3"
+                                   class="g_btn_white2_radio" th:checked="${userCreditScore eq 3}">
                             <label for="credit_type_4">플래티넘 이상</label>
                         </li>
                         <li>
-                            <input id="credit_type_5" type="radio" name="credit_type" value="5"
-                                   class="g_btn_white2_radio">
+                            <input id="credit_type_5" type="radio" name="userCreditScore" value="2"
+                                   class="g_btn_white2_radio" th:checked="${userCreditScore eq 2}">
                             <label for="credit_type_5">골드 이상</label>
                         </li>
                         <li>
-                            <input id="credit_type_6" type="radio" name="credit_type" value="6"
-                                   class="g_btn_white2_radio">
+                            <input id="credit_type_6" type="radio" name="userCreditScore" value="1"
+                                   class="g_btn_white2_radio" th:checked="${userCreditScore eq 1}">
                             <label for="credit_type_6">실버 이상</label>
                         </li>
                     </ul>
                     <div class="search_tit">거래상태</div>
                     <ul id="state">
                         <li>
-                            <input id="trade_state_1" type="radio" name="trade_state" value="1"
-                                   class="g_btn_white2_radio" checked="">
-                            <label for="trade_state_1">전체</label>
-                        </li>
-                        <li>
-                            <input id="trade_state_2" type="radio" name="trade_state" value="2"
-                                   class="g_btn_white2_radio">
+                            <input id="trade_state_2" type="radio" name="boardTradeStatus" value="false"
+                                   class="g_btn_white2_radio" th:checked="${boardTradeStatus == false}">
                             <label for="trade_state_2">거래대기</label>
                         </li>
                         <li>
-                            <input id="trade_state_3" type="radio" name="trade_state" value="3"
-                                   class="g_btn_white2_radio">
+                            <input id="trade_state_3" type="radio" name="boardTradeStatus" value="true"
+                                   class="g_btn_white2_radio" th:checked="${boardTradeStatus eq true}">
                             <label for="trade_state_3">거래종료</label>
                         </li>
                     </ul>
@@ -203,17 +198,24 @@
 
         $('#boardListPaging').on('click', function () {
 
+            // 게임서버
             const searchGameServer = '[[${searchGameServer}]]';
+            // 거래타입
             const searchType = '[[${searchType}]]';
+            // 게시글 등록자의 신용점수
+            const userCreditScore = '[[${userCreditScore}]]';
+            // 거래상태표시
+            const boardTradeStatus = '[[${boardTradeStatus}]]';
 
             $.ajax({
                 url: '/board/boardListAjax',
                 type: 'get',
                 contentType: 'text',
                 data: {
-                    salePremium: false,
-                    deal: searchType,
                     searchGameServer: searchGameServer,
+                    deal: searchType,
+                    boardTradeStatus: boardTradeStatus,
+                    userCreditScore: userCreditScore,
                     p: ++pageNum
                 }
             }).done(function (data) {

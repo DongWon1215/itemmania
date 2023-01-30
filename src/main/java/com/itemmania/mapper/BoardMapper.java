@@ -12,5 +12,5 @@ public interface BoardMapper {
     //메인 검색서치
     List<BoardSearchOptionVO> boardSearchList(boolean salePremium, int p, int size, String deal, boolean boardTradeStatus, String searchGameServer);
 
-    List<BoardSearchOptionVO> boardSearchList(BoardSearchOption searchOption, boolean salePremium, boolean boardTradeStatus);
+    List<BoardSearchOptionVO> boardSearchList(BoardSearchOption searchOption, boolean salePremium);
 }
