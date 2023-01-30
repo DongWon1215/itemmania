@@ -24,9 +24,6 @@ public class MyInfoModifyService {
 
     }
 
-    public UserEntity selectUser(int userNum) {
-        return userRepository.findById(userNum).get();
-    }
 
 
 }

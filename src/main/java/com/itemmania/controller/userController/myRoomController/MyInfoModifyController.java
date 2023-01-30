@@ -2,6 +2,7 @@ package com.itemmania.controller.userController.myRoomController;
 
 import com.itemmania.domain.UserModifyRequest;
 import com.itemmania.service.userService.MyInfoModifyService;
+import com.itemmania.service.userService.MyInfoReadService;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,14 @@ public class MyInfoModifyController {
     @Autowired
     private MyInfoModifyService myInfoModifyService;
 
+    private MyInfoReadService myInfoReadService;
+
     @GetMapping
     public String getMypageForm(Model model, HttpServletRequest request){
 
         HttpSession session = request.getSession();
         log.info("UserModifyController......." + session.getAttribute("userInfo"));
-        model.addAttribute("user", myInfoModifyService.selectUser(2));
+        model.addAttribute("user", myInfoReadService.selectUser(2));
         return "userForm/myRoom/myinfoModify";
 
     }
