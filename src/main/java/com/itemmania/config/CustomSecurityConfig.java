@@ -1,6 +1,5 @@
 package com.itemmania.config;
 
-import com.itemmania.security.CustomLoginSuccessHandler;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +18,7 @@ public class CustomSecurityConfig {
         httpSecurity.csrf().disable();
 
         httpSecurity.authorizeHttpRequests()
-//                .antMatchers("/board/**").hasRole("USER")
-//                .antMatchers("/myroom/**").hasRole("USER")
+                .antMatchers("/board/**","/myroom/**").hasRole("USER")
                 .anyRequest().permitAll();
 
         httpSecurity.formLogin().loginPage("/login");

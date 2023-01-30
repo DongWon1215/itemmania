@@ -21,6 +21,8 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
 
     UserEntity findByUserRealNameAndUserEmail(String userRealName, String userEmail);
 
+    Optional<UserEntity> findByUserName(String userName);
+
     // 회원정보 수정 (마이룸 > 개인정보수정)
     @Transactional
     @Modifying
