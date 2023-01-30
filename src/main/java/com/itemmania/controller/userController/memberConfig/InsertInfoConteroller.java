@@ -6,8 +6,10 @@ import com.itemmania.entity.UserEntity;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
 import net.minidev.json.JSONObject;
+import org.apache.tomcat.util.buf.UEncoder;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +24,9 @@ public class InsertInfoConteroller {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     @GetMapping
     public String ToInsertForm(HttpServletRequest request, Model model)
@@ -44,9 +49,12 @@ public class InsertInfoConteroller {
     {
         log.info("데이터 =>" + user);
 
+        user.setUserPassword(encoder.encode(user.getUserPassword()));
+
         if(userService.isExistUser(user.getUserName(),user.getUserPassword()))
 //            return "/UserForm/userRegist/registerForm";
             return null;
+
         UserEntity userInfo = userService.insertUser(user.toUserEntity());
         JSONObject json = new JSONObject();
         json.put("userData",userInfo);

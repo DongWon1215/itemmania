@@ -4,6 +4,7 @@ import com.itemmania.entity.UserEntity;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,12 +26,12 @@ public class LoginController {
     }
 
     @PostMapping
-    public String login(HttpServletRequest request, @RequestParam("user_id") String user_id, @RequestParam("user_password") String user_Pw)
+    public String login(HttpServletRequest request, @RequestParam("username") String username, @RequestParam("userpassword") String userpassword)
     {
-        if(!userService.isExistUser(user_id, user_Pw))
+        if(!userService.isExistUser(username, userpassword))
             return "/UserForm/userRegist/registerForm";
 
-        UserEntity user = userService.getUser(user_id, user_Pw);
+        UserEntity user = userService.getUser(username, userpassword);
 
         HttpSession session = request.getSession();
 
