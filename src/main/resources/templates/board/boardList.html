@@ -36,8 +36,8 @@
         <div class="side">
             <ul class="search_word">
                 <li>
-                    <input type="text" class="g_text" name="word" id="word" value="" placeholder="물품제목"
-                           maxlength="7">
+                    <input type="text" class="g_text" name="titleSearch" value="" placeholder="물품제목"
+                           maxlength="12">
                 </li>
                 <li>
                     <span class="sp_list btn_search">검색</span>
@@ -50,7 +50,6 @@
         <form id="frm_search" name="frm_search" method="POST" action="/board/boardList">
             <input type="hidden" name="searchGameServer" id="game_code" th:value="${searchGameServer}">
             <input type="hidden" name="deal" th:value="${searchType}">
-
 
             <div class="search_box">
                 <div class="search_reset">초기화</div>
