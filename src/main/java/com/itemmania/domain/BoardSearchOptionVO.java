@@ -2,6 +2,8 @@ package com.itemmania.domain;
 
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -18,6 +20,9 @@ public class BoardSearchOptionVO {
     // 회원 번호
     private int user_num;
 
+    // 회원의 신용점수
+    private int user_credit_score;
+
     // 게임 이름
     private String game_name;
 
@@ -31,7 +36,7 @@ public class BoardSearchOptionVO {
     private int trade_num;
 
     // 게시글 작성 시간
-    private Date board_time;
+    private LocalDateTime board_time;
 
     // 게시판 제목, 물품 제목
     private String board_title;
@@ -61,7 +66,7 @@ public class BoardSearchOptionVO {
     private boolean sale_premium;
 
     // 거래 완료 시간
-    private Date deal_end_time;
+    private LocalDateTime deal_end_time;
 
     // board테이블 판매글 구매글 구분 (구매 : sale, 판매 : buy)
     private String deal_check;

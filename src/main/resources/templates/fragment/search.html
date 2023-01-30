@@ -23,26 +23,26 @@
     </div>
     </style>
     <div class="g_search_top">
-        <form id="g_searchbar_form" method="get" action="/board/boardList" onsubmit="return searchbarSubmit();">
-
-            <input type="hidden" name="salePremium" value="false">
+        <form id="g_searchbar_form" method="post" action="/board/boardList" onsubmit="return searchbarSubmit();">
             <div class="g_search_wrapper">
                 <div class="search_area">
                     <div class="g_trade_type">
                         <label class="radiocontainer f_blue1">
                             팝니다
-                            <input type="radio" name="deal" value="sale" checked="">
+                            <input type="radio" name="deal" value="sale"
+                                   checked="checked"
+                                   th:checked="${searchType==null ?true:'sale'}">
                             <span class="checkmark"></span>
                         </label>
                         <label class="radiocontainer f_green1">
                             삽니다
-                            <input type="radio" name="deal" value="buy">
+                            <input type="radio" name="deal" value="buy" th:checked="${searchType eq 'buy'}">
                             <span class="checkmark"></span>
                         </label>
                     </div>
                     <input type="text" class="g_text search_gs_name" name="searchGameServer" id="searchGameServer"
                            title="게임검색" style="ime-mode:active" placeholder="게임명 또는 서버명을 입력해주세요." autocomplete="off"
-                           data-gameserver="true">
+                           data-gameserver="true" th:value="${searchGameServer}">
                     <a href="javascript:;" class="delete_btn"></a></div>
                 <button type="submit" class="g_search_list" id="g_search_list" title="검색">
                     <span class="icon_search"></span>
