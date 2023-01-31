@@ -32,22 +32,22 @@
         </div>
     </th:block>
 
-    <div class="g_tab">
-        <div class="side">
-            <ul class="search_word">
-                <li>
-                    <input type="text" class="g_text" name="titleSearch" value="" placeholder="물품제목"
-                           maxlength="12">
-                </li>
-                <li>
-                    <span class="sp_list btn_search">검색</span>
-                </li>
-            </ul>
+    <form id="frm_search" name="frm_search" method="POST" action="/board/boardList">
+        <div class="g_tab">
+            <div class="side">
+                <ul class="search_word">
+                    <li>
+                        <input type="text" class="g_text" name="titleSearch" value="" placeholder="물품제목"
+                               maxlength="12">
+                    </li>
+                    <li>
+                        <span class="sp_list btn_search">검색</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="g_finish"></div>
-    <div id="detail_search" class="detail_search">
-        <form id="frm_search" name="frm_search" method="POST" action="/board/boardList">
+        <div class="g_finish"></div>
+        <div id="detail_search" class="detail_search">
             <input type="hidden" name="searchGameServer" id="game_code" th:value="${searchGameServer}">
             <input type="hidden" name="deal" th:value="${searchType}">
 
@@ -97,15 +97,15 @@
                     </ul>
                 </div>
             </div>
-        </form>
-    </div>
-    <div class="g_subtitle">
-        <div class="g_left">프리미엄</div>
-        <div class="g_right">
-            <a href="javascript:_window.open('premium_guide','/sell/premium_guide.html',628, 630);"
-               class="premium_info">프리미엄 등록안내</a>
         </div>
-    </div>
+        <div class="g_subtitle">
+            <div class="g_left">프리미엄</div>
+            <div class="g_right">
+                <a href="javascript:_window.open('premium_guide','/sell/premium_guide.html',628, 630);"
+                   class="premium_info">프리미엄 등록안내</a>
+            </div>
+        </div>
+    </form>
 
     <div class="search_list_all">
         <ul class="search_list search_list_premium">
@@ -194,6 +194,9 @@
             $('#frm_search').submit();
         });
 
+        $('.btn_search').click(function () {
+            $("form").submit();
+        })
 
         $('#boardListPaging').on('click', function () {
 

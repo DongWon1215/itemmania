@@ -22,14 +22,16 @@
     <select id="boardSearchList"
             parameterType="com.itemmania.domain.BoardSearchOption"
             resultType="com.itemmania.domain.BoardSearchOptionVO">
+        <!--보드, 게임, 게임서버, 유저 테이블 JOIN-->
         select * from board b
         INNER JOIN game_server gs ON b.server_num = gs.server_num
         INNER JOIN user u ON b.user_num = u.user_num
         INNER JOIN game g ON gs.game_num = g.game_num
         <where>
-            <!--서치된 게임서버 검색-->
+            <!--검색된 게임 OR 게임서버 검색-->
             <include refid="searchGameServer"/>
 
+          <!--  <include refid="titleSearch"/>-->
             <!--판매 구매 구분-->
             <include refid="deal"/>
 
@@ -39,6 +41,7 @@
             <!--프리미엄 게시판-->
             <if test='salePremium == true'>
                 <include refid="salePremium"/>
+                <include refid="DESC"/>
             </if>
 
             <!--일반 게시판-->
@@ -64,10 +67,13 @@
                         AND user_credit_score <![CDATA[>=]]> 5
                     </when>
                 </choose>
+
+                <!--오른차순-->
+                <include refid="DESC"/>
+                <!--페이징처리-->
                 <include refid="paging"/>
+
             </if>
-
-
         </where>
 
     </select>
@@ -75,7 +81,12 @@
 
     <!--게임서버 이름으로 검색-->
     <sql id="searchGameServer">
-        game_server_name = #{searchOption.searchGameServer}
+        AND (g.game_name = #{searchOption.searchGameServer} OR gs.game_server_name = #{searchOption.searchGameServer})
+    </sql>
+
+    <!--제목검색(서브기능)-->
+    <sql id="titleSearch">
+        AND board_title like '%_#{searchOption.searchGameServer}_%'
     </sql>
 
     <!--판매 구매 구분-->
@@ -93,41 +104,14 @@
         AND sale_premium=#{salePremium}
     </sql>
 
+    <!--내림차순-->
+    <sql id="DESC">
+        ORDER BY board_num DESC
+    </sql>
+
+    <!--페이징처리-->
     <sql id="paging">
         LIMIT #{searchOption.size} OFFSET ${searchOption.p*searchOption.size}
     </sql>
 
 </mapper>
-        <!--
-
-        <if test='salePremium == true'>
-        AND sale_premium = #{salePremium}
-        <include refid="boardTrade"/>
-        </if>
-
-                &lt;!&ndash;프리미엄 게시판이 아닌것&ndash;&gt;
-        <if test='salePremium == false'>
-        AND sale_premium = #{salePremium}
-
-        &lt;!&ndash;거래상태  false (거래가능)   true (거래완료)&ndash;&gt;
-        AND board_trade_status = #{boardTradeStatus}
-
-        ORDER BY board_num DESC
-        LIMIT #{searchOption.size} OFFSET ${searchOption.p*searchOption.size}
-        </if>
-
-
-                &lt;!&ndash;프리미엄 게시판 인것&ndash;&gt;
-        <if test='salePremium == true'>
-        AND sale_premium = #{salePremium}
-        <include refid="boardTrade"/>
-        </if>
-                &lt;!&ndash;프리미엄 게시판이 아닌것&ndash;&gt;
-        <if test='salePremium == false'>
-        AND sale_premium = #{salePremium}
-        <include refid="boardTrade"/>
-
-        ORDER BY board_num DESC
-        LIMIT #{searchOption.size} OFFSET ${searchOption.p*searchOption.size}
-        </if>
-        -->

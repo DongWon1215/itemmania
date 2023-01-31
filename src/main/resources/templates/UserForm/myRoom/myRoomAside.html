@@ -29,6 +29,9 @@
     // 선택한 메뉴 활성화
     $(document).ready(function() {
         $('.nav_title').find('a[href="' + document.location.pathname + '"]').parents('div').addClass('on_active');
+        $('.nav_title').find('a[href="' + document.location.pathname + '"]').parents('li').addClass('on_active');
+        $('.nav_sub').find('a[href="' + document.location.pathname + '"]').parents('li').addClass('on_active');
+        $('.nav_sub').find('a[href="' + document.location.pathname + '"]').parents('div').addClass('on_active');
     });
 
     /*    const menu = document.querySelectorAll(".nav_title");
