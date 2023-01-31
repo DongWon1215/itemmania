@@ -31,7 +31,7 @@ public class MyRoomController {
         log.info("UserModifyController......." + session.getAttribute("userInfo"));
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
         model.addAttribute("user", user);
-        //log.info("myroom userNum............" + userNum);
+        log.info("myroom user............" + user);
         return "userForm/myRoom/myRoomForm";
         
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -42,18 +42,18 @@
       <tbody>
       <tr>
         <th>총 마일리지</th>
-        <td><a href="/myroom/mileage/my_mileage/">0 원</a></td>
+        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${user.userMileage}">0 </span>원</a></td>
       </tr>
       <tr>
         <th>신용등급</th>
-        <td>[일반]</td>
+        <td th:text="${user.userCreditScore}">[일반]</td>
       </tr>
       </tbody></table>
 
     <div class="g_black3_11">* 아이템매니아 고객센터(1234-5678)는 365일 24시간 운영됩니다.불편사항은 언제든지 연락 주시면, 최선을 다해 해결 되도록 노력하겠습니다.</div>
 
     <div class="g_subtitle">회원탈퇴 신청 정보</div>
-    <form id="signForm" name="signForm" method="post" action="https://www.itemmania.com/myroom/user_leave/user_leave_cause.html">
+    <form id="signForm" name="signForm" method="post">
       <input type="hidden" name="pMode" value="user_leave">
       <table class="g_blue_table">
         <colgroup>
@@ -66,11 +66,15 @@
           <th>아이디</th>
           <td>hitem****</td>
           <th>이름</th>
-          <td>[홍길동]</td>
+          <td th:text="${user.userRealName}">[홍길동]</td>
         </tr>
         <tr>
           <th>비밀번호</th>
-          <td colspan="3"><input type="password" class="g_text" name="passwd" id="user_passwd" maxlength="30"></td>
+          <td colspan="3">
+            <input type="password" class="g_text" name="passwd" id="passwd">
+            <input type="hidden" class="g_text" name="userPassword" id="userPassword" th:value="${user.userPassword}">
+            <input type="hidden" class="g_text" name="userNum" maxlength="30" th:value="${user.userNum}">
+          </td>
         </tr>
         </tbody></table>
       <div class="g_btn">
@@ -86,5 +90,35 @@
 
 <!--footer 시작-->
 <div th:replace="fragment/footer"/>
+
+<!--<script>
+  var msg = '${msg}';
+  if(msg === '회원 탈퇴되었습니다.') {
+    alert("회원 탈퇴되었습니다.")
+  } else if(msg === '비밀번호 재확인해주세요.'){
+    alert("비밀번호 재확인해주세요.")
+  } else if(msg === '탈퇴에 실패하였습니다.'){
+    alert("탈퇴에 실패하였습니다.")
+  } else if(msg === 'test'){
+    alert("test")
+  }
+</script>-->
+
+<script>
+  $(document).ready(function() {
+    let msg = "[[${msg}]]";
+    console.log(msg)
+    if(msg == 'success') {
+      alert("회원 탈퇴되었습니다.")
+    } else if(msg === 'password'){
+      alert("비밀번호 재확인해주세요.")
+    } else if(msg === 'fail'){
+      alert("탈퇴에 실패하였습니다.")
+    } else if(msg === 'test'){
+      alert("test")
+    }
+  })
+</script>
+
 </body>
 </html>
