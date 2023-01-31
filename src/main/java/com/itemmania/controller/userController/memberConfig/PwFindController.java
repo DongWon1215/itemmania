@@ -1,10 +1,12 @@
 package com.itemmania.controller.userController.memberConfig;
 
+import com.itemmania.domain.PasswordChangeRequest;
 import com.itemmania.domain.PasswordFindRequest;
 import com.itemmania.repository.UserRepository;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +15,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/find/pw")
 public class PwFindController {
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private UserService userService;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     @GetMapping
     public String findform()
@@ -35,10 +38,15 @@ public class PwFindController {
         return userPassword;
     }
 
-//    @PutMapping
-//    @ResponseBody
-//    public int changePassword(@RequestBody )
-//    {
-//        return userRepository.updateUserPasswordByUserNameAndUserRealNameAndUserBirth();
-//    }
+    @PutMapping
+    @ResponseBody
+    public int changePassword(@RequestBody PasswordChangeRequest passwordChangeRequest)
+    {
+
+        log.info("" + passwordChangeRequest.getUserPassword());
+
+        passwordChangeRequest.setUserPassword(encoder.encode(passwordChangeRequest.getUserPassword()));
+
+        return userService.changePasswordByNameAndBirthAndID(passwordChangeRequest);
+    }
 }

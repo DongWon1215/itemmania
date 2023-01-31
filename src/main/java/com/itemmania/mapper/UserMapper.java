@@ -1,9 +1,16 @@
 package com.itemmania.mapper;
 
 import com.itemmania.domain.IdFindRequest;
+import com.itemmania.domain.PasswordChangeRequest;
 import com.itemmania.domain.PasswordFindRequest;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
 
 @Mapper
 public interface UserMapper {
@@ -19,5 +26,8 @@ public interface UserMapper {
 
     @Select("select user_password from user where user_name = #{userRealName} and user_birth = #{userBirth} and user_email = #{userEmail}")
     String findPasswordByNameAndBirthAndEmail(PasswordFindRequest passwordFindRequest);
+
+    @Update("update UserEntity u set u.userPassword = #{userPassword} where u.userName = #{userName} and u.userRealName = #{userRealName} and u.userBirth = #{userBirth}")
+    int updateUserPasswordByUserNameAndUserRealNameAndUserBirth(PasswordChangeRequest passwordChangeRequest);
 
 }

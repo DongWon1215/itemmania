@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link type="text/css" rel="stylesheet" href="/css/UserForm/findPage.css">
+
 </head>
 <body>
 <div th:replace="fragment/header"/>
@@ -20,7 +22,7 @@
     <div class="selected"><a href="#">비밀번호 찾기</a></div>
   </div>
 
-  <div class="collapse active" onclick="activePhoneForm()" id="phone_met">
+  <div class="collapse active show" onclick="activePhoneForm()" id="phone_met">
     <div class="collapse_title">내 정보에 등록된 <span class="blue">아이디로 찾기</span></div>
     <div class="collapse_cont">
 <!--      <form name="frmMobile" id="frmMobile" action="https://www.itemmania.com/portal/user/lose/find_id_preview.html" method="post">-->
@@ -52,7 +54,7 @@
     </div>
   </div>
 
-  <div class="collapse" onclick="activeEmailForm()" id="email_met">
+  <div class="collapse  show" onclick="activeEmailForm()" id="email_met">
     <div class="collapse_title">내 정보에 등록된 <span class="blue">이메일로 찾기</span></div>
     <div class="collapse_cont">
 <!--      <form name="frmEmail" id="frmEmail" action="https://www.itemmania.com/portal/user/lose/find_id_preview.html" method="post">-->
@@ -88,7 +90,7 @@
   <div class="g_finish"></div>
 
 <!-- Modal -->
-  <div class="modal fade" id="password_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="password_modal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -121,7 +123,10 @@
   <div th:replace="fragment/footer"/>
 
 <!--Script-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
   <script>
+    editPasswordModal = new bootstrap.Modal('#password_modal');
     function findPw()
     {
       birth = document.getElementById('user_birth').value;
@@ -145,7 +150,8 @@
                   else
                   {
                     // alert(result)
-                    $("#password_modal").show();
+                    console.log("여기로 들어왔다")
+                    editPasswordModal.show();
                   }
                 },
                 fail:function ()
@@ -176,7 +182,7 @@
 
       console.log(PwFindRequest)
 
-      $.ajax({url:'/find/pw',type:'put',async:false,data:JSON.stringify(PwChangeRequest),contentType:'application/JSON',success:function (result)
+      $.ajax({url:'/find/pw', type:'put', async:false, data:JSON.stringify(PwChangeRequest), contentType:'application/JSON', success:function (result)
                 {
                   console.log(result)
 
@@ -258,14 +264,6 @@
         document.getElementById('change_password_button').disabled = true;
       }
     }
-  </script>
-  <script>
-    const password_modal = document.getElementById("password_modal");
-    password_modal.addEventListener('show.bs.modal',event=>{
-      const button = event.relatedTarget
-      const modalTitle = exampleModal.querySelector('.modal-title')
-      const modalBodyInput = exampleModal.querySelector('.modal-body input')
-    })
   </script>
 </div>
 </body>
