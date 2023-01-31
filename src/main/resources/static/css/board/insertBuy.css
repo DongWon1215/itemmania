@@ -1,0 +1,126 @@
+.aside .title_green{padding:10px 0;background-color:#39A742;font-size:16px;text-align:center;color:#FFF;}
+.aside .menu_know{padding:0 10px 25px;border:1px solid #E1E1E1;border-top:0;background-color:#F0F0F0;text-align:center;}
+.aside .menu_know p{padding:7px 0 5px;font-size:13px;font-weight:bold;text-align:center;}
+.aside .menu_know img{margin-bottom:12px;}
+.aside .menu_know .g_list{margin-top:3px;padding:8px 7px;background-color:#FFF;font-size:11px;line-height:15px;color:#767676;}
+.aside .menu_know .g_list li{margi-bottom:8px;}
+.g_green_table td{line-height:20px;}
+.g_green_table input[type=text]:focus{background-color:#FEFEEC;}
+.reg_gameserver{width:650px;border-color:#00C73C;}
+.search_wrap{position:relative;box-sizing:border-box;height:38px;border:2px solid #00C73C;}
+.search_wrap .input_area{position:relative;box-sizing:border-box;width:calc(100% - 65px);padding-left:13px;}
+.search_wrap .input_area .g_text{width:100%;height:23px;margin-top:5px;border:0;outline:0;line-height:23px;}
+.input_area .search_gs_name ~ .delete_btn{top:8px;}
+.search_wrap .favorite_icon{position:absolute;top:6px;right:45px;display:block;width:23px;height:22px;background:url(//img1.itemmania.com/new_images/sell/icon_star_off.png) no-repeat;text-indent:-9999px;}
+.search_wrap .favorite_icon.on{background:url(//img1.itemmania.com/new_images/sell/icon_star.png) no-repeat;}
+.search_wrap .g_search_list{position:absolute;top:0;right:0;width:40px;height:36px;background-color:#00C73C;}
+.search_wrap .icon_search{top:5px;left:10px;}
+.mygame{overflow:hidden;box-sizing:border-box;margin-top:7px;border:1px solid #C1E2C1;}
+.mygame .th{float:left;box-sizing:border-box;width:130px;height:98px;padding-top:30px;border-right:1px solid #C1E2C1;background-color:#ECF8EC;text-align:center;}
+.mygame .th .btn_green2{padding:0 3px;font-size:11px;}
+.mygame .g_green_table td{padding:3px 5px;cursor:pointer;}
+.mygame .sub_txt{margin:7px 0 0 7px;font-size:12px;}
+.mygame .mygame_list{float:left;overflow:auto;box-sizing:border-box;width:518px;height:98px;padding:7px 8px;color:#767676;}
+.mygame .mygame_list .empty{padding:30px 0;text-align:center;}
+.mygame .mygame_list li{position:relative;margin-bottom:2px;padding:0 20px 0 18px;}
+.mygame .mygame_list .del_btn{position:absolute;top:4px;right:0;display:block;width:13px;height:13px;background-color:#A0A0A0;text-align:center;cursor:pointer;color:#FFF;}
+.mygame .mygame_list .del_btn:before{position:absolute;top:-5px;left:4px;content:"x";}
+.g_txtbtn{display:inline-block;padding:0px 5px;border:1px solid #9B9B9B;background-color:#FCFCFC;font-size:11px;cursor:pointer;}
+.g_txtbtn:hover{border-color:#39A742;color:#39A742;}
+.g_txtbtn.first_btn{margin-left:10px }
+.direct_info dt{float:left;margin-right:7px;font-size:12px;font-weight:bold;color:#13A33F;}
+.direct_info dd{float:left;}
+.direct_info dd select{color:#13A33F }
+.direct_info dd select:disabled{color:#767676 }
+.direct_info .guide_txt{font-size:12px;color:#FF2400;}
+.dfServer{float:left;margin-right:10px }
+.df_server_code{float:left;margin-right:3px;}
+.character_noti{clear:both;font-size:12px;color:#FF2400;}
+.item_detail_opts{float:left;margin-bottom:5px;}
+.item_detail_opts .btn_white1{display:inline-block;width:36px;font-size:11px;font-weight:bold;text-align:center;line-height:16px;}
+.wideview{float:right;padding:0 4px 2px;border:1px solid #696969;background-color:#8E8E8E;font-size:11px;line-height:15px;color:#F5F4F4;}
+.txtarea.wide{height:230px;}
+.g_subtitle .btn_area{position:absolute;right:0;bottom:5px;}
+.g_subtitle .btn_white1{display:inline-block;padding:0 19px 0 14px;font-size:11px;font-weight:normal;}
+.g_subtitle a:after{position:absolute;top:-1px;margin-left:2px;content:"\203A";font-size:26px;color:#13A33F;}
+.g_subtitle .btn_green{display:inline-block;height:23px;padding:0 19px 0 14px;background-color:#13A33F;font-size:11px;font-weight:normal;vertical-align:middle;line-height:20px;color:#FFF;}
+.g_subtitle .btn_green:after{color:#FFF;}
+.g_subtitle .f_small{font-weight:normal;}
+.charge_service{position:relative;overflow:hidden;}
+.charge_service .prepare{position:absolute;top:0;right:0;width:100%;height:190px;background:url(//img2.itemmania.com/new_images/buy/img_service.png) no-repeat;background-position:center;text-indent:-9999px;}
+.charge_service dl{position:relative;float:left;box-sizing:border-box;width:25%;margin-left:-1px;border:1px solid #C1E2C1;}
+.charge_service dl:first-child{margin-left:0;}
+.charge_service dt{padding:9px 0;background-color:#ECF8EC;font-weight:bold;text-align:center;}
+.charge_service dd{box-sizing:border-box;height:153px;padding:10px 0;text-align:center;}
+.charge_service dd > div{text-align:center;}
+.charge_service .charge_price{margin-bottom:10px;}
+.charge_service .sub_txt{margin:7px 0 15px;}
+.charge_service .exp{margin:4px 0 7px;}
+.charge_service select{width:110px;margin-bottom:5px;}
+.charge_service .premium_sel{margin-top:10px;}
+.charge_service .free_view{display:inline-block;padding:2px 11px 3px;border:1px solid #13A33F;font-weight:bold;color:#13A33F;}
+.charge_service label{display:inline-block;width:60px;margin:-6px 5px 0 0;text-align:right;vertical-align:middle;}
+.charge_service .total_charge{clear:both;padding:15px 0;border:1px solid #C1E2C1;border-top:0;background-color:#ECF8EC;font-size:12px;text-align:center;}
+.charge_service .total_charge div{margin-top:5px;text-align:center;}
+.charge_service .total_label{font-size:15px;font-weight:bold;}
+.charge_service .total_charge_money{font-size:17px;font-weight:bold;}
+.charge_service .new{display:inline-block; width:15px; height:15px; margin-top:-2px; margin-right:2px; background:url(//img4.itemmania.com/new_images/sell/btn_s_new.gif) no-repeat;vertical-align:middle;text-indent:-9999px; }
+.private_area .guide_txt{position:absolute;top:10px;right:5px;font-size:12px;text-decoration:underline;color:#13A33F;}
+.private_area .safe_area .g_msgbox{top:32px;right:5px;}
+.private_area .excellent_txt{float:left }
+.private_area .excellent{float:left;margin-left:10px;}
+.private_area .excellent li{width:73px;}
+.private_area .btn_white1.after{position:relative;display:inline-block;margin-left:3px;padding:0px 18px 1px 10px;font-size:11px;}
+.private_area .btn_white1.after:after{position:absolute;top:-3px;margin-left:1px;content:"\203A";font-size:26px;color:#13A33F;}
+.g_btn_wrap .buy_reg{display:inline-block;width:137px;height:46px;background:url(//img2.itemmania.com/new_images/btn/btn_buy_ok.gif) no-repeat;vertical-align:middle;text-indent:-9999px;}
+.g_btn_wrap .buy_re_reg{display:inline-block;width:137px;height:46px;background:url(//img2.itemmania.com/new_images/btn/btn_buy_re.gif) no-repeat;vertical-align:middle;text-indent:-9999px;}
+.g_btn_wrap .cancel_reg{display:inline-block;width:137px;height:46px;background:url(//img3.itemmania.com/new_images/btn/btn_cancel.gif) no-repeat;vertical-align:middle;text-indent:-9999px;}
+.noti_txt{padding-top:20px;font-size:11px;;text-align:center;color:#ED1C24;}
+/* ▼ 프리미엄 레이어 */
+.premium_info .inner{width:460px;padding:20px;;}
+.premium_info .pre_title{font-weight:bold;text-align:center;color:#13A33F;}
+.premium_info .middle_text{padding:20px 0;text-align:center;}
+.premium_info .mile_area{text-align:center;}
+.premium_info .dvpremium{margin-top:20px;border-top:1px solid #000;border-bottom:2px solid #404040;}
+.premium_info .dvpremium .g_left, .premium_info ul .dvpremium .g_right{height:32px;padding-left:15px;line-height:28px;}
+.premium_info .dvpremium .g_clear{height:32px;padding-left:15px;border-top:1px solid #D9D9D9;background-color:#F2F2F2;line-height:30px;}
+.premium_info .dvpremium .btn_green2{display:block;margin-top:6px;padding:2px 4px;}
+/* ▲ 프리미엄 레이어 */
+.reg_info .inner{width:700px;}
+.reg_info .attention{height:20px;margin-top:10px;padding:12px 0 3px 15px;background:url(//img4.itemmania.com/images/icon/icon_v.gif) no-repeat 0 -491px;font-size:12px;color:#ED1C24;}
+.reg_info .attention_box{padding:15px 20px;border:1px solid #E8C5C5;background-color:#FFEDE8;font-size:13px;color:#767676;}
+.reg_info .attention_box li{margin-bottom:3px;font-weight:bold;}
+.reg_info .attention_box .f_blue3{margin-top:10px;font-size:11px;font-weight:normal;}
+.reg_info .attention_box li .deco{text-decoration:underline;color:#FF2400;}
+.reg_info .box6{margin-top:10px;padding:15px 20px;color:#767676;}
+.reg_info .last_txt{margin-top:10px;font-weight:bold;text-align:center;}
+.reg_info .g_btn_wrap{margin-top:20px;}
+.reg_info table{table-layout:fixed }
+.reg_info .g_green_table2{margin-top:10px;}
+
+/* 물품등록 알리미 */
+#alarm_line{display:none;}
+.f_small{display:inline-block; margin-bottom:10px;}
+#alarm_line .alarm_notice{vertical-align:top;}
+#tag_generator{height:23px; margin-right:15px; padding:0 5px;}
+.character_use_info{position:relative; float:right;}
+.character_use_info .btn_white1{display:inline-block;padding:0 19px 0 14px;font-size:11px;font-weight:normal;}
+.character_use_info a:after{position:absolute;top:-1px;margin-left:2px;content:"\203A";font-size:26px;color:#13A33F;}
+.tag_wrapper h4{padding:5px 0;}
+.tag_wrapper h4 span{font-size:11px; color:#7C7C7C;}
+.tag_wrapper span.tag{display:inline-block; margin:0px 15px 10px 0; cursor:pointer; color:#13A33F;}
+
+.alarm_ballon{position:absolute;top:-50px; right:10px; width:150px; padding:10px 0; border:2px solid #13A33F; border-radius:10px; background-color:#FFF; text-align:center; color:#13A33F;}
+.alarm_ballon:after{position:absolute;bottom:-8px;left:20px;width:10px;height:10px;content:"";transform:rotate(45deg);border:2px solid #13A33F;border-top:0;border-left:0;background-color:#FFF;}
+.alarm_ballon .close_btn:after{position:absolute; top:3px; right:7px; display:block; margin-top:-4px; margin-left:-1px;content:"x"; font-size:15px; font-weight:bold; cursor:pointer; color:#13A33F;}
+
+.buy_alarm_keyword{color:#13A33F;}
+.new{display:inline-block; width:15px; height:15px; margin-top:-2px; margin-right:2px; background:url(//img4.itemmania.com/new_images/sell/btn_s_new.gif) no-repeat;vertical-align:middle;text-indent:-9999px; }
+#tag_more{padding:0 10px; font-size:11px;}
+.no_keyword{font-size:11px;}
+
+/* 캐릭터정보 입력 */
+.character_select > ul{text-align:center;}
+.character_select > ul > li{position:relative;display:inline-block;overflow:hidden;box-sizing:border-box;width:45%;padding:4px 0 6px 80px;white-space:nowrap;-ms-text-overflow:ellipsis;text-overflow:ellipsis;margin:0 10px;}
+.character_select > ul > li > span{position:absolute;top:7px;left:0;width:75px;}
+.character_select > ul > li > select, .character_select > ul > li > input{width:100%;font-size:12px;}

@@ -62,12 +62,12 @@
                     <td colspan="3" th:text="${boardView.boardTitle}"></td>
                 </tr>
                 <tr>
-                    <th>거래번호</th>
+<!--                    <th>거래번호</th>
                     <td>
                         &#35;<span th:text="${boardView.tradeNum}"/>
-                    </td>
+                    </td>-->
                     <th>등록일시</th>
-                    <td th:text="${boardView.boardTime}"></td>
+                    <td colspan="3" th:text="${boardView.boardTime}"></td>
                 </tr>
                 <tr>
                     <th>판매수량</th>
@@ -100,18 +100,8 @@
             </div>
 
             <!-- ▼ 개인정보 //-->
-<!--            <style>
-                .SafetyNumber_plus {display:none;}
-            </style>
-            &lt;!&ndash; ▼ 연락처 중복 //&ndash;&gt;
-            <input type="hidden" name="user_id" id="user_id" value="ekqls856">
-            <input type="hidden" name="user_contactA" id="user_contactA" value="N">
-            <input type="hidden" name="user_contactB" id="user_contactB" value="">
-            <input type="hidden" name="user_contactC" id="user_contactC" value="">
-            <input type="hidden" name="slctMobile_type" id="slctMobile_type" value="2">
-            <input type="hidden" name="user_mobileA" id="user_mobileA" value="010">
-            <input type="hidden" name="user_mobileB" id="user_mobileB" value="4876">
-            <input type="hidden" name="user_mobileC" id="user_mobileC" value="4064">&lt;!&ndash; ▲ 연락처 중복 //&ndash;&gt;-->
+        <input type="hidden" th:name="${boardView.userNum.userName}" id="${boardView.userNum.userName}" th:value="${boardView.userNum.userName}">
+
 
             <div class="g_subtitle">내 거래정보</div>
 
@@ -128,7 +118,7 @@
                     <th>판매자 캐릭터명</th>
                     <td>
                         <div class="g_left">
-                            <input type="text" name="user_character" id="user_character" class="g_text" maxlength="30" tabindex="2">
+                            <input type="text" name="user_character" id="user_character" th:value="${boardView.saleNickName}"  class="g_text" maxlength="30" tabindex="2">
                             물품을 전달 하실 본인의 캐릭터명
                         </div>
                         <div class="character_noti">
@@ -143,7 +133,7 @@
                     <span id="spnUserPhone">자택번호 없음 </span>
                         (
                         <label><input type="checkbox" class="g_checkbox" name="user_cell_check" id="user_cell_check" value="on" checked> 자택번호안내</label> ) /
-                        <span id="spnUserCell">010-4876-4064</span>
+                        <span id="spnUserCell" th:text="${boardView.userNum.userPhoneNumber}"></span>
                         <a href="javascript:_window.open('private_edit', '/user/contact_edit.html', 496, 350);" class="btn_white1 after"><p>연락처 수정<span>&gt;</span></p></a>
                     </td>
                 </tr>
@@ -234,12 +224,12 @@
                     <td colspan="3" th:text="${boardView.boardTitle}"></td>
                 </tr>
                 <tr>
-                    <th>거래번호</th>
+<!--                    <th>거래번호</th>
                     <td>
                         &#35;<span th:text="${boardView.tradeNum}"/>
-                    </td>
+                    </td>-->
                     <th>등록일시</th>
-                    <td th:text="${boardView.boardTime}"></td>
+                    <td colspan="3" th:text="${boardView.boardTime}"></td>
                 </tr>
                 <tr>
                     <th>판매수량</th>
