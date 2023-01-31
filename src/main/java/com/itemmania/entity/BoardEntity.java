@@ -54,7 +54,7 @@ public class BoardEntity {
 
     @Column
     @NonNull
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 게시글 작성 시간
     private LocalDateTime boardTime;
 
@@ -89,15 +89,15 @@ public class BoardEntity {
     private boolean saleType;
 
     @Column
-    // 거래 현황  (진행중 [value:0], 거래완료 [value:1])
-    private boolean boardTradeStatus;
+    // 거래 현황  (진행중 [value:0], 거래완료 [value:1], 거래중 [value:2] )
+    private int boardTradeStatus;
 
     @Column
     // 프리미엄 서비스 우뮤
     private boolean salePremium;
 
     @Column
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:SS")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:SS")
     // 거래 완료 시간
     private LocalDateTime dealEndTime;
 

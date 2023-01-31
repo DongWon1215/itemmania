@@ -24,7 +24,7 @@
     </style>
     <div class="g_search_top">
         <form id="g_searchbar_form" method="post" action="/board/boardList" onsubmit="return searchbarSubmit();">
-            <div class="g_search_wrapper">
+            <div class="g_search_wrapper" id="g_search_wrapper">
                 <div class="search_area">
                     <div class="g_trade_type">
                         <label class="radiocontainer f_blue1">
@@ -43,12 +43,71 @@
                     <input type="text" class="g_text search_gs_name" name="searchGameServer" id="searchGameServer"
                            title="게임검색" style="ime-mode:active" placeholder="게임명 또는 서버명을 입력해주세요." autocomplete="off"
                            data-gameserver="true" th:value="${searchGameServer}">
-                    <a href="javascript:;" class="delete_btn"></a></div>
+                    <a href="javascript:;" class="delete_btn"></a>
+                </div>
                 <button type="submit" class="g_search_list" id="g_search_list" title="검색">
                     <span class="icon_search"></span>
                 </button>
+                <div class="g_search_frame" id="g_search_frame" style="">
+                    <div class="gs_list gs_selection" data-gslist="true">
+                        <div class="game">
+                            <ul>
+                                <li class="sel_on">로스트아크</li>
+                            </ul>
+                        </div>
+                        <div class="server server_t">
+                            <ul>
+                                <li>서버전체</li>
+                                <li>루페온</li>
+                                <li>실리안</li>
+                                <li>니나브</li>
+                                <li>카단</li>
+                                <li>아만</li>
+                                <li>카제로스</li>
+                                <li class="sel_on">아브렐슈드</li>
+                                <li>북미</li>
+                                <li>유럽</li>
+                                <li>카마인</li>
+                                <li>기타</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
 </html>
+<script>
+    $(document).ready(function (){
+        /*로딩 완료시 게임,서버리스트 숨김처리*/
+        $("#g_search_frame").hide();
+    })
+
+    $(".search_area ").focusin(function () {
+        /*검색바 클릭시 게임,서버리스트 표시*/
+        $("#g_search_frame").show();
+    })
+    $(".search_area").focusout(function () {
+        /*검색바 제외 클릭시 게임,서버리스트 숨김*/
+        $("#g_search_frame").hide();
+    })
+
+
+
+</script>
+<style>
+    .g_search_frame {
+        z-index: 99;
+        position: absolute;
+        left: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+        width: 690px;
+        height: 460px;
+        padding: 10px;
+        border: 1px solid #159efd;
+        border-top: 0;
+        background-color: #FFF
+    }
+</style>
