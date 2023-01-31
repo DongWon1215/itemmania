@@ -1,5 +1,6 @@
 package com.itemmania.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -53,6 +54,7 @@ public class BoardEntity {
 
     @Column
     @NonNull
+    @JsonFormat(pattern="yyyy-MM-dd`T`HH:mm:ss")
     // 게시글 작성 시간
     private LocalDateTime boardTime;
 
@@ -95,6 +97,7 @@ public class BoardEntity {
     private boolean salePremium;
 
     @Column
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:SS")
     // 거래 완료 시간
     private LocalDateTime dealEndTime;
 

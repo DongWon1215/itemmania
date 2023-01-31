@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>title</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+<div th:replace="fragment/header"/>
+
+<link type="text/css" rel="stylesheet" href="/css/board/insertBuy.css">
+
+
+<body>
+<div id="g_SLEEP" class="g_sleep g_hidden">
+    <div id="g_OVERLAY" class="g_overlay"></div>
+</div>
+
+<div class="g_body" id="g_BODY">
+
+    <div class="g_container" id="g_CONTENT">
+
+        <div class="aside">
+            <div class="title_green">알아두기</div>
+            <div class="menu_know">
+                <p>구매물품 쉽게 등록하기</p>
+                <img src="http://img2.itemmania.com/new_images/buy/buy_left_know.gif" width="192" height="224"
+                     alt="삽니다 쉽게 등록하기">
+                <p>구매물품 등록 시 알아둘 점</p>
+                <ul class="g_list">
+                    <li>등록자는 등록한 물품의 문제 발생 시 민/형사상의 모든 책임을 질 것에 동의하는 것으로 간주됩니다.</li>
+                    <li>현재 연락처로 꼭 수정해주세요.<br>연락처가 불분명 시 거래에 불이익을 받으실 수 있습니다.
+                    </li>
+                    <li>[나만의 검색메뉴]를 이용하시면 간편하게 물품등록을 할 수 있습니다.</li>
+                </ul>
+            </div>
+            <div style="margin-top:15px;text-align:center;">
+                <script src="https://compass.adop.cc/assets/js/adop/adopJ.js?v=14"></script>
+            </div>
+        </div><!--//.aside-->
+
+        <div class="g_content">
+            <div class="g_title_green">
+                삽니다
+                <span>등록</span>
+                <ul class="g_path">
+                    <li>홈</li>
+                    <li class="select">구매등록</li>
+                </ul>
+            </div>
+
+
+            <form name="frmBuy" id="frmBuy" method="post" enctype="multipart/form-data">
+                <input type="hidden" th:name="${myInfo.userNum}">
+                <input type="hidden" name="">
+                <input type="hidden" name="">
+                <input type="hidden" name="">
+
+                <div class="g_subtitle first">물품정보</div>
+                <table class="g_green_table">
+                    <colgroup>
+                        <col width="160">
+                        <col>
+                    </colgroup>
+                    <tr>
+                        <th>카테고리</th>
+                        <td>
+                            <div class="g_search_wrapper">
+                                <div class="search_wrap">
+                                    <div class="input_area">
+<!--                                        <input type="text" class="g_text search_gs_name" id="searchRegGameServer" placeholder="게임명 또는 서버명을 입력해주세요." autocomplete="off">-->
+                                        <input type="text" class="g_text search_gs_name" id="searchRegGameServer" name="serverName" placeholder="서버명을 입력해주세요." autocomplete="off">
+                                        <!-- autocomplete :사용자가 이전에 입력했던 값들을 기반으로 사용자가 입력한 값과 비슷한 값들을 드롭다운 옵션으로 보여줍니다. -->
+                                    </div><!--//.input_area-->
+
+                                    <button type="button" class="g_search_list" title="검색">
+                                        <span class="icon_search"></span>
+                                    </button>
+                                </div><!--//.search_wrap-->
+
+                                <div class="g_search_frame g_hidden reg_gameserver" id="reg_gameserver">
+                                    <div class="gs_list gs_selection" data-gslist="true" id="reg_gameserver_list">
+                                        <div class="game">
+                                            <ul th:each="gameSever:${gameSever}">
+                                                <li>
+                                                    <span type="text" th:text="${gameSever.gameNum.gameName}"/>
+                                                    <span type="text" th:text="${gameSever.gameNum.gameCurrency}"/>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="server"></div>
+                                    </div>
+                                </div><!--//.reg_gameserver-->
+                            </div><!--//.g_search_wrapper-->
+                        </td>
+                    </tr>
+                    <tbody id="d_template">
+                    <tr>
+                        <th>구매수량</th>
+                        <td>
+                            <!--<div class="unit_type" id="unit_type">
+                                <label><input type="radio" name="gamemoney_unit" class="g_radio first_radio" value="1"
+                                              checked>없음</label>
+                                <label><input type="radio" name="gamemoney_unit" class="g_radio" value="만">만</label>
+                                <label><input type="radio" name="gamemoney_unit" class="g_radio" value="억">억</label>
+                                <label class="f_green2 f_small">(단위)</label>
+                            </div>-->
+                            <div id="game_money">
+                                <input type="text" name="saleUnit" id="user_quantity" maxlength="7"
+                                       class="g_text f_right">
+                                <span class="unit"></span> 게임머니
+
+
+<!--                                <span class="g_txtbtn first_btn" id="plus10" value="10">+10</span>
+                                <span class="g_txtbtn" id="plus50" value="50">+50</span>
+                                <span class="g_txtbtn" id="plus100" value="100">+100</span>
+                                <span class="g_txtbtn" id="plus500" value="500">+500</span>
+                                <span class="g_txtbtn" id="plus1000" value="1000">+1000</span>
+                                <span class="g_txtbtn" id="initial" value="0">초기화</span>-->
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>구매금액</th>
+                        <td>
+                            <input type="text" name="salePrice" id="user_price" maxlength="10" class="g_text f_right">
+                            원 (3,000원 이상, 10원 단위 등록 가능)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>캐릭터명</th>
+                        <td>
+                            <div class="dfServer" id="dfServer">
+                            </div>
+                            <div class="g_left">
+                                <input type="text" class="g_text mode-active" name="saleNickName" id="user_character"
+                                       maxlength="30"> 물품을 전달 받으실 본인의 캐릭터명
+                                <span id="sub_text" class="g_red1"></span>
+                            </div>
+                            <p class="character_noti">* 본인이 사용하는 서버/캐릭터명 미 선택 및 미 기재 시 문제가 발생될 수 있으며, 거래신청자에게 책임이
+                                있습니다.</p>
+                        </td>
+                    </tr>
+                    </tbody>
+
+
+                    <tr>
+                        <th>물품제목</th>
+                        <td>
+                            <input type="text" class="g_text w100" name="boardTitle" id="user_title" maxlength="40"
+                                   placeholder="ex) 게임머니 삽니다.">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>상세설명</th>
+                        <td>
+                            <textarea id="user_text" name="saleAria" class="txtarea w100" placeholder="휴대폰번호, 메신저(카톡) ID 및 거래와 무관한 내용 기재 시 물품은 삭제되며, 서비스 이용에 제재를 받게 됩니다."></textarea>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <div class="g_subtitle">
+                    유료등록 서비스
+                    <div>
+                        <span class="f_small">물품리스트 상단에 노출할 수 있는 서비스입니다.</span>
+                        <!--                        <div class="btn_area">
+                                                    <a href="javascript:_window.open('premium_guide','/sell/premium_guide.html',628, 630);" class="btn_white1">이용안내</a>
+                                                </div>-->
+                    </div>
+                </div>
+                <div class="charge_service">
+                    <div class="g_msgbox green" id="premium_layer" style="right: 150px; top:100px;">
+                        <div class="cont">
+                            ※ 유료등록 서비스는 선불로 부과되며 거래성사여부, 취소여부, 삭제여부, 이용정지여부 등과<br>
+                            관계 없이 환불, 취소, 교환, 반환 등이 되지 않으니 신중하게 구매해 주시기 바랍니다.
+                        </div>
+                        <div class="btn">
+                            <a href="javascript:;" id="premium_close" class="close btn_green2">확인</a>
+                        </div>
+                    </div>
+
+                    <dl>
+                        <dt>프리미엄등록</dt>
+                        <dd>
+                            <div th:insert="/fragment/chargeModal"/>
+<!--                            <div class="charge_price">(이용료 :
+                                <strong> 100원 </strong> / 1시간)
+                            </div>
+                            <select id="user_premium_time" name="user_premium_time">
+                                <option value="">미설정</option>
+                                <option value="1">1시간</option>
+                                <option value="2">2시간</option>
+                                <option value="3">3시간</option>
+                                <option value="4">4시간</option>
+                                <option value="5">5시간</option>
+                                <option value="6">6시간</option>
+                                <option value="7">7시간</option>
+                                <option value="8">8시간</option>
+                                <option value="9">9시간</option>
+                                <option value="10">10시간</option>
+                                <option value="11">11시간</option>
+                                <option value="12">12시간</option>
+                                <option value="13">13시간</option>
+                                <option value="14">14시간</option>
+                                <option value="15">15시간</option>
+                                <option value="16">16시간</option>
+                                <option value="17">17시간</option>
+                                <option value="18">18시간</option>
+                                <option value="19">19시간</option>
+                                <option value="20">20시간</option>
+                                <option value="21">21시간</option>
+                                <option value="22">22시간</option>
+                                <option value="23">23시간</option>
+                                <option value="24">24시간</option>
+                            </select>
+                            <div class="sub_txt">
+                                프리미엄 잔여시간이 많을수록<br>물품리스트 상단에 노출됩니다. (내용수정해야함)
+                            </div>-->
+                        </dd>
+                    </dl>
+
+
+                </div>
+
+                <div class="g_subtitle">내 거래정보</div>
+                <table class="g_green_table private_area">
+                    <colgroup>
+                        <col width="160">
+                        <col/>
+                    </colgroup>
+                    <tr>
+                        <th>이름</th>
+                        <td th:text="${myInfo.userRealName}"></td>
+                    </tr>
+                    <tr>
+                        <th>연락처</th>
+                        <td>
+                <span id="spnUserPhone">
+                자택번호 없음
+                </span>
+                            (
+                            <label>
+                                <input type="checkbox" class="g_checkbox" name="user_cell_check"
+                                       id="chk_user_cell_check" value="on" checked> 자택번호안내
+                            </label>
+                            ) /
+                            <span id="spnUserCell" th:text="${myInfo.userPhoneNumber}"></span>
+<!--                            <a href="javascript:_window.open('private_edit', '/user/contact_edit.html', 496, 350);"-->
+<!--                               class="btn_white1 after">연락처 수정</a>-->
+                        </td>
+                    </tr>
+                </table>
+
+
+
+                <script>
+                    window.onload = function () {
+
+                        if (document.getElementById('safe_guide') !== null) {
+                            LayerControl({
+                                el: document.getElementById('safe_guide'),
+                                layer: document.getElementById('safe_layer'),
+                                close_btn: document.getElementById('safe_layer').querySelector('.close'),
+                                mask: false,
+                                type: 'style'
+                            });
+                        }
+
+                        if (document.getElementById('safe_plus_guide') !== null) {
+                            LayerControl({
+                                el: document.getElementById('safe_plus_guide'),
+                                layer: document.getElementById('safe_plus_layer'),
+                                close_btn: document.getElementById('safe_plus_layer').querySelector('.close'),
+                                mask: false,
+                                type: 'style'
+                            });
+                        }
+                    };
+                </script>
+
+
+
+
+                <div class="g_btn_wrap">
+                    <button type="submit" href="javascript:;" class="buy_reg" id="ok_btn">구매 등록</button>
+                    <a href="/" class="cancel_reg">등록 취소</a>
+                </div>
+
+
+            </form>
+
+
+            <div class="qntKorean" id="qntKorean"></div>
+        </div>
+
+
+        <!--<div id="dvPremium" class="g_layer green premium_info">
+            <div class="inner">
+                <div class="pre_title">프리미엄 등록안내</div>
+                <div class="f_green2 middle_text">프리미엄 물품 등록을 하시면 물품 리스트 상단에 판매 물품 노출이 가능합니다.<br/>빠른 거래를 원하신다면 프리미엄
+                    등록서비스를 이용하시기 바랍니다.
+                </div>
+                <div class="f_green2 mile_area">(내 사용가능한 마일리지 :
+                    <span id="pop_txtCurrentMileage" class="f_org1"></span> 원)
+                </div>
+                <div class="dvpremium">
+                    <div class="g_left">
+                        <strong class="service_title">프리미엄 등록</strong>
+                        &lt;!&ndash;                        <select id="pop_user_premium_time" name="pop_user_premium_time">
+                                                    <option value="">미설정</option>
+                                                    <option value="1">1시간</option>
+                                                    <option value="2">2시간</option>
+                                                    <option value="3">3시간</option>
+                                                    <option value="4">4시간</option>
+                                                    <option value="5">5시간</option>
+                                                    <option value="6">6시간</option>
+                                                    <option value="7">7시간</option>
+                                                    <option value="8">8시간</option>
+                                                    <option value="9">9시간</option>
+                                                    <option value="10">10시간</option>
+                                                    <option value="11">11시간</option>
+                                                    <option value="12">12시간</option>
+                                                    <option value="13">13시간</option>
+                                                    <option value="14">14시간</option>
+                                                    <option value="15">15시간</option>
+                                                    <option value="16">16시간</option>
+                                                    <option value="17">17시간</option>
+                                                    <option value="18">18시간</option>
+                                                    <option value="19">19시간</option>
+                                                    <option value="20">20시간</option>
+                                                    <option value="21">21시간</option>
+                                                    <option value="22">22시간</option>
+                                                    <option value="23">23시간</option>
+                                                    <option value="24">24시간</option>
+                                                </select>&ndash;&gt;
+                        이용료<strong class="f_black3"> 100원 </strong> / 1시간
+                    </div>
+                    <div class="g_right">
+                        <a href="javascript:;_window.open('FREE_REMAINDER_LIST','/myroom/coupon/free_remainder_list.html?free_use_item=premium',440,450)"
+                           class="btn_green2">프리미엄 무료이용권 보기</a>
+                    </div>
+                    <div class="g_clear">※ 프리미엄 잔여시간이 많을수록 물품리스트 상단에 노출됩니다.</div>
+                </div>
+                <div class="noti_txt">
+                    * 유료등록 서비스는 선불로 부과되며 거래성사여부, 취소여부, 삭제여부, 이용정지여부 등과<br>
+                    관계 없이 환불, 취소, 교환, 반환 등이 되지 않으니 신중하게 구매해 주시기 바랍니다.
+                </div>
+                <div class="g_btn_wrap">
+                    <a href="javascript:;" id="premium_btn"><img
+                            src="http://img4.itemmania.com/new_images/btn/btn_pop_ok_g.gif" width="63" height="35"
+                            alt="확인"></a>
+                </div>
+            </div>
+        </div>-->
+        <div id="dvPopup" class="g_layer green reg_info">
+            <div class="inner">
+                <div class="title">
+                    물품등록정보
+                    <a href="javascript:;" class="close_w"></a>
+                </div>
+                <div class="cont">
+                </div>
+            </div>
+        </div>
+        <div class="g_finish"></div>
+    </div><!--//.g_container-->
+</div>
+
+
+<script type="text/javascript" src="/_js/_jquery3.js?v=190220"></script>
+<script type="text/javascript" src="/_js/_comm.min.js?v=23011110"></script>
+<script type="text/javascript" src="/_js/_gs_control_200924.min.js?v=21101416"></script>
+<script type="text/javascript" src="/_js/_common_initialize_new.min.js?v=21110910"></script>
+<script type="text/javascript" src="js/index.js?v=220623"></script>
+<script type='text/javascript'>
+    var rgCtrRegGameUnit = new Array();
+
+    var mileAuth = 'ITEM';
+    var useMileage = '0';
+
+    function __init() {
+
+
+    }
+</script>
+
+<script type="text/javascript">
+    var gsVersion = '2301200922';
+    var _LOGINCHECK = '1';
+    _initialize();
+</script>
+<script type="text/javascript" src="/advertise/advertise_code.js?v=230119"></script>
+</body>
+</html>
