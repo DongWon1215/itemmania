@@ -49,11 +49,13 @@ public class BoardBuyInsertController {
         log.info("request>>>>>>>>>>>>>>>>>>>>>>>>."+request);
         log.info("board Insert Controller" + session.getAttribute("userInfo"));
 
-        /*UserEntity user = (UserEntity) session.getAttribute("userInfo");
+        UserEntity user = (UserEntity) session.getAttribute("userInfo");
         int userNum = user.getUserNum();
-        model.addAttribute("myInfo",boardInsertService.selectMyInfo(userNum));*/
+        model.addAttribute("myInfo",boardInsertService.selectMyInfo(userNum));
 
-        model.addAttribute("myInfo",boardInsertService.selectMyInfo(4));
+/*
+        model.addAttribute("myInfo",boardInsertService.selectMyInfo(2));
+*/
 
         return "/board/insert/boardBuyInsert";
     }
