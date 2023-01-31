@@ -24,4 +24,10 @@ public class MyroomTest {
         log.info("회원 수정...");
     }
 
+    @Test
+    public void deleteMemberTest(){
+        userRepository.deleteByUserNum(1);
+        log.info("회원 삭제......");
+    }
+
 }
