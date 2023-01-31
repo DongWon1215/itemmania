@@ -31,8 +31,7 @@
             <!--검색된 게임 OR 게임서버 검색-->
             <include refid="searchGameServer"/>
 
-            <include refid="titleSearch"/>
-
+          <!--  <include refid="titleSearch"/>-->
             <!--판매 구매 구분-->
             <include refid="deal"/>
 
