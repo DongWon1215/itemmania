@@ -54,7 +54,7 @@ public class BoardEntity {
 
     @Column
     @NonNull
-    @JsonFormat(pattern="yyyy-MM-dd`T`HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     // 게시글 작성 시간
     private LocalDateTime boardTime;
 

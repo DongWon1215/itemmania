@@ -72,6 +72,7 @@ public class BoardBuyInsertController {
 
         return "redirect:/board/boardList";
     }
+
     public BoardEntity insertBoard (@RequestBody BoardEntity boardEntity){
 
         log.info("insert 전 "+boardEntity);

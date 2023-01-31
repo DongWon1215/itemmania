@@ -55,15 +55,12 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
 }
    /*
 
-
         INSERT INTO `proj`.`board` (
-        `board_time`, `board_title`, `board_trade_status`, `deal_check`,
+		`board_title`, `board_trade_status`, `deal_check`,
         `server_num`, `sale_aria`, `sale_nick_name`, `sale_photo`, `sale_premium`,
         `sale_price`, `sale_type`, `sale_unit`, `user_num`)
-        VALUES ( '2020-02-02', '게시판 제목sale',0, 'sale', '6',
+        VALUES (  '게시판 제목buy',0, 'buy', '6',
         '상세설명', '본인닉네임', '등록사진', 1, '999',  0,'1','1');
-
-
 
 
         */
