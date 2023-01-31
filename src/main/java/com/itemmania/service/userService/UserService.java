@@ -61,7 +61,7 @@ public class UserService {
 
     public String findPasswordByNameAndBirthAndPhoneNum(PasswordFindRequest passwordFindRequest)
     {
-        return userMapper.findPasswordByNameAndBirthAndPhoneNum(passwordFindRequest);
+        return userMapper.findPasswordByNameAndBirthAndId(passwordFindRequest);
     }
 
 }

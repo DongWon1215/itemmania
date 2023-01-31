@@ -149,7 +149,7 @@
             </table>
 
             <div class="g_btn">
-                <input type="button" value="회원가입" class="btn_blue3 big_btn" onclick="RegistMember()">
+                <input type="button" value="회원가입" class="btn_blue3 big_btn" onclick="RegistMember()" id="regist_button">
             </div>
         </form>
 
@@ -169,9 +169,14 @@
                 if(data)
                 {
                     alert("동일한 아이디가 있습니다")
+                    document.getElementById('regist_button').disabled = true;
                 }
                 else
+                {
                     alert("사용 가능한 아이디 입니다")
+                    document.getElementById('user_id').readOnly = true;
+                    document.getElementById('regist_button').disabled = false;
+                }
             },
             fail: function (e) {
                 console.log(e)
@@ -187,9 +192,16 @@
             data: {userEmail:email},
             success: function (data) {
                 if(data)
+                {
                     alert("동일한 이메일이 있습니다")
+                    document.getElementById('regist_button').disabled = true;
+                }
                 else
+                {
                     alert("사용 가능한 이메일 입니다")
+                    document.getElementById('user_email').readOnly = true;
+                    document.getElementById('regist_button').disabled = false;
+                }
             },
             fail: function (e) {
                 console.log(e)
@@ -214,7 +226,11 @@
         {
             document.getElementById('muser_password').innerText='비밀번호에 대소문자와 특수문자가 반드시 하나씩 포함되어야 하며 길이가 6~12글자 이내여야 합니다';
             document.getElementById('muser_password').style.color='red';
+            document.getElementById('regist_button').disabled = true;
         }
+        else
+            document.getElementById('muser_password').innerText="";
+            document.getElementById('regist_button').disabled = false;
 
     }
 
@@ -228,12 +244,14 @@
         {
             document.getElementById('DuplicateCheck').innerText='비밀번호가 일치합니다';
             document.getElementById('DuplicateCheck').style.color='blue';
+            document.getElementById('regist_button').disabled = false;
         }
 
         else
         {
             document.getElementById('DuplicateCheck').innerText='비밀번호가 일치하지 않습니다';
             document.getElementById('DuplicateCheck').style.color='red';
+            document.getElementById('regist_button').disabled = true;
         }
     }
 </script>
@@ -252,35 +270,48 @@
 
         console.log(UserDTO)
 
-        $.ajax(
-            {
-                url:'/regist/insert',
-                type:'post',
-                data:JSON.stringify(UserDTO),
-                dataType:'JSON',
-                contentType:'application/json; charset=utf-8',
-                success:function (result)
-                {
-                    console.log(result)
+        if(UserDTO.userName == "" ||
+            UserDTO.userPassword == "" ||
+            UserDTO.userRealName == "" ||
+            UserDTO.userEmail == "" ||
+            UserDTO.userPhoneNum == "" ||
+            UserDTO.userBirth == "")
+        {
+            alert("모든 데이터를 입력하세요 ")
+        }
 
-                    if(result != null)
+        else
+        {
+            $.ajax(
+                {
+                    url:'/regist/insert',
+                    type:'post',
+                    data:JSON.stringify(UserDTO),
+                    dataType:'JSON',
+                    contentType:'application/json; charset=utf-8',
+                    success:function (result)
                     {
-                        alert("회원가입에 성공 하였습니다")
-                        window.location.replace("/");
-                    }
+                        console.log(result)
 
-                    else
-                        alert("회원가입에 실패 하였습니다")
-                },
-                fail:function ()
-                {
-                },
-                error:function (err)
-                {
-                    console.log("error")
-                    console.log(err)
-                }
-            })
+                        if(result != null)
+                        {
+                            alert("회원가입에 성공 하였습니다")
+                            window.location.replace("/");
+                        }
+
+                        else
+                            alert("회원가입에 실패 하였습니다")
+                    },
+                    fail:function ()
+                    {
+                    },
+                    error:function (err)
+                    {
+                        console.log("error")
+                        console.log(err)
+                    }
+                })
+        }
     }
 </script>
 </body>

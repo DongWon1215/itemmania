@@ -10,6 +10,12 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserEntity,Integer> {
+    @Transactional
+    @Modifying
+    @Query("""
+            update UserEntity u set u.userPassword = ?1
+            where u.userName = ?2 and u.userRealName = ?3 and u.userBirth = ?4""")
+    int updateUserPasswordByUserNameAndUserRealNameAndUserBirth(String userPassword, String userName, String userRealName, LocalDate userBirth);
     boolean existsByUserEmail(String userEmail);
     UserEntity findByUserNameAndUserPassword(String userName, String userPassword);
 
