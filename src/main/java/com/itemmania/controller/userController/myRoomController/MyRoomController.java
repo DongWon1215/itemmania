@@ -27,11 +27,15 @@ public class MyRoomController {
     @GetMapping
     public String getMypageForm(HttpServletRequest request, Model model)
     {
+
+        // 로그인한 user 정보 받아오기
         HttpSession session = request.getSession();
         log.info("UserModifyController......." + session.getAttribute("userInfo"));
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
         model.addAttribute("user", user);
         log.info("myroom user............" + user);
+
+        // 마이룸 페이지 진입
         return "userForm/myRoom/myRoomForm";
         
     }

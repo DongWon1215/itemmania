@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div id="wrap">
+    <div class="error">
+        <div class="inner">
+            <!--<div class="logo">
+                <a href="/"><img src="../../image/logo.gif" width="220px"></a>
+            </div>-->
+        </div>
+    </div>
+    <div class="box">
+        <div class="title">
+            <a href="/"><img src="../../image/logo.gif" width="300px"></a>
+            <br>
+            <img src="http://img2.itemmania.com/new_images/error/img_title.jpg" width="600" height="150" border="0">
+        </div>
+        <div class="errorcode">
+            500 error
+        </div>
+        <div class="con">
+            페이지의 주소가 잘못 입력되었거나,<br>
+            페이지의 주소가 변경 혹은 삭제되어 요청하신 페이지를 찾을 수 없습니다.<br>
+            입력하신 주소가 정확한지 다시 한번 확인해 주시기 바랍니다.
+        </div>
+        <div>
+            <a href="/" class="btn">하이템브로커 홈</a>
+        </div>
+    </div>
+</div>
+
+<!--footer 시작-->
+<!--<div th:replace="fragment/footer"/>-->
+
+<link type="text/css" rel="stylesheet" href="/css/errors/error.css">
+
+</body>
+</html>

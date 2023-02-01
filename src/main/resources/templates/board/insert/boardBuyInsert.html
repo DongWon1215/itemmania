@@ -83,10 +83,10 @@
                                 <div class="g_search_frame g_hidden reg_gameserver" id="reg_gameserver">
                                     <div class="gs_list gs_selection" data-gslist="true" id="reg_gameserver_list">
                                         <div class="game">
-                                            <ul th:each="gameSever:${gameSever}">
+                                            <ul th:each="gameServer:${gameServer}">
                                                 <li>
-                                                    <span type="text" th:text="${gameSever.gameNum.gameName}"/>
-                                                    <span type="text" th:text="${gameSever.gameNum.gameCurrency}"/>
+                                                    <span type="text" th:text="${gameServer.gameNum.gameName}"/>
+                                                    <span type="text" th:text="${gameServer.gameNum.gameCurrency}"/>
                                                 </li>
                                             </ul>
                                         </div>

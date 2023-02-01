@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -33,11 +33,11 @@
       <div>
         <span class="credit_mark _lg basic"><i></i></span>
         <div class="credit_name">
-          <div class="f_bold">[홍길동]님의 신용등급은
+          <div class="f_bold"><span th:text="${user.userRealName}">이름</span>님의 신용등급은
             <span class="basic_txt">[일반]</span>입니다.
           </div>
           전체거래점수 :
-          <strong class="f_red1">[0]점</strong>
+          <strong class="f_red1"><span th:text="${user.userCreditScore}">신용점수</span> 점</strong>
         </div>
       </div>
       <div class="credit_up">
@@ -70,7 +70,7 @@
               <span class="cp">프리미엄 5장 <br> 물품강조 5장</span>
               <span class="sp"><p class="credit_btn"><a href="javascript:;" onclick="Fncredit_ajax(1);">발급받기</a></p></span>
             </li>
-            <li class="area2 on">
+            <li class="area2">
               <span class="line"></span>
               <span class="grade"><img src="http://img4.itemmania.com/new_images/common/mark_gold.png"><br><p>골드</p></span>
               <span class="nb">51점 이상</span>

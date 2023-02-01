@@ -32,26 +32,31 @@ public class MyRoomUserLeaveController {
     @GetMapping
     public String getMypageForm(Model model, HttpServletRequest request)
     {
-        // 세션을 이용하여 유저 정보 받아오기
+        // 로그인한 user 정보 받아오기
         HttpSession session = request.getSession();
-        log.info("UserModifyController......." + session.getAttribute("userInfo"));
+        log.info("UserLeaveController......." + session.getAttribute("userInfo"));
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
         model.addAttribute("user", user);
 
+        // 회원탈퇴 페이지 진입
         return "userForm/myRoom/myRoomUserLeaveForm";
     }
 
     @PostMapping
     public String deleteUser(int userNum, @RequestParam("passwd") String passwd, RedirectAttributes rttr, HttpServletRequest request){
 
+        // 로그인한 user 정보 받아오기
         HttpSession session = request.getSession();
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
         String userPassword = user.getUserPassword();
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
         log.info("passwd........................" + passwd);
         log.info("userPassword........................" + userPassword);
 
+        // 사용자 입력 경우에 따른 회원탈퇴 처리
+        // 1. 비밀번호 재확인 일치할 경우
         if(encoder.matches(passwd, userPassword)) {
             log.info("deleteUser.......... userPassword match..........");
             rttr.addFlashAttribute("msg", "success");
@@ -59,17 +64,19 @@ public class MyRoomUserLeaveController {
             // session.invalidate();
             return "redirect:/myroom";
 
+        // 2. 비밀번호 재확인 불일치 혹은 미입력일 경우
         } else if(!encoder.matches(passwd, userPassword) || passwd.isEmpty() || passwd == null){
             log.info("비밀번호 재확인......................");
             rttr.addFlashAttribute("msg", "password");
             return "redirect:/myroom/user_leave";
 
+        // 3. 회원탈퇴 실패할 경우
         } else if(userLeaveService.deleteUser(userNum)!=1){
             rttr.addFlashAttribute("msg", "fail");
             return "redirect:/myroom/user_leave";
 
+        // 4. 기타 디폴트
         } else {
-            // rttr.addFlashAttribute("msg", "test");
             return "redirect:/myroom/user_leave";
         }
 
