@@ -68,7 +68,6 @@
           <th>비밀번호</th>
           <td class="cell_num">
             <div class="s_label">
-              <!--<input type="password" name="userPassword" id="userPassword" class="g_text" th:value="${user.userPassword}">-->
               <input type="password" name="userPassword" id="userPassword" class="g_text">
             </div>
           </td>
@@ -77,7 +76,6 @@
           <th>비밀번호 확인</th>
           <td class="cell_num">
             <div class="s_label">
-              <!--<input type="password" id="repassword" class="g_text" onchange="pwDuplicateCheck()" th:value="${user.userPassword}">-->
               <input type="password" id="repassword" class="g_text" onchange="pwDuplicateCheck()">
               <div class="" id="DuplicateCheck"/>
             </div>
@@ -214,6 +212,7 @@
   function modifyMember()
   {
     const UserModifyRequest = {
+      userNum : document.getElementById('userNum').value,
       userPassword : document.getElementById('userPassword').value,
       userPhoneNum : document.getElementById('user_mobileA').value + document.getElementById('user_mobileB').value + document.getElementById('user_mobileC').value,
       userEmail : document.getElementById('userEmail').value + '@'+ document.getElementById('userEmail2').value,
@@ -236,7 +235,7 @@
                   if(result != null)
                   {
                     alert("회원수정에 성공 하였습니다")
-                    window.location.replace("/");
+                    window.location.replace("/myroom");
                   }
 
                   else

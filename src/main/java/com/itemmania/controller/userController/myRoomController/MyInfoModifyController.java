@@ -27,6 +27,9 @@ public class MyInfoModifyController {
     private MyInfoModifyService myInfoModifyService;
 
     @Autowired
+    private MyInfoReadService myInfoReadService;
+
+    @Autowired
     private PasswordEncoder encoder;
 
 
@@ -43,13 +46,13 @@ public class MyInfoModifyController {
 
     @PostMapping
     @ResponseBody
-    public JSONObject modifyUser(UserModifyRequest req, HttpServletRequest request){
+    public JSONObject modifyUser(@RequestBody UserModifyRequest req, HttpServletRequest request){
 
         log.info("userModifyRequest......." + req);
         req.setUserPassword(encoder.encode(req.getUserPassword()));
 
-        UserEntity userInfo = req.toUserEntity();
         myInfoModifyService.modifyUser(req);
+        UserEntity userInfo = myInfoReadService.selectUser(req.getUserNum());
 
         JSONObject json = new JSONObject();
         json.put("userData",userInfo);
@@ -57,6 +60,7 @@ public class MyInfoModifyController {
         HttpSession session = request.getSession();
 
         session.setAttribute("userInfo",userInfo);
+        log.info("userInfo..................." + userInfo);
 
         return json;
         // return "redirect:/myroom";

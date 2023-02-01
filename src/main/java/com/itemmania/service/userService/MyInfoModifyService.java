@@ -18,9 +18,8 @@ public class MyInfoModifyService {
 
     public int modifyUser(UserModifyRequest userModifyRequest){
 
-        UserEntity user = userModifyRequest.toUserEntity();
-        log.info("user......." + user);
-        return userRepository.updateUserByUserNum(user.getUserPassword(), user.getUserPhoneNumber(), user.getUserEmail(), user.getUserBirth(), user.getUserNum());
+        // UserEntity user = userModifyRequest.toUserEntity();
+        return userRepository.updateUserByUserNum(userModifyRequest.getUserPassword(), userModifyRequest.getUserPhoneNumber(), userModifyRequest.getUserEmail(), userModifyRequest.getUserBirth(), userModifyRequest.getUserNum());
 
     }
 
