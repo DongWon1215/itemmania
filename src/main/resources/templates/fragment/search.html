@@ -1,18 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <script>
-    function searchbarSubmit() {
 
-        //form태그 아이디 받기
-        var formId = document.getElementById("g_searchbar_form");
-
-        // 받은 formId에 속해있는  value추출
-        var st = formId.querySelector('[name="deal"]:checked').value;
-        var sGameServer = formId.querySelector('[name="searchGameServer"]').value;
-        console.log("form 태그 이동" + st + "&" + sGameServer)
-        console.log(st + "-" + sGameServer);
-        //검색시 링크에 deal=sale   deal=buy 값 파라미터로 넣어서 보내줘야함
-    }
 </script>
 <div class="g_logo_area">
     <!--▼▼▼ 공통 로고 배너 ▼▼▼ -->
@@ -23,7 +12,7 @@
     </div>
     </style>
     <div class="g_search_top">
-        <form id="g_searchbar_form" method="get" action="/board/boardList" onsubmit="return searchbarSubmit();">
+        <form id="g_searchbar_form" method="post" action="/board/boardList" onsubmit="return searchbarSubmit();">
             <div class="g_search_wrapper" id="g_search_wrapper">
                 <div class="search_area">
                     <div class="g_trade_type">
@@ -72,9 +61,15 @@
 </div>
 </html>
 <script>
+    /*로딩 완료시 게임,서버리스트 숨김처리
+    기존 (document.ready)내부에 위치하였으나 로딩시 리스트가 순간적으로 나타나는 현상을 수정하기위하여
+    바깥으로 위치 변경하였음 */
+    $("#g_search_frame").hide();
+
+
     $(document).ready(function () {
-        /*로딩 완료시 게임,서버리스트 숨김처리*/
-        $("#g_search_frame").hide();
+
+
 
 
         // 게임, 서버리스트 클릭시  g_search_frame가 사라지지 않게 해야함
@@ -101,10 +96,31 @@
             $("#g_search_frame").hide();
             $("#g_searchbar_form").submit();
         })
-        
+
+
     })
 
+    function searchbarSubmit() {
+        /*검색 전 예외처리*/
+        //form태그 아이디 받기
+        var formId = document.getElementById("g_searchbar_form");
 
+        // 받은 formId에 속해있는  value추출
+        var st = formId.querySelector('[name="deal"]:checked').value;
+        var sGameServer = formId.querySelector('[name="searchGameServer"]').value;
+        console.log("form 태그 이동" + st + "&" + sGameServer)
+        console.log(st + "-" + sGameServer.trim());
+
+        if (sGameServer.trim() == '') {
+            alert("데이터를 입력해주세요")
+                return false
+
+            for (const sGameServerKey in sGameServer) {
+
+            }
+        }
+        //검색시 링크에 deal=sale   deal=buy 값 파라미터로 넣어서 보내줘야함
+    }
 </script>
 <style>
     .g_search_frame {

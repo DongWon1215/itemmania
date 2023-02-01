@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+            charset="utf-8"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
@@ -22,23 +23,33 @@
         </div><!-- //.section_title_wrapper -->
         <div id="character_top_section_game_list" class="clear_fix">
             <div class="character_menu_wrapper">
-                <ul class="character_menu_list" th:each="gs:${gameServer}">
-                    <li class="character_menu border_gradient">
-                        <a class="text_ellipsis" href="">
-                            <img class="game_icon" th:src="${gs.gameIcon}" />
+                <ul class="character_menu_list getPath" th:each="gs:${gameServer}" >
+                    <li class="character_menu border_gradient"  >
+                        <span class="text_ellipsis">
+                            <img class="game_icon" th:src="${gs.gameIcon}"/>
                             <span th:text="${gs.gameName}"/>
                             <!--                            <img class="game_icon" src="images/${gs.gameNum.gameIcon}" />
                                                         <img class="game_icon" th:src="images/${gs.gameNum.gameIcon}" />
                                                         <img class="game_icon" th:src="@{images/} + ${gs.gameNum.gameIcon}" />
                                                         <img class="game_icon" th:src="@{{images} + ${gs.gameNum.gameIcon}}" th:alt="${gs.gameNum.gameName}" />
                                                         <img class="game_icon" th:src="@{../../images/${gs.gameNum.gameIcon}}" th:alt="${gs.gameNum.gameName}">-->
-                        </a>
+                        </span>
                     </li><!-- //.character_menu -->
                 </ul><!-- //.character_menu_list -->
             </div><!-- //.character_menu_wrapper -->
         </div><!-- //.character_top_section_game_list -->
     </div><!-- //.character_top_section -->
+    <script>
+        $(document).ready(function () {
 
+            $(".character_menu_list.getPath").click(function () {
+                console.log("this값"+$(this).text().trim())
+                document.querySelector('[name="searchGameServer"]').value = $(this).text().trim()
+                $("#g_searchbar_form").submit();
+
+            })
+        })
+    </script>
 
 </div><!-- //.g_container -->
 
