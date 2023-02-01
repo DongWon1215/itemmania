@@ -43,7 +43,7 @@ public class BoardBuyInsertController {
 //            int userNum
             ){
         log.info("board test 진행중... ");
-        model.addAttribute("gameSrever",boardInsertService.getGameServer());
+        model.addAttribute("gameServer",boardInsertService.getGameServer());
 
         HttpSession session = request.getSession();
         log.info("request>>>>>>>>>>>>>>>>>>>>>>>>."+request);
