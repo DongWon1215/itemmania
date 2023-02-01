@@ -11,6 +11,7 @@ public class MyInfoReadService {
     @Autowired
     private UserRepository userRepository;
 
+    // userNum 을 사용한 특정 회원 선택 서비스
     public UserEntity selectUser(int userNum) {
         return userRepository.findById(userNum).get();
     }

@@ -16,9 +16,9 @@ public class MyInfoModifyService {
     @Autowired
     private UserRepository userRepository;
 
+    // 회원수정 서비스
     public int modifyUser(UserModifyRequest userModifyRequest){
 
-        // UserEntity user = userModifyRequest.toUserEntity();
         return userRepository.updateUserByUserNum(userModifyRequest.getUserPassword(), userModifyRequest.getUserPhoneNumber(), userModifyRequest.getUserEmail(), userModifyRequest.getUserBirth(), userModifyRequest.getUserNum());
 
     }
