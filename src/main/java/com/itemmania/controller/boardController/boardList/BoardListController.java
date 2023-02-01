@@ -30,7 +30,7 @@ public class BoardListController {
     @Autowired
     private BoardGameSearchService getGameServerService;
 
-    @GetMapping("/board/boardList")
+    @PostMapping("/board/boardList")
     public String subsearch(Model model, BoardSearchOption boardSearchOption) {
         log.info("서브서치옵션" + boardSearchOption);
 
