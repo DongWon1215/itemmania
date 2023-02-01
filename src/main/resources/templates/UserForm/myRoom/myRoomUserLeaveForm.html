@@ -42,10 +42,10 @@
       <tbody>
       <tr>
         <th>총 마일리지</th>
-        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${user.userMileage}">0 </span>원</a></td>
+        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${user.userMileage}">0 </span> 원</a></td>
       </tr>
       <tr>
-        <th>신용등급</th>
+        <th>신용점수</th>
         <td th:text="${user.userCreditScore}">[일반]</td>
       </tr>
       </tbody></table>
@@ -64,7 +64,7 @@
         </colgroup>
         <tbody><tr>
           <th>아이디</th>
-          <td>hitem****</td>
+          <td th:text="${user.userName}">[아이디]</td>
           <th>이름</th>
           <td th:text="${user.userRealName}">[홍길동]</td>
         </tr>

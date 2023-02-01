@@ -31,6 +31,7 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
             where u.userNum = ?5""")
     int updateUserByUserNum(String userPassword, String userPhoneNumber, String userEmail, LocalDate userBirth, int userNum);
 
+    // 회원정보 삭제 (마이룸 > 회원탈퇴)
     @Transactional
     @Modifying
     @Query("delete from UserEntity u where u.userNum = ?1")

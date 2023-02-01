@@ -12,6 +12,7 @@ public class MyRoomUserLeaveService {
     @Autowired
     private UserRepository userRepository;
 
+    // 회원 삭제 서비스
     public int deleteUser(int userNum){
 
         log.info("delete user......." + userNum);
