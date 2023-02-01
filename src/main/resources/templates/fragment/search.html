@@ -1,4 +1,5 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <script>
     function searchbarSubmit() {
 
@@ -11,7 +12,6 @@
         console.log("form 태그 이동" + st + "&" + sGameServer)
         console.log(st + "-" + sGameServer);
         //검색시 링크에 deal=sale   deal=buy 값 파라미터로 넣어서 보내줘야함
-
     }
 </script>
 <div class="g_logo_area">
@@ -24,7 +24,7 @@
     </style>
     <div class="g_search_top">
         <form id="g_searchbar_form" method="post" action="/board/boardList" onsubmit="return searchbarSubmit();">
-            <div class="g_search_wrapper">
+            <div class="g_search_wrapper" id="g_search_wrapper">
                 <div class="search_area">
                     <div class="g_trade_type">
                         <label class="radiocontainer f_blue1">
@@ -43,12 +43,81 @@
                     <input type="text" class="g_text search_gs_name" name="searchGameServer" id="searchGameServer"
                            title="게임검색" style="ime-mode:active" placeholder="게임명 또는 서버명을 입력해주세요." autocomplete="off"
                            data-gameserver="true" th:value="${searchGameServer}">
-                    <a href="javascript:;" class="delete_btn"></a></div>
+                    <a href="javascript:;" class="delete_btn"></a>
+                </div>
                 <button type="submit" class="g_search_list" id="g_search_list" title="검색">
                     <span class="icon_search"></span>
                 </button>
+                <div class="g_search_frame" id="g_search_frame" style="">
+                    <div class="gs_list gs_selection" data-gslist="true">
+                        <div class="game">
+                            <ul>
+                                <th:block th:each="game:${searchGame}">
+                                    <li th:value="${game.gameNum}" th:text="${game.gameName}"></li>
+                                </th:block>
+                            </ul>
+                        </div>
+                        <div class="server server_t">
+                            <ul>
+                                <th:block th:each="server:${searchServer}">
+                                    <li th:value="${server.gameNum.gameNum}" th:text="${server.gameServerName}"></li>
+                                </th:block>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
 </html>
+<script>
+    $(document).ready(function () {
+        /*로딩 완료시 게임,서버리스트 숨김처리*/
+        $("#g_search_frame").hide();
+
+
+        // 게임, 서버리스트 클릭시  g_search_frame가 사라지지 않게 해야함
+        $(".g_search_top ").mouseover(function () {
+            /*검색바 클릭시 게임,서버리스트 표시*/
+            $("#g_search_frame").show();
+
+        })
+
+        $(".game>ul>li").mousemove(function (){
+            console.log("선택된 게임"+$(this).val())
+        })
+        $(".g_search_top").mouseout(function () {
+            /*검색바 제외 클릭시 게임,서버리스트 숨김*/
+            if ($("g_search_frame").mouseover(() => {
+                return
+            }))
+                $("#g_search_frame").hide();
+        })
+
+        $(".game>ul>li ,.server>ul>li").click(function () {
+            document.querySelector('[name="searchGameServer"]').value = $(this).text()
+            console.log("클릭" + $(this).text())
+            $("#g_search_frame").hide();
+            $("#g_searchbar_form").submit();
+        })
+
+    })
+
+
+</script>
+<style>
+    .g_search_frame {
+        z-index: 99;
+        position: absolute;
+        left: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+        width: 690px;
+        height: 460px;
+        padding: 10px;
+        border: 1px solid #159efd;
+        border-top: 0;
+        background-color: #FFF
+    }
+</style>

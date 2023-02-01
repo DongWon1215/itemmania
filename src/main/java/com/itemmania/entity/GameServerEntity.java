@@ -26,4 +26,9 @@ public class GameServerEntity {
     @Column(unique = true)
     private String gameServerName;
 
+
+    public String getGameNameDeduplication(GameServerEntity gameServerEntity) {
+        return gameServerEntity.gameNum.getGameName();
+    }
+
 }
