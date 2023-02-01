@@ -24,6 +24,7 @@ public class MyroomTest {
         log.info("회원 수정...");
     }
 
+    // 회원 삭제 테스트 -> 완료 
     @Test
     public void deleteMemberTest(){
         userRepository.deleteByUserNum(1);
