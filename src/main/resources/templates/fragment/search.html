@@ -23,7 +23,7 @@
     </div>
     </style>
     <div class="g_search_top">
-        <form id="g_searchbar_form" method="post" action="/board/boardList" onsubmit="return searchbarSubmit();">
+        <form id="g_searchbar_form" method="get" action="/board/boardList" onsubmit="return searchbarSubmit();">
             <div class="g_search_wrapper" id="g_search_wrapper">
                 <div class="search_area">
                     <div class="g_trade_type">
@@ -84,8 +84,8 @@
 
         })
 
-        $(".game>ul>li").mousemove(function (){
-            console.log("선택된 게임"+$(this).val())
+        $(".game>ul>li").mousemove(function () {
+            console.log("선택된 게임" + $(this).val())
         })
         $(".g_search_top").mouseout(function () {
             /*검색바 제외 클릭시 게임,서버리스트 숨김*/
@@ -101,7 +101,7 @@
             $("#g_search_frame").hide();
             $("#g_searchbar_form").submit();
         })
-
+        
     })
 
 

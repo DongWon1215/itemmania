@@ -7,10 +7,12 @@ import com.itemmania.entity.GameEntity;
 import com.itemmania.entity.GameServerEntity;
 import com.itemmania.service.boardService.Search.BoardGameSearchService;
 import com.itemmania.service.boardService.Search.BoardSearchService;
+import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class BoardListController {
     @Autowired
     private BoardGameSearchService getGameServerService;
 
-    @PostMapping("/board/boardList")
+    @GetMapping("/board/boardList")
     public String subsearch(Model model, BoardSearchOption boardSearchOption) {
         log.info("서브서치옵션" + boardSearchOption);
 
