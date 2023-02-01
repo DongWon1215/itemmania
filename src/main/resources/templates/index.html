@@ -12,13 +12,35 @@
 <div th:replace="fragment/header"/>
 
 <!--content_center-> class 입력시 중앙정렬-->
-<div class="content_center">
-    <h1>index.html</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</div>
+<link type="text/css" rel="stylesheet" href="/css/main/indexMain.css">
+
+<div class="g_container" id="g_CONTENT">
+
+    <div id="character_top_section">
+        <div class="section_title_wrapper ">
+            <h2 class="section_title">하이템브로커 게임목록</h2>
+        </div><!-- //.section_title_wrapper -->
+        <div id="character_top_section_game_list" class="clear_fix">
+            <div class="character_menu_wrapper">
+                <ul class="character_menu_list" th:each="gs:${gameServer}">
+                    <li class="character_menu border_gradient">
+                        <a class="text_ellipsis" href="">
+                            <img class="game_icon" th:src="${gs.gameIcon}" />
+                            <span th:text="${gs.gameName}"/>
+                            <!--                            <img class="game_icon" src="images/${gs.gameNum.gameIcon}" />
+                                                        <img class="game_icon" th:src="images/${gs.gameNum.gameIcon}" />
+                                                        <img class="game_icon" th:src="@{images/} + ${gs.gameNum.gameIcon}" />
+                                                        <img class="game_icon" th:src="@{{images} + ${gs.gameNum.gameIcon}}" th:alt="${gs.gameNum.gameName}" />
+                                                        <img class="game_icon" th:src="@{../../images/${gs.gameNum.gameIcon}}" th:alt="${gs.gameNum.gameName}">-->
+                        </a>
+                    </li><!-- //.character_menu -->
+                </ul><!-- //.character_menu_list -->
+            </div><!-- //.character_menu_wrapper -->
+        </div><!-- //.character_top_section_game_list -->
+    </div><!-- //.character_top_section -->
+
+
+</div><!-- //.g_container -->
 
 <div th:replace="fragment/footer"/>
 
