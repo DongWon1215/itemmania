@@ -43,7 +43,8 @@ public class PwFindController {
     public int changePassword(@RequestBody PasswordChangeRequest passwordChangeRequest)
     {
 
-        log.info("" + passwordChangeRequest.getUserPassword());
+        log.info("RequestBody =======>" + passwordChangeRequest);
+        log.info("change password ========>" + passwordChangeRequest.getUserPassword());
 
         passwordChangeRequest.setUserPassword(encoder.encode(passwordChangeRequest.getUserPassword()));
 

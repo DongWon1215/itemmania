@@ -27,7 +27,7 @@ public interface UserMapper {
     @Select("select user_password from user where user_name = #{userRealName} and user_birth = #{userBirth} and user_email = #{userEmail}")
     String findPasswordByNameAndBirthAndEmail(PasswordFindRequest passwordFindRequest);
 
-    @Update("update UserEntity u set u.userPassword = #{userPassword} where u.userName = #{userName} and u.userRealName = #{userRealName} and u.userBirth = #{userBirth}")
+    @Update("update user u set u.user_password = #{userPassword} where u.user_name = #{userName} and u.user_real_name = #{userRealName} and u.user_birth = #{userBirth}")
     int updateUserPasswordByUserNameAndUserRealNameAndUserBirth(PasswordChangeRequest passwordChangeRequest);
 
 }
