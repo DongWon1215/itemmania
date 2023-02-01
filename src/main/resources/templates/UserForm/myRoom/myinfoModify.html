@@ -32,7 +32,8 @@
 
     <form method="post">
 
-      <input type="hidden" name="userNum" id="userNum" th:value="${user.userNum}">
+      <input type="text" name="userNum" id="userNum" th:value="${user.userNum}">
+      <input type="text" name="userName" id="userName" th:value="${user.userName}">
 
       <table class="g_blue_table">
         <colgroup>
@@ -44,14 +45,15 @@
         <tbody><tr>
           <th>이름</th>
           <td colspan="3">
-            <input type="text" id="userRealName" class="g_text" th:value="${user.userRealName}" readonly>
+            <span id="userRealName" name="userRealName" th:text="${user.userRealName}"/>
           </a>
           </td>
         </tr>
         <tr>
           <th>아이디</th>
           <td colspan="3">
-            <input type="text" id="userName" name="userName" class="g_text" th:value="${user.userName}" readonly>
+            <span th:text="${user.userName}"/>
+            <span th:text="${user}"></span>
           </td>
         </tr>
         </tbody></table>
@@ -66,7 +68,8 @@
           <th>비밀번호</th>
           <td class="cell_num">
             <div class="s_label">
-              <input type="password" name="userPassword" id="userPassword" class="g_text" th:value="${user.userPassword}">
+              <!--<input type="password" name="userPassword" id="userPassword" class="g_text" th:value="${user.userPassword}">-->
+              <input type="password" name="userPassword" id="userPassword" class="g_text">
             </div>
           </td>
         </tr>
@@ -74,7 +77,8 @@
           <th>비밀번호 확인</th>
           <td class="cell_num">
             <div class="s_label">
-              <input type="password" id="repassword" class="g_text" onchange="pwDuplicateCheck()" th:value="${user.userPassword}">
+              <!--<input type="password" id="repassword" class="g_text" onchange="pwDuplicateCheck()" th:value="${user.userPassword}">-->
+              <input type="password" id="repassword" class="g_text" onchange="pwDuplicateCheck()">
               <div class="" id="DuplicateCheck"/>
             </div>
           </td>
@@ -143,7 +147,7 @@
           <th>서비스 이용기간 선택</th>
           <td>
             <label class="svc_check">
-              <input type="checkbox" name="user_service_use_agree" value="1" class="g_checkbox g_left" style="margin-top:1px">
+              <input type="checkbox" name="user_service_use_agree" id="user_service_use_agree" value="1" class="g_checkbox g_left" style="margin-top:1px">
               개인정보를 파기 또는 분리 저장 ∙ 관리하여야 하는 서비스 미 이용 기간을 회원 탈퇴 시까지로 요청합니다.<br>
               * 다만, 별도의 요청이 없을 경우 서비스 미이용 기간은 1년으로 합니다.
             </label>
@@ -154,39 +158,12 @@
       <div class="tb_bt_txt">※ <span class="f_small">고객님의 소중한 개인정보가 노출되지 않도록 모든 작업을 마치셨다면 반드시 다른 페이지로 이동하여 주시기 바랍니다.</span></div>
 
       <div class="g_btn">
-        <input type="submit" value="정보 수정하기" class="btn_blue3 big_btn">
+        <input type="submit" value="정보 수정하기" class="btn_blue3 big_btn" onclick="modifyMember">
         <button type="reset" class="btn_gray3 big_btn">취소 하기</button>
       </div>
     </form>
   </div>
 
-  <div id="emailModify" class="g_layer email_modify">
-    <div class="inner">
-      <div class="title">
-        이메일정보 변경
-        <a href="javascript:;" class="close_w"></a>
-      </div>
-      <div class="cont">
-        <table class="g_blue_table">
-          <colgroup>
-            <col width="140">
-            <col>
-          </colgroup>
-          <tbody><tr>
-            <th>이메일</th>
-            <td>
-              <input type="text" name="user_email_tmp" class="g_text" value="test"> @
-              <input type="text" name="user_email_tmp2" class="g_text" value="naver.com">
-            </td>
-          </tr>
-          </tbody></table>
-        <div class="g_btn_wrap">
-          <a href="#" id="email_submit"><img src="https://img3.itemmania.com/new_images/btn/pop_btn_ok.gif" width="63" height="35" alt="확인"></a>
-          <a href="#" id="cancel_submit"><img src="https://img4.itemmania.com/new_images/btn/pop_btn_cancel.gif" width="63" height="35" alt="취소"></a>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="g_finish"></div>
 </div>
 
@@ -195,18 +172,18 @@
 </body>
 
 <!--개인정보 수정 성공시 alert-->
-<script>
+<!--<script>
   const result = "${msg}"
   if(result==="modify"){
     alert('개인정보가 수정되었습니다. ');
   }
-</script>
+</script>-->
 
 <!--비밀번호 확인 체크-->
 <script>
   function pwDuplicateCheck()
   {
-    let pw = document.getElementById('password').value;
+    let pw = document.getElementById('userPassword').value;
     let repw = document.getElementById('repassword').value;
     console.log('pw..........' + pw)
     console.log('repw..........' + repw)
@@ -222,4 +199,65 @@
     }
   }
 </script>
+
+<!--유효기간 확인 체크-->
+<!--<script>
+  function isChecked() {
+    if (!$('#user_service_use_agree').is(":checked")) {
+      alert("개인정보 유효기간 설정을 체크해주세요.")
+    }
+  }
+</script>-->
+
+<!--멤버 수정-->
+<script>
+  function modifyMember()
+  {
+    const UserModifyRequest = {
+      userPassword : document.getElementById('userPassword').value,
+      userPhoneNum : document.getElementById('user_mobileA').value + document.getElementById('user_mobileB').value + document.getElementById('user_mobileC').value,
+      userEmail : document.getElementById('userEmail').value + '@'+ document.getElementById('userEmail2').value,
+      userBirth : document.getElementById('userBirth').value
+    }
+
+    console.log(UserModifyRequest)
+
+      $.ajax(
+              {
+                url:'/myroom/myinfo/modify',
+                type:'post',
+                data:JSON.stringify(UserModifyRequest),
+                dataType:'JSON',
+                contentType:'application/json; charset=utf-8',
+                success:function (result)
+                {
+                  console.log(result)
+
+                  if(result != null)
+                  {
+                    alert("회원수정에 성공 하였습니다")
+                    window.location.replace("/");
+                  }
+
+                  else
+                    alert("회원수정에 실패 하였습니다")
+                },
+                fail:function ()
+                {
+                },
+                error:function (err)
+                {
+                  console.log("error")
+                  console.log(err)
+                }
+              })
+
+  }
+</script>
+
+
+
+
+
+
 </html>

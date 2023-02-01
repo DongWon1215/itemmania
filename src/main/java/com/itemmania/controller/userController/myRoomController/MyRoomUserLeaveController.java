@@ -34,7 +34,7 @@ public class MyRoomUserLeaveController {
     {
         // 세션을 이용하여 유저 정보 받아오기
         HttpSession session = request.getSession();
-        log.info("UserModifyController......." + session.getAttribute("userInfo"));
+        log.info("UserLeaveController......." + session.getAttribute("userInfo"));
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
         model.addAttribute("user", user);
 
