@@ -32,14 +32,16 @@ public class MyInfoModifyController {
     @Autowired
     private PasswordEncoder encoder;
 
-
     @GetMapping
     public String getMypageForm(Model model, HttpServletRequest request){
 
+        // 로그인한 user 정보 받아오기
         HttpSession session = request.getSession();
         log.info("UserModifyController......." + session.getAttribute("userInfo"));
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
         model.addAttribute("user", user);
+
+        // 회원수정 페이지 진입
         return "userForm/myRoom/myinfoModify";
 
     }
@@ -48,22 +50,27 @@ public class MyInfoModifyController {
     @ResponseBody
     public JSONObject modifyUser(@RequestBody UserModifyRequest req, HttpServletRequest request){
 
+
         log.info("userModifyRequest......." + req);
+
+        // 수정하는 비밀번호 암호화 처리
         req.setUserPassword(encoder.encode(req.getUserPassword()));
 
+        // userNum 으로 특정 유저 선택하여 회원수정
         myInfoModifyService.modifyUser(req);
         UserEntity userInfo = myInfoReadService.selectUser(req.getUserNum());
 
+        // JSON 받기
         JSONObject json = new JSONObject();
         json.put("userData",userInfo);
-
-        HttpSession session = request.getSession();
-
-        session.setAttribute("userInfo",userInfo);
         log.info("userInfo..................." + userInfo);
 
+        // session userInfo 세팅하기
+        HttpSession session = request.getSession();
+        session.setAttribute("userInfo",userInfo);
+
+        // JSON 반환
         return json;
-        // return "redirect:/myroom";
 
     }
 

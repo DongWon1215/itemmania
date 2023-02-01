@@ -30,10 +30,10 @@
       </ul>
     </div>
 
-    <form method="post">
+    <!--<form method="post">-->
 
-      <input type="text" name="userNum" id="userNum" th:value="${user.userNum}">
-      <input type="text" name="userName" id="userName" th:value="${user.userName}">
+      <input type="hidden" name="userNum" id="userNum" th:value="${user.userNum}">
+      <input type="hidden" name="userName" id="userName" th:value="${user.userName}">
 
       <table class="g_blue_table">
         <colgroup>
@@ -53,7 +53,6 @@
           <th>아이디</th>
           <td colspan="3">
             <span th:text="${user.userName}"/>
-            <span th:text="${user}"></span>
           </td>
         </tr>
         </tbody></table>
@@ -156,10 +155,12 @@
       <div class="tb_bt_txt">※ <span class="f_small">고객님의 소중한 개인정보가 노출되지 않도록 모든 작업을 마치셨다면 반드시 다른 페이지로 이동하여 주시기 바랍니다.</span></div>
 
       <div class="g_btn">
-        <input type="submit" value="정보 수정하기" class="btn_blue3 big_btn" onclick="modifyMember">
+        <input type="submit" value="정보 수정하기" class="btn_blue3 big_btn" onclick="modifyMember()">
         <button type="reset" class="btn_gray3 big_btn">취소 하기</button>
       </div>
-    </form>
+
+    <!--</form>-->
+
   </div>
 
   <div class="g_finish"></div>
@@ -214,7 +215,7 @@
     const UserModifyRequest = {
       userNum : document.getElementById('userNum').value,
       userPassword : document.getElementById('userPassword').value,
-      userPhoneNum : document.getElementById('user_mobileA').value + document.getElementById('user_mobileB').value + document.getElementById('user_mobileC').value,
+      userPhoneNumber : document.getElementById('user_mobileA').value + document.getElementById('user_mobileB').value + document.getElementById('user_mobileC').value,
       userEmail : document.getElementById('userEmail').value + '@'+ document.getElementById('userEmail2').value,
       userBirth : document.getElementById('userBirth').value
     }
@@ -227,7 +228,7 @@
                 type:'post',
                 data:JSON.stringify(UserModifyRequest),
                 dataType:'JSON',
-                contentType:'application/json; charset=utf-8',
+                contentType:'application/json',
                 success:function (result)
                 {
                   console.log(result)
