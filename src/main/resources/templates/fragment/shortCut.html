@@ -27,7 +27,9 @@
                 <th:block sec:authorize="isAnonymous()">
                 <li><a href="/regist">회원가입</a></li>
                 </th:block>
+                <th:block sec:authorize="isAuthenticated()">
                 <li><a href="/myroom">마이룸</a></li>
+                </th:block>
             </ul>
         </div>
     </div>
