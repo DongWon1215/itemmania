@@ -150,7 +150,7 @@
                   else
                   {
                     // alert(result)
-                    console.log("여기로 들어왔다")
+                    // console.log("여기로 들어왔다")
                     editPasswordModal.show();
                   }
                 },
@@ -186,25 +186,27 @@
                 {
                   console.log(result)
 
-                  if(result)
+                  if(!result)
                   {
                     alert("비밀번호 변경에 실패하였습니다")
-                    document.getElementById('change_password').value("");
-                    document.getElementById('change_password_checker').value("");
+                    document.getElementById('change_password').value="";
+                    document.getElementById('change_password_checker').value="";
+                    editPasswordModal.hide();
                   }
 
                   else
                   {
                     alert("비밀번호 변경이 완료되었습니다")
-                    document.getElementById('change_password').value("");
-                    document.getElementById('change_password_checker').value("");
+                    document.getElementById('change_password').value="";
+                    document.getElementById('change_password_checker').value="";
+                    editPasswordModal.hide();
                   }
                 },
                 fail:function ()
                 {
                   alert("비밀번호 변경에 실패하였습니다")
-                  document.getElementById('change_password').value("");
-                  document.getElementById('change_password_checker').value("");
+                  document.getElementById('change_password').value="";
+                  document.getElementById('change_password_checker').value="";
                 },
                 error:function (error)
                 {
@@ -227,10 +229,11 @@
     }
   </script>
   <script>
+    let req = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
+
     function pwConditionCheck()
     {
       let pw = document.getElementById('change_password').value;
-      let req = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
       console.log(pw)
       if(!req.test(pw))
       {
@@ -240,8 +243,6 @@
       }
       else
         document.getElementById('muser_password').innerText="";
-      document.getElementById('change_password_button').disabled = false;
-
     }
 
     function pwDuplicateCheck()
@@ -250,7 +251,7 @@
       let pw_validate = document.getElementById('change_password_checker').value;
       console.log(pw)
       console.log(pw_validate)
-      if(pw == pw_validate && pw != '' && pw_validate != '')
+      if(pw == pw_validate && pw != '' && pw_validate != '' && req.test(pw_validate))
       {
         document.getElementById('DuplicateCheck').innerText='비밀번호가 일치합니다';
         document.getElementById('DuplicateCheck').style.color='blue';
