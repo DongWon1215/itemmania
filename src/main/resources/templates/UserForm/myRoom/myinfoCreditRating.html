@@ -31,19 +31,19 @@
     </div>
     <div class="new_credit">
       <div>
-        <span class="credit_mark _lg basic"><i></i></span>
+        <span class="credit_mark _lg" id="credit_mark"><i></i></span>
         <div class="credit_name">
           <div class="f_bold"><span th:text="${user.userRealName}">이름</span>님의 신용등급은
-            <span class="basic_txt">[일반]</span>입니다.
+            <span class="basic_txt" id="credit_rank">[일반]</span>입니다.
           </div>
           전체거래점수 :
-          <strong class="f_red1"><span th:text="${user.userCreditScore}">신용점수</span> 점</strong>
+          <strong class="f_red1"><span th:text="${user.userCreditScore}" id="creditScore">신용점수</span> 점</strong>
         </div>
       </div>
       <div class="credit_up">
         <div class="credit_up_text">
           - 거래건수
-          <span class="bold_txt">[5]건</span>이 완료 되면
+          <span class="bold_txt" id="rankup_condition">[5]</span>건이 완료 되면
           <span class="credit "><span class="credit silver_txt">[실버]</span></span>등급으로 승급됩니다.<br>
         </div>
       </div>
@@ -278,6 +278,43 @@
 
 <!--footer 시작-->
 <div th:replace="fragment/footer"/>
+<script>
+  $(document).ready(()=>function (){
+    setGrade();
+  })
+
+  function setGrade()
+  {
+    let userCreditScore = document.getElementById("creditScore").value;
+
+    if(userCreditScore < 5)
+    {
+      $("#credit_mark").addClass("basic");
+      $("#credit_rank").value="[일반]";
+      $("#rankup_condition").value="[5]";
+    }
+    else if(userCreditScore < 51 && userCreditScore >= 5)
+    {
+      $("#credit_mark").addClass("silver");
+      $("#credit_rank").value="[실버]";
+    }
+    else if(userCreditScore < 101 && userCreditScore >= 51)
+    {
+      $("#credit_mark").addClass("gold");
+      $("#credit_rank").value="[골드]";
+    }
+    else if(userCreditScore < 301 && userCreditScore >= 101)
+    {
+      $("#credit_mark").addClass("platinum");
+      $("#credit_rank").value="[플래티넘]";
+    }
+    else if(userCreditScore >= 301)
+    {
+      $("#credit_mark").addClass("vip");
+      $("#credit_rank").value="[VIP]";
+    }
+  }
+</script>
 
 </body>
 </html>
