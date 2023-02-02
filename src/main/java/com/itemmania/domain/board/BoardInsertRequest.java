@@ -48,7 +48,7 @@ public class BoardInsertRequest {
                     .build())
             .boardTitle(boardTitle)
             .serverNum(GameServerEntity.builder()
-                    .serverNum(serverNum).build())
+                    .gameServerNum(serverNum).build())
             .boardTime(LocalDateTime.now())
             .saleUnit(saleUnit)
             .salePrice(salePrice)
@@ -60,18 +60,14 @@ public class BoardInsertRequest {
             .build();
     }
 
-
-
-
     private GameServerEntity getServerNum(int serverNum) {
         return GameServerEntity.builder()
-                .serverNum(serverNum)
+                .gameServerNum(serverNum)
                 .build();
     }
 
 
 }
-
 
 /*
     INSERT INTO `proj`.`board` (
