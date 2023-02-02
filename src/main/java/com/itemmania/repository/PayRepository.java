@@ -9,6 +9,4 @@ import java.util.List;
 
 public interface PayRepository extends JpaRepository<PayEntity,Integer> {
 
-    List<PayEntity> findByUserNum_UserNumAndPayTimeBetween(int userNum, LocalDateTime payTimeStart, LocalDateTime payTimeEnd);
-
 }

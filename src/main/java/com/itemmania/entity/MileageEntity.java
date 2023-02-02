@@ -2,7 +2,6 @@ package com.itemmania.entity;
 
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,30 +13,35 @@ import java.time.LocalDateTime;
 @ToString
 @Builder
 @Entity
-@Table(name = "pay")
-public class PayEntity {
+@Table(name = "mileage")
+public class MileageEntity {
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int payNum;
+    private int mileageNum;
 
     @ManyToOne
-    @JoinColumn(name = "mileageNum")
-    private  MileageEntity mileageNum;
+    @JoinColumn(name = "userNum")
+    private UserEntity userNum;
 
     @Column
     @NotNull
-    private  String payPg;
+    private LocalDateTime mileageTime;
 
     @Column
     @NotNull
-    private  String payPayment;
+    private String mileageType;
 
     @Column
-    @ColumnDefault("0")
-    private  int  payAmount;
+    private String mileageDescription;
 
     @Column
-    @NotNull
-    private LocalDateTime payTime;
+    private int mileageIn;
+
+    @Column
+    private int mileageOut;
+
+    @Column
+    private int mileageHistory;
 }

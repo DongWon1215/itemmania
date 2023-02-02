@@ -9,6 +9,4 @@ import java.util.List;
 
 public interface BuyRepository extends JpaRepository<BuyEntity,Integer> {
 
-    List<BuyEntity> findByUserNum_UserNumAndTimeBetween(int userNum, LocalDateTime timeStart, LocalDateTime timeEnd);
-
 }

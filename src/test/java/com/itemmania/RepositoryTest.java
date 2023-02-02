@@ -6,6 +6,9 @@ import com.itemmania.service.userService.MyMileageDetailListService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -28,6 +31,8 @@ public class RepositoryTest {
 
     @Autowired
     MyMileageDetailListService myMileageDetailListService;
+    @Autowired
+    private MileageRepository mileageRepository;
 
     @Test
     public void userRepositoryTest(){
@@ -57,19 +62,39 @@ public class RepositoryTest {
     @Test
     public void buyRepositoryTest(){
         BuyEntity buyEntity = new BuyEntity();
-        buyEntity.setItemUnit(3);
+        buyEntity.setBuyItemUnit(3);
+        UserEntity user = userRepository.findById(1).get();
+        MileageEntity mileageEntity = MileageEntity.builder().
+                userNum(user).
+                mileageTime(LocalDateTime.now()).
+                mileageType("구매").
+                mileageOut(buyEntity.getBuyPrice()).
+                mileageHistory(user.getUserMileage() - buyEntity.getBuyPrice())
+                .build();
 
         ItemEntity itemEntity = itemRepository.findById(1).get();
         buyEntity.setItemNum(itemEntity);
-        buyEntity.setPrice(buyEntity.getItemUnit() * buyEntity.getItemNum().getItemPrice());
-        buyEntity.setUserNum(userRepository.findById(1).get());
-        buyEntity.setTime(LocalDateTime.now());
+        buyEntity.setBuyPrice(buyEntity.getBuyItemUnit() * buyEntity.getItemNum().getItemPrice());
+        buyEntity.setMileageNum(mileageRepository.save(mileageEntity));
 
-        UserEntity user = userRepository.findById(1).get();
-        user.setItemUnit(user.getItemUnit()+buyEntity.getItemUnit());
+        user.setItemUnit(user.getItemUnit()+buyEntity.getBuyItemUnit());
         user.setItemNum(itemRepository.findById(1).get());
         System.out.println(buyRepository.save(buyEntity));
         System.out.println(userRepository.save(user));
+
+        mileageEntity.setMileageDescription("#구매 : " + buyEntity.getBuyNum());
+
+        System.out.println(mileageRepository.save(mileageEntity));
+    }
+
+    @Test
+    public void boardTest(){
+        BoardEntity boardEntity = new BoardEntity();
+        boardEntity.setBoardTitle("테스트");
+        boardEntity.setBoardTime(LocalDate.now());
+        boardEntity.setBoardTradeStatus(false);
+
+        boardRepository.save(boardEntity);
     }
 
     @Test
@@ -89,49 +114,44 @@ public class RepositoryTest {
         user2.setUserRealName("tester2");
         userRepository.save(user2);
 
+        MileageEntity sellerMileage = new MileageEntity();
+        MileageEntity consumerMileage = new MileageEntity();
+
+        sellerMileage.setMileageIn(500);
+        user.setUserMileage(user.getUserMileage()+500);
+        sellerMileage.setMileageHistory(user.getUserMileage());
+        sellerMileage.setMileageTime(LocalDateTime.now());
+        sellerMileage.setMileageType("판매");
+        String description = "#판매 : ";
+        int boardNum = boardRepository.findById(1).get().getBoardNum();
+        description += boardNum;
+        sellerMileage.setMileageDescription(description);
+        sellerMileage.setUserNum(user);
+
+        consumerMileage.setMileageOut(500);
+        user2.setUserMileage(user2.getUserMileage()-500);
+        consumerMileage.setMileageHistory(user2.getUserMileage());
+        consumerMileage.setMileageTime(LocalDateTime.now());
+        consumerMileage.setMileageType("구매");
+        description = "#구매 : " + boardRepository.findById(1).get().getBoardNum();
+        consumerMileage.setMileageDescription(description);
+        consumerMileage.setUserNum(user2);
+
         TradeEntity tradeEntity = new TradeEntity();
-        tradeEntity.setSellerNum(user);
-        tradeEntity.setConsumerNum(user2);
+        tradeEntity.setSellerMileage(sellerMileage);
+        tradeEntity.setConsumerMileage(consumerMileage);
         tradeEntity.setTradeTime(LocalDateTime.now());
         tradeEntity.setTradeIsSuccess(true);
         tradeEntity.setTradeAmount(500);
         tradeEntity.setTradeUnit(1);
 
-        user.setUserMileage(user.getUserMileage()+500);
-        user2.setUserMileage(user2.getUserMileage()-500);
         userRepository.save(user);
         userRepository.save(user2);
-        tradeRepository.save(tradeEntity);
+        System.out.println(mileageRepository.save(sellerMileage));
+        System.out.println(mileageRepository.save(consumerMileage));
+        System.out.println(tradeRepository.save(tradeEntity));
     }
 
-    @Test
-    public void boardTest(){
-        BoardEntity boardEntity = new BoardEntity();
-        boardEntity.setBoardTitle("테스트");
-        boardEntity.setBoardTime(LocalDate.now());
-        boardEntity.setBoardTradeStatus(false);
-
-        boardRepository.save(boardEntity);
-    }
-
-    @Test
-    public void tradeTest(){
-
-        UserEntity user = userRepository.findById(1).get();
-
-        UserEntity user2 = userRepository.findById(4).get();
-
-        TradeEntity tradeEntity = new TradeEntity();
-        tradeEntity.setSellerNum(user);
-        tradeEntity.setConsumerNum(user2);
-        tradeEntity.setTradeTime(LocalDateTime.now());
-        tradeEntity.setTradeIsSuccess(true);
-        tradeEntity.setTradeAmount(1500);
-        tradeEntity.setTradeUnit(1);
-        tradeEntity.setBoardNum(boardRepository.findById(1).get());
-
-        tradeRepository.save(tradeEntity);
-    }
 
     @Test
     public void getMyMileageDetailListTest(){
@@ -139,15 +159,9 @@ public class RepositoryTest {
         LocalDateTime startDate = LocalDateTime.of(1,1,1,1,1);
         LocalDateTime endDate = LocalDateTime.now();
 
-        System.out.println(myMileageDetailListService.getList(user.getUserNum(), startDate, endDate));
-    }
+        Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "mileageTime");
 
-    @Test
-    public void timeTest(){
-        LocalDateTime dateTime = LocalDateTime.now();
-        System.out.println(dateTime);
-        LocalDate localDate = LocalDate.now();
-        System.out.println(localDate);
+        System.out.println(myMileageDetailListService.getList(user.getUserNum(), startDate, endDate, pageable) + "@@@@@@@@@@");
     }
 
 }

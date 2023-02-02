@@ -2,6 +2,7 @@ package com.itemmania.entity;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -21,20 +22,22 @@ public class BuyEntity {
     private int buyNum;
 
     @ManyToOne
-    @JoinColumn(name = "userNum")
-    private UserEntity userNum;
+    @JoinColumn(name = "mileageNum")
+    private MileageEntity mileageNum;
 
     @ManyToOne
     @JoinColumn(name = "itemNum")
     private ItemEntity itemNum;
 
     @Column
-    private int itemUnit;
+    @ColumnDefault("0")
+    private int buyItemUnit;
 
     @Column
-    private int price;
+    @ColumnDefault("0")
+    private int buyPrice;
 
     @Column
     @NotNull
-    private LocalDateTime time;
+    private LocalDateTime buyTime;
 }
