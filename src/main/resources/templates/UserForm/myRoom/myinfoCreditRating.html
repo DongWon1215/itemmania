@@ -56,35 +56,35 @@
       <div class="benefit">
         <div class="my_benefit basic">
           <ul class="benefit_cnt">
-            <li class="area0 on">
+            <li class="area0 " id="bronze_info">
               <span class="line"></span>
               <span class="grade"><img src="http://img4.itemmania.com/new_images/common/mark_basic.png"><br><p>일반</p></span>
               <span class="nb">5점 미만</span>
               <span class="cp">프리미엄 5장</span>
               <span class="sp"><p class="credit_btn"><a href="javascript:;" onclick="Fncredit_ajax(1);">발급받기</a></p></span>
             </li>
-            <li class="area1">
+            <li class="area1 " id="silver_info">
               <span class="line"></span>
               <span class="grade"><img src="http://img4.itemmania.com/new_images/common/mark_silver.png"><br><p>실버</p></span>
               <span class="nb">5점 이상</span>
               <span class="cp">프리미엄 5장 <br> 물품강조 5장</span>
               <span class="sp"><p class="credit_btn"><a href="javascript:;" onclick="Fncredit_ajax(1);">발급받기</a></p></span>
             </li>
-            <li class="area2">
+            <li class="area2 " id="gold_info">
               <span class="line"></span>
               <span class="grade"><img src="http://img4.itemmania.com/new_images/common/mark_gold.png"><br><p>골드</p></span>
               <span class="nb">51점 이상</span>
               <span class="cp"> 프리미엄 5장 <br> 물품강조 5장</span>
               <span class="sp"><p class="credit_btn"><a href="javascript:;" onclick="Fncredit_ajax(1);">발급받기</a></p></span>
             </li>
-            <li class="area3 ">
+            <li class="area3 " id="platinum_info">
               <span class="line"></span>
               <span class="grade"><img src="http://img4.itemmania.com/new_images/common/mark_platinum.png"><br><p>플래티넘</p></span>
               <span class="nb">101점 이상 <br>(5점 이상)</span>
               <span class="cp">프리미엄 7장 <br> 물품강조 7장</span>
               <span class="sp"><p class="credit_btn"><a href="javascript:;" onclick="Fncredit_ajax(1);">발급받기</a></p></span>
             </li>
-            <li class="area4 ">
+            <li class="area4 " id="vip_info">
               <span class="line"></span>
               <span class="grade"><img src="http://img4.itemmania.com/new_images/common/mark_vip.png"><br><p>VIP</p></span>
               <span class="nb">301점 이상<br>(10점 이상)</span>
@@ -280,36 +280,49 @@
 <div th:replace="fragment/footer"/>
 <script>
   $(document).ready(()=>function (){
+
+    console.log("세팅은 시작되는듯?")
     setGrade();
   })
 
   function setGrade()
   {
-    let userCreditScore = document.getElementById("creditScore").value;
+    let userCreditScore = document.getElementById("${user.userCreditScore}");
+
+    console.log(userCreditScore)
+    console.log("유저 크레딧 점수 얻어오는거까진 했는데 결과가 보이니?")
 
     if(userCreditScore < 5)
     {
+      $("#bronze_info").addClass("on");
       $("#credit_mark").addClass("basic");
       $("#credit_rank").value="[일반]";
       $("#rankup_condition").value="[5]";
     }
     else if(userCreditScore < 51 && userCreditScore >= 5)
     {
+      $("#silver_info").addClass("on");
       $("#credit_mark").addClass("silver");
       $("#credit_rank").value="[실버]";
+      $("#rankup_condition").value="[51]";
     }
     else if(userCreditScore < 101 && userCreditScore >= 51)
     {
+      $("#gold_info").addClass("on");
       $("#credit_mark").addClass("gold");
       $("#credit_rank").value="[골드]";
+      $("#rankup_condition").value="[101]";
     }
     else if(userCreditScore < 301 && userCreditScore >= 101)
     {
+      $("#platinum_info").addClass("on");
       $("#credit_mark").addClass("platinum");
       $("#credit_rank").value="[플래티넘]";
+      $("#rankup_condition").value="[301]";
     }
     else if(userCreditScore >= 301)
     {
+      $("#vip_info").addClass("on");
       $("#credit_mark").addClass("vip");
       $("#credit_rank").value="[VIP]";
     }
