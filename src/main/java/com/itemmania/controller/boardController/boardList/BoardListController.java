@@ -19,8 +19,8 @@ import java.util.List;
 @Controller
 public class BoardListController {
 
-@Autowired
-private BoardSearch boardSearch;
+    @Autowired
+    private BoardSearch boardSearch;
     @Autowired
     private BoardGameSearch boardGameSearch;
 
@@ -36,22 +36,21 @@ private BoardSearch boardSearch;
         List<BoardSearchOptionVO> searchDataCheck = boardSearch.getSearchDataCheck(boardSearchOption);
 
 
+ /*
+        //기존 컨트롤러 model로 전송하였는데 모든페이지에서 사용하다보니 중복코드가 많아졌다
+        //해결방안-> header가 화면에 로딩시 검색바만 부분 비동기처리하여 게임,서버리스트 출력하여 중복코드 제거(단일 책임 원칙)
         List<GameServerEntity> serverNameList = boardGameSearch.getServerService();
-
         List<GameEntity> gameNameList = boardGameSearch.getGameService();
-
         log.info("서브서치 컨트롤러 리스트 " + searchDataCheck);
         log.info("게임서버검색" + gameNameList);
         //프리미엄, 일반 리스트
         model.addAttribute("boarPList", p_searchDataCheck);
         model.addAttribute("boarList", searchDataCheck);
-
         // 전체 게임리스트
         model.addAttribute("searchGame", gameNameList);
-
         // 전체 서버리스트
         model.addAttribute("searchServer", serverNameList);
-
+*/
 
         // 사용자가 검색한 게임서버 value
         model.addAttribute("searchGameServer", boardSearchOption.getSearchGameServer());
