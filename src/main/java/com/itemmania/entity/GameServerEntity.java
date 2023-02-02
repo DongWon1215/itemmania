@@ -18,7 +18,7 @@ public class GameServerEntity {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int gameServerNum;
+    private int serverNum;
 
     @ManyToOne
     @JoinColumn(name = "gameNum")
