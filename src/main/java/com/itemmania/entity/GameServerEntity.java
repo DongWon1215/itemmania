@@ -25,7 +25,7 @@ public class GameServerEntity {
     private GameEntity gameNum;
 
     @Column
-    @ColumnDefault("etc")
+    @ColumnDefault("'etc'")
     private String gameServerName;
 
 
