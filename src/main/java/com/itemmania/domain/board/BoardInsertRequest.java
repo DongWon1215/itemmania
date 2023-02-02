@@ -37,30 +37,28 @@ public class BoardInsertRequest {
 
     public BoardEntity insertBoard() {
         return BoardEntity.builder()
-            .userNum(UserEntity.builder()
-                    .userNum(userNum)
+                .userNum(UserEntity.builder()
+                        .userNum(userNum)
 /*                    .userName(userName)
                     .userRealName(userRealName)
                     .userPassword("1")
                     .userPhoneNumber("1")
                     .userEmail("11")
                     .userBirth(LocalDate.ofEpochDay(20230107))*/
-                    .build())
-            .boardTitle(boardTitle)
-            .serverNum(GameServerEntity.builder()
-                    .serverNum(serverNum).build())
-            .boardTime(LocalDateTime.now())
-            .saleUnit(saleUnit)
-            .salePrice(salePrice)
-            .saleNickName(saleNickName)
-            .saleAria(saleAria)
-            .saleType(saleType)
-            .salePremium(salePremium)
-            .dealCheck(dealCheck)
-            .build();
+                        .build())
+                .boardTitle(boardTitle)
+                .serverNum(GameServerEntity.builder()
+                        .serverNum(serverNum).build())
+                .boardTime(LocalDateTime.now())
+                .saleUnit(saleUnit)
+                .salePrice(salePrice)
+                .saleNickName(saleNickName)
+                .saleAria(saleAria)
+                .saleType(saleType)
+                .salePremium(salePremium)
+                .dealCheck(dealCheck)
+                .build();
     }
-
-
 
 
     private GameServerEntity getServerNum(int serverNum) {

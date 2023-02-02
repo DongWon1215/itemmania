@@ -5,30 +5,24 @@ import com.itemmania.domain.BoardSearchOption;
 import com.itemmania.domain.BoardSearchOptionVO;
 import com.itemmania.entity.GameEntity;
 import com.itemmania.entity.GameServerEntity;
-import com.itemmania.service.boardService.Search.BoardGameSearchService;
-import com.itemmania.service.boardService.Search.BoardSearchService;
-import lombok.Getter;
+import com.itemmania.service.boardService.Search.BoardGameSearch;
+import com.itemmania.service.boardService.Search.BoardSearch;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Log4j2
 @Controller
 public class BoardListController {
 
+@Autowired
+private BoardSearch boardSearch;
     @Autowired
-    private BoardSearchService boardSearchService;
-
-
-    @Autowired
-    private BoardGameSearchService getGameServerService;
+    private BoardGameSearch boardGameSearch;
 
     @PostMapping("/board/boardList")
     public String subsearch(Model model, BoardSearchOption boardSearchOption) {
@@ -38,13 +32,13 @@ public class BoardListController {
         log.info("검색타입 " + boardTradeStatus);
 
 
-        List<BoardSearchOptionVO> p_searchDataCheck = boardSearchService.getP_SearchDataCheck(boardSearchOption);
-        List<BoardSearchOptionVO> searchDataCheck = boardSearchService.getSearchDataCheck(boardSearchOption);
+        List<BoardSearchOptionVO> p_searchDataCheck = boardSearch.getP_SearchDataCheck(boardSearchOption);
+        List<BoardSearchOptionVO> searchDataCheck = boardSearch.getSearchDataCheck(boardSearchOption);
 
 
-        List<GameServerEntity> serverNameList = getGameServerService.getServerService();
+        List<GameServerEntity> serverNameList = boardGameSearch.getServerService();
 
-        List<GameEntity> gameNameList = getGameServerService.getGameService();
+        List<GameEntity> gameNameList = boardGameSearch.getGameService();
 
         log.info("서브서치 컨트롤러 리스트 " + searchDataCheck);
         log.info("게임서버검색" + gameNameList);
