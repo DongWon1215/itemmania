@@ -11,7 +11,8 @@ import java.util.List;
 
 @Log4j2
 @Service
-public class BoardSearchService {
+public class BoardSearchService implements BoardSearch { //김주환
+
     @Autowired(required = false)
     private BoardMapper boardMapper;
 
