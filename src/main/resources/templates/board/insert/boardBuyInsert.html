@@ -117,12 +117,12 @@
                                 <span class="unit"></span> 게임머니
 
 
-<!--                                <span class="g_txtbtn first_btn" id="plus10" value="10">+10</span>
+                                <span class="g_txtbtn first_btn" id="plus10" value="10">+10</span>
                                 <span class="g_txtbtn" id="plus50" value="50">+50</span>
                                 <span class="g_txtbtn" id="plus100" value="100">+100</span>
                                 <span class="g_txtbtn" id="plus500" value="500">+500</span>
                                 <span class="g_txtbtn" id="plus1000" value="1000">+1000</span>
-                                <span class="g_txtbtn" id="initial" value="0">초기화</span>-->
+                                <span class="g_txtbtn" id="initial" value="0">초기화</span>
                             </div>
                         </td>
                     </tr>
@@ -171,9 +171,6 @@
                     유료등록 서비스
                     <div>
                         <span class="f_small">물품리스트 상단에 노출할 수 있는 서비스입니다.</span>
-                        <!--                        <div class="btn_area">
-                                                    <a href="javascript:_window.open('premium_guide','/sell/premium_guide.html',628, 630);" class="btn_white1">이용안내</a>
-                                                </div>-->
                     </div>
                 </div>
                 <div class="charge_service">
@@ -190,8 +187,8 @@
                     <dl>
                         <dt>프리미엄등록</dt>
                         <dd>
-                            <div th:insert="/fragment/chargeModal"/>
-<!--                            <div class="charge_price">(이용료 :
+<!--                            <div th:insert="/fragment/chargeModal"/>-->
+                           <div class="charge_price">(이용료 :
                                 <strong> 100원 </strong> / 1시간)
                             </div>
                             <select id="user_premium_time" name="user_premium_time">
@@ -259,36 +256,6 @@
                     </tr>
                 </table>
 
-
-
-                <script>
-                    window.onload = function () {
-
-                        if (document.getElementById('safe_guide') !== null) {
-                            LayerControl({
-                                el: document.getElementById('safe_guide'),
-                                layer: document.getElementById('safe_layer'),
-                                close_btn: document.getElementById('safe_layer').querySelector('.close'),
-                                mask: false,
-                                type: 'style'
-                            });
-                        }
-
-                        if (document.getElementById('safe_plus_guide') !== null) {
-                            LayerControl({
-                                el: document.getElementById('safe_plus_guide'),
-                                layer: document.getElementById('safe_plus_layer'),
-                                close_btn: document.getElementById('safe_plus_layer').querySelector('.close'),
-                                mask: false,
-                                type: 'style'
-                            });
-                        }
-                    };
-                </script>
-
-
-
-
                 <div class="g_btn_wrap">
                     <button type="submit" href="javascript:;" class="buy_reg" id="ok_btn">구매 등록</button>
                     <a href="/" class="cancel_reg">등록 취소</a>
@@ -302,7 +269,7 @@
         </div>
 
 
-        <!--<div id="dvPremium" class="g_layer green premium_info">
+        <div id="dvPremium" class="g_layer green premium_info">
             <div class="inner">
                 <div class="pre_title">프리미엄 등록안내</div>
                 <div class="f_green2 middle_text">프리미엄 물품 등록을 하시면 물품 리스트 상단에 판매 물품 노출이 가능합니다.<br/>빠른 거래를 원하신다면 프리미엄
@@ -314,7 +281,7 @@
                 <div class="dvpremium">
                     <div class="g_left">
                         <strong class="service_title">프리미엄 등록</strong>
-                        &lt;!&ndash;                        <select id="pop_user_premium_time" name="pop_user_premium_time">
+                        <!--                        <select id="pop_user_premium_time" name="pop_user_premium_time">
                                                     <option value="">미설정</option>
                                                     <option value="1">1시간</option>
                                                     <option value="2">2시간</option>
@@ -340,7 +307,7 @@
                                                     <option value="22">22시간</option>
                                                     <option value="23">23시간</option>
                                                     <option value="24">24시간</option>
-                                                </select>&ndash;&gt;
+                                                </select>-->
                         이용료<strong class="f_black3"> 100원 </strong> / 1시간
                     </div>
                     <div class="g_right">
@@ -359,7 +326,7 @@
                             alt="확인"></a>
                 </div>
             </div>
-        </div>-->
+        </div>
         <div id="dvPopup" class="g_layer green reg_info">
             <div class="inner">
                 <div class="title">
@@ -371,32 +338,8 @@
             </div>
         </div>
         <div class="g_finish"></div>
-    </div><!--//.g_container-->
+    </div>//.g_container
 </div>
-
-
-<script type="text/javascript" src="/_js/_jquery3.js?v=190220"></script>
-<script type="text/javascript" src="/_js/_comm.min.js?v=23011110"></script>
-<script type="text/javascript" src="/_js/_gs_control_200924.min.js?v=21101416"></script>
-<script type="text/javascript" src="/_js/_common_initialize_new.min.js?v=21110910"></script>
-<script type="text/javascript" src="js/index.js?v=220623"></script>
-<script type='text/javascript'>
-    var rgCtrRegGameUnit = new Array();
-
-    var mileAuth = 'ITEM';
-    var useMileage = '0';
-
-    function __init() {
-
-
-    }
-</script>
-
-<script type="text/javascript">
-    var gsVersion = '2301200922';
-    var _LOGINCHECK = '1';
-    _initialize();
-</script>
-<script type="text/javascript" src="/advertise/advertise_code.js?v=230119"></script>
+<div th:replace="fragment/footer"/>
 </body>
 </html>
