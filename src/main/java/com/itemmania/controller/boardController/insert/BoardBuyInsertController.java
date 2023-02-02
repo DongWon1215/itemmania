@@ -13,10 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -33,8 +30,6 @@ public class BoardBuyInsertController {
     private BoardInsertService boardInsertService;
     @Autowired
     private BoardViewService boardViewService;
-
-
 
     @GetMapping
     public String getInsetBoard(
@@ -62,13 +57,16 @@ public class BoardBuyInsertController {
 
 
     @PostMapping
+    @ResponseBody
     public String getInsertForm(
-            BoardInsertRequest boardInsertRequest
+            @RequestBody BoardInsertRequest boardInsertRequest
     ){
 
         log.info(">>>>>>>>>>>" + boardInsertRequest);
         String absolutePath = new File("").getAbsolutePath();
         log.info(">>> path : " + absolutePath);
+
+        boardInsertService
 
         return "redirect:/board/boardList";
     }
