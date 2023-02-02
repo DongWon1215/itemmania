@@ -17,10 +17,19 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "user")
 public class UserEntity {
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userNum;
+
+    @ManyToOne
+    @JoinColumn(name = "itemNum")
+    private ItemEntity itemNum;
+
+    @Column
+    @ColumnDefault("0")
+    private int itemUnit;
 
     @Column
     @NotNull
@@ -58,14 +67,6 @@ public class UserEntity {
     @NotNull
     @ColumnDefault("0")
     private boolean userIsManager;
-
-    @Column
-    @ColumnDefault("0")
-    private int itemUnit;
-
-    @ManyToOne
-    @JoinColumn(name = "itemNum")
-    private ItemEntity itemNum;
 
     @Column
     @NotNull

@@ -2,9 +2,10 @@ package com.itemmania.entity;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -21,21 +22,23 @@ public class TradeEntity {
     private int tradeNum;
 
     @ManyToOne
-    @JoinColumn(name = "userNum", insertable = false, updatable = false)
-    private UserEntity consumerNum;
+    @JoinColumn(name = "consumerMileage")
+    private MileageEntity consumerMileage;
 
     @ManyToOne
-    @JoinColumn(name = "userNum", insertable = false, updatable = false)
-    private UserEntity sellerNum;
+    @JoinColumn(name = "sellerMileage")
+    private MileageEntity sellerMileage;
 
     @ManyToOne
     @JoinColumn(name = "boardNum")
     private BoardEntity boardNum;
 
     @Column
+    @ColumnDefault("0")
     private int tradeAmount;
 
     @Column
+    @ColumnDefault("0")
     private int tradeUnit;
 
     @Column
@@ -44,5 +47,5 @@ public class TradeEntity {
 
     @Column
     @NotNull
-    private LocalDate tradeTime;
+    private LocalDateTime tradeTime;
 }
