@@ -1,6 +1,7 @@
 package com.itemmania.entity;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -23,7 +24,8 @@ public class GameServerEntity {
     @JoinColumn(name = "gameNum")
     private GameEntity gameNum;
 
-    @Column(unique = true)
+    @Column
+    @ColumnDefault("'etc'")
     private String gameServerName;
 
 

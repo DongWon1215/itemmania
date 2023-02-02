@@ -2,6 +2,7 @@ package com.itemmania.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -27,7 +28,6 @@ public class BoardEntity {
     private int boardNum;
 
     @ManyToOne
-    @NonNull
     @JoinColumn(name = "userNum")
     // 회원 번호
     private UserEntity userNum;
@@ -41,34 +41,26 @@ public class BoardEntity {
     // serverNum을 통하여 gameserver테이블 Join 후 gameNum 부르고 return list<GameEntity>로 게임가져오기 
 
     @ManyToOne
-    @NonNull
     @JoinColumn(name = "serverNum")
     // 서버 번호
     private GameServerEntity serverNum;
 
-/*    @ManyToOne
-    @NonNull
-    @JoinColumn(name = "tradeNum")
-    // 거래 번호
-    private TradeEntity tradeNum;*/
-
     @Column
-    @NonNull
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 게시글 작성 시간
     private LocalDateTime boardTime;
 
     @Column
-    @NonNull
     // 게시판 제목, 물품 제목
     private String boardTitle;
 
     @Column
+    @ColumnDefault("0")
     // 물건 수량
     private int saleUnit;
 
     @Column
-    @NonNull
+    @ColumnDefault("0")
     // 판매 금액
     private int salePrice;
 
@@ -85,10 +77,12 @@ public class BoardEntity {
     private String salePhoto;
 
     @Column
+    @ColumnDefault("0")
     // 판매 물품 수량  타입 (일반[value:0], 분할[value:1])
     private boolean saleType;
 
     @Column
+    @ColumnDefault("0")
     // 거래 현황  (진행중 [value:0], 거래완료 [value:1], 거래중 [value:2] )
     private int boardTradeStatus;
 
@@ -102,9 +96,6 @@ public class BoardEntity {
     private LocalDateTime dealEndTime;
 
     @Column
-    @NonNull
     // board테이블 판매글 구매글 구분 (구매 : sale, 판매 : buy)
     private String dealCheck;
-
-
 }

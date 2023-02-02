@@ -20,8 +20,7 @@ public class GameEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gameNum;
 
-    @Column(unique = true)
-    @NotNull
+    @Column
     private String gameName;
 
     @Column
