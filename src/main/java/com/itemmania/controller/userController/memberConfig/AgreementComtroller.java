@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/agreement")
+@RequestMapping("/regist/agreement")
 public class AgreementComtroller {
     @GetMapping
     public String goAgreementPage()
     {
-        return "/UserForm/agreementForm";
+        return "/UserForm/userRegist/agreementForm";
     }
 }

@@ -26,4 +26,7 @@ public class GameEntity {
     @Column
     private String gameCurrency;
 
+    @Column
+    private String gameIcon;
+
 }

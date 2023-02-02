@@ -28,4 +28,9 @@ public class GameServerEntity {
     @ColumnDefault("etc")
     private String gameServerName;
 
+
+    public String getGameNameDeduplication(GameServerEntity gameServerEntity) {
+        return gameServerEntity.gameNum.getGameName();
+    }
+
 }

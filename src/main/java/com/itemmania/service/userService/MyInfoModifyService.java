@@ -7,6 +7,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Log4j2
 @Service
 public class MyInfoModifyService {
@@ -14,11 +16,10 @@ public class MyInfoModifyService {
     @Autowired
     private UserRepository userRepository;
 
+    // 회원수정 서비스
     public int modifyUser(UserModifyRequest userModifyRequest){
 
-        UserEntity user = userModifyRequest.toUserEntity();
-        log.info("user......." + user);
-        return userRepository.updateUserByUserNum(user.getUserRealName(), user.getUserPassword(), user.getUserPhoneNumber(), user.getUserEmail(), user.getUserNum());
+        return userRepository.updateUserByUserNum(userModifyRequest.getUserPassword(), userModifyRequest.getUserPhoneNumber(), userModifyRequest.getUserEmail(), userModifyRequest.getUserBirth(), userModifyRequest.getUserNum());
 
     }
 

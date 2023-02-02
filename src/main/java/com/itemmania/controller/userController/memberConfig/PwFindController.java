@@ -1,33 +1,53 @@
 package com.itemmania.controller.userController.memberConfig;
 
-import com.itemmania.domain.IdFindRequest;
+import com.itemmania.domain.PasswordChangeRequest;
 import com.itemmania.domain.PasswordFindRequest;
+import com.itemmania.repository.UserRepository;
 import com.itemmania.service.userService.UserService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@Log4j2
 @RequestMapping("/find/pw")
 public class PwFindController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     @GetMapping
     public String findform()
     {
-        return "/UserForm/pwFindForm";
+        return "/UserForm/userRegist/pwFindForm";
     }
 
     @PostMapping
-    public void sendInfo(@RequestBody PasswordFindRequest findRequest, Model model)
+    @ResponseBody
+    public String sendInfo(@RequestBody PasswordFindRequest findRequest)
     {
         String userPassword = userService.findPasswordByNameAndBirthAndPhoneNum(findRequest);
 
-        model.addAttribute("userPw",userPassword);
+        if(userPassword == null)
+            return "empty";
+
+        return userPassword;
+    }
+
+    @PutMapping
+    @ResponseBody
+    public int changePassword(@RequestBody PasswordChangeRequest passwordChangeRequest)
+    {
+
+        log.info("RequestBody =======>" + passwordChangeRequest);
+        log.info("change password ========>" + passwordChangeRequest.getUserPassword());
+
+        passwordChangeRequest.setUserPassword(encoder.encode(passwordChangeRequest.getUserPassword()));
+
+        return userService.changePasswordByNameAndBirthAndID(passwordChangeRequest);
     }
 }

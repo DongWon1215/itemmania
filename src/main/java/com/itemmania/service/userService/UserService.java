@@ -1,6 +1,7 @@
 package com.itemmania.service.userService;
 
 import com.itemmania.domain.IdFindRequest;
+import com.itemmania.domain.PasswordChangeRequest;
 import com.itemmania.domain.PasswordFindRequest;
 import com.itemmania.entity.UserEntity;
 import com.itemmania.mapper.UserMapper;
@@ -49,6 +50,11 @@ public class UserService {
         return userRepository.findByUserNameAndUserPhoneNumber(userName,phoneNum);
     }
 
+    public UserEntity findUserByNameAndEmail(String userName, String userEmail)
+    {
+        return userRepository.findByUserRealNameAndUserEmail(userName,userEmail);
+    }
+
     public String findIdByNameAndBirthAndPhoneNum(IdFindRequest idFindRequest)
     {
         return userMapper.findIdByNameAndBirthAndPhoneNum(idFindRequest);
@@ -56,7 +62,12 @@ public class UserService {
 
     public String findPasswordByNameAndBirthAndPhoneNum(PasswordFindRequest passwordFindRequest)
     {
-        return userMapper.findPasswordByNameAndBirthAndPhoneNum(passwordFindRequest);
+        return userMapper.findPasswordByNameAndBirthAndId(passwordFindRequest);
+    }
+
+    public int changePasswordByNameAndBirthAndID(PasswordChangeRequest passwordChangeRequest)
+    {
+        return userMapper.updateUserPasswordByUserNameAndUserRealNameAndUserBirth(passwordChangeRequest);
     }
 
 }

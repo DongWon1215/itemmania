@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link type="text/css" rel="stylesheet" href="/css/UserForm/findPage.css">
+</head>
+<body>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+
+<div th:replace="fragment/header"/>
+
+<div class="g_container" id="g_CONTENT">
+  <div class="g_remocon_l">
+  </div>
+  <div class="find_title">
+    아이디 찾기
+    <span>개인 정보 보안을 위해 회원님 본인인증 후 아이디를 찾으실 수 있습니다.</span>
+  </div>
+
+  <div class="tab_area">
+    <div class="selected"><a href="#">아이디찾기</a></div>
+    <div><a href="/find/pw">비밀번호 찾기</a></div>
+  </div>
+
+  <div class="collapse active" onclick="activePhoneForm()" id="phone_met">
+    <div class="collapse_title">내 정보에 등록된 <span class="blue">휴대폰으로 찾기</span></div>
+    <div class="collapse_cont">
+<!--      <form name="frmMobile" id="frmMobile" action="/find/id" method="post">-->
+        <input type="hidden" name="captcha_data" value="fabf6e8f2a46b10644c796fc947c8edb4350a5077ab1a0892510f083de79fb2f7f77a76c2d3e30dc775df6c99ff96be4313eed209c7f612957e16683ec878f3b">
+        <dl>
+          <dt>이름</dt>
+          <dd><input type="text" class="g_text" name="user_name" id="user_name" maxlength="12"></dd>
+          <dt>생년월일</dt>
+          <dd>
+            <input type="text" class="g_text" name="user_birth" id="user_birth" maxlength="8" placeholder="예)19990101">
+          </dd>
+          <dt>휴대폰 번호</dt>
+          <dd class="mobile">
+            <input type="text" class="g_text small" name="user_mobileA" id="user_mobileA" maxlength="3" value=""> -
+            <input type="text" class="g_text small" name="user_mobileB" id="user_mobileB" maxlength="4" value=""> -
+            <input type="text" class="g_text small" name="user_mobileC" id="user_mobileC" maxlength="4" value="">
+          </dd>
+          <dd>
+            <div class="g-recaptcha" id="recaptcha_hp"><div style="width: 304px; height: 78px;">
+              <div>
+<!--                <iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdyY4cUAAAAAEJ94u8n9w7sF-qHmyY-vr3jiBno&amp;co=aHR0cHM6Ly93d3cuaXRlbW1hbmlhLmNvbTo0NDM.&amp;hl=ko&amp;v=u35fw2Dx4G0WsO6SztVYg4cV&amp;theme=light&amp;size=normal&amp;cb=7q8lass1epvi" width="304" height="78" role="presentation" name="a-n2y77dwpryne" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div>-->
+              </div>
+            </div>
+            </div>
+          </dd>
+          <dd>
+            <input type="submit" value="인증 받기" class="btn_blue3 big_btn" onclick="findId()">
+          </dd>
+        </dl>
+      </form>
+    </div>
+  </div>
+
+  <div class="collapse" onclick="activeEmailForm()" id="email_met">
+    <div class="collapse_title">내 정보에 등록된 <span class="blue">이메일로 찾기</span></div>
+    <div class="collapse_cont">
+<!--      <form name="frmEmail" id="frmEmail" action="https://www.itemmania.com/portal/user/lose/find_id_preview.html" method="post">-->
+<!--        <input type="hidden" name="user_type" id="user_type" value="email">-->
+<!--        <input type="hidden" name="captcha_data" value="fabf6e8f2a46b10644c796fc947c8edb4350a5077ab1a0892510f083de79fb2f7f77a76c2d3e30dc775df6c99ff96be4313eed209c7f612957e16683ec878f3b">-->
+        <dl>
+          <dt>이름</dt>
+          <dd><input type="text" class="g_text" name="user_name" maxlength="12" value=""></dd>
+          <dt>생년월일</dt>
+          <dd>
+            <input type="text" class="g_text" name="user_birth" maxlength="8" placeholder="예)19990101">
+          </dd>
+          <dt>이메일 주소</dt>
+          <dd><input type="text" class="g_text" name="user_email" id="user_email" maxlength="30" placeholder="예)itemmania@itemmania.com"></dd>
+          <dd>
+            <div class="g-recaptcha" id="recaptcha_email"><div style="width: 304px; height: 78px;">
+                <div>
+                    <iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdyY4cUAAAAAEJ94u8n9w7sF-qHmyY-vr3jiBno&amp;co=aHR0cHM6Ly93d3cuaXRlbW1hbmlhLmNvbTo0NDM.&amp;hl=ko&amp;v=u35fw2Dx4G0WsO6SztVYg4cV&amp;theme=light&amp;size=normal&amp;cb=ro1idchuqtyy" width="304" height="78" role="presentation" name="a-70ucb93ryiqq" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                </div>
+                <textarea id="g-recaptcha-response-1" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+            </div>
+                <iframe style="display: none;"></iframe></div>
+          </dd>
+          <dd><input type="submit" value="인증 받기" class="btn_blue3 big_btn" onclick="findId()"></dd>
+        </dl>
+      </form>
+    </div>
+  </div>
+
+  <div class="g_right bt_txt">
+    아직 하이템브로커 회원이 아니세요?
+    <a href="/regist" class="join_btn">회원가입</a>
+  </div>
+
+  <div class="g_finish"></div>
+  <div th:replace="fragment/footer"/>
+  <script>
+    function findId()
+    {
+      birth = document.getElementById('user_birth').value;
+
+      FindRequest = {
+        userRealName:document.getElementById('user_name').value,
+        userBirth:birth.slice(0,4) + '-' + birth.slice(4,6) + '-' + birth.slice(6,8),
+        userPhoneNumber:document.getElementById('user_mobileA').value + document.getElementById('user_mobileB').value + document.getElementById('user_mobileC').value,
+        userEmail:document.getElementById('user_email').value
+      }
+
+      console.log(FindRequest)
+
+      $.ajax({url:'/find/id',type:'post',async:false,data:JSON.stringify(FindRequest),contentType:'application/JSON',success:function (result)
+        {
+          console.log(result)
+
+          if(result == "empty")
+            alert("등록된 데이터와 일치하는 아이디가 없습니다")
+
+          else
+            alert(result)
+        },
+        fail:function ()
+        {
+          alert("아이디 검색에 실패하였습니다")
+        },
+                error:function (error)
+                {
+                  console.log(error)
+                }
+      }
+      )
+    }
+  </script>
+  <script>
+    function activeEmailForm()
+    {
+      $("#phone_met").removeClass("active");
+      $("#email_met").addClass("active");
+    }
+    function activePhoneForm()
+    {
+      $("#phone_met").addClass("active");
+      $("#email_met").removeClass("active");
+    }
+  </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+body{ width:100%; max-width:100%; margin:0; padding:0; text-align:center; }
+.font1{font-family:돋움;font-size:12px;color:#5a5a5a;}
+.font2{font-family:돋움;font-size:12px;color:#058be9;line-height:13pt;font-weight:bold;}
+.error{height:65px; background-color:#159efd; }
+.inner{width:1280px; margin:0 auto;}
+.inner .logo{float:left; margin-top:15px;}
+.box{max-width: 1000px; margin: 130px auto;}
+.title{padding-bottom: 60px; border-bottom: 1px solid #159efd;}
+.con{font-family:돋움; font-size:12px;color:#888888;line-height:16pt;padding-top: 25px; padding-bottom: 20px;}
+.btn{ display: inline-block; width: 400px; height: 70px; background:#159efd; line-height: 70px; font-size: 16px; font-weight:bold; color:#fff; text-decoration:none;}
+.errorcode{font-family: 돋움;font-size: 22px;color: #0B7DCC; font-weight: bold; padding-top: 20px; text-decoration: none;}

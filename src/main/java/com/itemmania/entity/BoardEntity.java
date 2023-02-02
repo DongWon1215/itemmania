@@ -1,5 +1,6 @@
 package com.itemmania.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
@@ -7,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -44,8 +46,9 @@ public class BoardEntity {
     private GameServerEntity serverNum;
 
     @Column
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 게시글 작성 시간
-    private LocalDate boardTime;
+    private LocalDateTime boardTime;
 
     @Column
     // 게시판 제목, 물품 제목
@@ -80,16 +83,17 @@ public class BoardEntity {
 
     @Column
     @ColumnDefault("0")
-    // 거래 현황  (진행중 [value:0], 거래완료 [value:1])
-    private boolean boardTradeStatus;
+    // 거래 현황  (진행중 [value:0], 거래완료 [value:1], 거래중 [value:2] )
+    private int boardTradeStatus;
 
     @Column
     // 프리미엄 서비스 우뮤
     private boolean salePremium;
 
     @Column
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:SS")
     // 거래 완료 시간
-    private LocalDate dealEndTime;
+    private LocalDateTime dealEndTime;
 
     @Column
     // board테이블 판매글 구매글 구분 (구매 : sale, 판매 : buy)

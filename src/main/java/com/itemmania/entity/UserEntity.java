@@ -61,6 +61,10 @@ public class UserEntity {
 
     @Column
     @NotNull
+    private String userMark;
+
+    @Column
+    @NotNull
     @ColumnDefault("0")
     private boolean userIsManager;
 
