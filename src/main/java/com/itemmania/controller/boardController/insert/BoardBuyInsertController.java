@@ -4,6 +4,7 @@ package com.itemmania.controller.boardController.insert;
 import com.itemmania.domain.board.BoardInsertRequest;
 import com.itemmania.entity.BoardEntity;
 import com.itemmania.entity.UserEntity;
+import com.itemmania.repository.BoardRepository;
 import com.itemmania.service.boardService.BoardInsertService;
 import com.itemmania.service.boardService.BoardViewService;
 import com.itemmania.service.userService.UserService;
@@ -25,6 +26,8 @@ import java.time.LocalDateTime;
 @Log4j2
 @RequestMapping("/board/buy/insert")
 public class BoardBuyInsertController {
+    @Autowired
+    private BoardRepository boardRepository;
 
     @Autowired
     private BoardInsertService boardInsertService;
@@ -35,7 +38,6 @@ public class BoardBuyInsertController {
     public String getInsetBoard(
             Model model,
             HttpServletRequest request
-//            int userNum
             ){
         log.info("board test 진행중... ");
         model.addAttribute("gameServer",boardInsertService.getGameServer());
@@ -63,10 +65,15 @@ public class BoardBuyInsertController {
     ){
 
         log.info(">>>>>>>>>>>" + boardInsertRequest);
-        String absolutePath = new File("").getAbsolutePath();
-        log.info(">>> path : " + absolutePath);
 
-        boardInsertService
+        BoardEntity board = boardInsertRequest.insertBoard();
+
+        log.info("board info =============>" + board);
+
+//        String absolutePath = new File("").getAbsolutePath();
+//        log.info(">>> path : " + absolutePath);
+
+        boardInsertService.insertBoard(board);
 
         return "redirect:/board/boardList";
     }

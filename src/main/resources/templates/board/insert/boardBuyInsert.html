@@ -52,10 +52,6 @@
 
 
             <form name="frmBuy" id="frmBuy" method="post" enctype="multipart/form-data">
-                <input type="hidden" th:name="${myInfo.userNum}">
-                <input type="hidden" name="">
-                <input type="hidden" name="">
-                <input type="hidden" name="">
 
                 <div class="g_subtitle first">물품정보</div>
                 <table class="g_green_table">
@@ -325,10 +321,20 @@
     </div>
 </div>
 <div th:replace="fragment/footer"/>
-<script>
+<script th:inline="javascript">
 function writePost()
 {
-    const
+    const BuyInsertRequest =
+    {
+        boardTitle:$("#user_title").val(),
+        userNum:[[${myInfo}]],
+        saleUnit:$("#user_quantity").val(),
+        salePrice:$("#user_price").val(),
+        serverNum:[[${gameServer}]],
+        saleNickName:$("#user_character").val(),
+        saleAria:$("#user_text").val(),
+        salePremium:false,
+    }
 }
 </script>
 </body>

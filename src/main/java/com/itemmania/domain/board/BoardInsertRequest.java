@@ -21,34 +21,26 @@ public class BoardInsertRequest {
     // 등록할 데이터 (자동생성 제외)
 
     private String boardTitle;
-    private int userNum;
+    private UserEntity userNum;
     private int saleUnit;
     private int salePrice;
-    private int serverNum;
+    private GameServerEntity serverNum;
     private String saleNickName;
     private String saleAria;
-    private MultipartFile salePhoto;
     private boolean saleType;
-    private boolean boardTradeStatus;
     private boolean salePremium;
+
+    private MultipartFile salePhoto;
+    private boolean boardTradeStatus;
     private LocalDateTime dealEndTime;
     private LocalDateTime boardTime;
     private String dealCheck;
 
     public BoardEntity insertBoard() {
         return BoardEntity.builder()
-            .userNum(UserEntity.builder()
-                    .userNum(userNum)
-/*                    .userName(userName)
-                    .userRealName(userRealName)
-                    .userPassword("1")
-                    .userPhoneNumber("1")
-                    .userEmail("11")
-                    .userBirth(LocalDate.ofEpochDay(20230107))*/
-                    .build())
+            .userNum(userNum)
             .boardTitle(boardTitle)
-            .serverNum(GameServerEntity.builder()
-                    .gameServerNum(serverNum).build())
+            .serverNum(serverNum)
             .boardTime(LocalDateTime.now())
             .saleUnit(saleUnit)
             .salePrice(salePrice)
@@ -56,13 +48,13 @@ public class BoardInsertRequest {
             .saleAria(saleAria)
             .saleType(saleType)
             .salePremium(salePremium)
-            .dealCheck(dealCheck)
+            .dealCheck("sale")
             .build();
     }
 
     private GameServerEntity getServerNum(int serverNum) {
         return GameServerEntity.builder()
-                .gameServerNum(serverNum)
+                .serverNum(serverNum)
                 .build();
     }
 
