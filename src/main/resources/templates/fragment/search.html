@@ -68,27 +68,28 @@
 
 
     $(document).ready(function () {
-
-
-
-
         // 게임, 서버리스트 클릭시  g_search_frame가 사라지지 않게 해야함
-        $(".g_search_top ").mouseover(function () {
-            /*검색바 클릭시 게임,서버리스트 표시*/
+
+        /*검색바 클릭시 게임,서버리스트 표시*/
+        $(".g_search_top ").click(function () {
             $("#g_search_frame").show();
 
         })
 
+        // 선택된 게임의 이름이 검색창에 들어가게 함.
         $(".game>ul>li").mousemove(function () {
             console.log("선택된 게임" + $(this).val())
         })
-        $(".g_search_top").mouseout(function () {
-            /*검색바 제외 클릭시 게임,서버리스트 숨김*/
-            if ($("g_search_frame").mouseover(() => {
-                return
-            }))
+
+        // 마우스커서가 게임,서버리스트내에서 머물러있는동안은 보이고 커서가 떠나면 사라짐
+        $(function(){
+            $(".g_search_frame").mouseenter(function(){
+                $("#g_search_frame").show();
+            });
+            $(".g_search_top #g_search_frame").mouseleave(function(){
                 $("#g_search_frame").hide();
-        })
+            });
+        });
 
         $(".game>ul>li ,.server>ul>li").click(function () {
             document.querySelector('[name="searchGameServer"]').value = $(this).text()
@@ -96,6 +97,27 @@
             $("#g_search_frame").hide();
             $("#g_searchbar_form").submit();
         })
+
+        // 수정 전 코드
+        // mouseover로 되어있어서 마우스가 검색창 근처에만 가면 화면이 띄워지는 불편함이 있었음. -> 클릭으로 변경하니 리스트를 클릭해도 값이 들어가지 않음.
+        // 수정 후 -> 검색창 클릭시에만 나타나면 띄워지게 하고 검색창과 리스트에 마우스커서가 머물러있으면 계속 유지되고 검색창,리스트를 마우스가 벗어나면 사라지게 변경
+        
+        /*$(".g_search_top ").mouseover(function () {
+    /!*검색바 클릭시 게임,서버리스트 표시*!/
+    $("#g_search_frame").show();
+
+})
+
+$(".game>ul>li").mousemove(function () {
+    console.log("선택된 게임" + $(this).val())
+})
+$(".g_search_top").mouseout(function () {
+    /!*검색바 제외 클릭시 게임,서버리스트 숨김*!/
+    if ($("g_search_frame").mouseover(() => {
+        return
+    }))
+        $("#g_search_frame").hide();
+});*/
 
 
     })
