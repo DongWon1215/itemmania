@@ -157,9 +157,20 @@
   </div>
 </div>
 
+<input type="hidden" id="userNum2" th:value="${#authentication.principal.userEntity.userNum}"/>
+<input type="hidden" id="userEmail" th:value="${#authentication.principal.userEntity.userEmail}"/>
+<input type="hidden" id="userRealName" th:value="${#authentication.principal.userEntity.userRealName}"/>
+<input type="hidden" id="userPhoneNumber" th:value="${#authentication.principal.userEntity.userPhoneNumber}"/>
+
+<div th:text="${#authentication.principal.userEntity.userNum}"></div>
+
 <script>
 
   $().ready(() => {
+    console.log($('#test').text())
+
+
+    console.log('userNum : ' + $('#userNum').val())
 
     $('#pgSelect').on("change", function (){
       console.log($('#pgSelect option:selected').attr('pg'))
@@ -179,6 +190,7 @@
     console.log('pg : ' +pg)
     console.log('pay_method : ' + pay_method)
     console.log('amount : ' + $('#amount').val())
+    console.log('userNum : ' + $('#userNum2').val())
 
     // IMP.request_pay(param, callback) 결제창 호출
     IMP.request_pay({ // param
@@ -187,18 +199,31 @@
       merchant_uid: "testCode" + Date.now(),
       name: "아이템매니아 마일리지 구매",
       amount: $('#amount').val(),
-      buyer_email: "mngjs70@gmail.com",
-      buyer_name: "명진솔",
-      buyer_tel: "010-8887-2655",
-      buyer_addr: "서울특별시 광진구 자양동",
+      buyer_email: $('#userEmail').val(),
+      buyer_name: $('#userRealName').val(),
+      buyer_tel: $('#userPhoneNumber').val(),
+      buyer_addr: "",
       m_redirect_url : "/chargeModalTest"
 
     }, function (rsp) { // callback
 
       if (rsp.success) {
-        alert('결제성공' + $('#amount').val() + '원')
-        console.log(rsp)
-        chargeModal.hide()
+
+        const payload = {
+            userNum: $('#userNum2').val(),
+            pg: rsp.pg_provider,
+            payment: rsp.pay_method,
+            payAmount: rsp.paid_amount
+        }
+
+
+        console.log('payload >>>>>>>> ' , payload)
+
+        axios.post("/charge", payload).then(() => {
+          alert('결제성공' + $('#amount').val() + '원')
+          console.log(rsp)
+          chargeModal.hide()
+        })
 
       } else {
         alert(rsp.error_code + " : " + rsp.error_msg)
