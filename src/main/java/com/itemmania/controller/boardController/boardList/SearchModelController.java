@@ -17,7 +17,6 @@ import java.util.List;
 
 @Log4j2
 @Controller
-@RequiredArgsConstructor
 public class SearchModelController {
 
     @Autowired
@@ -32,15 +31,4 @@ public class SearchModelController {
 
         return "fragment/searchList";
     }
-
-
-    @PostMapping("/getSearchServerList")
-    public List<GameServerEntity> getSearchServerList(Model model) {
-        /*서버리스트 값을 비동기로 보냄*/
-        log.info("서버서치리스트");
-
-        return boardGameSearch.getServerService();
-    }
-
-
 }

@@ -22,11 +22,6 @@ public class MainController {
         model.addAttribute("gameServer",indexMainService.getGameServer());
 
 
-        // 전체 게임리스트 (메인 검색창 리스트 출력)
-        model.addAttribute("searchGame", boardGameSearch.getGameService());
-        // 전체 서버리스트
-        model.addAttribute("searchServer", boardGameSearch.getServerService());
-
         return "index";
     }
 }
