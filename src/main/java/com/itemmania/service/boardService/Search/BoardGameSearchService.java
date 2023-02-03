@@ -34,5 +34,4 @@ public class BoardGameSearchService implements BoardGameSearch { //김주환
         return servarName;
 
     }
-
 }

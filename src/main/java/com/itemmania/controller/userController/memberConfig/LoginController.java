@@ -25,9 +25,7 @@ public class LoginController {
 
 
     @GetMapping
-    public String loginPage(Model model) {
-        model.addAttribute("searchGame", boardGameSearch.getGameService());
-        model.addAttribute("searchServer", boardGameSearch.getServerService());
+    public String loginPage() {
 
         return "userForm/userRegist/loginForm";
     }
@@ -46,11 +44,6 @@ public class LoginController {
         session.setAttribute("userInfo", user);
 
         log.info("세션 정보 ==> " + user);
-
-        /*세션으로 만들면 데이터 무결서에 위배되어서 model로 보냄*/
-        model.addAttribute("searchGame", boardGameSearch.getGameService());
-        model.addAttribute("searchServer", boardGameSearch.getServerService());
-
 
         return "index";
     }

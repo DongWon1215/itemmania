@@ -20,6 +20,9 @@ public class BoardSearchOptionVO {
     // 회원 번호
     private int user_num;
 
+    // 작성자 회원의 신용등급별 구분이미지
+    private String user_mark;
+    
     // 회원의 신용점수
     private int user_credit_score;
 
