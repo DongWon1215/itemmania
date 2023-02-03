@@ -48,30 +48,20 @@
 </html>
 <script>
     /*로딩 완료시 게임,서버리스트 숨김처리
-    기존 (document.ready)내부에 위치하였으나 로딩시 리스트가 순간적으로 나타나는 현상을 수정하기위하여
+    기존 (document).ready 내부에 위치하였으나 로딩시 리스트가 순간적으로 깜박하며 나타나는 현상을 수정하기위하여
     바깥으로 위치 변경하였음 */
+
+    // 화면 로딩즉시 #g_search_frame 숨김
     $("#g_search_frame").hide();
 
 
-    $.ajax({
-        url: "/getSearchGameList",
-        type: "POST",
-        dataType: "text",
-        cache: true
-    }).done(function (fragment) {
-        console.log("done" + fragment)
-        $("#searchList").replaceWith(fragment);
+    $(document).ready(() => {
 
-
+        // 검색창 클릭 시 #g_search_frame 표시
         $(".g_search_top ").click(function () {
             $("#g_search_frame").show();
-
         })
 
-        // 선택된 게임의 이름이 검색창에 들어가게 함.
-        $(".game>ul>li").mousemove(function () {
-            console.log("선택된 게임" + $(this).val())
-        })
 
         // 마우스커서가 게임,서버리스트내에서 머물러있는동안은 보이고 커서가 떠나면 사라짐
         $(function () {
@@ -83,6 +73,27 @@
             });
         });
 
+    })
+
+    // 검색창-> 게임, 서버리스트 비동기통신을 통해 출력 (모든 화면에 적용가능)
+    $.ajax({
+        url: "/getSearchGameList",
+        type: "POST",
+        dataType: "text",
+        cache: true
+    }).done(function (fragment) {
+        console.log("done" + fragment)
+        // #searchList id를 가지고 있는 done을 fragment 데이터 값으로 변경함
+        $("#searchList").replaceWith(fragment);
+
+
+        // 마우스가 올라간 게임이름이 콜솔에 출력되게 함.
+        $(".game>ul>li").mousemove(function () {
+            console.log("선택된 게임" + $(this).val())
+        })
+
+
+        // 비동기로 출력한 리스트에 클릭이벤트 추가(클릭시 input에 입력되어 submit실행)
         $(".game>ul>li ,.server>ul>li").click(function () {
             document.querySelector('[name="searchGameServer"]').value = $(this).text()
             console.log("클릭" + $(this).text())
