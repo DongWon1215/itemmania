@@ -8,7 +8,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @SpringBootTest
@@ -23,7 +22,7 @@ public class MyMileageDetailListTest {
         LocalDateTime starDate;
         starDate = LocalDateTime.of(1, 1, 1, 1,1);
         Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "mileageTime");
-        System.out.println(myMileageDetailListService.getList(1, starDate, LocalDateTime.now(), pageable));
+        System.out.println("@@@@@@@@@@@"+myMileageDetailListService.getList(5, starDate, LocalDateTime.now(), pageable));
     }
 
 

@@ -91,8 +91,8 @@ public class RepositoryTest {
     public void boardTest(){
         BoardEntity boardEntity = new BoardEntity();
         boardEntity.setBoardTitle("테스트");
-        boardEntity.setBoardTime(LocalDate.now());
-        boardEntity.setBoardTradeStatus(false);
+        boardEntity.setBoardTime(LocalDateTime.now());
+        boardEntity.setBoardTradeStatus(0);
 
         boardRepository.save(boardEntity);
     }
