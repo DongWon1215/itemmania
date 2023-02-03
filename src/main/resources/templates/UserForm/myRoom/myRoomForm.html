@@ -19,15 +19,16 @@
     <div class="mr_top">
         <!--    <div class="mr_top_left_box">-->
         <div class="mr_user_level">
-            <span class="credit_mark2 credit_BRONZE _lg">BRONZE</span>
+            <span id="credit_mark2" class="credit_mark2 _lg">BRONZE</span>
         </div>
         <!--<div class="mr_title">MYROOM</div>-->
         <div class="mr_user_level_txt f_black2">
-            <div class="user_level_txt f_BRONZE">
+            <div id="user_level" class="user_level_txt">
                 BRONZE        </div>
             <span th:text="${user.userRealName}">이름</span>
             회원님의 신용등급은
-            <span class="f_BRONZE">일반 (0점)</span>
+            <span id="credit_rank" class="">일반</span> (<span th:text="${user.userCreditScore}" id="creditScore">신용점수</span> 점)
+
             입니다.
             <div class="mr_user_benefit_btn_wrapper">
                 <div class="mr_user_benefit_btn">
@@ -36,7 +37,7 @@
 
                 <div class="mr_user_benefit_btn" onmouseover="$('#credit_condition').show();" onmouseout="$('#credit_condition').hide();">승급조건 <i class="arr">icon</i></div>
                 <div class="credit_condition" id="credit_condition" style="display: none;">
-                    <span class="credit_up_silver">[실버]</span>까지 거래건수 <span class="f_blue1">[5]건</span> 남았습니다.
+                    <span id="credit_up" class="credit_up_silver">[실버]</span>까지 거래건수 <span id="credit_up_number" class="f_blue1">[5]</span>건 남았습니다.
                 </div>
             </div>
         </div>
@@ -44,14 +45,14 @@
             <div class="mileage_area">
                 <div class="mileage_area_content available_mileage f_black1">사용가능 마일리지</div>
                 <div class="mileage_result f_blue1">
-                    <span class="over_mile" th:text="${user.userMileage}">마일리지</span>
+                    <span class="over_mile" th:text="${#numbers.formatInteger(user.userMileage, 3, 'COMMA')}">마일리지</span>
                     <span class="won f_black2">원</span>
                 </div>
             </div>
             <div class="mileage_area">
                 <div class="mileage_area_content all_mileage f_black2">총 마일리지</div>
                 <div class="mileage_all_result f_black2">
-                    <span th:text="${user.userMileage}">마일리지</span>
+                    <span th:text="${#numbers.formatInteger(user.userMileage, 3, 'COMMA')}">마일리지</span>
                     <span class="won f_black2">원</span>
                 </div>
             </div>
@@ -208,6 +209,84 @@
 
 <!--footer 시작-->
 <div th:replace="fragment/footer"/>
+
+<script>
+    $(document).ready(function (){
+        setGrade();
+    })
+</script>
+<script th:inline="javascript">
+
+    function setGrade()
+    {
+        let userCreditScore = [[${user.userCreditScore}]];
+
+        console.log(userCreditScore)
+
+        if(userCreditScore < 5)
+        {
+            $("#credit_mark2").addClass("credit_BRONZE");
+            $("#credit_mark2").text("BRONZE");
+            $("#user_level").text("BRONZE");
+            $("#user_level").addClass("f_BRONZE");
+            $("#credit_rank").addClass("f_BRONZE");
+            $("#credit_rank").text("일반");
+            $("#credit_up").addClass("credit_up_silver");
+            $("#credit_up").text("실버");
+            $("#credit_up_number").text(5 - userCreditScore);
+
+        }
+        else if(userCreditScore < 51 && userCreditScore >= 5)
+        {
+            $("#credit_mark2").addClass("credit_SILVER");
+            $("#credit_mark2").text("SILVER");
+            $("#user_level").text("SILVER");
+            $("#user_level").addClass("f_SILVER");
+            $("#credit_rank").addClass("f_SILVER");
+            $("#credit_rank").text("실버");
+            $("#credit_up").addClass("credit_up_gold");
+            $("#credit_up").text("골드");
+            $("#credit_up_number").text(51 - userCreditScore);
+        }
+        else if(userCreditScore < 101 && userCreditScore >= 51)
+        {
+            $("#credit_mark2").addClass("credit_GOLD");
+            $("#credit_mark2").text("GOLD");
+            $("#user_level").text("GOLD");
+            $("#user_level").addClass("f_GOLD");
+            $("#credit_rank").addClass("f_GOLD");
+            $("#credit_rank").text("골드");
+            $("#credit_up").addClass("credit_up_platinum");
+            $("#credit_up").text("플래티넘");
+            $("#credit_up_number").text(101 - userCreditScore);
+        }
+        else if(userCreditScore < 301 && userCreditScore >= 101)
+        {
+            $("#credit_mark2").addClass("credit_PLATINUM");
+            $("#credit_mark2").text("PLATINUM");
+            $("#user_level").text("PLATINUM");
+            $("#user_level").addClass("f_PLATINUM");
+            $("#credit_rank").addClass("f_PLATINUM");
+            $("#credit_rank").text("플래티넘");
+            $("#credit_up").addClass("credit_up_vip");
+            $("#credit_up").text("VIP");
+            $("#credit_up_number").text(301 - userCreditScore);
+        }
+        else if(userCreditScore >= 301)
+        {
+            $("#credit_mark2").addClass("credit_VIP");
+            $("#credit_mark2").text("VIP");
+            $("#user_level").text("VIP");
+            $("#user_level").addClass("f_VIP");
+            $("#credit_rank").addClass("f_VIP");
+            $("#credit_rank").text("VIP");
+            $("#credit_up").addClass("credit_up_vip");
+            $("#credit_up").text("VIP");
+            $("#credit_up_number").text(0);
+        }
+    }
+</script>
+
 <link type="text/css" rel="stylesheet" href="/css/UserForm/mypage.css">
 
 </body>
