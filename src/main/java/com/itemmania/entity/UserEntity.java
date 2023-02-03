@@ -23,14 +23,6 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userNum;
 
-    @ManyToOne
-    @JoinColumn(name = "itemNum")
-    private ItemEntity itemNum;
-
-    @Column
-    @ColumnDefault("0")
-    private int itemUnit;
-
     @Column
     @NotNull
     private String userName;
@@ -50,10 +42,6 @@ public class UserEntity {
     @Column(name = "user_email")
     @NotNull
     private String userEmail;
-
-    @Column
-    @ColumnDefault("0")
-    private int userMileage;
 
     @Column
     @ColumnDefault("0")

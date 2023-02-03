@@ -1,6 +1,5 @@
 package com.itemmania.entity;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,32 +12,25 @@ import java.time.LocalDateTime;
 @ToString
 @Builder
 @Entity
-@Table(name = "mileage")
-public class MileageEntity {
+@Table(name = "use")
+public class UseEntity {
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int mileageNum;
+    private int useNum;
 
     @ManyToOne
     @JoinColumn(name = "userNum")
     private UserEntity userNum;
 
-    @Column
-    @NotNull
-    private LocalDateTime mileageTime;
+    @ManyToOne
+    @JoinColumn(name = "itemNum")
+    private ItemEntity itemNum;
 
     @Column
-    @NotNull
-    private String mileageType;
+    private int usedUnit;
 
     @Column
-    private String mileageDescription;
-
-    @Column
-    private int mileageIn;
-
-    @Column
-    private int mileageOut;
+    private LocalDateTime usedTime;
 }
