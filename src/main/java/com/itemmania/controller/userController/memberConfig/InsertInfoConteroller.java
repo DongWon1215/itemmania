@@ -60,7 +60,6 @@ public class InsertInfoConteroller {
             return null;
 
         UserEntity userInfo = user.toUserEntity();
-        userInfo.setItemNum(itemRepository.getReferenceById(1));
 
         log.info(itemRepository.getReferenceById(1));
         log.info("유저인포 =============>"+userInfo);
