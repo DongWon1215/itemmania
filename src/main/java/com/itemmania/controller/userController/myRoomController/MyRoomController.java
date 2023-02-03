@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 @Log4j2
 @Controller
-@RequestMapping("/myroom")
+@RequestMapping("myroom")
 public class MyRoomController {
 
     @Autowired

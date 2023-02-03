@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/charge")
+@RequestMapping("charge")
 public class ChargeController {
 
     @Autowired
     ChargeInsertService chargeInsertService;
 
     @PostMapping
+    @ResponseBody
     public void saveChargeInfo(@RequestBody ChargeRequest chargeRequest){
 
         System.out.println(chargeRequest);

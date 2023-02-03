@@ -162,8 +162,6 @@
 <input type="hidden" id="userRealName" th:value="${#authentication.principal.userEntity.userRealName}"/>
 <input type="hidden" id="userPhoneNumber" th:value="${#authentication.principal.userEntity.userPhoneNumber}"/>
 
-<div th:text="${#authentication.principal.userEntity.userNum}"></div>
-
 <script>
 
   $().ready(() => {
@@ -203,7 +201,7 @@
       buyer_name: $('#userRealName').val(),
       buyer_tel: $('#userPhoneNumber').val(),
       buyer_addr: "",
-      m_redirect_url : "/chargeModalTest"
+      m_redirect_url : "/myroom"
 
     }, function (rsp) { // callback
 
