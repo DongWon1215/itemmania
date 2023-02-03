@@ -216,6 +216,12 @@
       userBirth : document.getElementById('userBirth').value
     }
 
+    const repassword = document.getElementById('repassword').value
+    const user_mobileB = document.getElementById('user_mobileB').value
+    const user_mobileC = document.getElementById('user_mobileC').value
+    const userEmail = document.getElementById('userEmail').value
+    const userEmail2 = document.getElementById('userEmail2').value
+
     console.log(UserModifyRequest)
 
       $.ajax(
@@ -228,8 +234,21 @@
                 success:function (result)
                 {
                   console.log(result)
+                  console.log('repassword' + repassword)
 
-                  if(result != null)
+                  if(repassword == '' || user_mobileB == '' || user_mobileC == '' || UserModifyRequest.userEmail == '' || userEmail == '' || userEmail2 == '') {
+                    alert("비밀번호, 이메일주소, 전화번호는 필수 입력 사항입니다.")
+                  }
+
+                  else if(repassword!=UserModifyRequest.userPassword){
+                    alert("비밀번호가 다릅니다.")
+                  }
+
+                  else if(user_mobileB.length!=4 ||user_mobileC.length!=4) {
+                    alert("전화번호 각 4자리를 정확하게 입력해주세요.")
+                  }
+
+                  else if(result != null)
                   {
                     alert("회원수정에 성공 하였습니다")
                     window.location.replace("/myroom");
