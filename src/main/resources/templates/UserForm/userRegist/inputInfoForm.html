@@ -217,10 +217,10 @@
     }
 </script>
 <script>
-        let pw = document.getElementById('user_password').value;
         let req = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
     function pwConditionCheck()
     {
+        let pw = document.getElementById('user_password').value;
         console.log(pw)
         if(!req.test(pw))
         {
@@ -235,6 +235,7 @@
 
     function pwDuplicateCheck()
     {
+        let pw = document.getElementById('user_password').value;
         let pw_validate = document.getElementById('user_password_validate').value;
         console.log(pw)
         console.log(pw_validate)

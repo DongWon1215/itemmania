@@ -3,6 +3,7 @@ package com.itemmania.controller.userController.memberConfig;
 import com.itemmania.domain.KakaoDTO;
 import com.itemmania.domain.UserDTO;
 import com.itemmania.entity.UserEntity;
+import com.itemmania.repository.ItemRepository;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
 import net.minidev.json.JSONObject;
@@ -27,6 +28,9 @@ public class InsertInfoConteroller {
 
     @Autowired
     private PasswordEncoder encoder;
+
+    @Autowired
+    private ItemRepository itemRepository;
 
     @GetMapping
     public String ToInsertForm(HttpServletRequest request, Model model)
@@ -55,7 +59,13 @@ public class InsertInfoConteroller {
 //            return "/UserForm/userRegist/registerForm";
             return null;
 
-        UserEntity userInfo = userService.insertUser(user.toUserEntity());
+        UserEntity userInfo = user.toUserEntity();
+        userInfo.setItemNum(itemRepository.getReferenceById(1));
+
+        log.info(itemRepository.getReferenceById(1));
+        log.info("유저인포 =============>"+userInfo);
+//        userService.insertUser(userInfo);
+
         JSONObject json = new JSONObject();
         json.put("userData",userInfo);
 
