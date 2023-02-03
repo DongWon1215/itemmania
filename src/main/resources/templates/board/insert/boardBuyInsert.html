@@ -51,7 +51,7 @@
             </div>
 
 
-            <form name="frmBuy" id="frmBuy" method="post" enctype="multipart/form-data">
+<!--            <form name="frmBuy" id="frmBuy" method="post" enctype="multipart/form-data">-->
 
                 <div class="g_subtitle first">물품정보</div>
                 <table class="g_green_table">
@@ -113,12 +113,12 @@
                                 <span class="unit"></span> 게임머니
 
 
-                                <span class="g_txtbtn first_btn" id="plus10" value="10">+10</span>
-                                <span class="g_txtbtn" id="plus50" value="50">+50</span>
-                                <span class="g_txtbtn" id="plus100" value="100">+100</span>
-                                <span class="g_txtbtn" id="plus500" value="500">+500</span>
-                                <span class="g_txtbtn" id="plus1000" value="1000">+1000</span>
-                                <span class="g_txtbtn" id="initial" value="0">초기화</span>
+                                <span class="g_txtbtn first_btn" id="plus10" value="10" onclick="increasesaleUnit(10)">+10</span>
+                                <span class="g_txtbtn" id="plus50" value="50" onclick="increasesaleUnit(50)">+50</span>
+                                <span class="g_txtbtn" id="plus100" value="100" onclick="increasesaleUnit(100)">+100</span>
+                                <span class="g_txtbtn" id="plus500" value="500" onclick="increasesaleUnit(500)">+500</span>
+                                <span class="g_txtbtn" id="plus1000" value="1000" onclick="increasesaleUnit(1000)">+1000</span>
+                                <span class="g_txtbtn" id="initial" value="0" onclick="increasesaleUnit(0)">초기화</span>
                             </div>
                         </td>
                     </tr>
@@ -183,11 +183,10 @@
                     <dl>
                         <dt>프리미엄등록</dt>
                         <dd>
-<!--                            <div th:insert="/fragment/chargeModal"/>-->
                            <div class="charge_price">(이용료 :
                                 <strong> 100원 </strong> / 1시간)
                             </div>
-                            <select id="user_premium_time" name="user_premium_time">
+                            <select id="user_premium_time" name="user_premium_time" onchange="calculateMileage()">
                                 <option value="">미설정</option>
                                 <option value="1">1시간</option>
                                 <option value="2">2시간</option>
@@ -220,6 +219,16 @@
                         </dd>
                     </dl>
                 </div>
+                <div class="total_charge">
+                    <strong class="total_label" >총 결제금액 : </strong>
+                    <strong class="total_charge_money f_red1"><span id="total_charge_money">0</span>원</strong>
+                    <div>
+                        (내 사용가능한 마일리지 :
+                        <strong id="txtCurrentMileage" class="f_red1" th:text="${myInfo.userMileage}"></strong>)
+                    </div>
+                </div>
+
+                    <div th:insert="/fragment/chargeModal"/>
 
                 <div class="g_subtitle">내 거래정보</div>
                 <table class="g_green_table private_area">
@@ -251,7 +260,7 @@
                 </table>
 
                 <div class="g_btn_wrap">
-                    <button type="submit" class="buy_reg" id="ok_btn">구매 등록</button>
+                    <button type="submit" class="buy_reg" id="ok_btn" onclick="writePost()">구매 등록</button>
                     <a href="/" class="cancel_reg">등록 취소</a>
                 </div>
             </form>
@@ -324,7 +333,7 @@
 <script th:inline="javascript">
 function writePost()
 {
-    const BuyInsertRequest =
+    const BoardBuyInsertRequest =
     {
         boardTitle:$("#user_title").val(),
         userNum:[[${myInfo}]],
@@ -333,9 +342,58 @@ function writePost()
         serverNum:[[${gameServer}]],
         saleNickName:$("#user_character").val(),
         saleAria:$("#user_text").val(),
-        salePremium:false,
+        salePremium:false
     }
+
+    console.log(BoardBuyInsertRequest)
+
+    $.ajax(
+        {
+        url:'/board/buy/insert',
+            type:'post',
+            data:JSON.stringify(BoardBuyInsertRequest),
+            dataType:'JSON',
+            contentType:'application/json',
+            success:function (data)
+            {
+                alert("글 등록에 성공했다")
+                console.log(data)
+            },
+            fail:function (failed)
+            {
+                console.log("글 작성 실패")
+                console.log(failed)
+            },
+            error:function (err)
+            {
+                console.log("에러 발생")
+                console.log(err)
+            }
+    })
 }
+</script>
+<script>
+    function increasesaleUnit(unit)
+    {
+        let gamemoney = Number($("#user_quantity").val());
+
+        $("#user_quantity").val(gamemoney + Number(unit));
+
+        if(unit == 0)
+            $("#user_quantity").val("");
+    }
+</script>
+<script th:inline="javascript">
+    function calculateMileage()
+    {
+        $("#total_charge_money").text($("#user_premium_time").val() * 100)
+
+        if([[${myInfo.userMileage}]] < $("#total_charge_money").text())
+            $('#showModalBtn').show();
+
+        else
+            $('#showModalBtn').hide();
+    }
 </script>
 </body>
 </html>

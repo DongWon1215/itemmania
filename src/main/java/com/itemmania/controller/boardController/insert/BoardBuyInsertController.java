@@ -1,6 +1,7 @@
 package com.itemmania.controller.boardController.insert;
 
 
+import com.itemmania.domain.board.BoardBuyInsertRequest;
 import com.itemmania.domain.board.BoardInsertRequest;
 import com.itemmania.entity.BoardEntity;
 import com.itemmania.entity.UserEntity;
@@ -26,13 +27,9 @@ import java.time.LocalDateTime;
 @Log4j2
 @RequestMapping("/board/buy/insert")
 public class BoardBuyInsertController {
-    @Autowired
-    private BoardRepository boardRepository;
 
     @Autowired
     private BoardInsertService boardInsertService;
-    @Autowired
-    private BoardViewService boardViewService;
 
     @GetMapping
     public String getInsetBoard(
@@ -61,7 +58,7 @@ public class BoardBuyInsertController {
     @PostMapping
     @ResponseBody
     public String getInsertForm(
-            @RequestBody BoardInsertRequest boardInsertRequest
+            @RequestBody BoardBuyInsertRequest boardInsertRequest
     ){
 
         log.info(">>>>>>>>>>>" + boardInsertRequest);
@@ -77,20 +74,4 @@ public class BoardBuyInsertController {
 
         return "redirect:/board/boardList";
     }
-
-    public BoardEntity insertBoard (@RequestBody BoardEntity boardEntity){
-
-        log.info("insert 전 "+boardEntity);
-        /// Service -> Mapper
-        boardInsertService.insertBoard(boardEntity);
-
-        log.info("insert 후 "+boardEntity);
-
-        boardEntity.setBoardTime(LocalDateTime.parse(LocalDateTime.now().toString()));
-
-        ResponseEntity<BoardEntity> boardEntityResponseEntity = new ResponseEntity<>(boardViewService.selectBoardView(boardEntity.getBoardNum()), HttpStatus.OK);
-        log.info("board등록성공? >>>>>>>>." + boardEntityResponseEntity);
-        return boardEntityResponseEntity.getBody();
-    }
-
 }
