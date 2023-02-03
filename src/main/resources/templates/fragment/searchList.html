@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="gs_list gs_selection " id="searchList" data-gslist="true">
+    <div class="game">
+        <ul>
+            <th:block th:each="game:${searchGame}">
+                <li th:value="${game.gameNum}" th:text="${game.gameName}"></li>
+            </th:block>
+        </ul>
+    </div>
+    <div class="server server_t">
+        <ul>
+            <th:block th:each="server:${searchServer}">
+                <li th:value="${server.gameNum.gameNum}" th:text="${server.gameServerName}"></li>
+            </th:block>
+        </ul>
+    </div>
+</div>
+</html>

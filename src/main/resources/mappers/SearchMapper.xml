@@ -32,6 +32,7 @@
             <include refid="searchGameServer"/>
 
           <!--  <include refid="titleSearch"/>-->
+
             <!--판매 구매 구분-->
             <include refid="deal"/>
 
@@ -96,12 +97,12 @@
 
     <!--거래상태 (거래대기, 거래종료)-->
     <sql id="boardTradeStatus">
-        AND board_trade_status=#{searchOption.boardTradeStatus}
+        AND board_trade_status = #{searchOption.boardTradeStatus}
     </sql>
 
     <!--프리미엄 게시글인지 일반 게시글인지 구분-->
     <sql id="salePremium">
-        AND sale_premium=#{salePremium}
+        AND sale_premium = #{salePremium}
     </sql>
 
     <!--내림차순-->

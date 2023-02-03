@@ -5,8 +5,11 @@
     <title>Title</title>
 </head>
 <link type="text/css" rel="stylesheet" href="/css/UserForm/login.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+        charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <body>
@@ -24,16 +27,19 @@
                 <input type="hidden" name="plogin_kr" id="plogin_kr">
                 <ul class="input_area">
                     <li>
-                        <input type="text" id="username" name="username" maxlength="20" class="g_text" value="" placeholder="아이디">
+                        <input type="text" id="username" name="username" maxlength="20" class="g_text" value=""
+                               placeholder="아이디">
                     </li>
                     <li>
-                        <input type="password" id="userpassword" name="password" maxlength="16" class="g_password" placeholder="비밀번호">
+                        <input type="password" id="userpassword" name="password" maxlength="16" class="g_password"
+                               placeholder="비밀번호">
                     </li>
                     <li>
                         <button type="submit" class="btn btn_blue">로그인</button>
                     </li>
                     <li class="id_save">
-                        <input type="checkbox" name="id_save" value="ok" class="g_checkbox" id="id_save"><label for="id_save">아이디 저장</label>
+                        <input type="checkbox" name="id_save" value="ok" class="g_checkbox" id="id_save"><label
+                            for="id_save">아이디 저장</label>
                     </li>
                 </ul>
             </form>
@@ -41,17 +47,17 @@
             <div class="gray_line"></div>
 
             <!-- 네이버 아이디 로그인 -->
-<!--            <button type="button" class="btn btn_green" id="naver_id_login" data-apiurl="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=Bh2SL9Ki8Wmn6fGPvIti&redirect_uri=https%3A%2F%2Fwww.itemmania.com%2Fsocial_login%2Fnaver_callback.php&state=958cfabd4a35b7f93ccd3917cd9349d1|//www.itemmania.com/portal/user/p_login_form.html|">-->
-<!--                </button>-->
+            <!--            <button type="button" class="btn btn_green" id="naver_id_login" data-apiurl="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=Bh2SL9Ki8Wmn6fGPvIti&redirect_uri=https%3A%2F%2Fwww.itemmania.com%2Fsocial_login%2Fnaver_callback.php&state=958cfabd4a35b7f93ccd3917cd9349d1|//www.itemmania.com/portal/user/p_login_form.html|">-->
+            <!--                </button>-->
             <!-- 카카오페이 인증 로그인 -->
             <button type="button" class="btn btn_yellow" id="kakao_login" onclick="kakaoLogin()">
                 <i class="icon_kakao"></i>카카오페이 인증 로그인
             </button>
             <!-- MYOTP 로그인 -->
-<!--            <button type="button" class="btn btn_orange" id="myotp_id_login">-->
-<!--                <i class="icon_myotp"></i>MyOtp 로그인<br>-->
-<!--                <em>MyOTP 로그인은 핸드폰번호로 로그인 하는 서비스입니다.</em>-->
-<!--            </button>-->
+            <!--            <button type="button" class="btn btn_orange" id="myotp_id_login">-->
+            <!--                <i class="icon_myotp"></i>MyOtp 로그인<br>-->
+            <!--                <em>MyOTP 로그인은 핸드폰번호로 로그인 하는 서비스입니다.</em>-->
+            <!--            </button>-->
 
             <div class="find_area">
                 <a href="find/id">아이디찾기</a>
@@ -63,10 +69,11 @@
         <div class="login_ing" id="login_ing">
             <div id="login_ing_txt"></div>
             <button type="button" class="btn btn_gray" id="login_cancel_btn">취소하기</button>
-        </div> </div>
+        </div>
+    </div>
     <div class="g_finish"></div>
 </div>
-    <div th:replace="fragment/footer"/>
+<div th:replace="fragment/footer"/>
 
 
 <!--<script  type="text/javascript" src="/js/loginForm.js"/>-->
@@ -125,33 +132,36 @@
                         // console.log(kakaoAccount)
 
                         kakaoDTO = {
-                            profile_nickname : response.kakao_account.profile.nickname,
-                            account_email : response.kakao_account.email,
-                            birthday : 1990 + response.kakao_account.birthday,
+                            profile_nickname: response.kakao_account.profile.nickname,
+                            account_email: response.kakao_account.email,
+                            birthday: 1990 + response.kakao_account.birthday,
                         }
 
                         $.ajax(
                             {
-                                url:'/apilogin',type:'post', async:false,data:JSON.stringify(kakaoDTO),contentType:'application/json; charset=utf-8'
-                                ,success:function(result)
-                                {
+                                url: '/apilogin',
+                                type: 'post',
+                                async: false,
+                                data: JSON.stringify(kakaoDTO),
+                                contentType: 'application/json; charset=utf-8'
+                                ,
+                                success: function (result) {
                                     console.log(result)
 
                                     window.location.replace(result)
                                 },
-                                fail:function (error)
-                                {
+                                fail: function (error) {
                                     console.log("fail message")
                                     console.log(error)
                                     window.location.replace("/regist")
                                 },
-                                error:function (error)
-                                {
+                                error: function (error) {
                                     console.log("error message")
                                     console.log(error)
                                 }
                             }
-                            )},
+                        )
+                    },
                     fail: function (error) {
                         console.log(error)
                         window.location.replace("/regist")
