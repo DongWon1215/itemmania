@@ -9,7 +9,7 @@ import com.itemmania.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -68,6 +68,11 @@ public class UserService {
     public int changePasswordByNameAndBirthAndID(PasswordChangeRequest passwordChangeRequest)
     {
         return userMapper.updateUserPasswordByUserNameAndUserRealNameAndUserBirth(passwordChangeRequest);
+    }
+
+    public Optional<UserEntity> findUserByuserNum(int userNum)
+    {
+        return userRepository.findById(userNum);
     }
 
 }

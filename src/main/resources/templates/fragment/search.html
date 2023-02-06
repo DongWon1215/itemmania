@@ -65,10 +65,10 @@
 
         // 마우스커서가 게임,서버리스트내에서 머물러있는동안은 보이고 커서가 떠나면 사라짐
         $(function () {
-            $(".g_search_frame").mouseenter(function () {
-                $("#g_search_frame").show();
-            });
-            $(".g_search_top #g_search_frame").mouseleave(function () {
+            // $(".g_search_frame").mouseenter(function () {
+            //     $("#g_search_frame").show();
+            // });
+            $("#g_search_frame").mouseleave(function () {
                 $("#g_search_frame").hide();
             });
         });
@@ -88,13 +88,13 @@
 
 
         // 마우스가 올라간 게임이름이 콜솔에 출력되게 함.
-        $(".game>ul>li").mousemove(function () {
+        $("#searchList>ul>li").mousemove(function () {
             console.log("선택된 게임" + $(this).val())
         })
 
 
         // 비동기로 출력한 리스트에 클릭이벤트 추가(클릭시 input에 입력되어 submit실행)
-        $(".game>ul>li ,.server>ul>li").click(function () {
+        $("#searchList>ul>li").click(function () {
             document.querySelector('[name="searchGameServer"]').value = $(this).text()
             console.log("클릭" + $(this).text())
             $("#g_search_frame").hide();

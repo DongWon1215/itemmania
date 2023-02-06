@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>title</title>
     <meta charset="UTF-8">
@@ -11,11 +11,9 @@
 
 <link type="text/css" rel="stylesheet" href="/css/board/insertBuy.css">
 
-
-<body>
-<div id="g_SLEEP" class="g_sleep g_hidden">
-    <div id="g_OVERLAY" class="g_overlay"></div>
-</div>
+<!--<div id="g_SLEEP" class="g_sleep g_hidden">-->
+<!--    <div id="g_OVERLAY" class="g_overlay"></div>-->
+<!--</div>-->
 
 <div class="g_body" id="g_BODY">
 
@@ -59,50 +57,35 @@
                         <th>카테고리</th>
                         <td>
                             <div class="g_search_wrapper">
-                                <div class="search_wrap">
+                                <div class="search_wrap" id="search_wrap">
                                     <div class="input_area">
 <!--                                        <input type="text" class="g_text search_gs_name" id="searchRegGameServer" placeholder="게임명 또는 서버명을 입력해주세요." autocomplete="off">-->
                                         <input type="text" class="g_text search_gs_name" id="searchRegGameServer" name="serverName" placeholder="서버명을 입력해주세요." autocomplete="off">
                                         <!-- autocomplete :사용자가 이전에 입력했던 값들을 기반으로 사용자가 입력한 값과 비슷한 값들을 드롭다운 옵션으로 보여줍니다. -->
-                                        <a href="javascript:;" class="delete_btn"></a>
+                                        <a href="javascript:;" onclick="clearTextBox()" class="delete_btn"></a>
                                     </div>
-                                    <div class="g_search_frame" id="g_search_frame" style="">
-                                        <div class="gs_list gs_selection" data-gslist="true">
-                                        <div class="game">
-                                            <ul>
-                                                <th:block th:each="game:${searchGame}">
-                                                    <li th:value="${game.gameNum}" th:text="${game.gameName}"></li>
-                                                </th:block>
-                                            </ul>
-                                        </div>
-                                        <div class="server server_t">
-                                            <ul>
-                                                <th:block th:each="server:${searchServer}">
-                                                    <li th:value="${server.gameNum.gameNum}" th:text="${server.gameServerName}"></li>
-                                                </th:block>
-                                            </ul>
-                                        </div>
+
+                                    <div class="g_search_frame reg_gameserver" id="reg_gameserver">
+                                        <div class="gs_list gs_selection" data-gslist="true" id="reg_gameserver_list">
+                                            <div class="game" id="game_list">
+                                                <ul>
+                                                    <th:block th:each="game:${searchGame}">
+                                                        <li th:value="${game.gameNum}" th:text="${game.gameName}"></li>
+                                                    </th:block>
+                                                </ul>
+                                            </div>
+                                            <div class="server" id="server_list">
+                                                <ul>
+                                                    <th:block th:each="server:${searchServer}">
+                                                        <li th:value="${server.gameNum.gameNum}" th:text="${server.gameServerName}"></li>
+                                                    </th:block>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                <div class="g_search_frame g_hidden reg_gameserver" id="reg_gameserver">
-                                    <div class="gs_list gs_selection" data-gslist="true" id="reg_gameserver_list">
-                                        <div class="game">
-                                            <ul th:each="gameServer:${gameServer}">
-                                                <li>
-                                                    <span type="text" th:text="${gameServer.gameNum.gameName}"/>
-                                                    <span type="text" th:text="${gameServer.gameNum.gameCurrency}"/>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="server"></div>
-                                    </div>
-                                </div><!--//.reg_gameserver-->
                                 </div>
-                            </div>
+                            </div><!--//.reg_gameserver-->
                         </td>
-                    </tr>
-                </table>
-                            </div><!--//.g_search_wrapper-->
                     </tr>
                     <tbody id="d_template">
                     <tr>
@@ -248,23 +231,20 @@
                     </colgroup>
                     <tr>
                         <th>이름</th>
-
-                        <td>0</td>
-<!--                        마일리지 값 출력하는 방법 찾기 전까진 주석으로 처리-->
-<!--                        <td th:text="${myInfo.userRealName}"></td>-->
+                        <td th:text="${myInfo.userRealName}"></td>
                     </tr>
                     <tr>
                         <th>연락처</th>
                         <td>
-                <span id="spnUserPhone">
-                자택번호 없음
-                </span>
-                            (
-                            <label>
-                                <input type="checkbox" class="g_checkbox" name="user_cell_check"
-                                       id="chk_user_cell_check" value="on" checked> 자택번호안내
-                            </label>
-                            ) /
+<!--                <span id="spnUserPhone">-->
+<!--                자택번호 없음-->
+<!--                </span>-->
+<!--                            (-->
+<!--                            <label>-->
+<!--                                <input type="checkbox" class="g_checkbox" name="user_cell_check"-->
+<!--                                       id="chk_user_cell_check" value="on" checked> 자택번호안내-->
+<!--                            </label>-->
+<!--                            ) /-->
                             <span id="spnUserCell" th:text="${myInfo.userPhoneNumber}"></span>
 <!--                            <a href="javascript:_window.open('private_edit', '/user/contact_edit.html', 496, 350);"-->
 <!--                               class="btn_white1 after">연락처 수정</a>-->
@@ -341,7 +321,7 @@
             </div>
         </div>
     </div>
-</div>
+</div><!--//.g_search_wrapper-->
 <div th:replace="fragment/footer"/>
 <script th:inline="javascript">
 function writePost()
@@ -349,10 +329,10 @@ function writePost()
     const BoardBuyInsertRequest =
     {
         boardTitle:$("#user_title").val(),
-        userNum:[[${myInfo}]],
+        userNum:[[${myInfo}]].userNum,
         saleUnit:$("#user_quantity").val(),
         salePrice:$("#user_price").val(),
-        serverNum:[[${gameServer}]],
+        serverName:$("#searchRegGameServer").val(),
         saleNickName:$("#user_character").val(),
         saleAria:$("#user_text").val(),
         salePremium:false
@@ -371,6 +351,7 @@ function writePost()
             {
                 alert("글 등록에 성공했다")
                 console.log(data)
+                window.location.replace("/");
             },
             fail:function (failed)
             {
@@ -401,55 +382,37 @@ function writePost()
     {
         $("#total_charge_money").text($("#user_premium_time").val() * 100)
 
-        if(0 < $("#total_charge_money").text())
-            <!--                        마일리지 값 출력하는 방법 찾기 전까진 주석으로 처리-->
-        // if([[${myInfo.userMileage}]] < $("#total_charge_money").text())
+        if(0 <= $("#total_charge_money").text())
             $('#showModalBtn').show();
 
         else
             $('#showModalBtn').hide();
     }
 </script>
-
 <script>
-    /*로딩 완료시 게임,서버리스트 숨김처리
-    기존 (document.ready)내부에 위치하였으나 로딩시 리스트가 순간적으로 나타나는 현상을 수정하기위하여
-    바깥으로 위치 변경하였음 */
-    $("#g_search_frame").hide();
-
-
+        $("#reg_gameserver").hide();
     $(document).ready(function () {
 
 
-
-
-        // // 게임, 서버리스트 클릭시  g_search_frame가 사라지지 않게 해야함
-        // $("#searchRegGameServer ").mouseover(function () {
-        //     /*검색바 클릭시 게임,서버리스트 표시*/
-        //     $("#g_search_frame").show();
-        //
-        // })
-        //
-        // $(".game>ul>li").mousemove(function () {
-        //     console.log("선택된 게임" + $(this).val())
-        // })
-        // $(".g_search_top").mouseout(function () {
-        //     /*검색바 제외 클릭시 게임,서버리스트 숨김*/
-        //     if ($("g_search_frame").mouseover(() => {
-        //         return
-        //     }))
-        //         $("#g_search_frame").hide();
-        // })
-        //
-        // $(".game>ul>li ,.server>ul>li").click(function () {
-        //     document.querySelector('[name="searchGameServer"]').value = $(this).text()
-        //     console.log("클릭" + $(this).text())
-        //     $("#g_search_frame").hide();
-        //     $("#g_searchbar_form").submit();
-        // })
-
-
+        // 게임, 서버리스트 클릭시  g_search_frame가 사라지지 않게 해야함
+        $(function (){
+        $("#searchRegGameServer ").click(function () {
+            /*검색바 클릭시 게임,서버리스트 표시*/
+            $("#reg_gameserver").show();
+        })
+        $("#search_wrap").mouseleave(function ()
+        {
+            /*검색바 제외 클릭시 게임,서버리스트 숨김*/
+                $("#reg_gameserver").hide();
+        })
+        })
     })
+
+        $("#game_list>ul>li,#server_list>ul>li").click(function () {
+            $("#searchRegGameServer").val($(this).text());
+            console.log("클릭" + $(this).text());
+            $("#reg_gameserver").hide();
+        })
 
     function searchbarSubmit() {
         /*검색 전 예외처리*/
@@ -471,6 +434,12 @@ function writePost()
             }
         }
         //검색시 링크에 deal=sale   deal=buy 값 파라미터로 넣어서 보내줘야함
+    }
+</script>
+<script>
+    function clearTextBox()
+    {
+        $("#searchRegGameServer").val("");
     }
 </script>
 </body>

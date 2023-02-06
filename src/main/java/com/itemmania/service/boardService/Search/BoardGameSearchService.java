@@ -34,4 +34,9 @@ public class BoardGameSearchService implements BoardGameSearch { //김주환
         return servarName;
 
     }
+
+    public GameServerEntity getServerEntity(String serverName)
+    {
+        return gameServerEntityRepository.findByGameServerName(serverName);
+    }
 }

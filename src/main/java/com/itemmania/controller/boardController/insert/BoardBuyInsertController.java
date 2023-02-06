@@ -14,6 +14,7 @@ import com.itemmania.service.boardService.Search.BoardGameSearchService;
 import com.itemmania.service.boardService.Search.BoardSearchService;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,12 @@ public class BoardBuyInsertController {
     @Autowired
     private BoardGameSearchService getGameServerService;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private BoardGameSearchService gameSearchService;
+
     @GetMapping
     public String getInsetBoard(
             Model model,
@@ -55,17 +62,12 @@ public class BoardBuyInsertController {
         List<GameEntity> gameNameList = getGameServerService.getGameService();
 
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
-        int userNum = user.getUserNum();
-        model.addAttribute("myInfo",boardInsertService.selectMyInfo(userNum));
+        model.addAttribute("myInfo",user);
         // 전체 게임리스트
         model.addAttribute("searchGame", gameNameList);
 
         // 전체 서버리스트
         model.addAttribute("searchServer", serverNameList);
-
-/*
-        model.addAttribute("myInfo",boardInsertService.selectMyInfo(2));
-*/
 
         return "/board/insert/boardBuyInsert";
     }
@@ -73,21 +75,27 @@ public class BoardBuyInsertController {
 
     @PostMapping
     @ResponseBody
-    public String getInsertForm(
+    public JSONObject getInsertForm(
             @RequestBody BoardBuyInsertRequest boardInsertRequest
     ){
 
         log.info(">>>>>>>>>>>" + boardInsertRequest);
 
         BoardEntity board = boardInsertRequest.insertBoard();
+        board.setUserNum(userService.findUserByuserNum(boardInsertRequest.getUserNum()).get());
+        board.setServerNum(gameSearchService.getServerEntity(boardInsertRequest.getServerName()));
 
         log.info("board info =============>" + board);
 
 //        String absolutePath = new File("").getAbsolutePath();
 //        log.info(">>> path : " + absolutePath);
 
+        JSONObject json = new JSONObject();
+
         boardInsertService.insertBoard(board);
 
-        return "redirect:/board/boardList";
+        json.put("board",board);
+
+        return json;
     }
 }
