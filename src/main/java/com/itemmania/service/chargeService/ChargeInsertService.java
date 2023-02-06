@@ -26,13 +26,11 @@ public class ChargeInsertService {
     @Transactional
     public PayEntity insert(ChargeRequest chargeRequest){
         UserEntity user = userRepository.findById(chargeRequest.getUserNum()).get();
-        user.setUserMileage(user.getUserMileage() + chargeRequest.getPayAmount());
 
         userRepository.save(user);
 
         MileageEntity mileageEntity = MileageEntity.builder()
                 .mileageDescription("#충전 : " + chargeRequest.getPg() + " / " + chargeRequest.getPayment())
-                .mileageHistory(user.getUserMileage())
                 .mileageIn(chargeRequest.getPayAmount())
                 .mileageTime(LocalDateTime.now())
                 .mileageType("충전")
