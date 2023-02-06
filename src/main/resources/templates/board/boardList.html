@@ -106,26 +106,22 @@
     <div class="search_list_all">
         <ul class="search_list search_list_premium">
             <li th:each="P_List:${boarPList}">
-                <div class="col_01">
-                    <span th:text="${P_List.game_server_name}"></span>
-                </div>
-                <div class="col_02 active">
+                <div class="col_01"><img id="P_imgId" th:src="${P_List.user_mark}" alt="등급이미지"/></div>
+                <div class="col_02 active"><span th:text="${P_List.game_server_name}"></span></div>
+                <div class="col_03">
                     <a th:href="@{/board/view(boardNum=${P_List.board_num},deal=${P_List.deal_check})}">
                         <div class="mulline">
                             <span class="title title_blue" th:text="${P_List.board_title}"></span>
                         </div>
                     </a>
+                    <div class="sp_list view_detail"></div>
                 </div>
-                <div class="col_03">
+                <div class="col_04">
                     <div class="mulline" th:text="${P_List.sale_price}"></div>
-                </div>
-                <div class="col_04"><i class="sp_list icon_good">우수인증</i> <i class="sp_list icon_200">200%보상</i> <i
-                        class="sp_list icon_200_buy">200%구매보상</i> <i class="sp_list icon_dc active_icon">할인</i>
                 </div>
                 <div class="col_05"><span th:text="${#strings.substring(P_List.board_time,0,10)}"></span></div>
             </li>
         </ul>
-        <div class="loading g_hidden"></div>
     </div>
     <div class="g_subtitle">
         <div class="g_left">물품리스트<a name="list_top"></a>
@@ -134,18 +130,18 @@
     <div class="search_list_all">
         <ul class="search_list list_head">
             <li>
-                <div class="col_01">서버종류</div>
-                <div class="col_02">물품제목</div>
-                <div class="col_03">판매금액</div>
-                <div class="col_04">물품정보</div>
+                <div class="col_01">등급</div>
+                <div class="col_02">서버종류</div>
+                <div class="col_03">물품제목</div>
+                <div class="col_04">판매금액</div>
                 <div class="col_05">등록시간</div>
             </li>
         </ul>
         <ul id="demo" class="search_list search_list_normal">
             <li th:each="List:${boarList}">
-
-                <div class="col_01"><span th:text="${List.game_server_name}"></span></div>
-                <div class="col_02 active">
+                <div class="col_01"><img id="imgId" th:src="${List.user_mark}" alt="등급이미지"/></div>
+                <div class="col_02"><span th:text="${List.game_server_name}"></span></div>
+                <div class="col_03 active">
                     <a th:href="@{/board/view(boardNum=${List.board_num},deal=${List.deal_check})}">
                         <div class="mulline">
                             <span class="title" th:text="${List.board_title}"></span>
@@ -153,11 +149,8 @@
                     </a>
                     <div class="sp_list view_detail"></div>
                 </div>
-                <div class="col_03">
+                <div class="col_04">
                     <div class="mulline" th:text="${List.sale_price}"></div>
-                </div>
-                ${List.user_mark}
-                <div class="col_04"><img id="imgId" th:src="@{../../image/}" alt="등급이미지"/>
                 </div>
                 <div class="col_05"><span th:text="${#strings.substring(List.board_time,0,10)}"></span></div>
             </li>
@@ -224,23 +217,22 @@
                 let listHtml = "";
 
                 $.each(data, function (index, el) {
-
-                    listHtml += '<li>' +
-                        '               <div class="col_01">' + el.game_server_name + '</div>';
-
-                    listHtml += '       <div class="col_02 active">';
+                    listHtml += '<li>'
+                    listHtml += '<div class="col_01"><img id="imgId" src="' + el.user_mark + '" alt="등급이미지"/> </div>';
+                    listHtml += '        <div class="col_02">'
+                    listHtml += '            <span>' + el.game_server_name + 'zz</span>'
+                    listHtml += '        </div>'
+                    listHtml += '       <div class="col_03 active">';
                     listHtml += '	        <a href="/board/view?boardNum=' + el.board_num + '&deal=' + el.deal_check + '">';
                     listHtml += '	            <div class="mulline">';
                     listHtml += '	    	        <span class="title">' + el.board_title + '</span>';
                     listHtml += '               </div>'
                     listHtml += '	        </a>';
                     listHtml += '       </div>'
-                    listHtml += '        <div class="col_03">'
+                    listHtml += '        <div class="col_04">'
                     listHtml += '            <div class="mulline">' + el.sale_price + '</div>'
                     listHtml += '        </div>'
-                    listHtml += '<div class="col_04"><i class="sp_list icon_good">우수인증</i> <i class="sp_list icon_200">200%보상</i> <i class="sp_list icon_200_buy">200%구매보상</i> <i class="sp_list icon_dc">할인</i></div>\n' +
-                        '                <div class="col_05"><span>Sun Feb 02</span></div>'
-                    listHtml += '</div>'
+                    listHtml += '<div class="col_05"><span>' + el.board_time + '</span></div>'
                     listHtml += '</li>'
                 })
 
