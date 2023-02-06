@@ -41,13 +41,6 @@
         </ul>
       </div>
 
-      <form name="frmSell" id="frmSell" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="">
-        <input type="hidden" name="">
-        <input type="hidden" name="">
-        <input type="hidden" name="">
-        <input type="hidden" name="">
-        <input type="hidden" name="">
         <div class="g_subtitle first">물품정보</div>
         <table class="g_blue_table" id="reg_table">
           <colgroup>
@@ -62,105 +55,28 @@
                   <div class="input_area">
                     <input type="text" class="g_text search_gs_name" id="searchRegGameServer" placeholder="게임명 또는 서버명을 입력해주세요." autocomplete="off" data-gameserver="true">
                   </div>
-                  <a href="javascript:fnSearchAdd();" title="자주 이용하는 게임을 나만의검색메뉴에 추가할 수 있습니다." class="favorite_icon">즐겨찾기</a>
+                  <a href="javascript:;" onclick="clearTextBox()" class="delete_btn"></a>
                   <button type="button" class="g_search_list" title="검색">
                     <span class="icon_search"></span>
                   </button>
                 </div>
                 <div class="g_search_frame g_hidden reg_gameserver" id="reg_gameserver">
-                  <div class="initial_screen">
-                    <div class="tab searchbar_tab">
-                      <div class="active">
-                        <a href="javascript:;" data-target="tab_lastsearch">최근검색게임</a>
-                      </div>
-                      <div>
-                        <a href="javascript:;" data-target="tab_mygame">나만의 게임</a>
-                      </div>
-                    </div>
-                    <div class="tab_content">
-                      <div class="tab_child show" data-content="tab_lastsearch">
-                        <ul class="last_search"></ul>
-                      </div>
-                      <div class="tab_child" data-content="tab_mygame">
-                        <ul class="g_my_search"></ul>
-                      </div>
-                    </div>
-                    <div class="popular_game" data-popular="true">
-                      <div class="popular_game_title">인기게임</div>
-                      <ul class="popular_list">
-                        <li data-pgame="2696">
-                          <em class="top_rank">1</em>로스트아크                                </li>
-                        <li data-pgame="138">
-                          <em class="top_rank">2</em>메이플스토리                                </li>
-                        <li data-pgame="4696">
-                          <em class="top_rank">3</em>오딘:발할라라이징                                </li>
-                        <li data-pgame="281">
-                          <em>4</em>던전앤파이터                                </li>
-                        <li data-pgame="546">
-                          <em>5</em>아이온                                </li>
-                        <li data-pgame="4741">
-                          <em>6</em>드래곤라자오리진                                </li>
-                        <li data-pgame="155">
-                          <em>7</em>마비노기                                </li>
-                        <li data-pgame="4322">
-                          <em>8</em>바람의나라:연                                </li>
-                        <li data-pgame="4714">
-                          <em>9</em>디아블로2:레저렉션                                </li>
-                        <li data-pgame="4922">
-                          <em>10</em>히트2                                </li>
+                  <div class="gs_list g_hidden" data-gslist="true" id="reg_gameserver_list">
+                    <div class="game" id="game_list">
+                      <ul>
+                        <th:block th:each="game:${searchGame}">
+                          <li th:value="${game.gameNum}" th:text="${game.gameName}"></li>
+                        </th:block>
                       </ul>
-                      <div class="new_game_title">신규게임</div>
-                      <ul class="popular_list">
-                        <li data-pgame="4938">
-                          <em class="new_game"></em>DK모바일디오리진                                    </li>
-                        <li data-pgame="5012">
-                          <em class="new_game"></em>에버소울                                    </li>
+                    </div>
+                    <div class="server" id="server_list">
+                      <ul>
+                        <th:block th:each="server:${searchServer}">
+                          <li th:value="${server.gameNum.gameNum}" th:text="${server.gameServerName}"></li>
+                        </th:block>
                       </ul>
                     </div>
                   </div>
-                  <div class="gs_list g_hidden" data-gslist="true" id="reg_gameserver_list"></div>
-                </div>
-              </div>
-              <div class="mygame">
-                <div class="th">
-                  나만의 검색메뉴
-                  <a href="javascript:;" class="btn_blue3" id="myLastList">최근 등록한 물품보기</a>
-                  <div class="g_msgbox blue" id="lastList" style="margin-top:10px">
-                    <div class="title">
-                      최근 등록한 물품
-                      <a href="javascript:;" class="close"></a>
-                    </div>
-                    <div class="cont">
-                      <table class="g_blue_table tb_list">
-                        <colgroup>
-                          <col width="100">
-                          <col width="130">
-                          <col>
-                          <col width="120">
-                          <col width="80">
-                        </colgroup>
-                        <thead>
-                        <tr>
-                          <th>등록일시</th>
-                          <th>게임 & 서버</th>
-                          <th>제목 & 수량</th>
-                          <th>판매금액</th>
-                          <th>200%보상</th>
-                        </tr>
-                        </thead>
-                        <tbody id="lastListTbody"></tbody>
-                      </table>
-                      <ul class="f_red1 sub_txt">
-                        <li>※ 최근 등록 물품은 7일 이내 등록했던 물품 중 최대 5개 까지 불러오기가 가능합니다. (흥정물품은 제외)</li>
-                        <li>※ 해당 표시된 정보로 등록정보를 불러오니, 등록정보 변동 시 체크 수정하시기 바랍니다.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="mygame_list">
-                  <ul id="mygame_info">
-                    <li class="empty">게임서버 검색 후 우측 ★표를 클릭하시면 해당물품이 나만의검색메뉴로 등록됩니다.</li>
-                  </ul>
                 </div>
               </div>
             </td>
@@ -185,12 +101,13 @@
               </div>
               <div id="game_money">
                 <input type="text" name="user_quantity" id="user_quantity" maxlength="7" class="g_text f_right">
-                <span class="unit"></span> 게임머니                        <span class="g_txtbtn first_btn" id="plus10" value="10">+10</span>
-                <span class="g_txtbtn" id="plus50" value="50">+50</span>
-                <span class="g_txtbtn" id="plus100" value="100">+100</span>
-                <span class="g_txtbtn" id="plus500" value="500">+500</span>
-                <span class="g_txtbtn" id="plus1000" value="1000">+1000</span>
-                <span class="g_txtbtn" id="initial" value="0">초기화</span>
+                <span class="unit"></span> 게임머니
+                <span class="g_txtbtn first_btn" id="plus10" value="10" onclick="increasesaleUnit(10)">+10</span>
+                <span class="g_txtbtn" id="plus50" value="50" onclick="increasesaleUnit(50)">+50</span>
+                <span class="g_txtbtn" id="plus100" value="100" onclick="increasesaleUnit(100)">+100</span>
+                <span class="g_txtbtn" id="plus500" value="500" onclick="increasesaleUnit(500)">+500</span>
+                <span class="g_txtbtn" id="plus1000" value="1000" onclick="increasesaleUnit(1000)">+1000</span>
+                <span class="g_txtbtn" id="initial" value="0" onclick="increasesaleUnit(0)">초기화</span>
               </div>
             </td>
           </tr>
@@ -207,8 +124,6 @@
           <tr>
             <th>캐릭터명</th>
             <td>
-              <div class="dfServer" id="dfServer">
-              </div>
               <div class="g_left">
                 <input type="text" class="g_text mode-active" name="user_character" maxlength="30" id="user_character"> 물품을 전달 하실 본인의 캐릭터명
                 <span id="sub_text" class="f_red1"></span>
@@ -267,30 +182,7 @@
                 <label><input type="radio" class="g_radio" name="text_select" value="0" checked>기본문구</label>
                 <label><input type="radio" class="g_radio" name="text_select" value="1">직접입력</label>
               </div>
-              <a href="javascript:;" class="wideview" id="wideview">펼쳐보기▼</a>
               <textarea id="user_text" name="user_text" class="txtarea w100" placeholder="휴대폰번호, 메신저(카톡) ID 및 거래와 무관한 내용 기재 시 물품은 삭제되며, 서비스 이용에 제재를 받게 됩니다." readonly>게임머니 팝니다.</textarea>
-            </td>
-          </tr>
-          <!-- 물품등록 알리미 -->
-          <tr id="alarm_line">
-            <th><span class="new">N</span>물품알리미 키워드등록</th>
-            <td>
-              <span class="f_small">아래 입력란에 키워드 등록을 하시면, <br>해당 키워드로 알림등록 신청을 해놓은 회원에게 알림이 되어 더욱 빠른 캐릭터 거래가 진행될 수 있습니다.</span>
-              <input type="text" id="tag_generator" name="noti_keyword" maxlength="5">
-              <span class="alarm_notice">(한글기준 최소 2글자, 최대 5글자 까지 입력가능)</span>
-              <span class="character_use_info"><a href="javascript:_window.open('premium_guide','/sell/goods_alarm_guide.html',875, 630);" class="btn_white1">이용안내</a></span>
-              <div class="tag_wrapper">
-                <h4 class="f_red1">※현재 해당 서버에 등록된 알림 키워드 <span>(클릭 시 자동으로 입력됩니다)</span></h4>
-                <div class="tag_list">
-                </div>
-              </div>
-              <div class="alarm_ballon">
-                <span class="close_btn" onclick="this.parentNode.style.display = 'none';"></span>
-                물품등록알리미를
-                <br>
-                적용해보세요!
-              </div>
-
             </td>
           </tr>
         </table>
@@ -313,92 +205,13 @@
               <div class="charge_price">(이용료 :
                 <strong> 100원 </strong> / 1시간)
               </div>
-              <select id="user_premium_time" name="user_premium_time">
+              <select id="user_premium_time" name="user_premium_time" onchange="calculateMileage()">
                 <option value="">미설정</option>
                 <option value="1">1시간</option><option value="2">2시간</option><option value="3">3시간</option><option value="4">4시간</option><option value="5">5시간</option><option value="6">6시간</option><option value="7">7시간</option><option value="8">8시간</option><option value="9">9시간</option><option value="10">10시간</option><option value="11">11시간</option><option value="12">12시간</option><option value="13">13시간</option><option value="14">14시간</option><option value="15">15시간</option><option value="16">16시간</option><option value="17">17시간</option><option value="18">18시간</option><option value="19">19시간</option><option value="20">20시간</option><option value="21">21시간</option><option value="22">22시간</option><option value="23">23시간</option><option value="24">24시간</option>                        </select>
               <div class="sub_txt">
                 프리미엄 잔여시간이 많을수록<br>물품리스트 상단에 노출됩니다.
               </div>
-              <a class="free_view" href="javascript:_window.open('FREE_REMAINDER_LIST','/myroom/coupon/free_remainder_list.html?free_use_item=premium',440,450)">무료이용권 보기 ></a>
-            </dd>
-          </dl>
-          <dl>
-            <dt>물품강조</dt>
-            <dd>
-              <div class="charge_price">(이용료 :
-                <strong> 100원 </strong> / 12시간)
-              </div>
-              <div class="goods_emphasis">
-                <label for="user_icon_use" class="f_bold">굵은체</label>
-                <select name="user_icon_use" id="user_icon_use">
-                  <option value="">미설정</option>
-                  <option value="12">12시간</option><option value="24">24시간</option><option value="36">36시간</option><option value="48">48시간</option><option value="60">60시간</option><option value="72">72시간</option>                            </select>
-                <div class="g_msgbox blue" id="premium_layer" style="right: 150px">
-                  <div class="cont">
-                    ※ 유료등록 서비스는 선불로 부과되며 거래성사여부, 취소여부, 삭제여부, 이용정지여부 등과<br>
-                    관계 없이 환불, 취소, 교환, 반환 등이 되지 않으니 신중하게 구매해 주시기 바랍니다.
-                  </div>
-                  <div class="btn">
-                    <a href="javascript:;" id="premium_close" class="close btn_blue4">확인</a>
-                  </div>
-                </div>
-              </div>
-              <div  class="goods_emphasis">
-                <label for="user_bluepen_use" class="f_blue1">파란펜</label>
-                <select name="user_bluepen_use" id="user_bluepen_use">
-                  <option value="">미설정</option>
-                  <option value="12">12시간</option><option value="24">24시간</option><option value="36">36시간</option><option value="48">48시간</option><option value="60">60시간</option><option value="72">72시간</option>                            </select>
-              </div>
-              <div class="exp">
-                적용 시 : 예)
-                <span id="charge_apply">게임머니 팝니다.</span>
-              </div>
-              <a class="free_view" href="javascript:_window.open('FREE_REMAINDER_LIST','/myroom/coupon/free_remainder_list.html?free_use_item=highlight',440,450)">무료이용권 보기 ></a>
-            </dd>
-          </dl>
-          <dl>
-            <dt><span class="new">N</span>퀵아이콘</dt>
-            <dd>
-              <div class="charge_price">(이용료 :
-                <strong> 100원 </strong> / 1시간)
-              </div>
-              <select id="user_quickicon_use" name="user_quickicon_use">
-                <option value="">미설정</option>
-                <option value="1">1시간</option><option value="2">2시간</option><option value="3">3시간</option><option value="4">4시간</option><option value="5">5시간</option><option value="6">6시간</option><option value="7">7시간</option><option value="8">8시간</option><option value="9">9시간</option><option value="10">10시간</option><option value="11">11시간</option><option value="12">12시간</option><option value="13">13시간</option><option value="14">14시간</option><option value="15">15시간</option><option value="16">16시간</option><option value="17">17시간</option><option value="18">18시간</option><option value="19">19시간</option><option value="20">20시간</option><option value="21">21시간</option><option value="22">22시간</option><option value="23">23시간</option><option value="24">24시간</option>                        </select>
-              <div class="sub_txt">
-                물품리스트에 빠른거래<br /> 아이콘이 노출됩니다.
-              </div>
-              <a class="free_view" href="javascript:_window.open('FREE_REMAINDER_LIST','/myroom/coupon/free_remainder_list.html?free_use_item=quickicon',440,450)">무료이용권 보기 ></a>
-            </dd>
-          </dl>
-          <dl>
-            <dt>자동재등록</dt>
-            <dd>
-              <div class="charge_price">(이용료 :
-                <strong> 100원 </strong> / 3회)
-              </div>
-              <div>
-                <label for="rereg_count" class="f_black4 f_bold">재등록횟수</label>
-                <select name="rereg_count" id="rereg_count">
-                  <option value="">미설정</option>
-                  <option value="3">3회</option>
-                  <option value="6">6회</option>
-                  <option value="9">9회</option>
-                </select>
-              </div>
-              <div>
-                <label for="rereg_time" class="f_black4 f_bold">재등록시간</label>
-                <select id="rereg_time" name="rereg_time">
-                  <option value="5">5분</option>
-                  <option value="10">10분</option>
-                </select>
-              </div>
-              <div class="exp">
-                적용 시 : 예)
-                <span id="minute">0분</span> 간격으로
-                <span id="rereg_cnt">0회</span> 재등록
-              </div>
-              <a class="free_view" href="javascript:alert('죄송합니다.\n서비스 준비중입니다.')">무료이용권 보기 ></a>
+              <div th:insert="/fragment/chargeModal"/>
             </dd>
           </dl>
           <div class="total_charge">
@@ -410,18 +223,6 @@
             </div>
           </div>
         </div>
-        <style>
-          .SafetyNumber_plus {display:none;}
-        </style>
-        <!-- ▼ 연락처 중복 //-->
-        <input type="hidden" name="user_id" id="user_id" value="ekqls856">
-        <input type="hidden" name="user_contactA" id="user_contactA" value="N">
-        <input type="hidden" name="user_contactB" id="user_contactB" value="">
-        <input type="hidden" name="user_contactC" id="user_contactC" value="">
-        <input type="hidden" name="slctMobile_type" id="slctMobile_type" value="2">
-        <input type="hidden" name="user_mobileA" id="user_mobileA" value="010">
-        <input type="hidden" name="user_mobileB" id="user_mobileB" value="4876">
-        <input type="hidden" name="user_mobileC" id="user_mobileC" value="4064"><!-- ▲ 연락처 중복 //-->
 
         <div class="g_subtitle">내 거래정보</div>
         <table class="g_blue_table private_area">
@@ -431,120 +232,21 @@
           </colgroup>
           <tr>
             <th>이름</th>
-            <td>함다빈</td>
+            <td th:text="${userInfo.userRealName}"></td>
           </tr>
           <tr>
             <th>연락처</th>
-            <td>
-                <span id="spnUserPhone">
-                자택번호 없음                </span>
-              ( <label><input type="checkbox" class="g_checkbox" name="user_cell_check" id="chk_user_cell_check" value="on" checked> 자택번호안내</label> ) /
-              <span id="spnUserCell">010-4876-4064</span>
+            <td >
+              <span id="spnUserCell" th:text="${userInfo.userPhoneNumber}"></span>
               <a href="javascript:_window.open('private_edit', '/user/contact_edit.html?check=true', 496, 350);" class="btn_white1 after">연락처 수정</a>
             </td>
           </tr>
-          <tr class="SafetyNumber">
-            <th>안심번호</th>
-            <td>
-              개인정보보호 및 사고예방을 위해<br> 고객님의 휴대폰으로 거래 시 0508로 시작하는 무료안심번호가 휴대폰으로 부여되어 상대방에게 안내됩니다.
-              <div class="safe_area">
-                <a href="javascript:;" class="guide_txt" id="safe_guide">안심번호란?</a>
-                <div class="g_msgbox blue" id="safe_layer">
-                  <div class="title">
-                    안심번호란?
-                    <a href="javascript:;" class="close"></a>
-                  </div>
-                  <div class="cont">
-                    고객님의 개인정보 보호를 위해 휴대폰번호에 안심번호를 부여하여 실제 휴대폰번호 대신<br> 가상의 안심번호를 상대 거래자에게 노출시켜주는 무료 서비스 입니다.
-                    <ul class="f_red1">
-                      <strong>안심번호 서비스 사용 시 주의사항</strong><br> 1) 부여받은 안심번호로도 문자 수신이 가능합니다.(발신시에는 부여받은 안심번호 사용)<br> 2) 상대거래자가 안심번호 서비스를 사용하지 않는 상태에서 발신한 경우 실제 번호가 표시됩니다.<br> 3) 부여 받은 안심번호는 거래가 종료되는 시점에 자동 회수되며, 회수된 이후에는 연락이 불가능합니다.<br> 4) 안심번호 사용 후 48시간을 초과하거나 거래종료 후 문제발생 시 실제 전화번호가 노출됩니다.
-                    </ul>
-                  </div>
-                  <div class="btn">
-                    <a href="/guide/add/security_number.html" class="btn_blue4">안심번호 이용안내 ></a>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="SafetyNumber_plus">
-            <th>안심번호 플러스</th>
-            <td>
-              개인정보보호 및 사고예방을 위해<br> 고객님의 휴대폰으로 거래 시 02-1234-1234 형태의 번호가 부과되어 상대방에게 안내됩니다.
-              <div class="safe_area">
-                <a href="javascript:;" class="guide_txt" id="safe_plus_guide">안심번호 플러스란?</a>
-                <div class="g_msgbox blue" id="safe_plus_layer">
-                  <div class="title">
-                    안심번호 플러스란?
-                    <a href="javascript:;" class="close"></a>
-                  </div>
-                  <div class="cont">
-                    고객님의 개인정보 보호를 위해 휴대폰번호에 안심번호를 부여하여 실제 휴대폰번호 대신<br> 가상의 안심번호를 상대 거래자에게 노출시켜주는 무료 서비스 입니다.
-                    <ul class="f_red1">
-                      <strong>안심번호 플러스 사용 시 주의사항</strong><br> 1) 부여받은 안심번호로 통화 시 수신자에게 10초에 20원의 이용료가 부과됩니다.<br> 2) 안심번호 플러스로 문자 수신은 불가능합니다.<br> 3) 부여 받은 안심번호 플러스는 거래가 종료되는 시점에 자동 회수되며, 회수된 이후에는 연락이 불가능합니다.<br> 4) 가상 번호 사용 후 24시간을 초과하거나 거래종료 후 문제발생 시 실제 전화번호가 노출됩니다.
-                    </ul>
-                  </div>
-                  <div class="btn">
-                    <a href="/guide/add/security_number_plus.html" class="btn_blue4"> 이용안내 ></a>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <th>거래알림</th>
-            <td>
-              <label><input type="checkbox" name="user_sms" id="user_sms" value="1" class="g_checkbox" checked >SMS 수신 동의</label>
-              <label><input type="checkbox" name="user_push" id="user_push" value="1" class="g_checkbox" >모바일앱 거래관련 PUSH 알림</label><br>
-              <a href="javascript:_window.open('push_guide', '/sell/guide/apppush.html', 650, 1000)" class="guide_txt">앱 PUSH알림이란?</a>
-            </td>
-          </tr>
-
-          <tr>
-            <th>우수인증</th>
-            <td>
-              <div class="excellent_txt">
-                우수인증 회원이 아닙니다.                </div>
-              <ul class="excellent">
-                <li class="cert_state on">휴대폰</li>
-                <li class="cert_state">이메일</li>
-                <li class="cert_state">출금계좌</li>
-              </ul>
-              <a href="javascript:_window.open('excellent_guide','/popup/excellent_guide.html',520, 440);" class="guide_txt">우수인증회원이란?</a>
-            </td>
-          </tr>
         </table>
-
-        <script>
-          window.onload = function(){
-
-            if(document.getElementById('safe_guide') !== null) {
-              LayerControl({
-                el: document.getElementById('safe_guide'),
-                layer: document.getElementById('safe_layer'),
-                close_btn : document.getElementById('safe_layer').querySelector('.close'),
-                mask: false,
-                type: 'style'
-              });
-            }
-
-            if(document.getElementById('safe_plus_guide') !== null){
-              LayerControl({
-                el: document.getElementById('safe_plus_guide'),
-                layer: document.getElementById('safe_plus_layer'),
-                close_btn : document.getElementById('safe_plus_layer').querySelector('.close'),
-                mask: false,
-                type: 'style'
-              });
-            }
-          };
-        </script>                        <div class="g_btn_wrap">
-        <button type="submit" href="javascript:;" class="sell_reg" id="ok_btn">판매 등록</button>
+      <div class="g_btn_wrap">
+        <button type="submit" href="javascript:;" class="sell_reg" id="ok_btn" onclick="writePost()">판매 등록</button>
         <a href="/index.html" class="cancel_reg">등록 취소</a>
       </div>
       </form>
-      <div class="qntKorean" id="qntKorean"></div>
     </div>
     <div id="dvPremium" class="g_layer premium_info">
       <div class="inner">
@@ -612,28 +314,126 @@
     </div>
     <div class="g_finish"></div>
   </div>
+</div>
   <div th:replace="fragment/footer"></div>
-<script type="text/javascript" src="/_js/_jquery3.js?v=190220"></script>
-<script type="text/javascript" src="/_js/_comm.min.js?v=23011110"></script>
-<script type="text/javascript" src="/_js/_gs_control_200924.min.js?v=21101416"></script>
-<script type="text/javascript" src="/_js/_common_initialize_new.min.js?v=21110910"></script>
-<script type="text/javascript" src="js/index.js?v=220921"></script>
-<script type='text/javascript'>
+<script th:inline="javascript">
+  function writePost()
+  {
+    const BoardSaleInsertRequest =
+            {
+              boardTitle:$("#user_title").val(),
+              userNum:[[${userInfo}]].userNum,
+              saleUnit:$("#user_quantity").val(),
+              salePrice:$("#user_price").val(),
+              serverName:$("#searchRegGameServer").val(),
+              saleNickName:$("#user_character").val(),
+              saleAria:$("#user_text").val(),
+              salePremium:false
+            }
 
-  var rgCtrRegGameUnit = new Array();
+    console.log(BoardSaleInsertRequest)
 
-  var g_compensation='N';
-  e_select.sale = 'general';
-  function __init() {
-
+    $.ajax(
+            {
+              url:'/board/buy/insert',
+              type:'post',
+              data:JSON.stringify(BoardSaleInsertRequest),
+              dataType:'JSON',
+              contentType:'application/json',
+              success:function (data)
+              {
+                alert("글 등록에 성공했다")
+                console.log(data)
+                window.location.replace("/");
+              },
+              fail:function (failed)
+              {
+                console.log("글 작성 실패")
+                console.log(failed)
+              },
+              error:function (err)
+              {
+                console.log("에러 발생")
+                console.log(err)
+              }
+            })
   }
 </script>
+<script>
+  function increasesaleUnit(unit)
+  {
+    let gamemoney = Number($("#user_quantity").val());
 
-<script type="text/javascript">
-  var gsVersion = '2301200922';
-  var _LOGINCHECK = '1';
-  _initialize();
+    $("#user_quantity").val(gamemoney + Number(unit));
+
+    if(unit == 0)
+      $("#user_quantity").val("");
+  }
 </script>
-<script type="text/javascript" src="/advertise/advertise_code.js?v=230119"></script>
+<script th:inline="javascript">
+  function calculateMileage()
+  {
+    $("#total_charge_money").text($("#user_premium_time").val() * 100)
+
+    if(0 <= $("#total_charge_money").text())
+      $('#showModalBtn').show();
+
+    else
+      $('#showModalBtn').hide();
+  }
+</script>
+<script>
+  $("#reg_gameserver_list").hide();
+  $(document).ready(function () {
+
+
+    // 게임, 서버리스트 클릭시  g_search_frame가 사라지지 않게 해야함
+    $(function (){
+      $("#searchRegGameServer ").click(function () {
+        /*검색바 클릭시 게임,서버리스트 표시*/
+        $("#reg_gameserver_list").show();
+      })
+      $("#search_wrap").mouseleave(function ()
+      {
+        /*검색바 제외 클릭시 게임,서버리스트 숨김*/
+        $("#reg_gameserver_list").hide();
+      })
+    })
+  })
+
+  $("#game_list>ul>li,#server_list>ul>li").click(function () {
+    $("#searchRegGameServer").val($(this).text());
+    console.log("클릭" + $(this).text());
+    $("#reg_gameserver_list").hide();
+  })
+
+  function searchbarSubmit() {
+    /*검색 전 예외처리*/
+    //form태그 아이디 받기
+    var formId = document.getElementById("g_searchbar_form");
+
+    // 받은 formId에 속해있는  value추출
+    var st = formId.querySelector('[name="deal"]:checked').value;
+    var sGameServer = formId.querySelector('[name="searchGameServer"]').value;
+    console.log("form 태그 이동" + st + "&" + sGameServer)
+    console.log(st + "-" + sGameServer.trim());
+
+    if (sGameServer.trim() == '') {
+      alert("데이터를 입력해주세요")
+      return false
+
+      for (const sGameServerKey in sGameServer) {
+
+      }
+    }
+    //검색시 링크에 deal=sale   deal=buy 값 파라미터로 넣어서 보내줘야함
+  }
+</script>
+<script>
+  function clearTextBox()
+  {
+    $("#searchRegGameServer").val("");
+  }
+</script>
 </body>
 </html>

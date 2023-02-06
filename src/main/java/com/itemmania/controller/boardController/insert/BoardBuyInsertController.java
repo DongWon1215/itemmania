@@ -51,8 +51,6 @@ public class BoardBuyInsertController {
             Model model,
             HttpServletRequest request
             ){
-        log.info("board test 진행중... ");
-        model.addAttribute("gameServer",boardInsertService.getGameServer());
 
         HttpSession session = request.getSession();
         log.info("request>>>>>>>>>>>>>>>>>>>>>>>>."+request);
@@ -76,7 +74,7 @@ public class BoardBuyInsertController {
     @PostMapping
     @ResponseBody
     public JSONObject getInsertForm(
-            @RequestBody BoardBuyInsertRequest boardInsertRequest
+                @RequestBody BoardBuyInsertRequest boardInsertRequest
     ){
 
         log.info(">>>>>>>>>>>" + boardInsertRequest);
