@@ -13,6 +13,8 @@ public interface GameServerEntityRepository extends JpaRepository<GameServerEnti
 
     List<GameServerEntity> findAllBy();
 
+    GameServerEntity findByGameServerName(String gameServerName);
+
 
     // 게임 출력 (검색시 사용)
 //    List<GameServerEntity> findByGameServerNum(int serverNum);

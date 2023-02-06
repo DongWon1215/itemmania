@@ -41,7 +41,4 @@ public class MileageEntity {
 
     @Column
     private int mileageOut;
-
-    @Column
-    private int mileageHistory;
 }

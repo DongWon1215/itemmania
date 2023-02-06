@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../../image/favicon/hb.ico">
@@ -11,11 +11,9 @@
 
 <link type="text/css" rel="stylesheet" href="/css/board/insertBuy.css">
 
-
-<body>
-<div id="g_SLEEP" class="g_sleep g_hidden">
-    <div id="g_OVERLAY" class="g_overlay"></div>
-</div>
+<!--<div id="g_SLEEP" class="g_sleep g_hidden">-->
+<!--    <div id="g_OVERLAY" class="g_overlay"></div>-->
+<!--</div>-->
 
 <div class="g_body" id="g_BODY">
 
@@ -36,7 +34,6 @@
                 </ul>
             </div>
             <div style="margin-top:15px;text-align:center;">
-                <script src="https://compass.adop.cc/assets/js/adop/adopJ.js?v=14"></script>
             </div>
         </div><!--//.aside-->
 
@@ -50,13 +47,6 @@
                 </ul>
             </div>
 
-
-            <form name="frmBuy" id="frmBuy" method="post" enctype="multipart/form-data">
-                <input type="hidden" th:name="${myInfo.userNum}">
-                <input type="hidden" name="">
-                <input type="hidden" name="">
-                <input type="hidden" name="">
-
                 <div class="g_subtitle first">물품정보</div>
                 <table class="g_green_table">
                     <colgroup>
@@ -67,37 +57,34 @@
                         <th>카테고리</th>
                         <td>
                             <div class="g_search_wrapper">
-                                <div class="search_wrap">
+                                <div class="search_wrap" id="search_wrap">
                                     <div class="input_area">
 <!--                                        <input type="text" class="g_text search_gs_name" id="searchRegGameServer" placeholder="게임명 또는 서버명을 입력해주세요." autocomplete="off">-->
                                         <input type="text" class="g_text search_gs_name" id="searchRegGameServer" name="serverName" placeholder="서버명을 입력해주세요." autocomplete="off">
                                         <!-- autocomplete :사용자가 이전에 입력했던 값들을 기반으로 사용자가 입력한 값과 비슷한 값들을 드롭다운 옵션으로 보여줍니다. -->
-                                    </div><!--//.input_area-->
-
-                                    <button type="button" class="g_search_list" title="검색">
-                                        <span class="icon_search"></span>
-                                    </button>
-                                </div><!--//.search_wrap-->
-
-<!---->
-                                <div class="g_search_frame g_hidden reg_gameserver" id="reg_gameserver">
-                                    <div class="gs_list gs_selection" data-gslist="true" id="reg_gameserver_list">
-                                        <div class="game">
-                                            <ul th:each="gameServer:${gameServer}">
-                                                <li>
-                                                    <span type="text" th:text="${gameServer.gameNum.gameName}"/>
-                                                    <span type="text" th:text="${gameServer.gameNum.gameCurrency}"/>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="server"></div>
+                                        <a href="javascript:;" onclick="clearTextBox()" class="delete_btn"></a>
                                     </div>
-                                </div><!--//.reg_gameserver-->
 
-                                <!---->
-
-
-                            </div><!--//.g_search_wrapper-->
+                                    <div class="g_search_frame reg_gameserver" id="reg_gameserver">
+                                        <div class="gs_list gs_selection" data-gslist="true" id="reg_gameserver_list">
+                                            <div class="game" id="game_list">
+                                                <ul>
+                                                    <th:block th:each="game:${searchGame}">
+                                                        <li th:value="${game.gameNum}" th:text="${game.gameName}"></li>
+                                                    </th:block>
+                                                </ul>
+                                            </div>
+                                            <div class="server" id="server_list">
+                                                <ul>
+                                                    <th:block th:each="server:${searchServer}">
+                                                        <li th:value="${server.gameNum.gameNum}" th:text="${server.gameServerName}"></li>
+                                                    </th:block>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--//.reg_gameserver-->
                         </td>
                     </tr>
                     <tbody id="d_template">
@@ -117,12 +104,12 @@
                                 <span class="unit"></span> 게임머니
 
 
-                                <span class="g_txtbtn first_btn" id="plus10" value="10">+10</span>
-                                <span class="g_txtbtn" id="plus50" value="50">+50</span>
-                                <span class="g_txtbtn" id="plus100" value="100">+100</span>
-                                <span class="g_txtbtn" id="plus500" value="500">+500</span>
-                                <span class="g_txtbtn" id="plus1000" value="1000">+1000</span>
-                                <span class="g_txtbtn" id="initial" value="0">초기화</span>
+                                <span class="g_txtbtn first_btn" id="plus10" value="10" onclick="increasesaleUnit(10)">+10</span>
+                                <span class="g_txtbtn" id="plus50" value="50" onclick="increasesaleUnit(50)">+50</span>
+                                <span class="g_txtbtn" id="plus100" value="100" onclick="increasesaleUnit(100)">+100</span>
+                                <span class="g_txtbtn" id="plus500" value="500" onclick="increasesaleUnit(500)">+500</span>
+                                <span class="g_txtbtn" id="plus1000" value="1000" onclick="increasesaleUnit(1000)">+1000</span>
+                                <span class="g_txtbtn" id="initial" value="0" onclick="increasesaleUnit(0)">초기화</span>
                             </div>
                         </td>
                     </tr>
@@ -187,11 +174,10 @@
                     <dl>
                         <dt>프리미엄등록</dt>
                         <dd>
-<!--                            <div th:insert="/fragment/chargeModal"/>-->
                            <div class="charge_price">(이용료 :
                                 <strong> 100원 </strong> / 1시간)
                             </div>
-                            <select id="user_premium_time" name="user_premium_time">
+                            <select id="user_premium_time" name="user_premium_time" onchange="calculateMileage()">
                                 <option value="">미설정</option>
                                 <option value="1">1시간</option>
                                 <option value="2">2시간</option>
@@ -223,9 +209,19 @@
                             </div>-->
                         </dd>
                     </dl>
-
-
                 </div>
+                <div class="total_charge">
+                    <strong class="total_label" >총 결제금액 : </strong>
+                    <strong class="total_charge_money f_red1"><span id="total_charge_money">0</span>원</strong>
+                    <div>
+                        (내 사용가능한 마일리지 :
+                        <strong id="txtCurrentMileage" class="f_red1">0</strong>)
+                        <!--                        마일리지 값 출력하는 방법 찾기 전까진 주석으로 처리-->
+<!--                        <strong id="txtCurrentMileage" class="f_red1" th:text="${myInfo.userMileage}"></strong>)-->
+                    </div>
+                </div>
+
+                    <div th:insert="/fragment/chargeModal"/>
 
                 <div class="g_subtitle">내 거래정보</div>
                 <table class="g_green_table private_area">
@@ -240,15 +236,15 @@
                     <tr>
                         <th>연락처</th>
                         <td>
-                <span id="spnUserPhone">
-                자택번호 없음
-                </span>
-                            (
-                            <label>
-                                <input type="checkbox" class="g_checkbox" name="user_cell_check"
-                                       id="chk_user_cell_check" value="on" checked> 자택번호안내
-                            </label>
-                            ) /
+<!--                <span id="spnUserPhone">-->
+<!--                자택번호 없음-->
+<!--                </span>-->
+<!--                            (-->
+<!--                            <label>-->
+<!--                                <input type="checkbox" class="g_checkbox" name="user_cell_check"-->
+<!--                                       id="chk_user_cell_check" value="on" checked> 자택번호안내-->
+<!--                            </label>-->
+<!--                            ) /-->
                             <span id="spnUserCell" th:text="${myInfo.userPhoneNumber}"></span>
 <!--                            <a href="javascript:_window.open('private_edit', '/user/contact_edit.html', 496, 350);"-->
 <!--                               class="btn_white1 after">연락처 수정</a>-->
@@ -257,13 +253,10 @@
                 </table>
 
                 <div class="g_btn_wrap">
-                    <button type="submit" href="javascript:;" class="buy_reg" id="ok_btn">구매 등록</button>
+                    <button type="submit" class="buy_reg" id="ok_btn" onclick="writePost()">구매 등록</button>
                     <a href="/" class="cancel_reg">등록 취소</a>
                 </div>
-
-
             </form>
-
 
             <div class="qntKorean" id="qntKorean"></div>
         </div>
@@ -327,19 +320,127 @@
                 </div>
             </div>
         </div>
-        <div id="dvPopup" class="g_layer green reg_info">
-            <div class="inner">
-                <div class="title">
-                    물품등록정보
-                    <a href="javascript:;" class="close_w"></a>
-                </div>
-                <div class="cont">
-                </div>
-            </div>
-        </div>
-        <div class="g_finish"></div>
-    </div>//.g_container
-</div>
+    </div>
+</div><!--//.g_search_wrapper-->
 <div th:replace="fragment/footer"/>
+<script th:inline="javascript">
+function writePost()
+{
+    const BoardBuyInsertRequest =
+    {
+        boardTitle:$("#user_title").val(),
+        userNum:[[${myInfo}]].userNum,
+        saleUnit:$("#user_quantity").val(),
+        salePrice:$("#user_price").val(),
+        serverName:$("#searchRegGameServer").val(),
+        saleNickName:$("#user_character").val(),
+        saleAria:$("#user_text").val(),
+        salePremium:false
+    }
+
+    console.log(BoardBuyInsertRequest)
+
+    $.ajax(
+        {
+        url:'/board/buy/insert',
+            type:'post',
+            data:JSON.stringify(BoardBuyInsertRequest),
+            dataType:'JSON',
+            contentType:'application/json',
+            success:function (data)
+            {
+                alert("글 등록에 성공했다")
+                console.log(data)
+                window.location.replace("/");
+            },
+            fail:function (failed)
+            {
+                console.log("글 작성 실패")
+                console.log(failed)
+            },
+            error:function (err)
+            {
+                console.log("에러 발생")
+                console.log(err)
+            }
+    })
+}
+</script>
+<script>
+    function increasesaleUnit(unit)
+    {
+        let gamemoney = Number($("#user_quantity").val());
+
+        $("#user_quantity").val(gamemoney + Number(unit));
+
+        if(unit == 0)
+            $("#user_quantity").val("");
+    }
+</script>
+<script th:inline="javascript">
+    function calculateMileage()
+    {
+        $("#total_charge_money").text($("#user_premium_time").val() * 100)
+
+        if(0 <= $("#total_charge_money").text())
+            $('#showModalBtn').show();
+
+        else
+            $('#showModalBtn').hide();
+    }
+</script>
+<script>
+        $("#reg_gameserver").hide();
+    $(document).ready(function () {
+
+
+        // 게임, 서버리스트 클릭시  g_search_frame가 사라지지 않게 해야함
+        $(function (){
+        $("#searchRegGameServer ").click(function () {
+            /*검색바 클릭시 게임,서버리스트 표시*/
+            $("#reg_gameserver").show();
+        })
+        $("#search_wrap").mouseleave(function ()
+        {
+            /*검색바 제외 클릭시 게임,서버리스트 숨김*/
+                $("#reg_gameserver").hide();
+        })
+        })
+    })
+
+        $("#game_list>ul>li,#server_list>ul>li").click(function () {
+            $("#searchRegGameServer").val($(this).text());
+            console.log("클릭" + $(this).text());
+            $("#reg_gameserver").hide();
+        })
+
+    function searchbarSubmit() {
+        /*검색 전 예외처리*/
+        //form태그 아이디 받기
+        var formId = document.getElementById("g_searchbar_form");
+
+        // 받은 formId에 속해있는  value추출
+        var st = formId.querySelector('[name="deal"]:checked').value;
+        var sGameServer = formId.querySelector('[name="searchGameServer"]').value;
+        console.log("form 태그 이동" + st + "&" + sGameServer)
+        console.log(st + "-" + sGameServer.trim());
+
+        if (sGameServer.trim() == '') {
+            alert("데이터를 입력해주세요")
+            return false
+
+            for (const sGameServerKey in sGameServer) {
+
+            }
+        }
+        //검색시 링크에 deal=sale   deal=buy 값 파라미터로 넣어서 보내줘야함
+    }
+</script>
+<script>
+    function clearTextBox()
+    {
+        $("#searchRegGameServer").val("");
+    }
+</script>
 </body>
 </html>

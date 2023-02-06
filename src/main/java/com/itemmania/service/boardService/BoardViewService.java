@@ -17,7 +17,4 @@ public class BoardViewService {
         return boardRepository.findById(boardNum).get();
     }
 
-
-
-
 }

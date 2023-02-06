@@ -70,7 +70,6 @@ public class BoardInsertService {
             saveDir = new File(absolutePath,path); // saveDir:저장하는 경로
 
 
-
             // == 폴더가 존재하지 않으면 생성
             if (!saveDir.exists()){  // 디렉토리가 존재하면 : true , 없으면 : false
                 saveDir.mkdirs();
