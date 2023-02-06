@@ -69,18 +69,16 @@
 .opt_list > .active{color:#1D1D1D }
 .opt_list > li:before{display:inline-block;width:10px;height:9px;margin:-2px 3px 0 0;content:"";vertical-align:middle;}
 .opt_list > .active:before{background:url(//img2.itemmania.com/new_images/sell/sp_list.png?211103) no-repeat -194px -104px;}
-.search_list_all > .search_list > li > .col_01{width:120px;}
-.search_list_all > .search_list > li > .col_02{width:480px;}
 .search_list{display:table;table-layout:fixed;clear:both;width:100%;}
 .search_list > li{display:table-row;}
 .search_list > li > div{position:relative;display:table-cell;box-sizing:border-box;height:60px;border-bottom:1px solid #E3E3E3;text-align:center;vertical-align:middle;line-height:22px;}
 .search_list > .empty > div{width:1080px }
 .search_list > li > .mulline{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
-.search_list > li > .col_01{width:80px;}
-.search_list > li > .col_02{width:520px;}
-.search_list > li > .col_03{width:140px;color:#767676;}
-.search_list > li > .col_04{width:270px;}
-.search_list > li > .col_05{width:70px;color:#767676;}
+.search_list > li > .col_01{width:150px;}
+.search_list > li > .col_02{width:150px;}
+.search_list > li > .col_03{width:540px;}
+.search_list > li > .col_04{width:140px;color:#767676;}
+.search_list > li > .col_05{width:100px;color:#767676;}
 .list_head > li > div{position:relative;box-sizing:border-box;height:40px;border-top:1px solid #BEBEBE;border-bottom:1px solid #BEBEBE;background-color:#E3E3E3;text-align:center;line-height:38px;color:#1D1D1D !important;}
 .list_head > li > .col_02{text-align:center;}
 .search_list > li:hover{background-color:#E3F4FE;}
