@@ -2,9 +2,12 @@ package com.itemmania.controller.boardController.insert;
 
 
 import com.itemmania.domain.board.BoardSaleInsertRequest;
+import com.itemmania.entity.BoardEntity;
 import com.itemmania.entity.UserEntity;
+import com.itemmania.repository.BoardRepository;
 import com.itemmania.service.boardService.BoardInsertService;
 import com.itemmania.service.boardService.Search.BoardGameSearchService;
+import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +22,20 @@ import javax.servlet.http.HttpSession;
 @Log4j2
 @RequestMapping("/board/sale/insert")
 public class BoardSaleInsertController {
+    @Autowired
+    private BoardRepository boardRepository;
 
     @Autowired
     private BoardGameSearchService getGameServerService;
+
+    @Autowired
+    private BoardInsertService boardInsertService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private BoardGameSearchService gameSearchService;
 
     @GetMapping
     public String getBoard(
@@ -54,8 +68,14 @@ public class BoardSaleInsertController {
     public JSONObject insertBoard(@RequestBody BoardSaleInsertRequest boardSaleInsertRequest)
     {
 
-        JSONObject json = new JSONObject();
+        BoardEntity board = boardSaleInsertRequest.insertBoard();
 
+        boardInsertService.insertBoard(board);
+        board.setUserNum(userService.findUserByuserNum(boardSaleInsertRequest.getUserNum()).get());
+        board.setServerNum(gameSearchService.getServerEntity(boardSaleInsertRequest.getServerName()));
+
+        JSONObject json = new JSONObject();
+        json.put("board",board);
 
         return json;
     }

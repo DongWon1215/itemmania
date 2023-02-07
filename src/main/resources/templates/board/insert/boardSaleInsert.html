@@ -60,8 +60,8 @@
                     <span class="icon_search"></span>
                   </button>
                 </div>
-                <div class="g_search_frame g_hidden reg_gameserver" id="reg_gameserver">
-                  <div class="gs_list g_hidden" data-gslist="true" id="reg_gameserver_list">
+                <div class="g_search_frame reg_gameserver" id="reg_gameserver">
+                  <div class="gs_list" data-gslist="true" id="reg_gameserver_list">
                     <div class="game" id="game_list">
                       <ul>
                         <th:block th:each="game:${searchGame}">
@@ -426,7 +426,7 @@
   }
 </script>
 <script>
-  $("#reg_gameserver_list").hide();
+  $("#reg_gameserver").hide();
   $(document).ready(function () {
 
     $(".split_sale").hide();
@@ -435,12 +435,12 @@
     $(function (){
       $("#searchRegGameServer ").click(function () {
         /*검색바 클릭시 게임,서버리스트 표시*/
-        $("#reg_gameserver_list").show();
+        $("#reg_gameserver").show();
       })
       $("#search_wrap").mouseleave(function ()
       {
         /*검색바 제외 클릭시 게임,서버리스트 숨김*/
-        $("#reg_gameserver_list").hide();
+        $("#reg_gameserver").hide();
       })
     })
 
@@ -472,30 +472,8 @@
   $("#game_list>ul>li,#server_list>ul>li").click(function () {
     $("#searchRegGameServer").val($(this).text());
     console.log("클릭" + $(this).text());
-    $("#reg_gameserver_list").hide();
+    $("#reg_gameserver").hide();
   })
-
-  function searchbarSubmit() {
-    /*검색 전 예외처리*/
-    //form태그 아이디 받기
-    var formId = document.getElementById("g_searchbar_form");
-
-    // 받은 formId에 속해있는  value추출
-    var st = formId.querySelector('[name="deal"]:checked').value;
-    var sGameServer = formId.querySelector('[name="searchGameServer"]').value;
-    console.log("form 태그 이동" + st + "&" + sGameServer)
-    console.log(st + "-" + sGameServer.trim());
-
-    if (sGameServer.trim() == '') {
-      alert("데이터를 입력해주세요")
-      return false
-
-      for (const sGameServerKey in sGameServer) {
-
-      }
-    }
-    //검색시 링크에 deal=sale   deal=buy 값 파라미터로 넣어서 보내줘야함
-  }
 </script>
 <script>
   function clearTextBox()
