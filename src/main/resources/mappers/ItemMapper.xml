@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itemmania.mapper.ItemMapper">
+
+    <select id="getItemCount"
+            parameterType="com.itemmania.domain.ItemCountRequest"
+            resultType="Integer">
+        select
+        (select sum(buy_item_unit) from buy b
+        inner join mileage m ON b.mileage_num = m.mileage_num
+        inner join user u ON m.user_num = u.user_num
+        inner join item i ON b.item_num = i.item_num
+        where u.user_num = #{userNum} and b.item_num = #{itemNum})
+        -
+        (select sum(used_unit) from item_use iu
+        inner join user u ON iu.user_num = u.user_num
+        inner join item i ON iu.item_num = i.item_num
+        where u.user_num = #{userNum} and i.item_num = #{itemNum})
+
+    </select>
+
+</mapper>

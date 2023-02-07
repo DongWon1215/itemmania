@@ -9,8 +9,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface BuyRepository extends JpaRepository<BuyEntity,Integer> {
-    List<BuyEntity> findByMileageNum_UserNum(UserEntity userNum);
-
-
 
 }
