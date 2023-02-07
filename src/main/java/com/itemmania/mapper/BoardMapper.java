@@ -1,7 +1,7 @@
 package com.itemmania.mapper;
 
-import com.itemmania.domain.BoardSearchOption;
-import com.itemmania.domain.BoardSearchOptionVO;
+import com.itemmania.domain.search.BoardSearchOption;
+import com.itemmania.domain.search.BoardSearchOptionVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

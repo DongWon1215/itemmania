@@ -20,8 +20,8 @@
     <!--parameterType => 파라미터로 받는 DTO-->
     <!--resultType => 결과 값을 반환할 그릇 -->
     <select id="boardSearchList"
-            parameterType="com.itemmania.domain.BoardSearchOption"
-            resultType="com.itemmania.domain.BoardSearchOptionVO">
+            parameterType="com.itemmania.domain.search.BoardSearchOption"
+            resultType="com.itemmania.domain.search.BoardSearchOptionVO">
         <!--보드, 게임, 게임서버, 유저 테이블 JOIN-->
         select * from board b
         INNER JOIN game_server gs ON b.server_num = gs.server_num
