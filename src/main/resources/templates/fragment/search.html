@@ -88,13 +88,13 @@
 
 
         // 마우스가 올라간 게임이름이 콜솔에 출력되게 함.
-        $("#searchList>ul>li").mousemove(function () {
-            console.log("선택된 게임" + $(this).val())
+        $("#searchList>div>ul>li").mousemove(function () {
+            console.log("선택된 게임" + $(this).text())
         })
 
 
         // 비동기로 출력한 리스트에 클릭이벤트 추가(클릭시 input에 입력되어 submit실행)
-        $("#searchList>ul>li").click(function () {
+        $("#searchList>div>ul>li").click(function () {
             document.querySelector('[name="searchGameServer"]').value = $(this).text()
             console.log("클릭" + $(this).text())
             $("#g_search_frame").hide();
