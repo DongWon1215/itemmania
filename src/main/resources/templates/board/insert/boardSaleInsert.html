@@ -59,11 +59,11 @@
                   <button type="button" class="g_search_list" title="검색">
                     <span class="icon_search"></span>
                   </button>
-                </div>
                 <div class="g_search_frame reg_gameserver" id="reg_gameserver">
-                  <div class="gs_list" data-gslist="true" id="reg_gameserver_list">
+                  <div class="gs_list gs_selection" data-gslist="true" id="reg_gameserver_list">
                     <div class="game" id="game_list">
                       <ul>
+                        게임
                         <th:block th:each="game:${searchGame}">
                           <li th:value="${game.gameNum}" th:text="${game.gameName}"></li>
                         </th:block>
@@ -71,12 +71,14 @@
                     </div>
                     <div class="server" id="server_list">
                       <ul>
+                        서버
                         <th:block th:each="server:${searchServer}">
                           <li th:value="${server.gameNum.gameNum}" th:text="${server.gameServerName}"></li>
                         </th:block>
                       </ul>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </td>
@@ -187,7 +189,6 @@
             <td>
               <div class="screen_guide2">
                 파일 당 1MB 용량 이하의 jpg, png 확장자로 최대 10개  업로드 가능합니다.1
-                <a href="javascript:_window.open('screenshot', './guide/screenshot.html', 718, 900);" class="guide_txt">등록가이드</a>
               </div>
               <div class="screenshot_wrap">
                 <input type="file" name="user_screen[]" class="g_file">
@@ -202,10 +203,6 @@
                   따라 형사처벌을 받을 수 있습니다.
                 </div>
                 <div class="btn">
-                  <div class="g_left">
-                    <input type="checkbox" id="illegal_filming_inptDeny" class="g_checkbox">
-                    <label for="illegal_filming_inptDeny">오늘 하루 열지 않기</label>
-                  </div>
                   <div class="g_right">
                     <a href="javascript:;" class="illegal_filming_close">닫기</a>
                   </div>
@@ -426,8 +423,9 @@
   }
 </script>
 <script>
-  $("#reg_gameserver").hide();
   $(document).ready(function () {
+  $("#reg_gameserver").hide();
+  $('#showModalBtn').hide();
 
     $(".split_sale").hide();
 
