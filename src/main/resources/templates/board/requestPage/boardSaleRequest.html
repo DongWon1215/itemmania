@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" href="../../image/favicon/hb.ico">
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../../image/favicon/hb.ico">
 </head>
 <body>
 
@@ -13,169 +13,189 @@
 
 <div class="g_container" id="g_CONTENT">
 
-  <div class="aside">
-    <div class="title_blue">안전거래수칙</div>
-    <div class="menu_know">
-      <p>결제전에 이것만은 꼭!!</p>
-      <dl class="g_list">
-        <dt>판매자 연락처,캐릭터명 확인</dt>
-        <dd>상대 거래자의 연락처, 캐릭터명을 반드시 확인합니다. 결제가 완료<br>되면 마이룸에서 판매자 정보를<br>확인하실 수 있습니다.</dd>
-        <dt>게임 상에서 채팅은 금물!</dt>
-        <dd>게임상에서 채팅은 금물입니다.<br>전화 통화 또는 1:1 대화함으로<br>거래를 하시기 바랍니다.</dd>
-        <dt>받은 물품 되돌려 주지 않기!</dt>
-        <dd>판매자가 물품을 인계한 후 다시<br>물품을 돌려달라고 하는 경우,<br>절대 물품을 돌려주지 마시고,<br>고객감동센터로 문의해 주시기<br>바랍니다.</dd>
-        <dt>고의적 취소,직거래유도 주의</dt>
-        <dd>고의적인 취소 또는 직거래를<br>유도할 경우 사이트 이용에<br>제한을 받으실 수 있습니다.</dd>
-      </dl>
-      <div class="f_blue3 f_small">
-        * 다른사람의 정보를 기재하거나<br>다른 게임 서버에 거래신청을 하여<br>문제가 발생할 경우, 거래신청자에게<br>책임이 있습니다.
-      </div>
-    </div><!--//.menu_know-->
-  </div><!--//.aside-->
-
-  <div class="g_content">
-
-    <!-- ▼ 타이틀 //-->
-    <div class="g_title_blue">
-      구매정보 확인
-      <ul class="g_path">
-        <li>홈</li>
-        <li class="select">팝니다</li>
-      </ul>
-    </div><!--//.g_title_blue-->
-    <!-- ▲ 타이틀 //-->
-
-
-    <form id="frmSell" name="frmSell" method="post"><!--action="application_ok.php?list=YTozOTp7czo5OiJnYW1lX2NvZGUiO3M6NDoiMjY5NiI7czoxMToic2VydmVyX2NvZGUiO047czo5OiJnYW1lX25hbWUiO3M6MTU6IuuhnOyKpO2KuOyVhO2BrCI7czoxMToic2VydmVyX25hbWUiO3M6MTI6IuyEnOuyhOyghOyytCI7czoxMjoic2VhcmNoX2dvb2RzIjtzOjM6ImFsbCI7czoxMToic2VhcmNoX3dvcmQiO047czo0OiJ0eXBlIjtzOjQ6InNlbGwiO3M6MTI6InNlYXJjaF9vcmRlciI7czoxOiIyIjtzOjE0OiJzZWFyY2hfcmVmZXJlciI7czo5OiJsaXN0Lmh0bWwiO3M6MTE6InRyYWRlX3N0YXRlIjtzOjE6IjEiO3M6ODoicmVnX3RpbWUiO3M6MToiMSI7czoxMToiY3JlZGl0X3R5cGUiO3M6MToiMSI7czoxMDoiZ29vZHNfdHlwZSI7czoxOiIxIjtzOjY6ImNvbXBlbiI7TjtzOjExOiJzZWxsX2NvbXBlbiI7TjtzOjc6ImRpc2NvbnQiO047czo3OiJvdmVybGFwIjtOO3M6OToiZXhjZWxsZW50IjtOO3M6NzoiYW1vdW50MSI7czoxOiIxIjtzOjc6ImFtb3VudDIiO3M6ODoiOTk5OTk5OTkiO3M6NzoiYW1vdW50MyI7czoxOiIxIjtzOjc6ImFtb3VudDQiO3M6ODoiOTk5OTk5OTkiO3M6MTI6InNlYXJjaF90eXBlMSI7TjtzOjEyOiJzZWFyY2hfdHlwZTIiO047czoxNToibW9uZXlfbGlzdF9yb3dzIjtOO3M6MTM6Imdlbl9saXN0X3Jvd3MiO047czoxNjoic3JjaF9pdGVtX2RlcHRoMSI7TjtzOjE2OiJzcmNoX2l0ZW1fZGVwdGgyIjtOO3M6MTY6InNyY2hfaXRlbV9kZXB0aDMiO047czoxNjoic3JjaF9pdGVtX2RlcHRoNCI7TjtzOjY6ImRpcmVjdCI7TjtzOjEyOiJhY2NvdW50X3R5cGUiO047czoxMzoicHVyY2hhc2VfdHlwZSI7TjtzOjE3OiJwYXltZW50X2V4aXN0ZW5jZSI7TjtzOjEyOiJtdWx0aV9hY2Nlc3MiO047czoxNToic3JjaF9jaGFyX2FsYXJtIjtOO3M6MjA6InNlYXJjaF9jaGFyYWN0ZXJfam9iIjtOO3M6MjI6InNlYXJjaF9jaGFyYWN0ZXJfbGV2ZWwiO047czo5OiJiTGluZWFnZU0iO2I6MDt9"-->
-
-      <!-- ▼ 물품정보 //-->
-      <div class="g_subtitle">물품정보</div>
-      <table class="g_blue_table">
-        <colgroup>
-          <col width="160">
-          <col width="250">
-          <col width="160">
-          <col>
-        </colgroup>
-        <tr>
-          <th>카테고리</th>
-          <td colspan="3">
-            <span th:text="${boardReq.serverNum.gameNum.gameName}"/> &gt; <span th:text="${boardReq.serverNum.gameServerName}"/>
-          </td>
-        </tr>
-        <tr>
-          <th>물품제목</th>
-          <td colspan="3" th:text="${boardReq.boardTitle}">
-          </td>
-        </tr>
-
-        <tr>
-<!--          <th>거래번호</th>
-          <td>
-
-            &#35;<span th:text="${boardReq.tradeNum}"/>
-          </td>-->
-
-          <th>등록일시</th>
-          <td colspan="3" th:text="${boardReq.boardTime}"></td>
-        </tr>
-
-        <tr>
-          <th>판매수량</th>
-          <td>
-            <span th:text="${boardReq.saleUnit}"/>  <span th:text="${boardReq.serverNum.gameNum.gameCurrency}"/>
-          </td>
-          <th>판매금액</th>
-          <td>
-            <span th:text="${boardReq.salePrice}"/>  원
-          </td>
-        </tr>
-      </table>
-      <!-- ▲ 물품정보 //-->
-
-      <!-- ▼ 개인정보 //-->
-      <div class="g_subtitle">내 거래정보</div>
-
-      <table class="g_blue_table private_area">
-        <colgroup>
-          <col width="160">
-          <col/>
-        </colgroup>
-        <tr>
-          <th>이름</th>
-          <td th:text="${boardReq.userNum.userRealName}"></td>
-        </tr>
-        <tr>
-          <th>구매자 캐릭터명</th>
-          <td>
-            <div class="g_left">
-              <input type="text" th:value="${boardReq.saleNickName}" name="saleNickName" id="saleNickName" class="g_text" maxlength="30" tabindex="2">
-              물품을 전달 받으실 본인의 캐릭터명
+    <div class="aside">
+        <div class="title_blue">안전거래수칙</div>
+        <div class="menu_know">
+            <p>결제전에 이것만은 꼭!!</p>
+            <dl class="g_list">
+                <dt>판매자 연락처,캐릭터명 확인</dt>
+                <dd>상대 거래자의 연락처, 캐릭터명을 반드시 확인합니다. 결제가 완료<br>되면 마이룸에서 판매자 정보를<br>확인하실 수 있습니다.</dd>
+                <dt>게임 상에서 채팅은 금물!</dt>
+                <dd>게임상에서 채팅은 금물입니다.<br>전화 통화 또는 1:1 대화함으로<br>거래를 하시기 바랍니다.</dd>
+                <dt>받은 물품 되돌려 주지 않기!</dt>
+                <dd>판매자가 물품을 인계한 후 다시<br>물품을 돌려달라고 하는 경우,<br>절대 물품을 돌려주지 마시고,<br>고객감동센터로 문의해 주시기<br>바랍니다.</dd>
+                <dt>고의적 취소,직거래유도 주의</dt>
+                <dd>고의적인 취소 또는 직거래를<br>유도할 경우 사이트 이용에<br>제한을 받으실 수 있습니다.</dd>
+            </dl>
+            <div class="f_blue3 f_small">
+                * 다른사람의 정보를 기재하거나<br>다른 게임 서버에 거래신청을 하여<br>문제가 발생할 경우, 거래신청자에게<br>책임이 있습니다.
             </div>
+        </div><!--//.menu_know-->
+    </div><!--//.aside-->
 
-            <div class="character_noti">
-              * 본인이 사용하는 서버/캐릭터 명
-              <em>미 선택 및 미 기재 시</em> 문제가 발생될 수 있으며, 거래신청자에게 책임이 있습니다.
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>연락처</th>
-          <td>
-            <span id="spnUserCell" th:text="${boardReq.userNum.userPhoneNumber}"></span>
-          </td>
-        </tr>
-      </table>
-    </form>
+    <div class="g_content">
 
-      <script>
-        window.onload = function(){
+        <!-- ▼ 타이틀 //-->
+        <div class="g_title_blue">
+            구매정보 확인
+            <ul class="g_path">
+                <li>홈</li>
+                <li class="select">팝니다</li>
+            </ul>
+        </div><!--//.g_title_blue-->
+        <!-- ▲ 타이틀 //-->
 
-          if(document.getElementById('safe_guide') !== null) {
-            LayerControl({
-              el: document.getElementById('safe_guide'),
-              layer: document.getElementById('safe_layer'),
-              close_btn : document.getElementById('safe_layer').querySelector('.close'),
-              mask: false,
-              type: 'style'
-            });
-          }
+        <form id="frmSell" name="frmSell" method="post" action="/board/requestPage">
+            <!--action="application_ok.php?list=YTozOTp7czo5OiJnYW1lX2NvZGUiO3M6NDoiMjY5NiI7czoxMToic2VydmVyX2NvZGUiO047czo5OiJnYW1lX25hbWUiO3M6MTU6IuuhnOyKpO2KuOyVhO2BrCI7czoxMToic2VydmVyX25hbWUiO3M6MTI6IuyEnOuyhOyghOyytCI7czoxMjoic2VhcmNoX2dvb2RzIjtzOjM6ImFsbCI7czoxMToic2VhcmNoX3dvcmQiO047czo0OiJ0eXBlIjtzOjQ6InNlbGwiO3M6MTI6InNlYXJjaF9vcmRlciI7czoxOiIyIjtzOjE0OiJzZWFyY2hfcmVmZXJlciI7czo5OiJsaXN0Lmh0bWwiO3M6MTE6InRyYWRlX3N0YXRlIjtzOjE6IjEiO3M6ODoicmVnX3RpbWUiO3M6MToiMSI7czoxMToiY3JlZGl0X3R5cGUiO3M6MToiMSI7czoxMDoiZ29vZHNfdHlwZSI7czoxOiIxIjtzOjY6ImNvbXBlbiI7TjtzOjExOiJzZWxsX2NvbXBlbiI7TjtzOjc6ImRpc2NvbnQiO047czo3OiJvdmVybGFwIjtOO3M6OToiZXhjZWxsZW50IjtOO3M6NzoiYW1vdW50MSI7czoxOiIxIjtzOjc6ImFtb3VudDIiO3M6ODoiOTk5OTk5OTkiO3M6NzoiYW1vdW50MyI7czoxOiIxIjtzOjc6ImFtb3VudDQiO3M6ODoiOTk5OTk5OTkiO3M6MTI6InNlYXJjaF90eXBlMSI7TjtzOjEyOiJzZWFyY2hfdHlwZTIiO047czoxNToibW9uZXlfbGlzdF9yb3dzIjtOO3M6MTM6Imdlbl9saXN0X3Jvd3MiO047czoxNjoic3JjaF9pdGVtX2RlcHRoMSI7TjtzOjE2OiJzcmNoX2l0ZW1fZGVwdGgyIjtOO3M6MTY6InNyY2hfaXRlbV9kZXB0aDMiO047czoxNjoic3JjaF9pdGVtX2RlcHRoNCI7TjtzOjY6ImRpcmVjdCI7TjtzOjEyOiJhY2NvdW50X3R5cGUiO047czoxMzoicHVyY2hhc2VfdHlwZSI7TjtzOjE3OiJwYXltZW50X2V4aXN0ZW5jZSI7TjtzOjEyOiJtdWx0aV9hY2Nlc3MiO047czoxNToic3JjaF9jaGFyX2FsYXJtIjtOO3M6MjA6InNlYXJjaF9jaGFyYWN0ZXJfam9iIjtOO3M6MjI6InNlYXJjaF9jaGFyYWN0ZXJfbGV2ZWwiO047czo5OiJiTGluZWFnZU0iO2I6MDt9"-->
 
-          if(document.getElementById('safe_plus_guide') !== null){
-            LayerControl({
-              el: document.getElementById('safe_plus_guide'),
-              layer: document.getElementById('safe_plus_layer'),
-              close_btn : document.getElementById('safe_plus_layer').querySelector('.close'),
-              mask: false,
-              type: 'style'
-            });
-          }
-        };
-      </script>            <!-- ▲ 개인정보 //-->
 
-      <input type="hidden" name="my_mileage" value="0">
-      <input type="hidden" id="other_pay" name="use_creditcard" value="7,990">
-      <input type="hidden" name="use_creditcard_original" value="7990">
-      <div class="g_subtitle">결제정보</div>
-      <div th:replace="/fragment/chargeModal"/>
-      <div class="g_finish"></div>
+            <input type="hidden" name="" value="">
+            <!-- ▼ 물품정보 //-->
+            <div class="g_subtitle">물품정보</div>
+            <table class="g_blue_table">
+                <colgroup>
+                    <col width="160">
+                    <col width="250">
+                    <col width="160">
+                    <col>
+                </colgroup
+                <tr>
+                    <th>카테고리</th>
+                    <td colspan="3">
+                        <span th:text="${boardReq.serverNum.gameNum.gameName}"/> &gt; <span
+                            th:text="${boardReq.serverNum.gameServerName}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>물품제목</th>
+                    <td colspan="3" th:text="${boardReq.boardTitle}">
+                    </td>
+                </tr>
 
-      <dl class="box6 notice_box">
-        <dt class="f_blue3 f_bold">※ 판매자로부터 받은 물품을 다시 돌려달라는 사기에 주의 하세요</dt>
-        <dd>판매자로부터 물품 받은 후 게임머니(아이템)에 문제가 있으니 다른 것으로 바꿔 주겠다며 물품을 요구하는 경우가 있습니다.</dd>
-        <dd>절대 물품을 돌려주지 마시고 판매자 또는 고객센터로 문의 주시기 바랍니다.</dd>
-      </dl>
+                <tr>
+                    <!--          <th>거래번호</th>
+                              <td>
 
-      <div class="g_btn_wrap">
-        <img src="http://img2.itemmania.com/new_images/btn/btn_buy.gif" width="137" height="46" alt="구매신청" id="buy_btn" onclick="fnApplication(0);">
-<!--        <a th:href="@{/board/view(boardNum=${boardReq.boardNum},deal=${boardReq.dealCheck})}">-->
-          <img src="http://img2.itemmania.com/new_images/btn/btn_cancel2.gif" width="137" height="46" alt="취소하기" onclick="history.back()">
-      </div>
+                                &#35;<span th:text="${boardReq.tradeNum}"/>
+                              </td>-->
 
-  </div><!--//.g_content-->
+                    <th>등록일시</th>
+                    <td colspan="3" th:text="${boardReq.boardTime}"></td>
+                </tr>
+
+                <tr>
+                    <th>판매수량</th>
+                    <td>
+                        <span th:text="${boardReq.saleUnit}"/> <span
+                            th:text="${boardReq.serverNum.gameNum.gameCurrency}"/>
+                    </td>
+                    <th>판매금액</th>
+                    <td>
+                        <span th:text="${boardReq.salePrice}"/> 원
+                    </td>
+                </tr>
+            </table>
+            <!-- ▲ 물품정보 //-->
+
+            <!-- ▼ 개인정보 //-->
+            <div class="g_subtitle">내 거래정보</div>
+
+            <table class="g_blue_table private_area">
+                <colgroup>
+                    <col width="160">
+                    <col/>
+                </colgroup>
+                <tr>
+                    <th>이름</th>
+                    <td th:text="${boardReq.userNum.userRealName}"></td>
+                </tr>
+                <tr>
+                    <th>구매자 캐릭터명</th>
+                    <td>
+                        <div class="g_left">
+                            <input type="text" th:value="${boardReq.saleNickName}" name="saleNickName" id="saleNickName"
+                                   class="g_text" maxlength="30" tabindex="2">
+                            물품을 전달 받으실 본인의 캐릭터명
+                        </div>
+
+                        <div class="character_noti">
+                            * 본인이 사용하는 서버/캐릭터 명
+                            <em>미 선택 및 미 기재 시</em> 문제가 발생될 수 있으며, 거래신청자에게 책임이 있습니다.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>연락처</th>
+                    <td>
+                        <span id="spnUserCell" th:text="${boardReq.userNum.userPhoneNumber}"></span>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <script>
+            window.onload = function () {
+
+                if (document.getElementById('safe_guide') !== null) {
+                    LayerControl({
+                        el: document.getElementById('safe_guide'),
+                        layer: document.getElementById('safe_layer'),
+                        close_btn: document.getElementById('safe_layer').querySelector('.close'),
+                        mask: false,
+                        type: 'style'
+                    });
+                }
+
+                if (document.getElementById('safe_plus_guide') !== null) {
+                    LayerControl({
+                        el: document.getElementById('safe_plus_guide'),
+                        layer: document.getElementById('safe_plus_layer'),
+                        close_btn: document.getElementById('safe_plus_layer').querySelector('.close'),
+                        mask: false,
+                        type: 'style'
+                    });
+                }
+            };
+        </script>            <!-- ▲ 개인정보 //-->
+
+        <input type="hidden" name="my_mileage" value="0">
+        <input type="hidden" id="other_pay" name="use_creditcard" value="7,990">
+        <input type="hidden" name="use_creditcard_original" value="7990">
+        <div class="g_subtitle">결제정보</div>
+        <div th:replace="/fragment/chargeModal"/>
+        <div class="g_finish"></div>
+
+        <dl class="box6 notice_box">
+            <dt class="f_blue3 f_bold">※ 판매자로부터 받은 물품을 다시 돌려달라는 사기에 주의 하세요</dt>
+            <dd>판매자로부터 물품 받은 후 게임머니(아이템)에 문제가 있으니 다른 것으로 바꿔 주겠다며 물품을 요구하는 경우가 있습니다.</dd>
+            <dd>절대 물품을 돌려주지 마시고 판매자 또는 고객센터로 문의 주시기 바랍니다.</dd>
+        </dl>
+
+        <div class="g_btn_wrap">
+            <img src="http://img2.itemmania.com/new_images/btn/btn_buy.gif" width="137" height="46" alt="구매신청"
+                 id="buy_btn">
+            <!--        <a th:href="@{/board/view(boardNum=${boardReq.boardNum},deal=${boardReq.dealCheck})}">-->
+            <img src="http://img2.itemmania.com/new_images/btn/btn_cancel2.gif" width="137" height="46" alt="취소하기"
+                 onclick="history.back()">
+        </div>
+
+    </div><!--//.g_content-->
 </div><!--//.g_container-->
 
-  <div th:replace="fragment/footer"/>
+<div th:replace="fragment/footer"/>
 
 </body>
 </html>
+
+<script>
+    window.onload = function () {
+        document.querySelector('#buy_btn').onclick = function () {
+
+
+            console.log("submit")
+            document.querySelector("#frmSell").submit();
+
+        };
+    };
+
+</script>
