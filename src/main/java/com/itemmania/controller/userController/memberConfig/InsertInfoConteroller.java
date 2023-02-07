@@ -63,7 +63,7 @@ public class InsertInfoConteroller {
 
         log.info(itemRepository.getReferenceById(1));
         log.info("유저인포 =============>"+userInfo);
-//        userService.insertUser(userInfo);
+        userService.insertUser(userInfo);
 
         JSONObject json = new JSONObject();
         json.put("userData",userInfo);

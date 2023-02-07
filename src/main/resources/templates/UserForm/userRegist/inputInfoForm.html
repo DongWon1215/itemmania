@@ -217,14 +217,14 @@
     }
 </script>
 <script>
-        let req = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
+        let req = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
     function pwConditionCheck()
     {
         let pw = document.getElementById('user_password').value;
         console.log(pw)
         if(!req.test(pw))
         {
-            document.getElementById('muser_password').innerText='비밀번호에 대소문자와 특수문자가 반드시 하나씩 포함되어야 하며 길이가 6~12글자 이내여야 합니다';
+            document.getElementById('muser_password').innerText='비밀번호에 영문자와 숫자, 특수문자가 반드시 하나씩 포함되어야 하며 길이가 6~12글자 이내여야 합니다';
             document.getElementById('muser_password').style.color='red';
             document.getElementById('regist_button').disabled = true;
         }

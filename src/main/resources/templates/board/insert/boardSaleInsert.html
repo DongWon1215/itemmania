@@ -86,42 +86,93 @@
             <td>
               <label><input type="radio" name="user_goods_type" class="g_radio first_radio" value="general" checked>일반</label>
               <label id="division"><input type="radio" name="user_goods_type" class="g_radio" value="division">분할</label>
-              <label class="g_hidden" id="bargain"><input type="radio" name="user_goods_type" class="g_radio" value="bargain">흥정</label>
             </td>
           </tr>
           <tbody id="d_template">
-          <tr>
-            <th>판매수량</th>
-            <td>
-              <div class="unit_type" id="unit_type">
-                <label><input type="radio" name="gamemoney_unit" class="g_radio" value="1" checked>없음</label>
-                <label><input type="radio" name="gamemoney_unit" class="g_radio" value="만">만</label>
-                <label><input type="radio" name="gamemoney_unit" class="g_radio" value="억">억</label>
-                <label class="f_blue1 f_small">(단위)</label>
-              </div>
-              <div id="game_money">
-                <input type="text" name="user_quantity" id="user_quantity" maxlength="7" class="g_text f_right">
-                <span class="unit"></span> 게임머니
-                <span class="g_txtbtn first_btn" id="plus10" value="10" onclick="increasesaleUnit(10)">+10</span>
-                <span class="g_txtbtn" id="plus50" value="50" onclick="increasesaleUnit(50)">+50</span>
-                <span class="g_txtbtn" id="plus100" value="100" onclick="increasesaleUnit(100)">+100</span>
-                <span class="g_txtbtn" id="plus500" value="500" onclick="increasesaleUnit(500)">+500</span>
-                <span class="g_txtbtn" id="plus1000" value="1000" onclick="increasesaleUnit(1000)">+1000</span>
-                <span class="g_txtbtn" id="initial" value="0" onclick="increasesaleUnit(0)">초기화</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>판매금액</th>
-            <td>
-              <input type="text" name="user_price" id="user_price" maxlength="10" class="g_text f_right"> 원 (3,000원 이상, 10원 단위 등록 가능)
-              <div id="coms_area" class="coms_area">수수료 5% :
-                <span class="f_red1" id="commission_price">0</span>원 | 실 수령액 :
-                <span class="f_red1" id="receive_price">0</span>원
-              </div>
-            </td>
-          </tr>
-          <tr>
+              <tr class="normal_sale">
+                <th>판매수량</th>
+                <td>
+                  <div class="unit_type" id="unit_type">
+                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="1" checked>없음</label>
+                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="만">만</label>
+                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="억">억</label>
+                    <label class="f_blue1 f_small">(단위)</label>
+                  </div>
+                  <div id="game_money">
+                    <input type="text" name="user_quantity" id="user_quantity" maxlength="7" class="g_text f_right">
+                    <span class="unit"></span> 게임머니
+                    <span class="g_txtbtn first_btn" id="plus10" value="10" onclick="increasesaleUnit(10)">+10</span>
+                    <span class="g_txtbtn" id="plus50" value="50" onclick="increasesaleUnit(50)">+50</span>
+                    <span class="g_txtbtn" id="plus100" value="100" onclick="increasesaleUnit(100)">+100</span>
+                    <span class="g_txtbtn" id="plus500" value="500" onclick="increasesaleUnit(500)">+500</span>
+                    <span class="g_txtbtn" id="plus1000" value="1000" onclick="increasesaleUnit(1000)">+1000</span>
+                    <span class="g_txtbtn" id="initial" value="0" onclick="increasesaleUnit(0)">초기화</span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="normal_sale">
+                <th>판매금액</th>
+                <td>
+                  <input type="text" name="user_price" id="user_price" maxlength="10" class="g_text f_right"> 원 (3,000원 이상, 10원 단위 등록 가능)
+                  <div id="coms_area" class="coms_area">수수료 5% :
+                    <span class="f_red1" id="commission_price">0</span>원 | 실 수령액 :
+                    <span class="f_red1" id="receive_price">0</span>원
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="split_sale">
+                <th>판매수량</th>
+                <td>
+                  <div class="unit_type" id="unit_type">
+                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="1" checked>없음</label>
+                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="만">만</label>
+                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="억">억</label>
+                    <label class="f_blue1 f_small">(단위)</label>
+                  </div>
+                  <div id="game_money">
+                    최소
+                    <input type="text" name="user_quantity_min" id="user_quantity_min" maxlength="7" class="g_text f_right">
+                    <span class="unit"></span> 게임머니 ~
+                    최대
+                    <input type="text" name="user_quantity_max" id="user_quantity_max" maxlength="7" class="g_text f_right">
+                    <span class="unit"></span> 게임머니
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="split_sale">
+                <th>판매금액</th>
+                <td>
+                  <input type="text" name="user_division_unit" id="user_division_unit" maxlength="7" class="g_text f_right" size="18">
+                  <span class="unit"></span> 게임머니 당
+                  <input type="text" name="user_division_price" id="user_division_price" maxlength="10" class="g_text f_right" size="18"> 원에 판매합니다.
+                  <span class="f_small f_black1">(100원 이상, 10원 단위 등록 가능)</span>
+                  <div class="discount">
+                    <label><input type="checkbox" class="g_checkbox" name="discount_use" id="discount_use" value="1" onclick="fnRevenDiscount();">복수구매 할인적용</label>
+                    <div id="reven_discount">
+                      <input type="text" class="g_text" name="discount_quantity" id="discount_quantity" maxlength="10" disabled="" readonly="" onfocus="$(this).blur();"><span class="unit"></span> x
+                      <input type="text" class="g_text discount_quantity_cnt" name="discount_quantity_cnt" id="discount_quantity_cnt" maxlength="10" disabled="">번 구매시
+                      <input type="text" class="g_text discount_price" name="discount_price" id="discount_price" maxlength="10" disabled="">원 할인
+                    </div>
+                    <a href="javascript:;" class="guide_txt" id="discount_guide">복수구매할인이란?</a>
+                    <div class="g_msgbox blue" id="discount_layer">
+                      <div class="title">복수 구매할인이란?</div>
+                      <div class="cont">
+                        구매자가 분할물품에 구매신청을 할 때, 판매자가 정해놓은 일정 구매수량 조건을<br>
+                        충족할 경우 구매자에게 거래금액을 할인해주는 거래 방식입니다.<br>
+                        복수구매할인 적용 시 물품리스트 제목에 할인마크가 부여되며 묶음당 할인금액은<br>
+                        판매자의 거래금액에서 차감됩니다.<br>
+                        복수구매 할인에 대한 자세한 사항은 홈페이지 &gt; 이용안내를 참고해 주시기 바랍니다.
+                      </div>
+                      <div class="btn">
+                        <a href="/guide/div_trade/index.html?file=02" class="btn_blue4">복수구매할인 이용안내 &gt;</a>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
             <th>캐릭터명</th>
             <td>
               <div class="g_left">
@@ -166,12 +217,6 @@
           <tr>
             <th>물품제목</th>
             <td>
-              <div class="item_detail_opts">
-                <label><input type="checkbox" name="fixed_trade_subject" id="fixed_trade_subject" class="g_checkbox"> 물품제목 기본값 :
-                </label>
-                <span id="trade_sign_txt" class="f_blue1"></span>
-                <a href="javascript:_window.open('fixed_title', 'fixed_trade_subject.html', 500, 300);" class="btn_white1">설정</a>
-              </div>
               <input type="text" class="g_text w100" name="user_title" id="user_title" maxlength="40" value="게임머니 팝니다.">
             </td>
           </tr>
@@ -191,8 +236,6 @@
           <div>
             <span class="f_small">등록하려는 물품 제목을 강조하거나, 물품리스트 상단에 노출 및 자동으로 등록된 물품을 재등록할 수 있는 서비스입니다.</span>
             <div class="btn_area">
-              <a href="javascript:;" class="btn_blue" id="credit_benefit">신용등급혜택받기</a>
-              <a href="javascript:_window.open('premium_guide','/sell/premium_guide.html',628, 630);" class="btn_white1">이용안내</a>
             </div>
           </div>
         </div>
@@ -386,6 +429,7 @@
   $("#reg_gameserver_list").hide();
   $(document).ready(function () {
 
+    $(".split_sale").hide();
 
     // 게임, 서버리스트 클릭시  g_search_frame가 사라지지 않게 해야함
     $(function (){
@@ -398,6 +442,30 @@
         /*검색바 제외 클릭시 게임,서버리스트 숨김*/
         $("#reg_gameserver_list").hide();
       })
+    })
+
+    $("input[name='text_select']").change(function ()
+    {
+      if($("input[name='text_select']:checked").val() == 0)
+        $('#user_text').attr("readonly", true);
+
+      else
+        $('#user_text').attr("readonly", false);
+    })
+
+    $("input[name='user_goods_type']").change(function ()
+    {
+      if($("input[name='user_goods_type']:checked").val() == "general")
+      {
+        $(".normal_sale").show();
+        $(".split_sale").hide();
+      }
+
+      else
+      {
+        $(".normal_sale").hide();
+        $(".split_sale").show();
+      }
     })
   })
 
