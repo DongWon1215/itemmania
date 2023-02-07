@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootTest
 public class RepositoryTest {
@@ -39,7 +40,6 @@ public class RepositoryTest {
         UserEntity user = new UserEntity();
         user.setUserBirth(LocalDate.of(1997, 6, 3));
         user.setUserEmail("mngjs70@gmail.com");
-        user.setUserMileage(1000);
         user.setUserIsManager(true);
         user.setUserName("test");
         user.setUserPassword("1111");
@@ -68,8 +68,7 @@ public class RepositoryTest {
                 userNum(user).
                 mileageTime(LocalDateTime.now()).
                 mileageType("구매").
-                mileageOut(buyEntity.getBuyPrice()).
-                mileageHistory(user.getUserMileage() - buyEntity.getBuyPrice())
+                mileageOut(buyEntity.getBuyPrice())
                 .build();
 
         ItemEntity itemEntity = itemRepository.findById(1).get();
@@ -77,8 +76,7 @@ public class RepositoryTest {
         buyEntity.setBuyPrice(buyEntity.getBuyItemUnit() * buyEntity.getItemNum().getItemPrice());
         buyEntity.setMileageNum(mileageRepository.save(mileageEntity));
 
-        user.setItemUnit(user.getItemUnit()+buyEntity.getBuyItemUnit());
-        user.setItemNum(itemRepository.findById(1).get());
+
         System.out.println(buyRepository.save(buyEntity));
         System.out.println(userRepository.save(user));
 
@@ -101,14 +99,12 @@ public class RepositoryTest {
     public void tradeRepositoryTest(){
         UserEntity user = userRepository.findById(1).get();
         UserEntity user2 = new UserEntity();
-        user2.setItemNum(itemRepository.findById(1).get());
         user2.setUserName("test2");
         user2.setUserPassword("1111");
         user2.setUserIsManager(false);
         user2.setUserPhoneNumber("010-2222-2222");
         user2.setUserCreditScore(0);
         user2.setUserBirth(LocalDate.of(2002, 2, 2));
-        user2.setUserMileage(10000);
         user2.setUserCreditScore(0);
         user2.setUserEmail("222@22.22");
         user2.setUserRealName("tester2");
@@ -118,8 +114,6 @@ public class RepositoryTest {
         MileageEntity consumerMileage = new MileageEntity();
 
         sellerMileage.setMileageIn(500);
-        user.setUserMileage(user.getUserMileage()+500);
-        sellerMileage.setMileageHistory(user.getUserMileage());
         sellerMileage.setMileageTime(LocalDateTime.now());
         sellerMileage.setMileageType("판매");
         String description = "#판매 : ";
@@ -129,8 +123,6 @@ public class RepositoryTest {
         sellerMileage.setUserNum(user);
 
         consumerMileage.setMileageOut(500);
-        user2.setUserMileage(user2.getUserMileage()-500);
-        consumerMileage.setMileageHistory(user2.getUserMileage());
         consumerMileage.setMileageTime(LocalDateTime.now());
         consumerMileage.setMileageType("구매");
         description = "#구매 : " + boardRepository.findById(1).get().getBoardNum();
@@ -162,6 +154,13 @@ public class RepositoryTest {
         Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "mileageTime");
 
         System.out.println(myMileageDetailListService.getList(user.getUserNum(), startDate, endDate, pageable) + "@@@@@@@@@@");
+    }
+
+    @Test
+    public void buyTest(){
+        List<BuyEntity> buyList = buyRepository.findByMileageNum_UserNum(userRepository.findById(5).get());
+
+        System.out.println(buyList);
     }
 
 }
