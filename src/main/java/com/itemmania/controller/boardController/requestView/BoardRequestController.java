@@ -34,19 +34,13 @@ public class BoardRequestController {
         model.addAttribute("boardList",boardListService.getAllList());
         log.info("boardReq");
 
-        String buy = "buy";
-
-        if (dealCheck.equals(buy)) {
-
-            log.info("삽니다 요청페이지!!!! 들어감");
-            return "/board/requestPage/boardBuyRequest";
-
-        } else {
+        if (dealCheck.equals("sale")){
             log.info("팝니다 요청페이지!!!! 들어감");
             return "/board/requestPage/boardSaleRequest";
-
         }
 
+        else
+            return "/errors/500";
 
     }
 

@@ -1,12 +1,7 @@
 package com.itemmania.domain.board;
 
 import com.itemmania.entity.BoardEntity;
-import com.itemmania.entity.GameServerEntity;
-import com.itemmania.entity.UserEntity;
-import com.itemmania.service.boardService.Search.BoardGameSearchService;
-import com.itemmania.service.userService.UserService;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @Builder
-public class BoardBuyInsertRequest {
+public class BoardSaleInsertRequest {
 
     private String boardTitle;
     private int userNum;
@@ -37,7 +32,7 @@ public class BoardBuyInsertRequest {
                 .saleAria(saleAria)
                 .saleType(false)
                 .salePremium(salePremium)
-                .dealCheck("buy")
+                .dealCheck("sale")
                 .build();
     }
 }
