@@ -1,9 +1,10 @@
 package com.itemmania.service.useService;
 
+import com.itemmania.domain.ItemCountRequest;
 import com.itemmania.entity.ItemEntity;
 import com.itemmania.entity.UseEntity;
 import com.itemmania.entity.UserEntity;
-import com.itemmania.repository.BuyRepository;
+import com.itemmania.mapper.ItemMapper;
 import com.itemmania.repository.UseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,9 @@ public class UseItemService {
 
     @Autowired
     private UseRepository useRepository;
+
     @Autowired
-    private BuyRepository buyRepository;
+    private ItemMapper itemMapper;
 
     public UseEntity use(int useCount, UserEntity user, ItemEntity item){
 
@@ -29,12 +31,8 @@ public class UseItemService {
         return useRepository.save(useEntity);
     }
 
-    public int getItemCount(int useCount, UserEntity user, ItemEntity item){
-
-        int chargeCount;
-
-
-        return 0;
+    public int getItemCount(ItemCountRequest itemCountRequest){
+        return itemMapper.getItemCount(itemCountRequest);
     }
 
 }
