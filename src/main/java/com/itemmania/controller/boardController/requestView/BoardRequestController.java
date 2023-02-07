@@ -24,22 +24,20 @@ public class BoardRequestController {
 
     @GetMapping("/board/requestPage")
     public String getBoardRequest(
-            @RequestParam(value = "boardNum")int boardNum, // 게시글번호
-            @RequestParam(value = "deal")String dealCheck, // 판매,구매 구별
+            @RequestParam(value = "boardNum") int boardNum, // 게시글번호
+            @RequestParam(value = "deal") String dealCheck, // 판매,구매 구별
             Model model
-    )
-    {
+    ) {
         log.info("BoardRequestController 들어옴");
-        model.addAttribute("boardReq",boardViewService.selectBoardView(boardNum));
-        model.addAttribute("boardList",boardListService.getAllList());
-        log.info("boardReq");
+        Model boardReq = model.addAttribute("boardReq", boardViewService.selectBoardView(boardNum));
+        log.info("boardReq>>>>>>>>>>>>" + boardReq);
+        Model boardList = model.addAttribute("boardList", boardListService.getAllList());
+        log.info("boardList>>>>>>>>>>>>" + boardList);
 
-        if (dealCheck.equals("sale")){
+        if (dealCheck.equals("sale")) {
             log.info("팝니다 요청페이지!!!! 들어감");
             return "/board/requestPage/boardSaleRequest";
-        }
-
-        else
+        } else
             return "/errors/500";
 
     }

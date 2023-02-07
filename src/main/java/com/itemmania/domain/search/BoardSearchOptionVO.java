@@ -1,4 +1,4 @@
-package com.itemmania.domain;
+package com.itemmania.domain.search;
 
 import lombok.*;
 

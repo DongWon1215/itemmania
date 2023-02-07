@@ -1,7 +1,7 @@
 package com.itemmania.service.boardService.Search;
 
-import com.itemmania.domain.BoardSearchOption;
-import com.itemmania.domain.BoardSearchOptionVO;
+import com.itemmania.domain.search.BoardSearchOption;
+import com.itemmania.domain.search.BoardSearchOptionVO;
 import com.itemmania.mapper.BoardMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
