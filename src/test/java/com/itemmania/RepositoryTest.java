@@ -34,6 +34,8 @@ public class RepositoryTest {
     MyMileageDetailListService myMileageDetailListService;
     @Autowired
     private MileageRepository mileageRepository;
+    @Autowired
+    private UseRepository useRepository;
 
     @Test
     public void userRepositoryTest(){
@@ -157,10 +159,16 @@ public class RepositoryTest {
     }
 
     @Test
-    public void buyTest(){
-        List<BuyEntity> buyList = buyRepository.findByMileageNum_UserNum(userRepository.findById(5).get());
+    public void useTest(){
 
-        System.out.println(buyList);
+        UseEntity useEntity = UseEntity.builder().
+                usedUnit(1).
+                usedTime(LocalDateTime.now()).
+                itemNum(itemRepository.findById(1).get())
+                .userNum(userRepository.findById(1).get())
+                .build();
+
+        useRepository.save(useEntity);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.itemmania.service.boardService.Search;
 
-import com.itemmania.domain.BoardSearchOption;
-import com.itemmania.domain.BoardSearchOptionVO;
+import com.itemmania.domain.search.BoardSearchOption;
+import com.itemmania.domain.search.BoardSearchOptionVO;
 
 import java.util.List;
 

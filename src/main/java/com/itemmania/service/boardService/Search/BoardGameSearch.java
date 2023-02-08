@@ -1,8 +1,6 @@
 package com.itemmania.service.boardService.Search;
 
 
-import com.itemmania.domain.BoardSearchOption;
-import com.itemmania.domain.BoardSearchOptionVO;
 import com.itemmania.entity.GameEntity;
 import com.itemmania.entity.GameServerEntity;
 
