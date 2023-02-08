@@ -1,5 +1,6 @@
 package com.itemmania.domain;
 
+import com.itemmania.entity.MileageEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -12,9 +13,7 @@ import java.time.LocalDateTime;
 @ToString
 public class MyMileageDetailDTO {
 
-    private Integer amount;
-    private LocalDateTime time;
-    private Boolean plus;
-    private String description;
+    private MileageEntity mileageEntity;
+    private int mileageHistory;
 
 }

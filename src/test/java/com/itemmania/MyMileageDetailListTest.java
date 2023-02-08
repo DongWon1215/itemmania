@@ -1,5 +1,8 @@
 package com.itemmania;
 
+import com.itemmania.domain.MyMileageDetailDTO;
+import com.itemmania.domain.MyMileageDetailRequest;
+import com.itemmania.service.mileageService.MileageViewService;
 import com.itemmania.service.userService.MyMileageDetailListService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +17,21 @@ import java.time.LocalDateTime;
 public class MyMileageDetailListTest {
 
     @Autowired
-    MyMileageDetailListService myMileageDetailListService;
+    MileageViewService mileageViewService;
 
     @Test
     public void getList(){
 
         LocalDateTime starDate;
         starDate = LocalDateTime.of(1, 1, 1, 1,1);
-        Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "mileageTime");
-        System.out.println("@@@@@@@@@@@"+myMileageDetailListService.getList(5, starDate, LocalDateTime.now(), pageable));
+        LocalDateTime endDate = LocalDateTime.now();
+
+        MyMileageDetailRequest myMileageDetailRequest = new MyMileageDetailRequest();
+        myMileageDetailRequest.setUserNum(1);
+        myMileageDetailRequest.setStartDate(starDate);
+        myMileageDetailRequest.setEndDate(endDate);
+
+        System.out.println(mileageViewService.getMileageHistory(myMileageDetailRequest));
     }
 
 

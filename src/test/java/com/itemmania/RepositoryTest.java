@@ -1,7 +1,9 @@
 package com.itemmania;
 
+import com.itemmania.domain.ChargeRequest;
 import com.itemmania.entity.*;
 import com.itemmania.repository.*;
+import com.itemmania.service.chargeService.ChargeInsertService;
 import com.itemmania.service.userService.MyMileageDetailListService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,6 @@ import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @SpringBootTest
 public class RepositoryTest {
@@ -31,11 +32,15 @@ public class RepositoryTest {
     BoardRepository boardRepository;
 
     @Autowired
-    MyMileageDetailListService myMileageDetailListService;
-    @Autowired
     private MileageRepository mileageRepository;
     @Autowired
     private UseRepository useRepository;
+
+    @Autowired
+    MyMileageDetailListService myMileageDetailListService;
+
+    @Autowired
+    ChargeInsertService chargeInsertService;
 
     @Test
     public void userRepositoryTest(){
@@ -51,6 +56,19 @@ public class RepositoryTest {
 
         System.out.println(userRepository.save(user));
 
+    }
+
+    @Test
+    public void payRepositoryTest(){
+        UserEntity user = userRepository.findById(1).get();
+
+        ChargeRequest chargeRequest = new ChargeRequest();
+        chargeRequest.setUserNum(user.getUserNum());
+        chargeRequest.setPayAmount(10000);
+        chargeRequest.setPg("testPG");
+        chargeRequest.setPayment("testPayment");
+
+        System.out.println(chargeInsertService.insert(chargeRequest));
     }
 
     @Test
