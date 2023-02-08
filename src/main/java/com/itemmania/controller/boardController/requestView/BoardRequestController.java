@@ -1,7 +1,10 @@
 package com.itemmania.controller.boardController.requestView;
 
+import com.itemmania.domain.trade.Trade_insert_VO;
+import com.itemmania.entity.MileageEntity;
 import com.itemmania.service.boardService.BoardListService;
 import com.itemmania.service.boardService.BoardViewService;
+import com.itemmania.service.tradeService.ScheduledService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 //@RequestMapping("/buy_request")
@@ -18,6 +23,8 @@ public class BoardRequestController {
     @Autowired
     private BoardViewService boardViewService;
 
+    @Autowired
+    private ScheduledService scheduledService;
 
     @Autowired
     private BoardListService boardListService;
@@ -45,18 +52,27 @@ public class BoardRequestController {
     }
 
     @PostMapping("/board/requestPage")
-    public void postBoardRequest(@RequestParam(value = "boardNum") int boardNum, @RequestParam(value = "deal") String dealCheck) {
-        log.info("파라미터 확인 boardNum" + boardNum + "deal" + dealCheck);
-        log.info("이이이이이이이이이");
+    public void postBoardRequest(Trade_insert_VO trade_insert_vo) {
+        /*판매자 마일리지 내역*/
+        /*판매자 마일리지 내역*/
 
-        log.info("거래번호" +
-                "구매 마일리지 내역" +
-                "판매 마일리지 내역" +
-                "거래 게시글 번호" +
-                "거래 금액 (거래 비정상 종료시 0)" +
-                "거래 수량" +
-                "정상 종료 구분 (0:비정상 1:정상)" +
-                "거래 종료 시간");
+        log.info("consumer"+trade_insert_vo.getConsumer_mileage());
+        log.info("seller"+trade_insert_vo.getSeller_mileage());
+        List<MileageEntity> seller_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getSeller_mileage());
+
+        List<MileageEntity> consumer_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getConsumer_mileage());
+
+        log.info("seller_mileage" + seller_mileage);
+        log.info("consumer_mileage" + consumer_mileage);
+
+
+
+        /*board_num:10
+        seller_mileage:5
+        consumer_mileage:6
+        trade_amount:1000
+        trade_unit:1
+        saleNickName:노바*/
 
 
     }

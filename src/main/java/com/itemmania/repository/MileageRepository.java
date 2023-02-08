@@ -14,5 +14,7 @@ public interface MileageRepository extends JpaRepository<MileageEntity, Integer>
     List<MileageEntity> findByUserNum_UserNum(int userNum);
 
 
+    /*판매자, 구매자 마일리지 내역PK조회*/
+    List<MileageEntity> findTop1ByUserNum_UserNum(int Seller_Consumer);
 
 }

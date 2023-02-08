@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class trade_insert_VO {
+public class Trade_insert_VO {
 
     // 구매 마일리지 내역
     private int consumer_mileage;

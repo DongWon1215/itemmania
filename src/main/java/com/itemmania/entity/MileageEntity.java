@@ -41,4 +41,6 @@ public class MileageEntity {
 
     @Column
     private int mileageOut;
+
+
 }
