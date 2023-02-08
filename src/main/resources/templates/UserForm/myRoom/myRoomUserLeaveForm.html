@@ -43,9 +43,8 @@
       <tr>
         <th>총 마일리지</th>
         <!-- <td><a href="/myroom/mileage/my_mileage/"><span>0 </span> 원</a></td> -->
-        <!--                        마일리지 값 출력하는 방법 찾기 전까진 주석으로 처리-->
-<!--        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${user.userMileage}">0 </span> 원</a></td>-->
-        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${#numbers.formatInteger(user.userMileage, 3, 'COMMA')}">0 </span> 원</a></td>
+        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${mileage}">0 </span> 원</a></td>
+<!--        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${#numbers.formatInteger(user.userMileage, 3, 'COMMA')}">0 </span> 원</a></td>-->
       </tr>
       <tr>
         <th>거래점수</th>

@@ -48,7 +48,6 @@ public class BuyService {
 
         buyEntity.setMileageNum(mileageRepository.save(mileageEntity));
 
-
         System.out.println(buyRepository.save(buyEntity));
 
         mileageEntity.setMileageDescription("#구매 : " + buyEntity.getBuyNum());

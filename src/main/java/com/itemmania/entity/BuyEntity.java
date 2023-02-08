@@ -1,5 +1,6 @@
 package com.itemmania.entity;
 
+import com.itemmania.domain.BuyRequestDTO;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -40,4 +41,11 @@ public class BuyEntity {
     @Column
     @NotNull
     private LocalDateTime buyTime;
+
+    public BuyRequestDTO to_DTO()
+    {
+        return new BuyRequestDTO(buyItemUnit,buyPrice,buyTime);
+
+
+    }
 }

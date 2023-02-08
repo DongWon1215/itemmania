@@ -15,13 +15,13 @@ import java.time.LocalDate;
 @Mapper
 public interface UserMapper {
 
-    @Select("select user_name from user where user_name = #{userRealName} and user_birth = #{userBirth} and user_phone_number = #{userPhoneNumber}")
+    @Select("select user_name from user where user_real_name = #{userRealName} and user_birth = #{userBirth} and user_phone_number = #{userPhoneNumber}")
     String findIdByNameAndBirthAndPhoneNum(IdFindRequest idFindRequest);
 
-    @Select("select user_real_name from user where user_name = #{userRealName} and user_birth = #{userBirth} and user_email = #{userEmail}")
+    @Select("select user_real_name from user where user_real_name = #{userRealName} and user_birth = #{userBirth} and user_email = #{userEmail}")
     String findIdByNameAndBirthAndEmail(PasswordFindRequest passwordFindRequest);
 
-    @Select("select user_password from user where user_name = #{userRealName} and user_birth = #{userBirth} and user_name = #{userName}")
+    @Select("select user_password from user where user_real_name = #{userRealName} and user_birth = #{userBirth} and user_name = #{userName}")
     String findPasswordByNameAndBirthAndId(PasswordFindRequest passwordFindRequest);
 
     @Select("select user_password from user where user_name = #{userRealName} and user_birth = #{userBirth} and user_email = #{userEmail}")

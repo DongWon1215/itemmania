@@ -369,6 +369,7 @@
               saleNickName:$("#user_character").val(),
               saleAria:$("#user_text").val(),
               usingItemNum:$("#total_charge_money").val(),
+              salePhoto:$("#").val(),
               salePremium:false
             }
 
@@ -376,7 +377,7 @@
 
     $.ajax(
             {
-              url:'/board/buy/insert',
+              url:'/board/sale/insert',
               type:'post',
               data:JSON.stringify(BoardSaleInsertRequest),
               dataType:'JSON',
