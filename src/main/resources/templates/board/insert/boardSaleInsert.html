@@ -123,25 +123,25 @@
                 </td>
               </tr>
 
-              <tr class="split_sale">
-                <th>판매수량</th>
-                <td>
-                  <div class="unit_type" id="unit_type">
-                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="1" checked>없음</label>
-                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="만">만</label>
-                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="억">억</label>
-                    <label class="f_blue1 f_small">(단위)</label>
-                  </div>
-                  <div id="game_money">
-                    최소
-                    <input type="text" name="user_quantity_min" id="user_quantity_min" maxlength="7" class="g_text f_right">
-                    <span class="unit"></span> 게임머니 ~
-                    최대
-                    <input type="text" name="user_quantity_max" id="user_quantity_max" maxlength="7" class="g_text f_right">
-                    <span class="unit"></span> 게임머니
-                  </div>
-                </td>
-              </tr>
+<!--              <tr class="split_sale">-->
+<!--                <th>판매수량</th>-->
+<!--                <td>-->
+<!--                  <div class="unit_type" id="unit_type">-->
+<!--                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="1" checked>없음</label>-->
+<!--                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="만">만</label>-->
+<!--                    <label><input type="radio" name="gamemoney_unit" class="g_radio" value="억">억</label>-->
+<!--                    <label class="f_blue1 f_small">(단위)</label>-->
+<!--                  </div>-->
+<!--                  <div id="game_money">-->
+<!--                    최소-->
+<!--                    <input type="text" name="user_quantity_min" id="user_quantity_min" maxlength="7" class="g_text f_right">-->
+<!--                    <span class="unit"></span> 게임머니 ~-->
+<!--                    최대-->
+<!--                    <input type="text" name="user_quantity_max" id="user_quantity_max" maxlength="7" class="g_text f_right">-->
+<!--                    <span class="unit"></span> 게임머니-->
+<!--                  </div>-->
+<!--                </td>-->
+<!--              </tr>-->
 
               <tr class="split_sale">
                 <th>판매금액</th>
@@ -451,20 +451,20 @@
         $('#user_text').attr("readonly", false);
     })
 
-    $("input[name='user_goods_type']").change(function ()
-    {
-      if($("input[name='user_goods_type']:checked").val() == "general")
-      {
-        $(".normal_sale").show();
-        $(".split_sale").hide();
-      }
-
-      else
-      {
-        $(".normal_sale").hide();
-        $(".split_sale").show();
-      }
-    })
+    // $("input[name='user_goods_type']").change(function ()
+    // {
+    //   if($("input[name='user_goods_type']:checked").val() == "general")
+    //   {
+    //     $(".normal_sale").show();
+    //     $(".split_sale").hide();
+    //   }
+    //
+    //   else
+    //   {
+    //     $(".normal_sale").hide();
+    //     $(".split_sale").show();
+    //   }
+    // })
   })
 
   $("#game_list>ul>li,#server_list>ul>li").click(function () {
