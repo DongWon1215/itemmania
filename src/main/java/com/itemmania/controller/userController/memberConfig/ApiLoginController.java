@@ -33,7 +33,7 @@ public class ApiLoginController {
 
         HttpSession session = request.getSession();
 
-        if(userService.isExistEmail(Token.getAccount_email()))
+        if(!userService.isExistEmail(Token.getAccount_email()))
         {
             session.setAttribute("userInfo",userService.findUserByNameAndEmail(Token.getProfile_nickname(),Token.getAccount_email()));
             log.info(userService.findUserByNameAndEmail(Token.getProfile_nickname(),Token.getAccount_email()));
