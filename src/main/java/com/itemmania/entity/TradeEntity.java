@@ -42,7 +42,6 @@ public class TradeEntity {
     private int tradeUnit;
 
     @Column
-    @NotNull
     private boolean tradeIsSuccess;
 
     @Column

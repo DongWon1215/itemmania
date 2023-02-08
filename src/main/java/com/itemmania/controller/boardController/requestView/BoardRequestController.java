@@ -31,9 +31,10 @@ public class BoardRequestController {
     ) {
         log.info("BoardRequestController 들어옴");
         Model boardReq = model.addAttribute("boardReq", boardViewService.selectBoardView(boardNum));
+        model.addAttribute("dealCheck", dealCheck);
+
         log.info("boardReq>>>>>>>>>>>>" + boardReq);
-        Model boardList = model.addAttribute("boardList", boardListService.getAllList());
-        log.info("boardList>>>>>>>>>>>>" + boardList);
+
 
         if (dealCheck.equals("sale")) {
             log.info("팝니다 요청페이지!!!! 들어감");
@@ -56,9 +57,6 @@ public class BoardRequestController {
                 "거래 수량" +
                 "정상 종료 구분 (0:비정상 1:정상)" +
                 "거래 종료 시간");
-
-
-
 
 
     }
