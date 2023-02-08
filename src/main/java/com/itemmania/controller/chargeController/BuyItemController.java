@@ -1,5 +1,6 @@
 package com.itemmania.controller.chargeController;
 
+import com.itemmania.domain.BuyRequestDTO;
 import com.itemmania.domain.Item.ItemBuyRequest;
 import com.itemmania.entity.BuyEntity;
 import com.itemmania.entity.ItemEntity;
@@ -27,7 +28,7 @@ public class BuyItemController {
     private ItemRepository itemRepository;
 
     @PostMapping("/buy")
-    public JSONObject BuyingTicket(@RequestBody ItemBuyRequest itemBuyRequest, HttpServletRequest request)
+    public BuyRequestDTO BuyingTicket(@RequestBody ItemBuyRequest itemBuyRequest, HttpServletRequest request)
     {
         log.info("itemRequestInfo =======================>" + itemBuyRequest);
 
@@ -37,14 +38,7 @@ public class BuyItemController {
 
         BuyEntity buyEntity = buyService.buy(user,item,itemBuyRequest.getItemNum());
 
-        log.info("여기까진 오류가 안났다");
-
-        JSONObject json = new JSONObject();
-        json.put("buyInfo",buyEntity);
-
-        log.info("끝나기 직전까진 오류가 안났다");
-
-        return json;
+        return buyEntity.to_DTO();
     }
 
 }

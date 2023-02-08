@@ -270,13 +270,14 @@
             itemNum:$('#itemNumSelect').val(),
             itemSerialNum:1
         }
+
         $.ajax({url:'/buy',
             type:'post',
             data:JSON.stringify(ItemBuyRequest),
             dataType:'JSON',
             contentType:'application/json',success:function (rsp)
             {
-                alert('구매성공' + $('#amount').val() + '장')
+                alert('구매성공' + $('#amount').val() / 100 + '장')
                 console.log(rsp)
                 BuyModal.hide()
                 window.location.reload()
