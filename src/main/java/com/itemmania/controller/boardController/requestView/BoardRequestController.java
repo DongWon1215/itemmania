@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 //@RequestMapping("/buy_request")
@@ -58,9 +58,9 @@ public class BoardRequestController {
 
         log.info("consumer"+trade_insert_vo.getConsumer_mileage());
         log.info("seller"+trade_insert_vo.getSeller_mileage());
-        List<MileageEntity> seller_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getSeller_mileage());
+        int seller_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getSeller_mileage());
 
-        List<MileageEntity> consumer_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getConsumer_mileage());
+        int consumer_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getConsumer_mileage());
 
         log.info("seller_mileage" + seller_mileage);
         log.info("consumer_mileage" + consumer_mileage);
