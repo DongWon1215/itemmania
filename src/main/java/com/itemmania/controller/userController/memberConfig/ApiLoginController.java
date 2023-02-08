@@ -37,7 +37,6 @@ public class ApiLoginController {
         {
             session.setAttribute("userInfo",userService.findUserByNameAndEmail(Token.getProfile_nickname(),Token.getAccount_email()));
             log.info(userService.findUserByNameAndEmail(Token.getProfile_nickname(),Token.getAccount_email()));
-//            return "{\"test\":\"test\"}";
             return "/";
         }
 
