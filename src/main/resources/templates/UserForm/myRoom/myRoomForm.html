@@ -47,19 +47,14 @@
                 <div class="mileage_area_content available_mileage f_black1">사용가능 마일리지</div>
                 <div class="mileage_result f_blue1">
                      <span class="over_mile">마일리지</span>
-                    <!--                        마일리지 값 출력하는 방법 찾기 전까진 주석으로 처리-->
-<!--                    <span class="over_mile" th:text="${user.userMileage}">마일리지</span>-->
-<!--                    <span class="over_mile" th:text="${#numbers.formatInteger(user.userMileage, 3, 'COMMA')}">마일리지</span>-->
+                    <span class="over_mile" th:text="${mileage}">0</span>
                     <span class="won f_black2">원</span>
                 </div>
             </div>
             <div class="mileage_area">
                 <div class="mileage_area_content all_mileage f_black2">총 마일리지</div>
                 <div class="mileage_all_result f_black2">
-                    <span>0</span>
-                    <!--                        마일리지 값 출력하는 방법 찾기 전까진 주석으로 처리-->
-<!--                    <span th:text="${user.userMileage}">마일리지</span>-->
-<!--                    <span th:text="${#numbers.formatInteger(user.userMileage, 3, 'COMMA')}">마일리지</span>-->
+                    <span th:text="${mileage}">0</span>
                     <span class="won f_black2">원</span>
                 </div>
             </div>
