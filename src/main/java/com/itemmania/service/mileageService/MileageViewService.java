@@ -1,7 +1,7 @@
 package com.itemmania.service.mileageService;
 
-import com.itemmania.domain.MyMileageDetailDTO;
-import com.itemmania.domain.MyMileageDetailRequest;
+import com.itemmania.domain.mileage.MyMileageDetailDTO;
+import com.itemmania.domain.mileage.MyMileageDetailRequest;
 import com.itemmania.entity.MileageEntity;
 import com.itemmania.mapper.MileageMapper;
 import com.itemmania.repository.MileageRepository;

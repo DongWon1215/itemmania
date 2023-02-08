@@ -1,4 +1,4 @@
-package com.itemmania.domain;
+package com.itemmania.domain.mileage;
 
 import lombok.*;
 

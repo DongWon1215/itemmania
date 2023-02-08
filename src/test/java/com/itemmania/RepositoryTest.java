@@ -98,7 +98,6 @@ public class RepositoryTest {
 
 
         System.out.println(buyRepository.save(buyEntity));
-        System.out.println(userRepository.save(user));
 
         mileageEntity.setMileageDescription("#구매 : " + buyEntity.getBuyNum());
 

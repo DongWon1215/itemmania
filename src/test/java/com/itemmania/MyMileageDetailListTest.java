@@ -1,15 +1,10 @@
 package com.itemmania;
 
-import com.itemmania.domain.MyMileageDetailDTO;
-import com.itemmania.domain.MyMileageDetailRequest;
+import com.itemmania.domain.mileage.MyMileageDetailRequest;
 import com.itemmania.service.mileageService.MileageViewService;
-import com.itemmania.service.userService.MyMileageDetailListService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 import java.time.LocalDateTime;
 
@@ -23,7 +18,7 @@ public class MyMileageDetailListTest {
     public void getList(){
 
         LocalDateTime starDate;
-        starDate = LocalDateTime.of(1, 1, 1, 1,1);
+        starDate = LocalDateTime.of(2023, 2, 8, 1,1);
         LocalDateTime endDate = LocalDateTime.now();
 
         MyMileageDetailRequest myMileageDetailRequest = new MyMileageDetailRequest();
