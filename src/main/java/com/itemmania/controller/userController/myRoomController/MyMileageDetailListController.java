@@ -1,8 +1,9 @@
 package com.itemmania.controller.userController.myRoomController;
 
-import com.itemmania.domain.MyMileageDetailDTO;
-import com.itemmania.domain.MyMileageDetailRequest;
+import com.itemmania.domain.mileage.MyMileageDetailDTO;
+import com.itemmania.domain.mileage.MyMileageDetailRequest;
 import com.itemmania.entity.MileageEntity;
+import com.itemmania.service.mileageService.MileageViewService;
 import com.itemmania.service.userService.MyMileageDetailListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,15 +15,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
 @RequestMapping("/myroom/mymileage/detail_list")
 public class MyMileageDetailListController {
 
+//    @Autowired
+//    MyMileageDetailListService myMileageDetailListService;
+
     @Autowired
-    MyMileageDetailListService myMileageDetailListService;
+    private MileageViewService mileageViewService;
 
     @GetMapping
     public String getMyPageForm()
@@ -32,8 +35,8 @@ public class MyMileageDetailListController {
 
     @GetMapping("/test")
     @ResponseBody
-    public Page<MileageEntity> getMyMileageDetail(MyMileageDetailRequest myMileageDetailRequest, @PageableDefault(size = 5, sort = "mileageTime", direction = Sort.Direction.DESC) Pageable pageable){
-        return myMileageDetailListService.getList(myMileageDetailRequest.getUserNum(), myMileageDetailRequest.getStartDate(), myMileageDetailRequest.getEndDate(), pageable);
+    public List<MyMileageDetailDTO> getMyMileageDetail(MyMileageDetailRequest myMileageDetailRequest){
+        return mileageViewService.getMileageHistory(myMileageDetailRequest);
     }
 
 }

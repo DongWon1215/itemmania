@@ -44,6 +44,8 @@ public class BuyService {
 
         buyEntity.setItemNum(itemEntity);
         buyEntity.setBuyPrice(buyEntity.getBuyItemUnit() * buyEntity.getItemNum().getItemPrice());
+
+
         buyEntity.setMileageNum(mileageRepository.save(mileageEntity));
 
         System.out.println(buyRepository.save(buyEntity));

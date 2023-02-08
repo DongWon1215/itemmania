@@ -1,6 +1,5 @@
 package com.itemmania.service.userService;
 
-import com.itemmania.domain.MyMileageDetailDTO;
 import com.itemmania.entity.MileageEntity;
 import com.itemmania.repository.BuyRepository;
 import com.itemmania.repository.MileageRepository;
@@ -12,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class MyMileageDetailListService {
