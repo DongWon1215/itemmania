@@ -1,6 +1,7 @@
 package com.itemmania.controller.userController.myRoomController;
 
 import com.itemmania.entity.UserEntity;
+import com.itemmania.service.mileageService.MileageViewService;
 import com.itemmania.service.userService.MyInfoReadService;
 import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
@@ -24,6 +25,9 @@ public class MyRoomController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private MileageViewService mileageViewService;
+
     @GetMapping
     public String getMypageForm(HttpServletRequest request, Model model)
     {
@@ -32,7 +36,9 @@ public class MyRoomController {
         HttpSession session = request.getSession();
         log.info("UserModifyController......." + session.getAttribute("userInfo"));
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
+        int mileage = mileageViewService.getUserMileage(user.getUserNum());
         model.addAttribute("user", user);
+        model.addAttribute("mileage", mileage);
         log.info("myroom user............" + user);
 
         // 마이룸 페이지 진입

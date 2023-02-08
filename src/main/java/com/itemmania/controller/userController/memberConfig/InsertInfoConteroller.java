@@ -61,8 +61,6 @@ public class InsertInfoConteroller {
 
         UserEntity userInfo = user.toUserEntity();
 
-        log.info(itemRepository.getReferenceById(1));
-        log.info("유저인포 =============>"+userInfo);
         userService.insertUser(userInfo);
 
         JSONObject json = new JSONObject();
