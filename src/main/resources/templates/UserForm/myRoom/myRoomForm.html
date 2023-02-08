@@ -279,7 +279,7 @@
             dataType:'JSON',
             contentType:'application/json',success:function (rsp)
             {
-                alert('구매성공' + $('#amount').val() / 100 + '장')
+                alert('구매성공' + $('#ticket_amount').val() / 100 + '장')
                 console.log(rsp)
                 BuyModal.hide()
                 window.location.reload()
