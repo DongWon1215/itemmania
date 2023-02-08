@@ -22,6 +22,9 @@ public class BoardBuyInsertRequest {
     private int userNum;
     private int saleUnit;
     private int salePrice;
+
+    private int usingItemNum;
+
     private String serverName;
     private String saleNickName;
     private String saleAria;

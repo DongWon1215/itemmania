@@ -177,7 +177,7 @@
                         <dt>프리미엄등록</dt>
                         <dd>
                            <div class="charge_price">(이용료 :
-                                <strong> 100원 </strong> / 1시간)
+                                <strong> 1장 </strong> / 1시간)
                             </div>
                             <select id="user_premium_time" name="user_premium_time" onchange="calculateMileage()">
                                 <option value="">미설정</option>
@@ -214,12 +214,12 @@
                 </div>
                 <div class="total_charge">
                     <strong class="total_label" >총 결제금액 : </strong>
-                    <strong class="total_charge_money f_red1"><span id="total_charge_money">0</span>원</strong>
+                    <strong class="total_charge_money f_red1"><span id="total_charge_money">0</span>장</strong>
                     <div>
-                        (내 사용가능한 마일리지 :
-                        <strong id="txtCurrentMileage" class="f_red1">0</strong>)
+                        (내 사용가능한 쿠폰 :
+<!--                        <strong id="txtCurrentMileage" class="f_red1">0</strong>)-->
                         <!--                        마일리지 값 출력하는 방법 찾기 전까진 주석으로 처리-->
-<!--                        <strong id="txtCurrentMileage" class="f_red1" th:text="${myInfo.userMileage}"></strong>)-->
+                        <strong id="txtCurrentMileage" class="f_red1"><span text="${itemNum}">0</span>장</strong>)
                     </div>
                 </div>
 
@@ -337,6 +337,7 @@ function writePost()
         serverName:$("#searchRegGameServer").val(),
         saleNickName:$("#user_character").val(),
         saleAria:$("#user_text").val(),
+        usingItemNum:$("#total_charge_money").val(),
         salePremium:false
     }
 
@@ -382,13 +383,19 @@ function writePost()
 <script th:inline="javascript">
     function calculateMileage()
     {
-        $("#total_charge_money").text($("#user_premium_time").val() * 100)
+        $("#total_charge_money").text($("#user_premium_time").val())
 
-        if(0 <= $("#total_charge_money").text())
+        if([[${itemNum}]] < $("#total_charge_money").text())
+        {
             $('#showModalBtn').show();
+            $('#ok_btn').attr("disabled",true);
+        }
 
         else
+        {
             $('#showModalBtn').hide();
+            $('#ok_btn').removeAttr("disabled");
+        }
     }
 </script>
 <script>
