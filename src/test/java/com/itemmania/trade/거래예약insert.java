@@ -1,22 +1,19 @@
-package com.itemmania.service.tradeService;
+package com.itemmania.trade;
 
 import com.itemmania.entity.TradeEntity;
 import com.itemmania.repository.TradeRepository;
-import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@Log4j2
-@Service
-public class TradeInsertService {
+@SpringBootTest
+public class 거래예약insert {
+
 
     @Autowired
-    TradeRepository tradeRepository;
-
-
+    private TradeRepository tradeRepository;
+    @Test
     public TradeEntity setTradeInsert(TradeEntity tradeEntity) {
         return tradeRepository.save(tradeEntity);
     }
-
-
 }
