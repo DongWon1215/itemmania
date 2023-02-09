@@ -1,10 +1,11 @@
 package com.itemmania.controller.boardController.requestView;
 
 import com.itemmania.domain.trade.Trade_insert_VO;
-import com.itemmania.entity.MileageEntity;
+import com.itemmania.entity.TradeEntity;
 import com.itemmania.service.boardService.BoardListService;
 import com.itemmania.service.boardService.BoardViewService;
 import com.itemmania.service.tradeService.ScheduledService;
+import com.itemmania.service.tradeService.TradeInsertService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class BoardRequestController {
 
     @Autowired
     private BoardViewService boardViewService;
+
+    @Autowired
+    private TradeInsertService tradeInsertService;
 
     @Autowired
     private ScheduledService scheduledService;
@@ -53,19 +57,25 @@ public class BoardRequestController {
 
     @PostMapping("/board/requestPage")
     public void postBoardRequest(Trade_insert_VO trade_insert_vo) {
-        /*판매자 마일리지 내역*/
-        /*판매자 마일리지 내역*/
 
-        log.info("consumer"+trade_insert_vo.getConsumer_mileage());
-        log.info("seller"+trade_insert_vo.getSeller_mileage());
+        /*trde테이블에 검색할 userNum*/
+        log.info("consumer" + trade_insert_vo.getConsumer_mileage());
+        log.info("seller" + trade_insert_vo.getSeller_mileage());
+
+        /*판매자, 구매자 마일리지 내역 PK*/
         int seller_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getSeller_mileage());
-
         int consumer_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getConsumer_mileage());
-
         log.info("seller_mileage" + seller_mileage);
         log.info("consumer_mileage" + consumer_mileage);
 
+        trade_insert_vo.setSeller_mileage(seller_mileage);
+        trade_insert_vo.setConsumer_mileage(consumer_mileage);
 
+
+        log.info("set된 결과" + trade_insert_vo);
+        /*tradeInsertService.setTradeInsert();*/
+
+        tradeInsertService.setTradeInsert(trade_insert_vo);
 
         /*board_num:10
         seller_mileage:5

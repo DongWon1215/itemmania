@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Log4j2
 @SpringBootTest
-public class aasasa {
+public class 유저번호로PK검색하기 {
 
 
     @Autowired

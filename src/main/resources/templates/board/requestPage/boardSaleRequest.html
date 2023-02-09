@@ -60,7 +60,7 @@
             <input type="hidden" name="board_num" th:value="${boardReq.boardNum}">
             <!--판매자 회원번호-->
             <input type="hidden" name="seller_mileage" th:value="${boardReq.userNum.userNum}">
-            <!--구매자 회원번호-->
+            <!--구매자 회원번호  (위에서 자바스크립트로 value값 넣어주고 있음)-->
             <input type="hidden" name="consumer_mileage">
             <!--거래금액-->
             <input type="hidden" name="trade_amount" th:value="${boardReq.salePrice}">
