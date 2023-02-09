@@ -57,7 +57,7 @@
                 <div class="mileage_area_content all_mileage f_black2">사용가능 프리미엄 티켓</div>
                 <div class="mileage_all_result f_black2">
                     <span th:text="${itemNum}">0</span>
-                    <span class="won f_black2">원</span>
+                    <span class="won f_black2">장</span>
                 </div>
             </div>
             <div class="mileage_area mileage_btn_area">
@@ -250,6 +250,7 @@
 
         console.log('userNum : ' + $('#userNum').val())
 
+        $('#ticket_amount').val(100)
         $('#itemNumSelect').on("change", function (){
             $('#ticket_amount').val($('#itemNumSelect').val() * 100);
 
