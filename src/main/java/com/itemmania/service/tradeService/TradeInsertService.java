@@ -1,6 +1,5 @@
 package com.itemmania.service.tradeService;
 
-import com.itemmania.domain.trade.Trade_insert_VO;
 import com.itemmania.entity.TradeEntity;
 import com.itemmania.repository.TradeRepository;
 import lombok.extern.log4j.Log4j2;
@@ -15,8 +14,8 @@ public class TradeInsertService {
     TradeRepository tradeRepository;
 
 
-    public int setTradeInsert(Trade_insert_VO tradeInsert) {
-        return tradeRepository.save(tradeInsert);
+    public TradeEntity setTradeInsert(TradeEntity trade_insert_vo) {
+        return tradeRepository.save(trade_insert_vo);
 
 
     }

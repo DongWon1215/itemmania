@@ -47,4 +47,9 @@ public class TradeEntity {
     @Column
     @NotNull
     private LocalDateTime tradeTime;
+
+    public void setSellerMileage(MileageEntity seller_mileage) {
+        this.sellerMileage = seller_mileage;
+    }
+
 }

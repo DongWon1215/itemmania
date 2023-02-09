@@ -1,5 +1,6 @@
 package com.itemmania.trade;
 
+import com.itemmania.entity.MileageEntity;
 import com.itemmania.repository.MileageRepository;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -16,10 +17,10 @@ public class 유저번호로PK검색하기 {
 
     @Test
     public void aa() {
-        int distinctByUserNum = mileageRepository.findTop1ByUserNum(5);
+
+    /*    MileageEntity distinctByUserNum = mileageRepository.findTop1ByUserNum(6);
 
         log.info("김주환"+distinctByUserNum);
-
-
+*/
     }
 }

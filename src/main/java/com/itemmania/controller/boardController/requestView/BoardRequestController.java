@@ -1,6 +1,6 @@
 package com.itemmania.controller.boardController.requestView;
 
-import com.itemmania.domain.trade.Trade_insert_VO;
+import com.itemmania.entity.MileageEntity;
 import com.itemmania.entity.TradeEntity;
 import com.itemmania.service.boardService.BoardListService;
 import com.itemmania.service.boardService.BoardViewService;
@@ -13,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Optional;
 
 @Controller
 //@RequestMapping("/buy_request")
@@ -56,33 +54,29 @@ public class BoardRequestController {
     }
 
     @PostMapping("/board/requestPage")
-    public void postBoardRequest(Trade_insert_VO trade_insert_vo) {
+    public void postBoardRequest(TradeEntity tradeEntity) {
 
         /*trde테이블에 검색할 userNum*/
-        log.info("consumer" + trade_insert_vo.getConsumer_mileage());
-        log.info("seller" + trade_insert_vo.getSeller_mileage());
+        /*로그인한 유저 6번*/
+        log.info("consumer >>" + tradeEntity.getConsumerMileage().getMileageNum());
+        /*게시글 작성유저 5번*/
+        log.info("seller >>" + tradeEntity.getSellerMileage().getMileageNum());
 
         /*판매자, 구매자 마일리지 내역 PK*/
-        int seller_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getSeller_mileage());
-        int consumer_mileage = scheduledService.getSeller_Consumer_mileage(trade_insert_vo.getConsumer_mileage());
+        MileageEntity seller_mileage = scheduledService.getSeller_Consumer_mileage(tradeEntity.getConsumerMileage().getMileageNum());
+        MileageEntity consumer_mileage = scheduledService.getSeller_Consumer_mileage(tradeEntity.getSellerMileage().getMileageNum());
+
+
         log.info("seller_mileage" + seller_mileage);
         log.info("consumer_mileage" + consumer_mileage);
 
-        trade_insert_vo.setSeller_mileage(seller_mileage);
-        trade_insert_vo.setConsumer_mileage(consumer_mileage);
+        tradeEntity.setSellerMileage(seller_mileage);
+        tradeEntity.setConsumerMileage(consumer_mileage);
 
 
-        log.info("set된 결과" + trade_insert_vo);
-        /*tradeInsertService.setTradeInsert();*/
+        log.info("set된 결과" + tradeEntity);
 
-        tradeInsertService.setTradeInsert(trade_insert_vo);
-
-        /*board_num:10
-        seller_mileage:5
-        consumer_mileage:6
-        trade_amount:1000
-        trade_unit:1
-        saleNickName:노바*/
+        tradeInsertService.setTradeInsert(tradeEntity);
 
 
     }
