@@ -43,7 +43,7 @@
       <tr>
         <th>총 마일리지</th>
         <!-- <td><a href="/myroom/mileage/my_mileage/"><span>0 </span> 원</a></td> -->
-        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${mileage}">0 </span> 원</a></td>
+        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${#numbers.formatInteger(mileage, 3, 'COMMA')}">0 </span> 원</a></td>
 <!--        <td><a href="/myroom/mileage/my_mileage/"><span th:text="${#numbers.formatInteger(user.userMileage, 3, 'COMMA')}">0 </span> 원</a></td>-->
       </tr>
       <tr>
