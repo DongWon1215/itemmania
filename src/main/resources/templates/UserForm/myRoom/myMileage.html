@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" href="../../image/favicon/hb.ico">
@@ -44,7 +44,7 @@
           현재 마일리지<br>
         </th>
         <td class="f_center">
-          <span class="f_red1 f_bold">{1234} 원</span><br>
+          <span class="f_red1 f_bold" th:text="${#numbers.formatInteger(mileage, 3, 'COMMA')}">{1234} 원</span><br>
         </td>
       </tr>
       </tbody>

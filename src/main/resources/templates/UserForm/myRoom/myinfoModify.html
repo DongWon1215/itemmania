@@ -221,6 +221,7 @@
     const user_mobileC = document.getElementById('user_mobileC').value
     const userEmail = document.getElementById('userEmail').value
     const userEmail2 = document.getElementById('userEmail2').value
+    const passwordReq = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
 
     console.log(UserModifyRequest)
 
@@ -238,6 +239,10 @@
 
                   if(repassword == '' || user_mobileB == '' || user_mobileC == '' || UserModifyRequest.userEmail == '' || userEmail == '' || userEmail2 == '') {
                     alert("비밀번호, 이메일주소, 전화번호는 필수 입력 사항입니다.")
+                  }
+
+                  else if(!passwordReq.test(UserModifyRequest.userPassword)){
+                    alert("비밀번호에 영문자와 숫자, 특수문자가 반드시 하나씩 포함되어야 하며 길이가 6~12글자 이내여야 합니다.")
                   }
 
                   else if(repassword!=UserModifyRequest.userPassword){
