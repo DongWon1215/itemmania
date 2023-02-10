@@ -1,14 +1,16 @@
 package com.itemmania.entity;
 
-import com.sun.istack.NotNull;
 import lombok.*;
+import lombok.extern.log4j.Log4j2;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Log4j2
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -19,7 +21,7 @@ public class TradeEntity {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int tradeNum;
+    private Integer tradeNum;
 
     @ManyToOne
     @JoinColumn(name = "consumerMileage")
@@ -35,16 +37,17 @@ public class TradeEntity {
 
     @Column
     @ColumnDefault("0")
-    private int tradeAmount;
+    private Integer tradeAmount;
 
     @Column
     @ColumnDefault("0")
-    private int tradeUnit;
+    private Integer tradeUnit;
 
     @Column
-    private boolean tradeIsSuccess;
+    @ColumnDefault("")
+    private Boolean tradeIsSuccess;
 
     @Column
-    @NotNull
     private LocalDateTime tradeTime;
+
 }
