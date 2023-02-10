@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" href="../../image/favicon/hb.ico">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <link type="text/css" rel="stylesheet" href="/css/UserForm/mypage.css">
 <body>
@@ -59,29 +60,29 @@
                 <option value="2023" >2023</option>
               </select>년
               <select id="search_month" name="search_month">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
               </select>월
               <select id="search_day" name="search_day">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
@@ -117,29 +118,29 @@
                 <option value="2023">2023</option>
               </select>년
               <select id="search_month_end" name="search_month_end">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
               </select>월
               <select id="search_day_end" name="search_day_end">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
@@ -200,7 +201,7 @@
         <col width="134">
         <col width="114">
       </colgroup>
-      <tbody><tr>
+      <tr>
         <th class="first">일자</th>
         <th>분류</th>
         <th>내용</th>
@@ -208,10 +209,13 @@
         <th>감소된 마일리지(-)</th>
         <th>현재 마일리지</th>
       </tr>
-      <tr>
+      <tbody id="tbody">
+      <tr id="noData">
         <td colspan="6" class="first">거래내역이 없습니다.</td>
       </tr>
       </tbody></table>
+
+    <div id="pageNum"></div>
 
     <div class="tb_bt_txt f_black2">
       <div class="g_left">- 조회기간은 전년기준 5년까지 조회 가능합니다.</div>
@@ -225,11 +229,13 @@
 <!--footer 시작-->
 <div th:replace="fragment/footer"/>
 
+<input type="hidden" id="userNum3" th:value="${#authentication.principal.userEntity.userNum}">
 
 <script>
 
   var startDate
   var endDate
+  var data
 
   $().ready(() => {
     $('#search_month').on("change", () => getLastDate())
@@ -246,7 +252,13 @@
     let html = ''
 
     for (let i = 1; i <= lastDate; i++) {
-      html += '<option value="' + i + '">' + i + '</option>'
+
+      if(i<10){
+        html += '<option value="0' + i + '">' + i + '</option>'
+      } else {
+        html += '<option value="' + i + '">' + i + '</option>'
+      }
+
     }
 
     $('#search_day').append(html)
@@ -260,15 +272,21 @@
     let html = ''
 
     for (let i = 1; i <= lastDate; i++) {
-      html += '<option value="' + i + '">' + i + '</option>'
+
+      if(i<10){
+        html += '<option value="0' + i + '">' + i + '</option>'
+      } else {
+        html += '<option value="' + i + '">' + i + '</option>'
+      }
+
     }
 
     $('#search_day_end').append(html)
   }
 
   function dateSubmit(){
-    startDate = new Date($('#search_year option:selected').val(), $('#search_month option:selected').val(), $('#search_day option:selected').val())
-    endDate = new Date($('#search_year_end option:selected').val(), $('#search_month_end option:selected').val(), $('#search_day_end option:selected').val())
+    startDate = new Date($('#search_year option:selected').val(), $('#search_month option:selected').val()-1, $('#search_day option:selected').val())
+    endDate = new Date($('#search_year_end option:selected').val(), $('#search_month_end option:selected').val()-1, $('#search_day_end option:selected').val())
 
     console.log(startDate, endDate)
     console.log(endDate > startDate)
@@ -281,12 +299,66 @@
     alert('정상적인 날자 범위입니다')
     // 비동기로 db에서 데이터 받아와서 html append
 
-    // const payload = {
-    //   userNum : `${principal.userNum}`,
-    //   startDate : startDate,
-    //   endDate : endDate
-    // }
+    const payload = {
+      userNum : $('#userNum3').val(),
+      startDate : startDate.getFullYear() + '-' + ($('#search_month').val()) + '-' + $('#search_day').val(),
+      endDate : endDate.getFullYear() + '-' + ($('#search_month_end').val()) + '-' + $('#search_day_end').val()
+    }
 
+    console.log(payload)
+
+    axios.get("/test5", {params:payload})
+            .then(function (response) {
+              console.log(response)
+              console.log(response.data[1])
+              console.log(response.data.length)
+
+              data = response.data
+
+              let maxPage = response.data.length / 5
+              if(maxPage % 5 != 0){
+                maxPage++
+              }
+
+              let html = ''
+              for(let i=1; i<maxPage; i++){
+                html += '<a href="javascript:page_scope(' + i + ');">' + i + '</a>'
+              }
+
+              $('#pageNum').html(html)
+
+              if(data.length == 0){
+                let html = '<tr id="noData"><td colspan="6" class="first">거래내역이 없습니다.</td></tr>'
+                $('#tbody').html(html)
+              }
+
+              if(data.length != 0){
+                page_scope(1)
+              }
+            })
+
+  }
+
+  function page_scope(pageNum){
+
+    let html = ''
+
+    for(let i=(pageNum-1)*5; i<pageNum*5; i++){
+      if(i>=data.length){
+        break
+      }
+      console.log(data[i])
+      html += '<tr>'
+      html += '<td>' + data[i].mileageEntity.mileageTime + '</td>'
+      html += '<td>' + data[i].mileageEntity.mileageType + '</td>'
+      html += '<td>' + data[i].mileageEntity.mileageDescription + '</td>'
+      html += '<td>' + data[i].mileageEntity.mileageIn + '</td>'
+      html += '<td>' + data[i].mileageEntity.mileageOut + '</td>'
+      html += '<td>' + data[i].mileageHistory + '</td>'
+      html += '</tr>'
+    }
+
+    $('#tbody').html(html)
   }
 
   function date_scope(date){
@@ -295,12 +367,32 @@
     startDate.setDate(startDate.getDate() - date)
 
     $('#search_year').val(startDate.getFullYear())
-    $('#search_month').val(startDate.getMonth()+1)
-    $('#search_day').val(startDate.getDate())
+
+    if(startDate.getMonth()+1 < 10){
+      $('#search_month').val('0' + (startDate.getMonth()+1))
+    } else {
+      $('#search_month').val(startDate.getMonth()+1)
+    }
+
+    if(startDate.getDate() < 10){
+      $('#search_day').val('0' + startDate.getDate())
+    } else {
+      $('#search_day').val(startDate.getDate())
+    }
 
     $('#search_year_end').val(endDate.getFullYear())
-    $('#search_month_end').val(endDate.getMonth()+1)
-    $('#search_day_end').val(endDate.getDate())
+
+    if(endDate.getMonth()+1 < 10){
+      $('#search_month_end').val('0' + (endDate.getMonth()+1))
+    } else {
+      $('#search_month_end').val(endDate.getMonth()+1)
+    }
+
+    if(endDate.getDate() < 10){
+      $('#search_day_end').val('0' + endDate.getDate())
+    } else {
+      $('#search_day_end').val(endDate.getDate())
+    }
 
     console.log(startDate.getFullYear(), startDate.getMonth()+1, startDate.getDate())
 

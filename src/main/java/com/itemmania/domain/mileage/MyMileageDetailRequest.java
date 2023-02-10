@@ -1,6 +1,7 @@
 package com.itemmania.domain.mileage;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,7 +15,12 @@ import java.time.LocalDateTime;
 public class MyMileageDetailRequest {
 
     private int userNum;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
+
 
 }
