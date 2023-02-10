@@ -19,7 +19,7 @@ public class MileageEntity {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int mileageNum;
+    private Integer mileageNum;
 
     @ManyToOne
     @JoinColumn(name = "userNum")
@@ -37,10 +37,10 @@ public class MileageEntity {
     private String mileageDescription;
 
     @Column
-    private int mileageIn;
+    private Integer mileageIn;
 
     @Column
-    private int mileageOut;
+    private Integer mileageOut;
 
 
 }
