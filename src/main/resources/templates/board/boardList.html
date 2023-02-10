@@ -106,7 +106,7 @@
     <div class="search_list_all">
         <ul class="search_list search_list_premium">
             <li th:each="P_List:${boarPList}">
-                <div class="col_01"><img id="P_imgId" th:src="${P_List.user_mark}" alt="등급이미지"/></div>
+                <div class="col_01"><span class="credit_mark" th:text="${P_List.user_credit_score}"/></div>
                 <div class="col_02 active"><span th:text="${P_List.game_server_name}"></span></div>
                 <div class="col_03">
                     <a th:href="@{/board/view(boardNum=${P_List.board_num},deal=${P_List.deal_check})}">
@@ -139,7 +139,7 @@
         </ul>
         <ul id="demo" class="search_list search_list_normal">
             <li th:each="List:${boarList}">
-                <div class="col_01"><span class="credit_mark" th:value="${List.user_credit_score}"/></div>
+                <div class="col_01"><span class="credit_mark" th:text="${List.user_credit_score}"/></div>
                 <div class="col_02"><span th:text="${List.game_server_name}"></span></div>
                 <div class="col_03 active">
                     <a th:href="@{/board/view(boardNum=${List.board_num},deal=${List.deal_check})}">
@@ -167,16 +167,26 @@
 </html>
 
 
-<script>
+<script th:inline="javascript">
     $(document).ready(() => {
         let pageNum = 1
 
         console.log('준비완료');
 
-        $(".credit_mark").each(function ()
+        $('.credit_mark').each(function (index,value)
         {
-            console.log($(this).val());
-            setBoardCreditImg(this.val());
+            let score = $(this).text();
+
+            if(score < 5)
+                $(this).addClass("_xsm ")
+            else if(score < 51 && score >= 5)
+                $(this).addClass("silver")
+            else if(score < 101 && score >= 51)
+                $(this).addClass("gold")
+            else if(score < 301 && score >= 101)
+                $(this).addClass("platinum")
+            else if(score >= 301)
+                $(this).addClass("vip")
         })
 
         // 라디오버튼, 체크박스 검색
@@ -251,29 +261,5 @@
             })
         })
     })
-
-    function setBoardCreditImg(CreditScore)
-    {
-        if(CreditScore < 5)
-        {
-            $(this).addClass("_xsm ")
-        }
-        else if(CreditScore < 51 && CreditScore >= 5)
-        {
-            $(this).addClass("silver")
-        }
-        else if(CreditScore < 101 && CreditScore >= 51)
-        {
-            $(this).addClass("gold")
-        }
-        else if(CreditScore < 301 && CreditScore >= 101)
-        {
-            $(this).addClass("platinum")
-        }
-        else if(CreditScore >= 301)
-        {
-            $(this).addClass("vip")
-        }
-    }
 
 </script>
