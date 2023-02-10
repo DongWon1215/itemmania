@@ -17,9 +17,10 @@ public class MyMileageDetailRequest {
     private int userNum;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
+
 
 }

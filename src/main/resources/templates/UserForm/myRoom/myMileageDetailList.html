@@ -201,7 +201,7 @@
         <col width="134">
         <col width="114">
       </colgroup>
-      <tbody><tr>
+      <tr>
         <th class="first">일자</th>
         <th>분류</th>
         <th>내용</th>
@@ -209,10 +209,13 @@
         <th>감소된 마일리지(-)</th>
         <th>현재 마일리지</th>
       </tr>
-      <tr>
+      <tbody id="tbody">
+      <tr id="noData">
         <td colspan="6" class="first">거래내역이 없습니다.</td>
       </tr>
       </tbody></table>
+
+    <div id="pageNum"></div>
 
     <div class="tb_bt_txt f_black2">
       <div class="g_left">- 조회기간은 전년기준 5년까지 조회 가능합니다.</div>
@@ -232,6 +235,7 @@
 
   var startDate
   var endDate
+  var data
 
   $().ready(() => {
     $('#search_month').on("change", () => getLastDate())
@@ -303,11 +307,58 @@
 
     console.log(payload)
 
-    axios.get("/test", {params:payload})
+    axios.get("/test5", {params:payload})
             .then(function (response) {
               console.log(response)
+              console.log(response.data[1])
+              console.log(response.data.length)
+
+              data = response.data
+
+              let maxPage = response.data.length / 5
+              if(maxPage % 5 != 0){
+                maxPage++
+              }
+
+              let html = ''
+              for(let i=1; i<maxPage; i++){
+                html += '<a href="javascript:page_scope(' + i + ');">' + i + '</a>'
+              }
+
+              $('#pageNum').html(html)
+
+              if(data.length == 0){
+                let html = '<tr id="noData"><td colspan="6" class="first">거래내역이 없습니다.</td></tr>'
+                $('#tbody').html(html)
+              }
+
+              if(data.length != 0){
+                page_scope(1)
+              }
             })
 
+  }
+
+  function page_scope(pageNum){
+
+    let html = ''
+
+    for(let i=(pageNum-1)*5; i<pageNum*5; i++){
+      if(i>=data.length){
+        break
+      }
+      console.log(data[i])
+      html += '<tr>'
+      html += '<td>' + data[i].mileageEntity.mileageTime + '</td>'
+      html += '<td>' + data[i].mileageEntity.mileageType + '</td>'
+      html += '<td>' + data[i].mileageEntity.mileageDescription + '</td>'
+      html += '<td>' + data[i].mileageEntity.mileageIn + '</td>'
+      html += '<td>' + data[i].mileageEntity.mileageOut + '</td>'
+      html += '<td>' + data[i].mileageHistory + '</td>'
+      html += '</tr>'
+    }
+
+    $('#tbody').html(html)
   }
 
   function date_scope(date){

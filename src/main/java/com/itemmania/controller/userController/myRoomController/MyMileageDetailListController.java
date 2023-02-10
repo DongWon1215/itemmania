@@ -33,11 +33,12 @@ public class MyMileageDetailListController {
         return "userForm/myRoom/myMileageDetailList";
     }
 
-    @GetMapping("test")
+    @GetMapping("test5")
     @ResponseBody
-    public List<MyMileageDetailDTO> getMyMileageDetail(@RequestBody MyMileageDetailRequest myMileageDetailRequest){
+    public List<MyMileageDetailDTO> getMyMileageDetail(MyMileageDetailRequest myMileageDetailRequest){
 
         log.info(myMileageDetailRequest + "@@@@@@@@@@@@@@@@");
+
         log.info(mileageViewService.getMileageHistory(myMileageDetailRequest));
         return mileageViewService.getMileageHistory(myMileageDetailRequest);
     }

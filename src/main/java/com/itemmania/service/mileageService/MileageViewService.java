@@ -5,14 +5,17 @@ import com.itemmania.domain.mileage.MyMileageDetailRequest;
 import com.itemmania.entity.MileageEntity;
 import com.itemmania.mapper.MileageMapper;
 import com.itemmania.repository.MileageRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 @Service
+@Log4j2
 public class MileageViewService {
 
     @Autowired
@@ -52,9 +55,16 @@ public class MileageViewService {
 //            result.add(historyList.get(i));
 //        }
 
+
         for(MyMileageDetailDTO myMileageDetailDTO : historyList){
 
-            if( myMileageDetailDTO.getMileageEntity().getMileageTime().isAfter(myMileageDetailRequest.getStartDate()) && myMileageDetailDTO.getMileageEntity().getMileageTime().isBefore(myMileageDetailRequest.getEndDate()) ) {
+            LocalDateTime startDate = LocalDateTime.of(myMileageDetailRequest.getStartDate().getYear(), myMileageDetailRequest.getStartDate().getMonth(), myMileageDetailRequest.getStartDate().getDayOfMonth(), 0, 0);
+            LocalDateTime endDate = LocalDateTime.of(myMileageDetailRequest.getEndDate().getYear(), myMileageDetailRequest.getEndDate().getMonth(), myMileageDetailRequest.getEndDate().getDayOfMonth(), 23, 59);
+
+            log.info(startDate + "startDate@@@@@@@@@@@@@@@@@@@");
+            log.info(endDate + "endDate@@@@@@@@@@@@@@@@@@@@@@@");
+
+            if( myMileageDetailDTO.getMileageEntity().getMileageTime().isAfter(startDate) && myMileageDetailDTO.getMileageEntity().getMileageTime().isBefore(endDate) ) {
                 result.add(myMileageDetailDTO);
             }
 
