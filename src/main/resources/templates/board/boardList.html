@@ -139,7 +139,7 @@
         </ul>
         <ul id="demo" class="search_list search_list_normal">
             <li th:each="List:${boarList}">
-                <div class="col_01"><img id="imgId" th:src="${List.user_mark}" alt="등급이미지"/></div>
+                <div class="col_01"><span class="credit_mark" th:value="${List.user_credit_score}"/></div>
                 <div class="col_02"><span th:text="${List.game_server_name}"></span></div>
                 <div class="col_03 active">
                     <a th:href="@{/board/view(boardNum=${List.board_num},deal=${List.deal_check})}">
@@ -173,6 +173,11 @@
 
         console.log('준비완료');
 
+        $(".credit_mark").each(function ()
+        {
+            console.log($(this).val());
+            setBoardCreditImg(this.val());
+        })
 
         // 라디오버튼, 체크박스 검색
         $('.search_box input[type="radio"]').on('click', function () {
@@ -247,5 +252,28 @@
         })
     })
 
+    function setBoardCreditImg(CreditScore)
+    {
+        if(CreditScore < 5)
+        {
+            $(this).addClass("_xsm ")
+        }
+        else if(CreditScore < 51 && CreditScore >= 5)
+        {
+            $(this).addClass("silver")
+        }
+        else if(CreditScore < 101 && CreditScore >= 51)
+        {
+            $(this).addClass("gold")
+        }
+        else if(CreditScore < 301 && CreditScore >= 101)
+        {
+            $(this).addClass("platinum")
+        }
+        else if(CreditScore >= 301)
+        {
+            $(this).addClass("vip")
+        }
+    }
 
 </script>

@@ -28,7 +28,7 @@ public class ScheduledService {
     public List<MileageEntity> getSeller_Consumer_mileage(int Seller_Consumer) {
         /*판매자, 구매자 마일리지 내역PK조회*/
         log.info("Seller_Consumer"+Seller_Consumer);
-        List<MileageEntity> top1ByUserNum_userNum = mileageRepository.findTop1ByUserNum_UserNum(Seller_Consumer)
+        List<MileageEntity> top1ByUserNum_userNum = mileageRepository.findTop1ByUserNum_UserNum(Seller_Consumer);
         log.info("top1ByUserNum_userNum" + top1ByUserNum_userNum);
         return top1ByUserNum_userNum;
     }
