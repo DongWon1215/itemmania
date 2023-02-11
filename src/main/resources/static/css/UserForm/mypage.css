@@ -710,10 +710,23 @@ body
 .g_path .select{margin:0;padding:0;background:0;font-weight:700}
 .g_paging{display:block;margin-top:15px;font-size:0;text-align:center}
 .g_paging li{display:inline-block;font-size:14px;vertical-align:middle}
+
+
+/*2023. 02. 11 수정 마일리지 페이징처리 */
+.page_num{margin:0 16px}
+.page_num a{display:inline-block;box-sizing:border-box;width:32px;height:32px;margin:0 2px;text-align:center;vertical-align:middle;line-height:32px}
+.page_num a:hover{border:1px solid #DDD;line-height:30px}
+.page_num strong{background-color:#429aff;color:#FFF}
+
+
+
+
 .g_paging .page_nums{margin:0 16px}
-.g_paging .page_nums strong,.g_paging .page_nums a{display:inline-block;box-sizing:border-box;width:32px;height:32px;margin:0 2px;text-align:center;vertical-align:middle;line-height:32px}
+.g_paging .page_nums strong,.g_paging .page_num a{display:inline-block;box-sizing:border-box;width:32px;height:32px;margin:0 2px;text-align:center;vertical-align:middle;line-height:32px}
 .g_paging .page_nums a:hover{border:1px solid #DDD;line-height:30px}
 .g_paging .page_nums strong{background-color:#429aff;color:#FFF}
+
+
 .g_paging .cpnt{box-sizing:border-box;width:32px;height:32px;border:1px solid #DDD;background-repeat:no-repeat;background-position:50%;font-size:0;line-height:32px;color:#5b5b5b}
 .g_paging .cpnt>a{display:block}
 .g_paging .first{background-image:url(//img1.itemmania.com/new_images/common/paging_first.png)}
