@@ -7,7 +7,7 @@
             parameterType="Integer"
             resultType="Integer">
 
-        select ifnull((select sum(mileage_in)) - (select sum(mileage_out)),0) from mileage m
+        select (select ifnull(sum(mileage_in)),0) - (select ifnull(sum(mileage_out)),0) from mileage m
         inner join user u ON m.user_num = u.user_num
         where u.user_num = #{userNum}
 
