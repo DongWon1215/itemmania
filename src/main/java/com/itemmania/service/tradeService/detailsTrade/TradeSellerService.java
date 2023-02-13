@@ -2,6 +2,7 @@ package com.itemmania.service.tradeService.detailsTrade;
 
 import com.itemmania.entity.BoardEntity;
 import com.itemmania.entity.TradeEntity;
+import com.itemmania.entity.UserEntity;
 import com.itemmania.repository.BoardRepository;
 import com.itemmania.repository.TradeRepository;
 import lombok.extern.log4j.Log4j2;

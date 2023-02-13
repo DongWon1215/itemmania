@@ -1,5 +1,4 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../../image/favicon/hb.ico">
@@ -82,25 +81,27 @@
                     <td colspan="6" class="first">등록된 물품이 없습니다.</td>
                 </tr>
                 <tr th:each="trade:${tradeSeller}">
-                    <td class="first"><a
-                            href="/sell/list_search.html?search_type=sell&amp;search_goods=all&amp;search_game=4732&amp;search_game_text=AFK%EC%82%BC%EA%B5%AD%EC%A7%80&amp;search_server=17960&amp;search_server_text=%EA%B8%B0%ED%83%80"><strong th:text="${trade.serverNum.}"></strong>
-                        <br>기타</a></td>
+                    <td class="first">
+                        <a href="/sell/list_search.html?search_type=sell&amp;search_goods=all&amp;search_game=4732&amp;search_game_text=AFK%EC%82%BC%EA%B5%AD%EC%A7%80&amp;search_server=17960&amp;search_server_text=%EA%B8%B0%ED%83%80"><strong
+                                th:text="${trade.boardNum.serverNum.gameNum.gameName}"></strong>
+                            <br>
+                            <span th:text="${trade.boardNum.serverNum.gameServerName}"/>
+                        </a>
+                    </td>
                     <td>게임머니</td>
-                    <!--                            <td><img src="--><!--/images/icon/--><!--" alt="--><!--" /></td>-->
                     <td class="left">
                         <input type="hidden" name="check[]" value="2023021006819018">[4조4,444억~44조4,444억]
-                        <div class="trade_title"><a href="sell_regist_view.html?id=2023021006819018&amp;page=">게임머니
-                            팝니다.</a></div>
+                        <div class="trade_title" th:text="${trade.boardNum.boardTitle}"></div>
                     </td>
-                    <td class="right f_red1">4조4,444억당<br>10,000,000원</td>
-                    <td>02-10 12:43</td>
-                    <td><a href="javascript:;" onclick="reInsert('2023021006819018');" class="regist_btn09">재등록</a><a
-                            href="javascript:;" onclick="tradeProcess('deleteSelect', '2023021006819018')"
-                            class="regist_btn10">삭제</a></td>
+                    <td class="right f_red1"
+                        th:text="${trade.boardNum.salePrice} + ${trade.boardNum.serverNum.gameNum.gameCurrency}"></td>
+                    <td th:text="${trade.boardNum.boardTime}"></td>
+                    <td><a href="javascript:;" onclick="reInsert('2023021006819018');" class="regist_btn09">거래 수락</a>
+                        <a href="javascript:;" onclick="tradeProcess('deleteSelect', '2023021006819018')"
+                            class="regist_btn10">거래 거절</a></td>
                 </tr>
                 </tbody>
             </table>
-            <span th:text="${tradeSeller}"></span>
             <!-- ▲ 판매등록물품 //-->
             <a href="javascript:;" onclick="tradeProcess('deleteSelectAll');" class="regist_btn11 btn_padding03">현재 페이지
                 물품 삭제</a>
