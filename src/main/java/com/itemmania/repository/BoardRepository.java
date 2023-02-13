@@ -1,6 +1,7 @@
 package com.itemmania.repository;
 
 import com.itemmania.entity.BoardEntity;
+import com.itemmania.entity.UserEntity;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,17 +16,14 @@ import java.util.List;
 @Repository
 public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
 
- /*board_trade_status 상태값 2로 변경하여 판매글 목록에 표시되지않음*/
+    /*board_trade_status 상태값 2로 변경하여 판매글 목록에 표시되지않음*/
     @Transactional
     @Modifying
     @Query("update BoardEntity b set b.boardTradeStatus = 2 where b.boardNum = ?1")
     int updateBoardTradeStatusByBoardNum(int boardNum);
 
-
-
-
-    // sale buy 구분출력
-    List<BoardEntity> findByDealCheck(String DealCheck);
+    @Query("select b.userNum from BoardEntity b where b.userNum.userName = ?1")
+    UserEntity findByUserNamegetUserNum(String userName);
 
 
 /*
