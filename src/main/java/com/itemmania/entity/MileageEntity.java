@@ -2,6 +2,7 @@ package com.itemmania.entity;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -37,9 +38,11 @@ public class MileageEntity {
     private String mileageDescription;
 
     @Column
+    @ColumnDefault("0")
     private Integer mileageIn;
 
     @Column
+    @ColumnDefault("0")
     private Integer mileageOut;
 
 

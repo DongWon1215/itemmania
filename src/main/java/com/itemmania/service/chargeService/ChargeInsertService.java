@@ -32,6 +32,7 @@ public class ChargeInsertService {
         MileageEntity mileageEntity = MileageEntity.builder()
                 .mileageDescription("#충전 : " + chargeRequest.getPg() + " / " + chargeRequest.getPayment())
                 .mileageIn(chargeRequest.getPayAmount())
+                .mileageOut(0)
                 .mileageTime(LocalDateTime.now())
                 .mileageType("충전")
                 .userNum(user)

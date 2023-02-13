@@ -39,7 +39,8 @@ public class BuyService {
                 userNum(user).
                 mileageTime(LocalDateTime.now()).
                 mileageType("구매").
-                mileageOut(buyEntity.getBuyPrice())
+                mileageOut(buyEntity.getBuyPrice()).
+                mileageIn(0)
                 .build();
 
         buyEntity.setItemNum(itemEntity);
