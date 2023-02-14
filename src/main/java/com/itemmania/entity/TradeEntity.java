@@ -1,13 +1,12 @@
 package com.itemmania.entity;
 
 import lombok.*;
-import lombok.extern.log4j.Log4j2;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Log4j2
+
 @Getter
 @Setter
 @ToString
@@ -24,13 +23,15 @@ public class TradeEntity {
     private Integer tradeNum;
 
     @ManyToOne
-    @JoinColumn(name = "consumerMileage")
-    private MileageEntity consumerMileage;
+    @JoinColumn(name = "consumerNum")
+    private UserEntity consumerNum;
+    /*
+        필요없음  마일리지PK row가 구매자 PK보다적으면 오류
+        @ManyToOne
+        @JoinColumn(name = "sellerMileage")
+        private MileageEntity sellerMileage;
 
-    @ManyToOne
-    @JoinColumn(name = "sellerMileage")
-    private MileageEntity sellerMileage;
-
+    */
     @ManyToOne
     @JoinColumn(name = "boardNum")
     private BoardEntity boardNum;
@@ -44,7 +45,6 @@ public class TradeEntity {
     private Integer tradeUnit;
 
     @Column
-    @ColumnDefault("")
     private Boolean tradeIsSuccess;
 
     @Column

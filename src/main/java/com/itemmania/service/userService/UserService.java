@@ -75,4 +75,8 @@ public class UserService {
         return userRepository.findById(userNum);
     }
 
+
+    public Optional<UserEntity> getUserEntity(int userNum){
+        return userRepository.findById(userNum);
+    }
 }

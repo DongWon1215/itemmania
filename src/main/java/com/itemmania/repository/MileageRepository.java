@@ -19,4 +19,7 @@ public interface MileageRepository extends JpaRepository<MileageEntity, Integer>
     @Query("select max (m.mileageNum) from MileageEntity m where m.userNum.userNum = ?1 ")
     Integer findTop1ByUserNum(int userNum);
 
+    MileageEntity findByMileageNum(Integer mileageNum);
+
+
 }

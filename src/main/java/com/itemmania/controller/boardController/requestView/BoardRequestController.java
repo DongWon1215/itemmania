@@ -1,11 +1,14 @@
 package com.itemmania.controller.boardController.requestView;
 
-import com.itemmania.entity.MileageEntity;
 import com.itemmania.entity.TradeEntity;
+import com.itemmania.entity.UserEntity;
+import com.itemmania.repository.TradeRepository;
 import com.itemmania.service.boardService.BoardListService;
 import com.itemmania.service.boardService.BoardViewService;
+import com.itemmania.service.mileageService.MileageViewService;
 import com.itemmania.service.tradeService.BoardStateChangeService;
 import com.itemmania.service.tradeService.TradeInsertService;
+import com.itemmania.service.userService.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,17 +18,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Optional;
 
 @Controller
 //@RequestMapping("/buy_request")
 @Log4j2
 public class BoardRequestController {
+    @Autowired
+    private TradeRepository tradeRepository;
 
     @Autowired
     private BoardViewService boardViewService;
 
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private BoardListService boardListService;
@@ -34,6 +40,9 @@ public class BoardRequestController {
     private TradeInsertService tradeInsertService;
     @Autowired
     private BoardStateChangeService boardStateChangeService;
+
+    @Autowired
+    private MileageViewService mileageViewService;
 
     @GetMapping("/board/requestPage")
     public String getBoardRequest(
@@ -57,16 +66,17 @@ public class BoardRequestController {
     }
 
     @PostMapping("/board/requestPage")
-    public String postBoardRequest(HttpServletResponse response, TradeEntity tradeEntity) throws IOException {
+    public String postBoardRequest(@RequestParam("consumerNum") int consumerNum
+            , TradeEntity tradeEntity) {
+        log.info("입장 " + tradeEntity);
+        log.info("consumerNum >>" + consumerNum);
 
-        /*trde테이블에 검색할 userNum*/
-        /*로그인한 유저 6번*/
-        log.info("consumer >>" + tradeEntity.getConsumerMileage().getMileageNum());
-        /*게시글 작성유저 5번*/
-        log.info("seller >>" + tradeEntity.getSellerMileage().getMileageNum());
-        /*
 
-         */
+        Optional<UserEntity> userEntity = userService.getUserEntity(consumerNum);
+
+        tradeEntity.setConsumerNum(userEntity.get());
+
+
 
         /* 판매자, 구매자 마일리지 내역 PK(userNum을 이용해서 mileage테이블 PK값을 가져오려 했는데 엔티티가 해줘서 불필요한 코드였음)
         int seller_mileage = scheduledService.getSeller_Consumer_mileage(tradeEntity.getConsumerMileage().getMileageNum());
@@ -77,11 +87,14 @@ public class BoardRequestController {
 
         tradeEntity.setSellerMileage2(seller_mileage);
         tradeEntity.setConsumerMileage2(consumer_mileage);
-*/
-        log.info("마일리지 PK가져온 입력전 데이터>>" + tradeEntity.toString());
+
+  Optional<UserEntity> seller = userService.getUserEntity(sellerMileage);
+        Optional<UserEntity> consumer = userService.getUserEntity(consumerMileage);
+
+         */
         /*trade테이블에 저장*/
         TradeEntity insert = tradeInsertService.setTradeInsert(tradeEntity);
-        log.info("insert>>" + insert);
+        log.info("x>>" + insert);
 
         log.info("변경할 보드번호" + tradeEntity.getBoardNum());
 

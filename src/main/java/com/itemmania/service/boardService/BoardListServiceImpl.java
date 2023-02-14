@@ -24,6 +24,8 @@ public class BoardListServiceImpl implements BoardListService {
         return getAllList;
     }
 
+
+
 /*
     public List<BoardEntity> getDealCheckPremiumList(String DealCheck, boolean yes) {
         // boardList_Premium 출력
