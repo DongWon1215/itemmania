@@ -23,16 +23,16 @@ public class SellRegisterController {
     private TradeSellerService tradeSellerService;
 
 
-
     @GetMapping
     public String getMypageForm(Model model, Principal principal) {
 
-        log.info("Principal?" + principal.getName());
+        String loginUserNum = principal.getName().trim();
+        log.info("Principal?" + loginUserNum);
 
            /*UserEntity userNum = boardInNameOutnumService.getUserNum(principal.getName());
         log.info(userNum);*/
 
-        List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller(principal.getName());
+        List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller(loginUserNum);
 
         log.info("tradeSeller?" + tradeSeller);
         model.addAttribute("tradeSeller", tradeSeller);

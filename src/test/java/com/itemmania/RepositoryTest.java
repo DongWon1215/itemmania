@@ -149,8 +149,8 @@ public class RepositoryTest {
         consumerMileage.setUserNum(user2);
 
         TradeEntity tradeEntity = new TradeEntity();
-        tradeEntity.setSellerMileage(sellerMileage);
-        tradeEntity.setConsumerMileage(consumerMileage);
+      /*  tradeEntity.setSellerMileage(sellerMileage);
+        tradeEntity.setConsumerMileage(consumerMileage);*/
         tradeEntity.setTradeTime(LocalDateTime.now());
         tradeEntity.setTradeIsSuccess(true);
         tradeEntity.setTradeAmount(500);

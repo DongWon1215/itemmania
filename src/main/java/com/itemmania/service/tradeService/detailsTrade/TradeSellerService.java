@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 
 @Log4j2
@@ -18,7 +19,7 @@ public class TradeSellerService {
 
 
     public List<TradeEntity> getTradeSeller(String userName) {
-        List<TradeEntity> byTradeIsSuccessIsNull = tradeRepository.findBySellerMileage_UserNum_UserNum(userName);
+        List<TradeEntity> byTradeIsSuccessIsNull = tradeRepository.findByTradeIsSuccessNull();
 
         log.info("byTradeIsSuccessIsNull?" + byTradeIsSuccessIsNull);
 
