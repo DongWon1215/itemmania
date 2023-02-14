@@ -30,7 +30,7 @@ public class MyMileageDetailListController {
     @GetMapping("myroom/mymileage/detail_list")
     public String getMyPageForm()
     {
-        return "userForm/myRoom/myMileageDetailList";
+        return "UserForm/myRoom/myMileageDetailList";
     }
 
     @GetMapping("test5")

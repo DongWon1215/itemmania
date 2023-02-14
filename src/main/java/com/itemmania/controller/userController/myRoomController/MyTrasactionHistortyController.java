@@ -12,7 +12,7 @@ public class MyTrasactionHistortyController {
     @GetMapping
     public String getMyTrnscHstry()
     {
-        return "userForm/myRoom/trade/myTransactionHistory";
+        return "UserForm/myRoom/trade/myTransactionHistory";
     }
 
 

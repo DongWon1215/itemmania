@@ -60,7 +60,7 @@ public class BoardSaleInsertController {
         model.addAttribute("searchServer", getGameServerService.getServerService());
         model.addAttribute("itemNum", useItemService.getItemCount(itemCountRequest));
 
-        return "/board/insert/boardSaleInsert";
+        return "board/insert/boardSaleInsert";
     }
 
 /*    @PostMapping

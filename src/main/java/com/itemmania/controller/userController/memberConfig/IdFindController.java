@@ -22,7 +22,7 @@ public class IdFindController {
     @GetMapping
     public String findform()
     {
-        return "/UserForm/userRegist/idFindForm";
+        return "UserForm/userRegist/idFindForm";
     }
 
     @PostMapping

@@ -75,7 +75,7 @@ public class BoardBuyInsertController {
 
         model.addAttribute("itemNum", useItemService.getItemCount(itemCountRequest));
 
-        return "/board/insert/boardBuyInsert";
+        return "board/insert/boardBuyInsert";
     }
 
 

@@ -11,7 +11,7 @@ public class SellingController {
     @GetMapping
     public String getMypageForm()
     {
-        return "userForm/myRoom/trade/sell_ing";
+        return "UserForm/myRoom/trade/sell_ing";
     }
 
 

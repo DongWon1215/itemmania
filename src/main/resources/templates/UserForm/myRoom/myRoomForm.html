@@ -13,18 +13,13 @@
 
 <!--body 시작-->
 
-<!--<input type="text" id="userEntity" th:value="${#authentication.principal.userEntity}">
-<div th:text="${#authentication.principal.userEntity.userMileage}"/>-->
-
 <div class="g_container" id="g_CONTENT">
     <div class="g_remocon_l">
     </div>
     <div class="mr_top">
-        <!--    <div class="mr_top_left_box">-->
         <div class="mr_user_level">
             <span id="credit_mark2" class="credit_mark2 _lg">BRONZE</span>
         </div>
-        <!--<div class="mr_title">MYROOM</div>-->
         <div class="mr_user_level_txt f_black2">
             <div id="user_level" class="user_level_txt">
                 BRONZE        </div>
@@ -61,7 +56,7 @@
                 </div>
             </div>
             <div class="mileage_area mileage_btn_area">
-                <div class="mileage_btn mileage_charge_btn" th:insert="/fragment/chargeModal">
+                <div class="mileage_btn mileage_charge_btn" th:insert="fragment/chargeModal">
                     <i class="SpGroup icon_charge">icon</i>
                         충전하기
                 </div>
@@ -70,12 +65,10 @@
                 </div>
             </div>
         </div>
-        <!--        <div class="mr_user_level_sub_txt">-->
-        <!--        </div>-->
     </div>
 
     <!--aside 시작-->
-    <div th:replace="/UserForm/myRoom/myRoomAside"/>
+    <div th:replace="UserForm/myRoom/myRoomAside"/>
     <!--aside 끝-->
 
     <div class="g_content">

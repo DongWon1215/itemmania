@@ -44,7 +44,7 @@ public class InsertInfoConteroller {
         if(token != null)
             model.addAttribute("data",token);
 
-        return "/UserForm/userRegist/inputInfoForm";
+        return "UserForm/userRegist/inputInfoForm";
     }
 
     @PostMapping

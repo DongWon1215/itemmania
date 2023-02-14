@@ -50,9 +50,9 @@ public class BoardRequestController {
 
         if (dealCheck.equals("sale")) {
             log.info("팝니다 요청페이지!!!! 들어감");
-            return "/board/requestPage/boardSaleRequest";
+            return "board/requestPage/boardSaleRequest";
         } else
-            return "/errors/500";
+            return "errors/500";
 
     }
 

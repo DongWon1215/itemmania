@@ -37,11 +37,11 @@ public class BoardViewController {
         if (dealCheck.equals(buy)) {
 
             log.info("삽니다!!!! 들어감");
-            return "/board/view/boardViewBuy";
+            return "board/view/boardViewBuy";
 
         } else {
             log.info("팝니다!!!! 들어감");
-            return "/board/view/boardViewSale";
+            return "board/view/boardViewSale";
 
         }
 
