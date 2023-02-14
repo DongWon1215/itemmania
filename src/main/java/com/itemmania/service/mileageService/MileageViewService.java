@@ -40,7 +40,7 @@ public class MileageViewService {
             myMileageDetailDTO.setMileageEntity(mileageList.get(i));
 
             if (i == 0){
-                myMileageDetailDTO.setMileageHistory(0);
+                myMileageDetailDTO.setMileageHistory(myMileageDetailDTO.getMileageEntity().getMileageIn() - myMileageDetailDTO.getMileageEntity().getMileageOut());
             } else {
                 myMileageDetailDTO.setMileageHistory(historyList.get(i-1).getMileageHistory() + mileageList.get(i).getMileageIn() - mileageList.get(i).getMileageOut());
             }
