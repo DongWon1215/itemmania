@@ -54,7 +54,7 @@ public class BoardListController {
         model.addAttribute("boardTradeStatus", boardTradeStatus);
 
 
-        return "/board/boardList";
+        return "board/boardList";
  /*
         //기존 컨트롤러 model로 전송하였는데 모든페이지에서 사용하다보니 중복코드가 많아졌다
         //해결방안-> header가 화면에 로딩시 검색바만 부분 비동기처리하여 게임,서버리스트 출력하여 중복코드 제거(단일 책임 원칙)

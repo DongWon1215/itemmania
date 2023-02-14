@@ -11,7 +11,7 @@ public class BuyingController {
     @GetMapping
     public String getMypageForm()
     {
-        return "userForm/myRoom/trade/buy_ing";
+        return "UserForm/myRoom/trade/buy_ing";
     }
 
 

@@ -10,6 +10,6 @@ public class AgreementComtroller {
     @GetMapping
     public String goAgreementPage()
     {
-        return "/UserForm/userRegist/agreementForm";
+        return "UserForm/userRegist/agreementForm";
     }
 }

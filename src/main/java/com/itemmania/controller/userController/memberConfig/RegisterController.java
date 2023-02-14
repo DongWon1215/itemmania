@@ -11,7 +11,7 @@ public class RegisterController {
     @GetMapping
     public String registpage()
     {
-        return "/UserForm/userRegist/registerForm";
+        return "UserForm/userRegist/registerForm";
     }
 
 }

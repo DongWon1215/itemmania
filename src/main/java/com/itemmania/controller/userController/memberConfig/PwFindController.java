@@ -23,7 +23,7 @@ public class PwFindController {
     @GetMapping
     public String findform()
     {
-        return "/UserForm/userRegist/pwFindForm";
+        return "UserForm/userRegist/pwFindForm";
     }
 
     @PostMapping

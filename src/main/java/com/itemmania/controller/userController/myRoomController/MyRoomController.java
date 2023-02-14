@@ -52,7 +52,7 @@ public class MyRoomController {
         log.info("myroom user............" + user);
 
         // 마이룸 페이지 진입
-        return "userForm/myRoom/myRoomForm";
+        return "UserForm/myRoom/myRoomForm";
         
     }
 

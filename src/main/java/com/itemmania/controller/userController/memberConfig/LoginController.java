@@ -27,7 +27,7 @@ public class LoginController {
     @GetMapping
     public String loginPage() {
 
-        return "userForm/userRegist/loginForm";
+        return "UserForm/userRegist/loginForm";
     }
 
     @PostMapping
@@ -35,7 +35,7 @@ public class LoginController {
     ) {
 
         if (!userService.isExistUser(username, userpassword))
-            return "/UserForm/userRegist/registerForm";
+            return "UserForm/userRegist/registerForm";
 
         UserEntity user = userService.getUser(username, userpassword);
 

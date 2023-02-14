@@ -27,7 +27,7 @@ public class MyInfoCreditRatingController {
         model.addAttribute("user", user);
 
         // 신용등급 페이지 진입
-        return "userForm/myRoom/myinfoCreditRating";
+        return "UserForm/myRoom/myinfoCreditRating";
     }
 
 

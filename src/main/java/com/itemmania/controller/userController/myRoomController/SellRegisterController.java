@@ -44,7 +44,7 @@ public class SellRegisterController {
         model.addAttribute("tradeSeller", tradeSeller);
 
 
-        return "userForm/myRoom/trade/sellRegister";
+        return "UserForm/myRoom/trade/sellRegister";
     }
 
 

@@ -22,7 +22,7 @@ public class MyMileageController {
     {
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
         model.addAttribute("mileage", mileageViewService.getUserMileage(user.getUserNum()));
-        return "userForm/myRoom/myMileage";
+        return "UserForm/myRoom/myMileage";
     }
 
 

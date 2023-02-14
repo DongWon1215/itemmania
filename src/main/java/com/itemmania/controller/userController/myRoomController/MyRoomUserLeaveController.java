@@ -45,7 +45,7 @@ public class MyRoomUserLeaveController {
         model.addAttribute("mileage", mileage);
 
         // 회원탈퇴 페이지 진입
-        return "userForm/myRoom/myRoomUserLeaveForm";
+        return "UserForm/myRoom/myRoomUserLeaveForm";
     }
 
     @PostMapping

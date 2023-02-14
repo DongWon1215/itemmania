@@ -42,7 +42,7 @@ public class MyInfoModifyController {
         model.addAttribute("user", user);
 
         // 회원수정 페이지 진입
-        return "userForm/myRoom/myinfoModify";
+        return "UserForm/myRoom/myinfoModify";
 
     }
 
