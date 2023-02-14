@@ -251,7 +251,7 @@
               <div class="sub_txt">
                 프리미엄 잔여시간이 많을수록<br>물품리스트 상단에 노출됩니다.
               </div>
-              <div th:insert="/fragment/chargeModal"/>
+              <div th:insert="fragment/chargeModal"/>
             </dd>
           </dl>
           <div class="total_charge">
@@ -259,7 +259,7 @@
             <strong class="total_charge_money f_red1"><span id="total_charge_money">0</span>장</strong>
             <div>
               (내 사용가능한 쿠폰 :
-              <strong id="txtCurrentMileage" class="f_red1"><span text="${itemNum}">0</span>장</strong>)
+              <strong id="txtCurrentMileage" class="f_red1"><span th:text="${itemNum}">0</span>장</strong>)
             </div>
           </div>
         </div>
@@ -368,7 +368,7 @@
               serverName:$("#searchRegGameServer").val(),
               saleNickName:$("#user_character").val(),
               saleAria:$("#user_text").val(),
-              usingItemNum:$("#total_charge_money").val(),
+              usingItemNum:$("#total_charge_money").text(),
               salePhoto:$("#").val(),
               salePremium:false
             }

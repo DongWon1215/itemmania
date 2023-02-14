@@ -54,7 +54,7 @@
             <input type="hidden" name="id">
         </form>
 
-        <form id="frmList" method="POST">
+<!--        <form id="frmList" method="POST">-->
             <input type="hidden" id="process" name="process">
             <input type="hidden" id="trade_id" name="trade_id">
 
@@ -88,6 +88,8 @@
                             <span th:text="${trade.boardNum.serverNum.gameServerName}"/>
                         </a>
                     </td>
+                    <input type="hidden" id="trade_hidden" th:value="${trade.getTradeNum()}">
+                    <input type="hidden" id="board_hidden" th:value="${trade.getBoardNum()}">
                     <td>게임머니</td>
                     <td class="left">
                         <input type="hidden" name="check[]" value="2023021006819018">[4조4,444억~44조4,444억]
@@ -96,9 +98,21 @@
                     <td class="right f_red1"
                         th:text="${trade.boardNum.salePrice} + ${trade.boardNum.serverNum.gameNum.gameCurrency}"></td>
                     <td th:text="${trade.boardNum.boardTime}"></td>
-                    <td><a href="javascript:;" onclick="reInsert('2023021006819018');" class="regist_btn09">거래 수락</a>
-                        <a href="javascript:;" onclick="tradeProcess('deleteSelect', '2023021006819018')"
-                            class="regist_btn10">거래 거절</a></td>
+                    <th:block th:if="${trade.getTradeIsSuccess() == null}">
+                    <td><button onclick="reInsert()" class="regist_btn09">거래 수락</button>
+                        <button onclick="tradeProcess()"
+                            class="regist_btn10">거래 거절</button></td>
+                    </th:block>
+                    <th:block th:if="${trade.getTradeIsSuccess() == 0}">
+                        <td>
+                            거래 파기
+                        </td>
+                    </th:block>
+                    <th:block th:if="${trade.getTradeIsSuccess() == 1}">
+                        <td>
+                            거래 승인
+                        </td>
+                    </th:block>
                 </tr>
                 </tbody>
             </table>
@@ -106,7 +120,7 @@
             <a href="javascript:;" onclick="tradeProcess('deleteSelectAll');" class="regist_btn11 btn_padding03">현재 페이지
                 물품 삭제</a>
             <div class="g_finish"></div>
-        </form>
+<!--        </form>-->
 
         <div class="g_finish"></div>
         <!-- ▼ 판매진행안내 //-->
@@ -153,5 +167,30 @@
 
 <!--footer 시작-->
 <div th:replace="fragment/footer"/>
+
+<script th:inline="javascript">
+    function reInsert()
+    {
+        TradeRequest = {
+            tradeNum:$('#trade_hidden').val()
+        }
+
+        console.log(TradeRequest);
+
+        $.ajax({url:'/myroom/sellRegister',type:'put', async:false ,data:JSON.stringify(TradeRequest), dataType:JSON, contentType:'application/JSON',success:function (){console.log("데이터 수정 완료")}})
+    }
+
+    function tradeProcess()
+    {
+        TradeRequest = {
+            tradeNum:$('#trade_hidden').val()
+        }
+
+        console.log(TradeRequest);
+
+        $.ajax({url:'/myroom/sellRegister',type:'post', async:false ,data:JSON.stringify(TradeRequest), dataType:JSON,contentType:'application/JSON',success:function (){console.log("데이터 수정 완료")}})
+    }
+</script>
+
 </body>
 </html>

@@ -21,7 +21,7 @@ public class 보드값상태변경Test {
         log.info(boardRepository.findById(10));
 
         //보드 상태 0->2 로 변경
-        boardRepository.updateBoardTradeStatusByBoardNum(10);
+        boardRepository.updateBoardTradeStatusByBoardNum(2,10);
 
         /*return boardRepository.updateBoardTradeStatusByBoardNum();*/
 
