@@ -1,9 +1,6 @@
 package com.itemmania.service.tradeService.detailsTrade;
 
-import com.itemmania.entity.BoardEntity;
 import com.itemmania.entity.TradeEntity;
-import com.itemmania.entity.UserEntity;
-import com.itemmania.repository.BoardRepository;
 import com.itemmania.repository.TradeRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +17,8 @@ public class TradeSellerService {
     private TradeRepository tradeRepository;
 
 
-    public List<TradeEntity> getTradeSeller() {
-        List<TradeEntity> byTradeIsSuccessIsNull = tradeRepository.findAllByTradeIsSuccessNull();
+    public List<TradeEntity> getTradeSeller(String userName) {
+        List<TradeEntity> byTradeIsSuccessIsNull = tradeRepository.findBySellerMileage_UserNum_UserNum(userName);
 
         log.info("byTradeIsSuccessIsNull?" + byTradeIsSuccessIsNull);
 

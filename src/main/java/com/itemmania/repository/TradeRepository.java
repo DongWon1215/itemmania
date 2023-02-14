@@ -18,8 +18,9 @@ public interface TradeRepository extends JpaRepository<TradeEntity, Integer> {
     @Query("select t from TradeEntity t where t.tradeIsSuccess is null ")
     List<TradeEntity> findByTradeIsSuccessNull();
 
-    @Query("select t from TradeEntity t where t.sellerMileage.userNum.userNum = ?1")
-    List<TradeEntity> findBySellerMileage_UserNum_UserNum(int userNum);
+    @Query("select t from TradeEntity t where t.consumerNum.userNum = ?1")
+    List<TradeEntity> findBySellerMileage_UserNum_UserNum(String userName);
+
 
 
 }
