@@ -213,7 +213,7 @@
                         <div class="g_gray_border"></div>
                         구매 수량 : <select id="itemNumSelect">
 
-                        <th:block th:each="num : ${#numbers.sequence(1,200)}">
+                        <th:block th:each="num : ${#numbers.sequence(0,200)}">
                             <option th:text="${num}" th:value="${num}"></option>
                         </th:block>
                     </select>
@@ -243,12 +243,16 @@
 
         console.log('userNum : ' + $('#userNum').val())
 
-        $('#ticket_amount').val(100)
+        $('#ticket_amount').val(0)
+        $('#buySubmit').attr("disabled",true);
         $('#itemNumSelect').on("change", function (){
             $('#ticket_amount').val($('#itemNumSelect').val() * 100);
 
 
             if($('#ticket_amount').val() > [[${mileage}]])
+                $('#buySubmit').attr("disabled",true);
+
+            else if($('#ticket_amount').val() == 0)
                 $('#buySubmit').attr("disabled",true);
 
             else
