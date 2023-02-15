@@ -24,14 +24,7 @@ public class BuyRegisterController {
     private GetBuyListService getBuyListService;
 
     @GetMapping("/myroom/buyRegister")
-    public String getMypageForm(Model model) {
-
-        List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller();
-
-
-
-        log.info("tradeSeller?" + tradeSeller);
-        model.addAttribute("tradeSeller", tradeSeller);
+    public String getMypageForm() {
         return "UserForm/myRoom/trade/buyRegister";
     }
 

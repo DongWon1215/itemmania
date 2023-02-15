@@ -41,21 +41,7 @@ public class SellRegisterController {
 
 
     @GetMapping("myroom/sellRegister")
-    public String getMypageForm(HttpServletRequest request, Model model) {
-
-/*
-        MileageEntity mileage1 = ;
-        MileageEntity mileage1 = ;
-*/
-
-        HttpSession session = request.getSession();
-        UserEntity user = (UserEntity) session.getAttribute("userInfo");
-
-        List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller();
-
-        log.info("tradeSeller?" + tradeSeller);
-        model.addAttribute("tradeSeller", tradeSeller);
-
+    public String getMypageForm() {
         return "UserForm/myRoom/trade/sellRegister";
     }
 
