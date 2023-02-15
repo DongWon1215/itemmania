@@ -23,15 +23,13 @@ public class TradeEntity {
     private Integer tradeNum;
 
     @ManyToOne
-    @JoinColumn(name = "consumerNum")
-    private UserEntity consumerNum;
-    /*
-        필요없음  마일리지PK row가 구매자 PK보다적으면 오류
-        @ManyToOne
-        @JoinColumn(name = "sellerMileage")
-        private MileageEntity sellerMileage;
+    @JoinColumn(name = "consumerMileage")
+    private UserEntity consumerMileage;
 
-    */
+    @ManyToOne
+    @JoinColumn(name = "sellerMileage")
+    private MileageEntity sellerMileage;
+
     @ManyToOne
     @JoinColumn(name = "boardNum")
     private BoardEntity boardNum;

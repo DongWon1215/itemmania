@@ -1,5 +1,6 @@
 package com.itemmania.controller.userController.myRoomController;
 
+import com.itemmania.entity.MileageEntity;
 import com.itemmania.entity.TradeEntity;
 import com.itemmania.entity.UserEntity;
 import com.itemmania.service.boardService.BoardInNameOutnumService;
@@ -11,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
@@ -24,13 +27,22 @@ public class SellRegisterController {
 
 
     @GetMapping
-    public String getMypageForm(Model model, Principal principal) {
+    public String getMypageForm(HttpServletRequest request, Model model, Principal principal) {
 
         String loginUserNum = principal.getName().trim();
         log.info("Principal?" + loginUserNum);
 
            /*UserEntity userNum = boardInNameOutnumService.getUserNum(principal.getName());
         log.info(userNum);*/
+/*
+        MileageEntity mileage1 = ;
+        MileageEntity mileage1 = ;
+*/
+
+        HttpSession session = request.getSession();
+        UserEntity user = (UserEntity) session.getAttribute("userInfo");
+
+
 
         List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller(loginUserNum);
 
