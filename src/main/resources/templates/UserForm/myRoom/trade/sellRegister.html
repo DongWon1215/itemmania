@@ -166,6 +166,9 @@
 <!--footer 시작-->
 <div th:replace="fragment/footer"/>
 
+
+<input type="hidden" id="userNum5" th:value="${#authentication.principal.userEntity.userNum}">
+
 <script th:inline="javascript">
     function tradeProcess(tradeNum)
     {
@@ -202,5 +205,22 @@
     }
 </script>
 
+
 </body>
+
+<script>
+
+    $(document).ready(()=>{
+
+        const payload = {
+            userNum : $("#userNum5").val()
+        }
+
+        axios.get("/getSellList", {params:payload})
+            .then((response) => {
+                console.log(response.data)
+            })
+    })
+</script>
+
 </html>
