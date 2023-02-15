@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Controller
@@ -66,15 +68,17 @@ public class BoardRequestController {
     }
 
     @PostMapping("/board/requestPage")
-    public String postBoardRequest(@RequestParam("consumerNum") int consumerNum
+    public String postBoardRequest(@RequestParam("consumerNum") int consumerNum, HttpServletRequest request
             , TradeEntity tradeEntity) {
         log.info("입장 " + tradeEntity);
         log.info("consumerNum >>" + consumerNum);
 
 
-        Optional<UserEntity> userEntity = userService.getUserEntity(consumerNum);
+        HttpSession session = request.getSession();
+        UserEntity user = (UserEntity) session.getAttribute("userInfo");
 
-        tradeEntity.setConsumerNum(userEntity.get());
+
+
 
 
 
