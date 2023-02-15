@@ -96,6 +96,8 @@ public class BoardBuyInsertController {
 //        String absolutePath = new File("").getAbsolutePath();
 //        log.info(">>> path : " + absolutePath);
 
+        log.info("item num ===================>" + boardInsertRequest.getUsingItemNum());
+
         if(boardInsertRequest.getUsingItemNum() != 0)
         {
             HttpSession session = request.getSession();

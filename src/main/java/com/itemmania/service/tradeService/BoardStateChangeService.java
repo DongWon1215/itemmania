@@ -18,9 +18,13 @@ public class BoardStateChangeService {
     /*board->boardTradeStatus 상태2로 변경*/
     public int boardStateChange(BoardEntity boardEntity) {
         log.info("get보드넘" + boardEntity);
-        return boardRepository.updateBoardTradeStatusByBoardNum(boardEntity.getBoardNum());
+        return boardRepository.updateBoardTradeStatusByBoardNum(2,boardEntity.getBoardNum());
 
     }
 
+    public int boardTradeStateChange(int state, int boardNum)
+    {
+        return boardRepository.updateBoardTradeStatusByBoardNum(state,boardNum);
+    }
 
 }
