@@ -97,9 +97,10 @@
                         th:text="${trade.boardNum.salePrice} + ${trade.boardNum.serverNum.gameNum.gameCurrency}"></td>
                     <td th:text="${trade.boardNum.boardTime}"></td>
                     <th:block th:if="${trade.getTradeIsSuccess() == null}">
-                    <td><button th:tradeNum_hidden="${trade.getTradeNum()}" th:onclick="tradeProcess(this.getAttribute('tradeNum_hidden'))" class="regist_btn09">거래 수락</button>
-                        <button th:tradeNum_hidden="${trade.getTradeNum()}" th:onclick="reInsert(this.getAttribute('tradeNum_hidden'))"
-                            class="regist_btn10">거래 거절</button></td>
+                    <td>
+                        <button th:tradeNum_hidden="${trade.getTradeNum()}" th:onclick="tradeProcess(this.getAttribute('tradeNum_hidden'))" class="regist_btn09">거래 수락</button>
+                        <button th:tradeNum_hidden="${trade.getTradeNum()}" th:onclick="reInsert(this.getAttribute('tradeNum_hidden'))" class="regist_btn10">거래 거절</button>
+                    </td>
                     </th:block>
                     <th:block th:if="${trade.getTradeIsSuccess() == 0}">
                         <td>

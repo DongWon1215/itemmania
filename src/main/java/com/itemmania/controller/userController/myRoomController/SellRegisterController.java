@@ -41,7 +41,13 @@ public class SellRegisterController {
 
 
     @GetMapping("myroom/sellRegister")
-    public String getMypageForm() {
+    public String getMypageForm(Model model
+    ) {
+
+        List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller();
+
+        log.info("tradeSeller?" + tradeSeller);
+        model.addAttribute("tradeSeller", tradeSeller);
         return "UserForm/myRoom/trade/sellRegister";
     }
 

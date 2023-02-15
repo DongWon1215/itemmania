@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 @RestController
 public class BoardListReplaceController {
 
-
     @Autowired
     private BoardStateChangeService boardStateChangeService;
 
@@ -68,16 +67,13 @@ public class BoardListReplaceController {
         return 1;
     }
 
-    @PostMapping("/myroom/accept")
-    public int setTradeAccept(@RequestBody String tradeNum)
+    @PostMapping("myroom/accept")
+    public int setTradeAccept(@RequestBody int tradeNum)
     {
-        tradeNum = tradeNum.substring(0, tradeNum.length() - 1);
+log.info("tradeNum>>>"+tradeNum);
+        tradeSellerService.setTradeAccept(tradeNum);
 
-        int tNum = Integer.parseInt(tradeNum);
-
-        tradeSellerService.setTradeAccept(tNum);
-
-        TradeEntity trade = tradeRepository.findByTradeNum(tNum);
+        TradeEntity trade = tradeRepository.findByTradeNum(tradeNum);
 
         boardStateChangeService.boardTradeStateChange(1,trade.getBoardNum().getBoardNum());
 
