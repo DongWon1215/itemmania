@@ -16,10 +16,9 @@ public interface MileageRepository extends JpaRepository<MileageEntity, Integer>
 
 
     /*판매자, 구매자 마일리지 userNum으로 검색하여 PK중 최대값 조회하기*/
-    @Query("select max (m.mileageNum) from MileageEntity m where m.userNum.userNum = ?1 ")
-    Integer findTop1ByUserNum(int userNum);
+/*    @Query("select max (m.mileageNum) from MileageEntity m where m.userNum.userNum = ?1 ")
+    Integer findTop1ByUserNum(int userNum);*/
 
-    MileageEntity findByMileageNum(Integer mileageNum);
 
 
 }

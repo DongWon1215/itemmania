@@ -8,13 +8,7 @@
 <body>
 
 <div th:replace="fragment/header"/>
-<script>
-    $().ready(() => {
-        /*현재 로그인되어있는 유저의 유저번호*/
-        document.querySelector('[name="consumerNum"]').value = $('#userNum2').val();
-    })
 
-</script>
 <link type="text/css" rel="stylesheet" href="/css/board/request.css">
 
 <div class="g_container" id="g_CONTENT">
@@ -57,12 +51,8 @@
 
             <!--게시글 번호-->
             <input type="text" name="boardNum" th:value="${boardReq.boardNum}">
-            <!--
-            &lt;!&ndash;판매자 회원번호&ndash;&gt;
-            <input type="text" name="sellerMileage" th:value="${boardReq.userNum.userNum}">
-            -->
-            <!--구매자 회원번호  (위에서 자바스크립트로 value값 넣어주고 있음)-->
-            <input type="text" name="consumerNum">
+            <!--판매자 회원번호-->
+            <input type="text" name="sellerNum" th:value="${boardReq.userNum.userNum}">
             <!--거래금액-->
             <input type="text" name="tradeAmount" th:value="${boardReq.salePrice}">
             <!--거래 수량-->
