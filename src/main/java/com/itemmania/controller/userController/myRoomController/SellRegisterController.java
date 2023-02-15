@@ -40,20 +40,15 @@ public class SellRegisterController {
     private GetSellListService getSellListService;
 
 
-    @GetMapping("myroom/sellRegister")
-    public String getMypageForm(Model model
-    ) {
-
-        List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller();
-
-        log.info("tradeSeller?" + tradeSeller);
-        model.addAttribute("tradeSeller", tradeSeller);
+    @GetMapping("/myroom/sellRegister")
+    public String getMypageForm() {
         return "UserForm/myRoom/trade/sellRegister";
     }
 
     @GetMapping("getSellList")
     @ResponseBody
     public List<TradeEntity> getSellHistory(int userNum){
+        log.info("유저넘"+userNum);
         return getSellListService.getList(userNum);
     }
 

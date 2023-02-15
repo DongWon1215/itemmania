@@ -33,15 +33,12 @@ public class BoardListReplaceController {
     private MileageInsertService mileageInsertService;
 
     @PostMapping("myroom/replace")
-    public int setTradeDenai(HttpServletRequest request, @RequestBody String tradeNum)
+    public int setTradeDenai(HttpServletRequest request, @RequestBody TradeRequestDTO tradeRequestDTO)
     {
-        tradeNum = tradeNum.substring(0, tradeNum.length() - 1);
 
-        int tNum = Integer.parseInt(tradeNum);
+        tradeSellerService.setTradeDenai(tradeRequestDTO.getTradeNum());
 
-        tradeSellerService.setTradeDenai(tNum);
-
-        TradeEntity trade = tradeRepository.findByTradeNum(tNum);
+        TradeEntity trade = tradeRepository.findByTradeNum(tradeRequestDTO.getTradeNum());
 
         MileageEntity writerMileage = MileageEntity.builder().userNum(trade.getBoardNum().getUserNum())
                 .mileageTime(LocalDateTime.now())

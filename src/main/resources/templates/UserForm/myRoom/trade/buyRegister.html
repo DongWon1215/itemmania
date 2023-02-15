@@ -183,9 +183,7 @@
                         if (lis.tradeIsSuccess == null) {
                             listHtml += ' <td>';
                             listHtml += ' <button type="button" onclick="tradeProcess(' + lis.tradeNum + ')">거래 수락 </button>';
-                            /*
-                                                        listHtml += '<button th:tradeNum_hidden="${trade.getTradeNum()}" th:onclick="reInsert(this.getAttribute(tradeNum_hidden))" className="regist_btn10">거래 거절</button>';
-                            */
+                            listHtml += '<button type="button" onclick="reInsert(' + lis.tradeNum + ')">거래 거절</button>';
                             listHtml += ' </td>';
                         } else if (lis.tradeIsSuccess == 0) {
                             listHtml += '<td>거래 파기</td>'
@@ -201,26 +199,20 @@
                 }
             )
     })
-    $("#regist_btn09").click(() => {
-
-        const aaa = $('#testId')
-        const testId = 'regist_btn' + aaa
-        alert('button를 클릭하셨습니다.' + $(this).test().text());
-    });
 
 
-    function tradeProcess(tradeNum) {
-        console.log(tradeNum)
+    function tradeProcess(trade) {
+        console.log(trade)
 
         const payload = {
-            tradeNum: tradeNum
+            tradeNum: trade
         }
         axios.post("accept", payload).then(() => {
-
+            window.location.reload();
         })
 
-        /* $.ajax({
-            url: '/myroom/accept', type: 'post', async: false, data :tradeNum
+         /*$.ajax({
+            url: 'myroom/accept', type: 'post', data :payload
             , success: function () {
                 console.log("데이터 수정 완료")
                 window.location.reload();
@@ -234,7 +226,13 @@
     }
 
     function reInsert(trade) {
-        $.ajax({
+        const payload = {
+            tradeNum: trade
+        }
+        axios.post("replace", payload).then(() => {
+            window.location.reload();
+        })
+       /* $.ajax({
             url: '/myroom/replace', type: 'post', async: false, data: trade
             , success: function () {
                 console.log("데이터 수정 완료")
@@ -245,7 +243,7 @@
                 console.log("여긴 거래 거절 버튼")
                 console.log(err)
             }
-        })
+        })*/
     }
 
 
