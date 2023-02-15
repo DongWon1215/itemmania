@@ -1,10 +1,13 @@
 package com.itemmania.controller.boardController.requestView;
 
+import com.itemmania.entity.MileageEntity;
 import com.itemmania.entity.TradeEntity;
 import com.itemmania.entity.UserEntity;
+import com.itemmania.repository.MileageRepository;
 import com.itemmania.repository.TradeRepository;
 import com.itemmania.service.boardService.BoardListService;
 import com.itemmania.service.boardService.BoardViewService;
+import com.itemmania.service.mileageService.MileageInsertService;
 import com.itemmania.service.mileageService.MileageViewService;
 import com.itemmania.service.tradeService.BoardStateChangeService;
 import com.itemmania.service.tradeService.TradeInsertService;
@@ -20,12 +23,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Controller
 //@RequestMapping("/buy_request")
 @Log4j2
 public class BoardRequestController {
+    @Autowired
+    private MileageRepository mileageRepository;
     @Autowired
     private TradeRepository tradeRepository;
 
@@ -45,6 +51,9 @@ public class BoardRequestController {
 
     @Autowired
     private MileageViewService mileageViewService;
+
+    @Autowired
+    private MileageInsertService mileageInsertService;
 
     @GetMapping("/board/requestPage")
     public String getBoardRequest(
@@ -68,16 +77,42 @@ public class BoardRequestController {
     }
 
     @PostMapping("/board/requestPage")
-    public String postBoardRequest(@RequestParam("consumerNum") int consumerNum, HttpServletRequest request
+    public String postBoardRequest(@RequestParam("sellerMileage") int sellerMileage,
+                                   HttpServletRequest request
             , TradeEntity tradeEntity) {
         log.info("입장 " + tradeEntity);
-        log.info("consumerNum >>" + consumerNum);
+        log.info("consumerNum >>" + sellerMileage);
 
 
         HttpSession session = request.getSession();
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
+        log.info("로그인유저 객체" + user);
 
 
+
+
+        //판매자
+        MileageEntity setSellerMileage = MileageEntity.builder()
+                .userNum(user)
+                .mileageTime(LocalDateTime.now())
+                .mileageType("판매")
+                .mileageDescription("#판매" + tradeEntity.getBoardNum())
+                .mileageIn(tradeEntity.getTradeAmount())
+                .mileageOut(0)
+                .build();
+        //구매자
+        MileageEntity setConsumerMileage = MileageEntity.builder()
+                .userNum(user)
+                .mileageTime(LocalDateTime.now())
+                .mileageType("구매")
+                .mileageDescription("#구매" + tradeEntity.getBoardNum())
+                .mileageIn(0)
+                .mileageOut(tradeEntity.getTradeAmount())
+                .build();
+
+
+
+//        mileageInsertService.setMileage(mile);
 
 
 
