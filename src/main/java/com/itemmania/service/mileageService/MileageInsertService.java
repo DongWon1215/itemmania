@@ -11,16 +11,14 @@ public class MileageInsertService {
     @Autowired
     MileageRepository mileageRepository;
 
-/*
 
     public MileageEntity setMileage(MileageEntity mileageEntity) {
 
-        MileageEntity saveAll = mileageRepository.saveAll(mileageEntity);
+        MileageEntity saveAll = mileageRepository.save(mileageEntity);
 
 
         return saveAll;
     }
-*/
 
 
 }

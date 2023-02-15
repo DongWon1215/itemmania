@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -77,11 +76,11 @@ public class BoardRequestController {
     }
 
     @PostMapping("/board/requestPage")
-    public String postBoardRequest(@RequestParam("sellerMileage") int sellerMileage,
+    public String postBoardRequest(@RequestParam("sellerNum") int sellerNum,
                                    HttpServletRequest request
             , TradeEntity tradeEntity) {
         log.info("입장 " + tradeEntity);
-        log.info("consumerNum >>" + sellerMileage);
+        log.info("sellerMileage >>" + sellerNum);
 
 
         HttpSession session = request.getSession();
@@ -89,14 +88,17 @@ public class BoardRequestController {
         log.info("로그인유저 객체" + user);
 
 
+        Optional<UserEntity> seller = userService.getUserEntity(sellerNum);
+
+        log.info("판매자 userNum객체" + seller.get());
 
 
         //판매자
         MileageEntity setSellerMileage = MileageEntity.builder()
-                .userNum(user)
+                .userNum(seller.get())
                 .mileageTime(LocalDateTime.now())
                 .mileageType("판매")
-                .mileageDescription("#판매" + tradeEntity.getBoardNum())
+                .mileageDescription("#판매 : " + tradeEntity.getBoardNum().getBoardNum())
                 .mileageIn(tradeEntity.getTradeAmount())
                 .mileageOut(0)
                 .build();
@@ -105,32 +107,23 @@ public class BoardRequestController {
                 .userNum(user)
                 .mileageTime(LocalDateTime.now())
                 .mileageType("구매")
-                .mileageDescription("#구매" + tradeEntity.getBoardNum())
+                .mileageDescription("#구매 : " + tradeEntity.getBoardNum().getBoardNum())
                 .mileageIn(0)
                 .mileageOut(tradeEntity.getTradeAmount())
                 .build();
 
-
+        MileageEntity mileag1e = mileageInsertService.setMileage(setSellerMileage);
+        MileageEntity mileage = mileageInsertService.setMileage(setConsumerMileage);
+        log.info("mileagesel" + mileag1e);
+        log.info("mileagecon" + mileage);
 
 //        mileageInsertService.setMileage(mile);
 
+        tradeEntity.setConsumerMileage(setConsumerMileage);
+        tradeEntity.setSellerMileage(setSellerMileage);
 
+        log.info("입력 후 tradeEntity 확인" + tradeEntity);
 
-
-        /* 판매자, 구매자 마일리지 내역 PK(userNum을 이용해서 mileage테이블 PK값을 가져오려 했는데 엔티티가 해줘서 불필요한 코드였음)
-        int seller_mileage = scheduledService.getSeller_Consumer_mileage(tradeEntity.getConsumerMileage().getMileageNum());
-        int consumer_mileage = scheduledService.getSeller_Consumer_mileage(tradeEntity.getSellerMileage().getMileageNum());
-
-        log.info("seller_mileage" + seller_mileage);
-        log.info("consumer_mileage" + consumer_mileage);
-
-        tradeEntity.setSellerMileage2(seller_mileage);
-        tradeEntity.setConsumerMileage2(consumer_mileage);
-
-  Optional<UserEntity> seller = userService.getUserEntity(sellerMileage);
-        Optional<UserEntity> consumer = userService.getUserEntity(consumerMileage);
-
-         */
         /*trade테이블에 저장*/
         TradeEntity insert = tradeInsertService.setTradeInsert(tradeEntity);
         log.info("x>>" + insert);
@@ -146,3 +139,20 @@ public class BoardRequestController {
         return "UserForm/myRoom/trade/buyRegister";
     }
 }
+
+
+
+/* 판매자, 구매자 마일리지 내역 PK(userNum을 이용해서 mileage테이블 PK값을 가져오려 했는데 엔티티가 해줘서 불필요한 코드였음)
+        int seller_mileage = scheduledService.getSeller_Consumer_mileage(tradeEntity.getConsumerMileage().getMileageNum());
+        int consumer_mileage = scheduledService.getSeller_Consumer_mileage(tradeEntity.getSellerMileage().getMileageNum());
+
+        log.info("seller_mileage" + seller_mileage);
+        log.info("consumer_mileage" + consumer_mileage);
+
+        tradeEntity.setSellerMileage2(seller_mileage);
+        tradeEntity.setConsumerMileage2(consumer_mileage);
+
+  Optional<UserEntity> seller = userService.getUserEntity(sellerMileage);
+        Optional<UserEntity> consumer = userService.getUserEntity(consumerMileage);
+
+         */
