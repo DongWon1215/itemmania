@@ -32,6 +32,12 @@ public class RepositoryTest {
     BoardRepository boardRepository;
 
     @Autowired
+    GameEntityRepository gameEntityRepository;
+
+    @Autowired
+    GameServerEntityRepository gameServerEntityRepository;
+
+    @Autowired
     private MileageRepository mileageRepository;
     @Autowired
     private UseRepository useRepository;
@@ -186,6 +192,20 @@ public class RepositoryTest {
                 .build();
 
         useRepository.save(useEntity);
+    }
+
+    @Test
+    public void gameTest(){
+        GameEntity gameEntity = GameEntity.builder()
+                .gameName("테스트 게임")
+                .build();
+        gameEntityRepository.save(gameEntity);
+        
+        GameServerEntity gameServerEntity = GameServerEntity.builder()
+                .gameNum(gameEntity)
+                .gameServerName("테스트 서버")
+                .build();
+        gameServerEntityRepository.save(gameServerEntity);
     }
 
 

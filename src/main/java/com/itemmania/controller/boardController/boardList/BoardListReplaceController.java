@@ -1,5 +1,6 @@
 package com.itemmania.controller.boardController.boardList;
 
+import com.itemmania.domain.trade.TradeRequestDTO;
 import com.itemmania.entity.MileageEntity;
 import com.itemmania.entity.TradeEntity;
 import com.itemmania.entity.UserEntity;
@@ -31,7 +32,7 @@ public class BoardListReplaceController {
     @Autowired
     private MileageInsertService mileageInsertService;
 
-    @PostMapping("/myroom/replace")
+    @PostMapping("myroom/replace")
     public int setTradeDenai(HttpServletRequest request, @RequestBody String tradeNum)
     {
         tradeNum = tradeNum.substring(0, tradeNum.length() - 1);
@@ -68,12 +69,13 @@ public class BoardListReplaceController {
     }
 
     @PostMapping("myroom/accept")
-    public int setTradeAccept(@RequestBody int tradeNum)
-    {
-log.info("tradeNum>>>"+tradeNum);
-        tradeSellerService.setTradeAccept(tradeNum);
+    public int setTradeAccept(@RequestBody TradeRequestDTO tradeRequestDTO) {
 
-        TradeEntity trade = tradeRepository.findByTradeNum(tradeNum);
+        log.info("tradeNum>>>"+tradeRequestDTO.getTradeNum());
+
+        tradeSellerService.setTradeAccept(tradeRequestDTO.getTradeNum());
+
+        TradeEntity trade = tradeRepository.findByTradeNum(tradeRequestDTO.getTradeNum());
 
         boardStateChangeService.boardTradeStateChange(1,trade.getBoardNum().getBoardNum());
 
