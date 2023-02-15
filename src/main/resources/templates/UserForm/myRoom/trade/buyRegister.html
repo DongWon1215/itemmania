@@ -170,10 +170,14 @@
 <script>
 
   $(document).ready(()=>{
-    axios.get(() => {
 
-    }).then((response) => {
-      response.data
+    const payload = {
+      userNum : $("#userNum4").val()
+    }
+
+    axios.get("/getBuyList", {params:payload})
+            .then((response) => {
+              console.log(response.data)
     })
   })
 </script>
