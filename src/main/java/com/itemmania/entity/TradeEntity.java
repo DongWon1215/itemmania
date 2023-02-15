@@ -24,7 +24,7 @@ public class TradeEntity {
 
     @ManyToOne
     @JoinColumn(name = "consumerMileage")
-    private UserEntity consumerMileage;
+    private MileageEntity consumerMileage;
 
     @ManyToOne
     @JoinColumn(name = "sellerMileage")
