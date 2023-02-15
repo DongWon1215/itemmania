@@ -18,7 +18,7 @@ public class TradeSellerService {
     private TradeRepository tradeRepository;
 
 
-    public List<TradeEntity> getTradeSeller() {
+    public List<TradeEntity> getTradeSeller(String userName) {
         List<TradeEntity> byTradeIsSuccessIsNull = tradeRepository.findByTradeIsSuccessNull();
 
         log.info("byTradeIsSuccessIsNull?" + byTradeIsSuccessIsNull);

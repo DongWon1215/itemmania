@@ -15,7 +15,7 @@ public class 유저번호로_거래테이블get {
 
     @Test
     public void get테이블(){
-//        tradeSellerService.getTradeSeller("5");
+        tradeSellerService.getTradeSeller("5");
     }
 
 }
