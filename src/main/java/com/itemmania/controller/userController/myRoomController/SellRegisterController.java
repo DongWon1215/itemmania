@@ -24,11 +24,6 @@ public class SellRegisterController {
     @Autowired
     private TradeSellerService tradeSellerService;
 
-    @Autowired
-    private BoardStateChangeService boardStateChangeService;
-
-    @Autowired
-    private TradeRepository tradeRepository;
 
 
 /*
@@ -53,39 +48,6 @@ public class SellRegisterController {
 
 
         return "UserForm/myRoom/trade/sellRegister";
-    }
-
-    @PutMapping
-    @ResponseBody
-    public int setTradeDenai(@RequestBody String tradeRequest)
-    {
-        log.info("tradeRequest 정보 ======================>" + tradeRequest);
-
-//        tradeSellerService.setTradeDenai(num);
-        log.info("데이터 변경 됐냐?");
-
-//        boardStateChangeService.boardTradeStateChange(0,);
-
-        return 1;
-    }
-
-    @PostMapping
-    @ResponseBody
-    public int setTradeAccept(@RequestBody String tradeNum)
-    {
-
-        int tNum = Integer.parseInt(tradeNum);
-
-        log.info("바꿀 게시판 번호 ================>" + tradeNum);
-
-//        tradeSellerService.setTradeAccept(tNum);
-
-        TradeEntity trade = tradeRepository.findByTradeNum(tNum);
-        log.info("데이터 변경 됐냐?");
-
-//        boardStateChangeService.boardTradeStateChange(1,trade.getBoardNum().getBoardNum());
-
-        return 1;
     }
 
 }
