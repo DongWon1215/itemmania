@@ -48,7 +48,7 @@ public class BoardListReplaceController {
                 .mileageType("구매취소")
                 .mileageDescription("#구매취소 : " + trade.getBoardNum().getBoardNum())
                 .mileageIn(0)
-                .mileageOut(trade.getTradeAmount()).build();
+                .mileageOut(trade.getBoardNum().getSalePrice()).build();
 
         HttpSession session = request.getSession();
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
@@ -57,9 +57,9 @@ public class BoardListReplaceController {
                 .mileageTime(LocalDateTime.now())
                 .mileageType("구매취소")
                 .mileageDescription("#구매취소 : " + trade.getBoardNum().getBoardNum())
-                .mileageIn(trade.getTradeAmount())
+                .mileageIn(trade.getBoardNum().getSalePrice())
                 .mileageOut(0).build();
-
+//
         mileageInsertService.setMileage(writerMileage);
         mileageInsertService.setMileage(requesterMileage);
 
