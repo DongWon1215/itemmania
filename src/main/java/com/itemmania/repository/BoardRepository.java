@@ -19,8 +19,8 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
     /*board_trade_status 상태값 2로 변경하여 판매글 목록에 표시되지않음*/
     @Transactional
     @Modifying
-    @Query("update BoardEntity b set b.boardTradeStatus = 2 where b.boardNum = ?1")
-    int updateBoardTradeStatusByBoardNum(int boardNum);
+    @Query("update BoardEntity b set b.boardTradeStatus = ?1 where b.boardNum = ?2")
+    int updateBoardTradeStatusByBoardNum(int boardTradeStatus,int boardNum);
 
     @Query("select b.userNum from BoardEntity b where b.userNum.userName = ?1")
     UserEntity findByUserNamegetUserNum(String userName);
