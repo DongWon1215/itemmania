@@ -40,7 +40,7 @@ public class SellRegisterController {
     private GetSellListService getSellListService;
 
 
-    @GetMapping("myroom/sellRegister")
+    @GetMapping("/myroom/sellRegister")
     public String getMypageForm() {
         return "UserForm/myRoom/trade/sellRegister";
     }
@@ -48,6 +48,7 @@ public class SellRegisterController {
     @GetMapping("getSellList")
     @ResponseBody
     public List<TradeEntity> getSellHistory(int userNum){
+        log.info("유저넘"+userNum);
         return getSellListService.getList(userNum);
     }
 

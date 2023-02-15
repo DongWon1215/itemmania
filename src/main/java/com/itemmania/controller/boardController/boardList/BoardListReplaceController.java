@@ -1,5 +1,6 @@
 package com.itemmania.controller.boardController.boardList;
 
+import com.itemmania.domain.trade.TradeRequestDTO;
 import com.itemmania.entity.MileageEntity;
 import com.itemmania.entity.TradeEntity;
 import com.itemmania.entity.UserEntity;
@@ -19,7 +20,6 @@ import java.time.LocalDateTime;
 @RestController
 public class BoardListReplaceController {
 
-
     @Autowired
     private BoardStateChangeService boardStateChangeService;
 
@@ -32,16 +32,13 @@ public class BoardListReplaceController {
     @Autowired
     private MileageInsertService mileageInsertService;
 
-    @PostMapping("/myroom/replace")
-    public int setTradeDenai(HttpServletRequest request, @RequestBody String tradeNum)
+    @PostMapping("myroom/replace")
+    public int setTradeDenai(HttpServletRequest request, @RequestBody TradeRequestDTO tradeRequestDTO)
     {
-        tradeNum = tradeNum.substring(0, tradeNum.length() - 1);
 
-        int tNum = Integer.parseInt(tradeNum);
+        tradeSellerService.setTradeDenai(tradeRequestDTO.getTradeNum());
 
-        tradeSellerService.setTradeDenai(tNum);
-
-        TradeEntity trade = tradeRepository.findByTradeNum(tNum);
+        TradeEntity trade = tradeRepository.findByTradeNum(tradeRequestDTO.getTradeNum());
 
         MileageEntity writerMileage = MileageEntity.builder().userNum(trade.getBoardNum().getUserNum())
                 .mileageTime(LocalDateTime.now())
@@ -68,16 +65,14 @@ public class BoardListReplaceController {
         return 1;
     }
 
-    @PostMapping("/myroom/accept")
-    public int setTradeAccept(@RequestBody String tradeNum)
-    {
-        tradeNum = tradeNum.substring(0, tradeNum.length() - 1);
+    @PostMapping("myroom/accept")
+    public int setTradeAccept(@RequestBody TradeRequestDTO tradeRequestDTO) {
 
-        int tNum = Integer.parseInt(tradeNum);
+        log.info("tradeNum>>>"+tradeRequestDTO.getTradeNum());
 
-        tradeSellerService.setTradeAccept(tNum);
+        tradeSellerService.setTradeAccept(tradeRequestDTO.getTradeNum());
 
-        TradeEntity trade = tradeRepository.findByTradeNum(tNum);
+        TradeEntity trade = tradeRepository.findByTradeNum(tradeRequestDTO.getTradeNum());
 
         boardStateChangeService.boardTradeStateChange(1,trade.getBoardNum().getBoardNum());
 

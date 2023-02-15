@@ -54,71 +54,72 @@
             <input type="hidden" name="id">
         </form>
 
-<!--        <form id="frmList" method="POST">-->
-            <input type="hidden" id="process" name="process">
-            <input type="hidden" id="trade_id" name="trade_id">
+        <!--        <form id="frmList" method="POST">-->
+        <input type="hidden" id="process" name="process">
+        <input type="hidden" id="trade_id" name="trade_id">
 
-            <!-- ▼ 판매등록물품 //-->
-            <table class="g_blue_table tb_list">
-                <colgroup>
-                    <col width="150">
-                    <col width="70">
-                    <col>
-                    <col width="95">
-                    <col width="80">
-                    <col width="110">
-                </colgroup>
-                <tbody>
-                <tr>
-                    <th>카테고리</th>
-                    <th>분류</th>
-                    <th>제목</th>
-                    <th>거래금액</th>
-                    <th>등록일</th>
-                    <th>구분</th>
-                </tr>
-                <tr>
+        <!-- ▼ 판매등록물품 //-->
+        <table class="g_blue_table tb_list">
+            <colgroup>
+                <col width="150">
+                <col width="70">
+                <col>
+                <col width="95">
+                <col width="80">
+                <col width="110">
+            </colgroup>
+            <tbody id="demo">
+            <tr>
+                <th>카테고리</th>
+                <th>분류</th>
+                <th>제목</th>
+                <th>거래금액</th>
+                <th>등록일</th>
+                <th>구분</th>
+            </tr>
+            <!--    <tr>
                     <td colspan="6" class="first">등록된 물품이 없습니다.</td>
-                </tr>
-                <tr th:each="trade:${tradeSeller}">
-                    <td class="first">
-                        <a href="/sell/list_search.html?search_type=sell&amp;search_goods=all&amp;search_game=4732&amp;search_game_text=AFK%EC%82%BC%EA%B5%AD%EC%A7%80&amp;search_server=17960&amp;search_server_text=%EA%B8%B0%ED%83%80"><strong
-                                th:text="${trade.boardNum.serverNum.gameNum.gameName}"></strong>
-                            <br>
-                            <span th:text="${trade.boardNum.serverNum.gameServerName}"/>
-                        </a>
-                    </td>
-                    <td th:text="${trade.tradeNum}">게임머니</td>
-                    <td class="left">
-                        <input type="hidden" name="check[]" value="2023021006819018">[4조4,444억~44조4,444억]
-                        <div class="trade_title" th:text="${trade.boardNum.boardTitle}"></div>
-                    </td>
-                    <td class="right f_red1"
-                        th:text="${trade.boardNum.salePrice} + ${trade.boardNum.serverNum.gameNum.gameCurrency}"></td>
-                    <td th:text="${trade.boardNum.boardTime}"></td>
-                    <th:block th:if="${trade.getTradeIsSuccess() == null}">
-                    <td><button th:tradeNum_hidden="${trade.getTradeNum()}" th:onclick="tradeProcess(this.getAttribute('tradeNum_hidden'))" class="regist_btn09">거래 수락</button>
-                        <button th:tradeNum_hidden="${trade.getTradeNum()}" th:onclick="reInsert(this.getAttribute('tradeNum_hidden'))"
-                            class="regist_btn10">거래 거절</button></td>
-                    </th:block>
-                    <th:block th:if="${trade.getTradeIsSuccess() == 0}">
-                        <td>
-                            거래 파기
-                        </td>
-                    </th:block>
-                    <th:block th:if="${trade.getTradeIsSuccess() == 1}">
-                        <td>
-                            거래 승인
-                        </td>
-                    </th:block>
-                </tr>
-                </tbody>
-            </table>
-            <!-- ▲ 판매등록물품 //-->
-            <a href="javascript:;" onclick="tradeProcess('deleteSelectAll');" class="regist_btn11 btn_padding03">현재 페이지
-                물품 삭제</a>
-            <div class="g_finish"></div>
-<!--        </form>-->
+                </tr>-->
+            <!--   <tr th:each="trade:${tradeSeller}">
+                 <td class="first">
+                      <a href="/sell/list_search.html?search_type=sell&amp;search_goods=all&amp;search_game=4732&amp;search_game_text=AFK%EC%82%BC%EA%B5%AD%EC%A7%80&amp;search_server=17960&amp;search_server_text=%EA%B8%B0%ED%83%80"><strong
+                              th:text="${trade.boardNum.serverNum.gameNum.gameName}"></strong>
+                          <br>
+                          <span th:text="${trade.boardNum.serverNum.gameServerName}"/>
+                      </a>
+                  </td>
+                  <td th:text="${trade.tradeNum}">게임머니</td>
+                  <td class="left">
+                      <input type="hidden" name="check[]" value="2023021006819018">[4조4,444억~44조4,444억]
+                      <div class="trade_title" th:text="${trade.boardNum.boardTitle}"></div>
+                  </td>
+                  <td class="right f_red1"
+                      th:text="${trade.boardNum.salePrice} + ${trade.boardNum.serverNum.gameNum.gameCurrency}"></td>
+                  <td th:text="${trade.boardNum.boardTime}"></td>
+                  <th:block th:if="${trade.getTradeIsSuccess() == null}">
+                  <td>
+                      <button th:tradeNum_hidden="${trade.getTradeNum()}" th:onclick="tradeProcess(this.getAttribute('tradeNum_hidden'))" class="regist_btn09">거래 수락</button>
+                      <button th:tradeNum_hidden="${trade.getTradeNum()}" th:onclick="reInsert(this.getAttribute('tradeNum_hidden'))" class="regist_btn10">거래 거절</button>
+                  </td>
+                  </th:block>
+                  <th:block th:if="${trade.getTradeIsSuccess() == 0}">
+                      <td>
+                          거래 파기
+                      </td>
+                  </th:block>
+                  <th:block th:if="${trade.getTradeIsSuccess() == 1}">
+                      <td>
+                          거래 승인
+                      </td>
+                  </th:block>
+            </tr>-->
+            </tbody>
+        </table>
+        <!-- ▲ 판매등록물품 //-->
+        <a href="javascript:;" onclick="tradeProcess('deleteSelectAll');" class="regist_btn11 btn_padding03">현재 페이지
+            물품 삭제</a>
+        <div class="g_finish"></div>
+        <!--        </form>-->
 
         <div class="g_finish"></div>
         <!-- ▼ 판매진행안내 //-->
@@ -168,7 +169,7 @@
 
 
 <input type="hidden" id="userNum5" th:value="${#authentication.principal.userEntity.userNum}">
-
+<!--
 <script th:inline="javascript">
     function tradeProcess(tradeNum)
     {
@@ -221,6 +222,113 @@
                 console.log(response.data)
             })
     })
-</script>
+</script>-->
 
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    //자바스크립트에서 타임리프 사용시 명시필요
+    $(document).ready(() => {
+
+
+        const payload = {
+            userNum: $("#userNum5").val()
+        }
+
+        axios.get("/getSellList", {params: payload})
+            .then((response) => {
+                    console.log(response.data)
+
+                    let listHtml = "";
+
+                    $.each(response.data, function (index, lis) {
+                        listHtml += lis.boardNum.saleAria
+                        console.log("리스트" + lis.boardNum.saleAria)
+                        console.log("게임이름" + lis.boardNum.serverNum.gameNum.gameName)
+                        console.log("인덱스" + index)
+
+                        listHtml += '<tr>'
+                        listHtml += '<td className="first">'
+                        listHtml += '   <a href="#">'
+                        listHtml += '       <strong>' + lis.boardNum.serverNum.gameNum.gameName + '</strong>'
+                        listHtml += '       <br>'
+                        listHtml += '       <span>' + lis.boardNum.serverNum.gameServerName + '</span>'
+                        listHtml += '   </a>'
+                        listHtml += '</td>'
+                        listHtml += '<td >' + lis.tradeNum + '</td>'
+                        listHtml += '<td className="left">'
+                        listHtml += '   <input type="hidden" name="check[]" value="2023021006819018">[4조4,444억~44조4,444억]'
+                        listHtml += '   <div className="trade_title" >' + lis.boardNum.boardTitle + '</div>'
+                        listHtml += '</td>'
+                        listHtml += '   <td className="right f_red1">' + lis.boardNum.salePrice + lis.boardNum.serverNum.gameNum.gameCurrency + '</td>'
+                        listHtml += '   <td>' + lis.tradeTime + '</td>'
+
+                        console.log("tradeIsSuccess값" + lis.tradeIsSuccess)
+                        if (lis.tradeIsSuccess == null) {
+                            listHtml += ' <td>';
+                            listHtml += ' <button type="button" onclick="tradeProcess(' + lis.tradeNum + ')">거래 수락 </button>';
+                            listHtml += '<button type="button" onclick="reInsert(' + lis.tradeNum + ')">거래 거절</button>';
+                            listHtml += ' </td>';
+                        } else if (lis.tradeIsSuccess == 0) {
+                            listHtml += '<td>거래 파기</td>'
+                        } else if (lis.tradeIsSuccess == 1) {
+                            listHtml += '<td>거래 승인</td>'
+                        }
+
+
+                        listHtml += '</tr>'
+
+                    })
+                    $("#demo").append(listHtml)
+                }
+            )
+    })
+
+
+    function tradeProcess(trade) {
+        console.log(trade)
+
+        const payload = {
+            tradeNum: trade
+        }
+        axios.post("accept", payload).then(() => {
+            window.location.reload();
+        })
+
+        /*$.ajax({
+           url: 'myroom/accept', type: 'post', data :payload
+           , success: function () {
+               console.log("데이터 수정 완료")
+               window.location.reload();
+           },
+           error: function (err) {
+               console.log("error message")
+               console.log("여긴 거래 수락 버튼")
+               console.log(err)
+           }
+       })*/
+    }
+
+    function reInsert(trade) {
+        const payload = {
+            tradeNum: trade
+        }
+        axios.post("replace", payload).then(() => {
+            window.location.reload();
+        })
+        /* $.ajax({
+             url: '/myroom/replace', type: 'post', async: false, data: trade
+             , success: function () {
+                 console.log("데이터 수정 완료")
+                 window.location.reload();
+             },
+             error: function (err) {
+                 console.log("error message")
+                 console.log("여긴 거래 거절 버튼")
+                 console.log(err)
+             }
+         })*/
+    }
+
+
+</script>
 </html>
