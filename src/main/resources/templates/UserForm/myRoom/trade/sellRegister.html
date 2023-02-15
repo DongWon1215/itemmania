@@ -88,7 +88,7 @@
                             <span th:text="${trade.boardNum.serverNum.gameServerName}"/>
                         </a>
                     </td>
-                    <td>게임머니</td>
+                    <td th:text="${trade.tradeNum}">게임머니</td>
                     <td class="left">
                         <input type="hidden" name="check[]" value="2023021006819018">[4조4,444억~44조4,444억]
                         <div class="trade_title" th:text="${trade.boardNum.boardTitle}"></div>

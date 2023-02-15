@@ -11,7 +11,7 @@
 <script>
     $().ready(() => {
         /*현재 로그인되어있는 유저의 유저번호*/
-        document.querySelector('[name="consumerMileage"]').value = $('#userNum2').val();
+        document.querySelector('[name="consumerNum"]').value = $('#userNum2').val();
     })
 
 </script>
@@ -56,15 +56,17 @@
             <!--action="application_ok.php?list=YTozOTp7czo5OiJnYW1lX2NvZGUiO3M6NDoiMjY5NiI7czoxMToic2VydmVyX2NvZGUiO047czo5OiJnYW1lX25hbWUiO3M6MTU6IuuhnOyKpO2KuOyVhO2BrCI7czoxMToic2VydmVyX25hbWUiO3M6MTI6IuyEnOuyhOyghOyytCI7czoxMjoic2VhcmNoX2dvb2RzIjtzOjM6ImFsbCI7czoxMToic2VhcmNoX3dvcmQiO047czo0OiJ0eXBlIjtzOjQ6InNlbGwiO3M6MTI6InNlYXJjaF9vcmRlciI7czoxOiIyIjtzOjE0OiJzZWFyY2hfcmVmZXJlciI7czo5OiJsaXN0Lmh0bWwiO3M6MTE6InRyYWRlX3N0YXRlIjtzOjE6IjEiO3M6ODoicmVnX3RpbWUiO3M6MToiMSI7czoxMToiY3JlZGl0X3R5cGUiO3M6MToiMSI7czoxMDoiZ29vZHNfdHlwZSI7czoxOiIxIjtzOjY6ImNvbXBlbiI7TjtzOjExOiJzZWxsX2NvbXBlbiI7TjtzOjc6ImRpc2NvbnQiO047czo3OiJvdmVybGFwIjtOO3M6OToiZXhjZWxsZW50IjtOO3M6NzoiYW1vdW50MSI7czoxOiIxIjtzOjc6ImFtb3VudDIiO3M6ODoiOTk5OTk5OTkiO3M6NzoiYW1vdW50MyI7czoxOiIxIjtzOjc6ImFtb3VudDQiO3M6ODoiOTk5OTk5OTkiO3M6MTI6InNlYXJjaF90eXBlMSI7TjtzOjEyOiJzZWFyY2hfdHlwZTIiO047czoxNToibW9uZXlfbGlzdF9yb3dzIjtOO3M6MTM6Imdlbl9saXN0X3Jvd3MiO047czoxNjoic3JjaF9pdGVtX2RlcHRoMSI7TjtzOjE2OiJzcmNoX2l0ZW1fZGVwdGgyIjtOO3M6MTY6InNyY2hfaXRlbV9kZXB0aDMiO047czoxNjoic3JjaF9pdGVtX2RlcHRoNCI7TjtzOjY6ImRpcmVjdCI7TjtzOjEyOiJhY2NvdW50X3R5cGUiO047czoxMzoicHVyY2hhc2VfdHlwZSI7TjtzOjE3OiJwYXltZW50X2V4aXN0ZW5jZSI7TjtzOjEyOiJtdWx0aV9hY2Nlc3MiO047czoxNToic3JjaF9jaGFyX2FsYXJtIjtOO3M6MjA6InNlYXJjaF9jaGFyYWN0ZXJfam9iIjtOO3M6MjI6InNlYXJjaF9jaGFyYWN0ZXJfbGV2ZWwiO047czo5OiJiTGluZWFnZU0iO2I6MDt9"-->
 
             <!--게시글 번호-->
-            <input type="hidden" name="boardNum" th:value="${boardReq.boardNum}">
-            <!--판매자 회원번호-->
-            <input type="hidden" name="sellerMileage" th:value="${boardReq.userNum.userNum}">
+            <input type="text" name="boardNum" th:value="${boardReq.boardNum}">
+            <!--
+            &lt;!&ndash;판매자 회원번호&ndash;&gt;
+            <input type="text" name="sellerMileage" th:value="${boardReq.userNum.userNum}">
+            -->
             <!--구매자 회원번호  (위에서 자바스크립트로 value값 넣어주고 있음)-->
-            <input type="hidden" name="consumerMileage">
+            <input type="text" name="consumerNum">
             <!--거래금액-->
-            <input type="hidden" name="tradeAmount" th:value="${boardReq.salePrice}">
+            <input type="text" name="tradeAmount" th:value="${boardReq.salePrice}">
             <!--거래 수량-->
-            <input type="hidden" name="tradeUnit" th:value="${boardReq.saleUnit}">
+            <input type="text" name="tradeUnit" th:value="${boardReq.saleUnit}">
 
             <!-- ▼ 물품정보 //-->
             <div class="g_subtitle">물품정보</div>

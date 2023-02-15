@@ -1,13 +1,12 @@
 package com.itemmania.entity;
 
 import lombok.*;
-import lombok.extern.log4j.Log4j2;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Log4j2
+
 @Getter
 @Setter
 @ToString
@@ -44,7 +43,6 @@ public class TradeEntity {
     private Integer tradeUnit;
 
     @Column
-    @ColumnDefault("")
     private Boolean tradeIsSuccess;
 
     @Column

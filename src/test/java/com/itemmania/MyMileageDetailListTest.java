@@ -14,6 +14,7 @@ public class MyMileageDetailListTest {
     @Autowired
     MileageViewService mileageViewService;
 
+/*
     @Test
     public void getList(){
 
@@ -28,6 +29,7 @@ public class MyMileageDetailListTest {
 
         System.out.println(mileageViewService.getMileageHistory(myMileageDetailRequest));
     }
+*/
 
 
 }

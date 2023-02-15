@@ -50,19 +50,10 @@ public class MileageViewService {
 
         List<MyMileageDetailDTO> result = new ArrayList<>();
 
-//        historyList.sort(Comparator.comparing(MyMileageDetailDTO.mileageEntity::getMileageTime).reversed());
-//        for(int i=historyList.size(); i>=0; i--){
-//            result.add(historyList.get(i));
-//        }
-
-
         for(MyMileageDetailDTO myMileageDetailDTO : historyList){
 
             LocalDateTime startDate = LocalDateTime.of(myMileageDetailRequest.getStartDate().getYear(), myMileageDetailRequest.getStartDate().getMonth(), myMileageDetailRequest.getStartDate().getDayOfMonth(), 0, 0);
             LocalDateTime endDate = LocalDateTime.of(myMileageDetailRequest.getEndDate().getYear(), myMileageDetailRequest.getEndDate().getMonth(), myMileageDetailRequest.getEndDate().getDayOfMonth(), 23, 59);
-
-            log.info(startDate + "startDate@@@@@@@@@@@@@@@@@@@");
-            log.info(endDate + "endDate@@@@@@@@@@@@@@@@@@@@@@@");
 
             if( myMileageDetailDTO.getMileageEntity().getMileageTime().isAfter(startDate) && myMileageDetailDTO.getMileageEntity().getMileageTime().isBefore(endDate) ) {
                 result.add(myMileageDetailDTO);

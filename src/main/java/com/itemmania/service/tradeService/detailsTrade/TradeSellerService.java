@@ -1,9 +1,6 @@
 package com.itemmania.service.tradeService.detailsTrade;
 
-import com.itemmania.entity.BoardEntity;
 import com.itemmania.entity.TradeEntity;
-import com.itemmania.entity.UserEntity;
-import com.itemmania.repository.BoardRepository;
 import com.itemmania.repository.TradeRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.security.Principal;
 import java.util.List;
 
 @Log4j2
@@ -23,7 +21,7 @@ public class TradeSellerService {
 
 
     public List<TradeEntity> getTradeSeller() {
-        List<TradeEntity> byTradeIsSuccessIsNull = tradeRepository.findAllByTradeIsSuccessNull();
+        List<TradeEntity> byTradeIsSuccessIsNull = tradeRepository.findByTradeIsSuccessNull();
 
         log.info("byTradeIsSuccessIsNull?" + byTradeIsSuccessIsNull);
 

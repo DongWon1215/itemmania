@@ -24,13 +24,11 @@ public class TradeIsSuccessNull값출력 {
 
     @Test
     public void aa() {
-/*
 
-        List<TradeEntity> byTradeIsSuccessIsNull = tradeRepository.findByTradeIsSuccessNull();
+//        List<TradeEntity> byTradeIsSuccessIsNull = tradeRepository.findBySellerMileage_UserNum_UserNum("5");
 
-        log.info("byTradeIsSuccessIsNull?" + byTradeIsSuccessIsNull);
+//        log.info("byTradeIsSuccessIsNull?" + byTradeIsSuccessIsNull);
 
-*/
 
     }
 }

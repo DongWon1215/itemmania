@@ -1,6 +1,6 @@
 package com.itemmania.controller.userController.myRoomController;
 
-import com.itemmania.domain.board.TradeRequest;
+import com.itemmania.entity.MileageEntity;
 import com.itemmania.entity.TradeEntity;
 import com.itemmania.entity.UserEntity;
 import com.itemmania.repository.TradeRepository;
@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
@@ -24,25 +26,20 @@ public class SellRegisterController {
     @Autowired
     private TradeSellerService tradeSellerService;
 
-
-
-/*
-    @Autowired(required = false)
-    private BoardInNameOutnumService boardInNameOutnumService;
-*/
-
-
     @GetMapping
-    public String getMypageForm(Model model, Principal principal) {
-
-        log.info("Principal?" + principal.getName());
-
-        /*   UserEntity userNum = boardInNameOutnumService.getUserNum(principal.getName());*/
-     /*   log.info(userNum);
-        List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller(userNum);
+    public String getMypageForm(HttpServletRequest request, Model model) {
+/*
+        MileageEntity mileage1 = ;
+        MileageEntity mileage1 = ;
 */
+
+        HttpSession session = request.getSession();
+        UserEntity user = (UserEntity) session.getAttribute("userInfo");
 
         List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller();
+
+
+
         log.info("tradeSeller?" + tradeSeller);
         model.addAttribute("tradeSeller", tradeSeller);
 
