@@ -162,5 +162,20 @@
 
 <!--footer 시작-->
 <div th:replace="fragment/footer"/>
+
+<input type="hidden" id="userNum4" th:value="${#authentication.principal.userEntity.userNum}">
+
 </body>
+
+<script>
+
+  $(document).ready(()=>{
+    axios.get(() => {
+
+    }).then((response) => {
+      response.data
+    })
+  })
+</script>
+
 </html>
