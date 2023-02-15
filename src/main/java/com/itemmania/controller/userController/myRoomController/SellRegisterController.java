@@ -27,13 +27,9 @@ public class SellRegisterController {
 
 
     @GetMapping
-    public String getMypageForm(HttpServletRequest request, Model model, Principal principal) {
+    public String getMypageForm(HttpServletRequest request, Model model) {
 
-        String loginUserNum = principal.getName().trim();
-        log.info("Principal?" + loginUserNum);
 
-           /*UserEntity userNum = boardInNameOutnumService.getUserNum(principal.getName());
-        log.info(userNum);*/
 /*
         MileageEntity mileage1 = ;
         MileageEntity mileage1 = ;
@@ -42,9 +38,9 @@ public class SellRegisterController {
         HttpSession session = request.getSession();
         UserEntity user = (UserEntity) session.getAttribute("userInfo");
 
+        List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller();
 
 
-        List<TradeEntity> tradeSeller = tradeSellerService.getTradeSeller(loginUserNum);
 
         log.info("tradeSeller?" + tradeSeller);
         model.addAttribute("tradeSeller", tradeSeller);
