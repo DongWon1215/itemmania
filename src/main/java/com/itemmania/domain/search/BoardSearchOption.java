@@ -25,7 +25,7 @@ public class BoardSearchOption {
     private int p = 0;
 
     // 페이지 출력 개수
-    private int size = 5;
+    private int size = 10;
 
  /*   // 서브제목 검색
     private String titleSearch;
