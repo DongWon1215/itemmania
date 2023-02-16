@@ -61,10 +61,11 @@ public class MileageViewService {
 
         }
 
-        for(int i=0; i<result.size(); i++){
-            for(int j=0; j<result.size(); j++){
+        for(int i=0; i<result.size()-1; i++){
 
-                if( result.get(i).getMileageEntity().getMileageTime().isBefore(result.get(j).getMileageEntity().getMileageTime()) && i<j && i!=j){
+            for(int j=i+1; j<result.size(); j++){
+
+                if( result.get(i).getMileageEntity().getMileageTime().isBefore(result.get(j).getMileageEntity().getMileageTime())){
                     MyMileageDetailDTO myMileageDetailDTO = result.get(i);
                     result.set(i, result.get(j));
                     result.set(j, myMileageDetailDTO);
